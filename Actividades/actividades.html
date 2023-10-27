@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Subir Archivos con Datos de Actividades</title>
+</head>
+<body>
+    <h1>Subir Archivos con Datos de Actividades</h1>
+    <form action="upload.php" method="post" enctype="multipart/form-data">
+        <label for="idactividades">ID de Actividades:</label>
+        <input type="text" name="idactividades" id="idactividades"><br>
+        
+        <label for="Nom_act">Nombre de la Actividad:</label>
+        <input type="text" name="Nom_act" id="Nom_act"><br>
+        
+        <label for="Materia_act">Materia de la Actividad:</label>
+        <input type="text" name="Materia_act" id="Materia_act"><br>
+        
+        <label for="Docente">Nombre del Docente:</label>
+        <input type="text" name="Docente" id="Docente"><br>
+        
+        <label for="file">Seleccione un archivo:</label>
+        <input type="file" name="file" id="file"><br>
+
+        <input type="submit" value="Subir Archivo">
+    </form>
+</body>
+</html>
