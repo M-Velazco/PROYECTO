@@ -1,4 +1,5 @@
 <?php
+// funcion de upload sin poo
 // Verificar si se envió un archivo
 if (isset($_FILES['file']) && isset($_POST['idactividades']) && isset($_POST['Nom_act']) && isset($_POST['Materia_act']) && isset($_POST['Docente'])) {
     // Conexión a la base de datos (debes configurar esto)

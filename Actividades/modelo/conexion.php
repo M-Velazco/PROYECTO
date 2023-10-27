@@ -1,3 +1,6 @@
+
+<!-- Eesta es la conexion a la bd -->
+
 <?php
 function Conectarse()
 {
