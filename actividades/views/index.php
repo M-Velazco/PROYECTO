@@ -59,7 +59,7 @@
                             <td><?php echo $fila['Docente'] ;?></td>
                             <td><?php echo $fila['Archivo'] ;?></td>
                                 <td>
-                                    <a href="../includes/download.php?id= <?php echo $fila['idactividades'] ;?>" class="btn btn-primary">
+                                    <a href="../includes/download.php?idactividades= <?php echo $fila['idactividades'] ;?>" class="btn btn-primary">
                                   <i class="fas fa-download"></i></a>
                                 </td>
                                 <?php endwhile ;?>

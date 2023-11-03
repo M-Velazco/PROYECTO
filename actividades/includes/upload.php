@@ -14,7 +14,37 @@ if (isset($_FILES['Archivo'])) {
     $nombre_archivo = basename($_FILES["Archivo"]["name"]);
     $extension = strtolower(pathinfo($nombre_archivo, PATHINFO_EXTENSION));
 
-    // Validar la extensión del archivo
+    if (move_uploaded_file($_FILES["Archivo"]["tmp_name"], $carpeta_destino . $nombre_archivo)) {
+        include "db.php";
+            $sql = "INSERT INTO `actividades`(`idactividades`, `Nom_act`, `Materia_act`, `Docente`, `Archivo`) 
+            VALUES ('', '$nombre_act', '$materia','$docente','$nombre_archivo')";
+            $resultado = mysqli_query($conexion, $sql);
+            if ($resultado) {
+                echo "<script language='JavaScript'>
+                alert('Archivo Subido');
+                location.assign('../views/index.php');
+                </script>";
+            } else {
+
+                echo "<script language='JavaScript'>
+                alert('Error al subir el archivo: ');         
+                location.assign('../views/index.php');
+                </script>";
+            }
+        } else {
+            echo "<script language='JavaScript'>
+            alert('Error al subir el archivo. ');
+            location.assign('../views/index.php');
+            </script>";
+        }
+    } else {
+        echo "<script language='JavaScript'>
+        alert('Solo se permiten archivos PDF, DOC y DOCX.');
+        location.assign('../views/index.php');
+        </script>";
+    }
+
+  /*   // Validar la extensión del archivo
     if ($extension == "pdf" || $extension == "doc" || $extension == "docx") {
 
 
@@ -50,3 +80,4 @@ if (isset($_FILES['Archivo'])) {
         </script>";
     }
 }
+ */

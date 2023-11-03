@@ -13,7 +13,7 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <label for="nombre" class="form-label">Nombre de la actividad</label>
+                                <label for="nombreA" class="form-label">Nombre de la actividad</label>
                                 <input type="text" id="nombreA" name="nombreA" class="form-control" required>
 
                             </div>
@@ -22,14 +22,14 @@
 
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <label for="nombre" class="form-label">Materia</label>
+                                <label for="Materia" class="form-label">Materia</label>
                                 <input type="number" id="Materia" name="Materia" class="form-control" required>
                             </div>
                         </div>
                     </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <label for="nombre" class="form-label">Docente</label>
+                                <label for="docente" class="form-label">Docente</label>
                                 <input type="number" id="docente" name="docente" class="form-control" required>
                             </div>
                         </div>
@@ -39,7 +39,7 @@
 
 
                     <div class="col-12">
-                        <label for="yourPassword" class="form-label">Archivo (WORD & PDF)</label>
+                        <label for="file" class="form-label">Archivo (WORD & PDF)</label>
                         <input type="file" name="Archivo" id="Archivo" class="form-control" required>
 
                     </div>

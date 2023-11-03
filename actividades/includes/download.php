@@ -3,7 +3,7 @@ include "db.php";
 
 
 // Obtener el nombre del archivo desde la URL
-$id = $_GET['id'];
+$id = $_GET['idactividades'];
 
 // Buscar el archivo en la base de datos
 $sql = "SELECT * FROM actividades WHERE idactividades = '$id'";
@@ -11,7 +11,7 @@ $resultado = mysqli_query($conexion, $sql);
 
 if (mysqli_num_rows($resultado) == 1) {
     $fila = mysqli_fetch_assoc($resultado);
-    $archivo = $fila['archivo'];
+    $archivo = $fila['Archivo'];
     $ruta_archivo = "files/" . $archivo;
 
     // Verificar que el archivo exista en el servidor
