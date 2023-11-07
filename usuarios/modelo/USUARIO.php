@@ -165,10 +165,23 @@ public function agregarUsuario()
         }
     }
 
+
+    // Verifica si el rol es 'Estudiante' y, si es así, inserta en la tabla 'estudiante'
+    if ($this->Rol == "Coordinador") {
+        $sqlEstudiante = "INSERT INTO coordinador (idcoordinador, Nombre_apellido, Correo, Contraseña) 
+        VALUES ('$this->Idusuarios', '$this->Nombre_apellido', '$this->Correo', '$this->Contraseña')";
+
+        $resultadoEstudiante = $this->conexion->query($sqlEstudiante); // Cambio a $this->conexion
+
+        if (!$resultadoEstudiante) {
+            $this->conexion->close(); // Cambio a $this->conexion
+            return false;
+        }
+    }
+
     $this->conexion->close(); // Cambio a $this->conexion
     return true;
 }
-
 
 
 	public function modificarUsuario($Idusuarios)
