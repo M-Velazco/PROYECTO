@@ -67,6 +67,9 @@
                                 
                                 <a href="actualizar.php?idactividades=<?php echo $fila['idactividades']; ?>" class="btn btn-warning">
                                 <i class="fas fa-edit"></i> Actualizar
+
+                                <a href="../includes/eliminar.php?idactividades=<?php echo $fila['idactividades']; ?>" class="btn btn-danger">
+                                <i class="fas fa-trash"></i> Eliminar
                                 </td>
                             
                                 <?php endwhile ;?>
