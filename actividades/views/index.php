@@ -24,7 +24,10 @@
             <div>
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregar"> Agregar </button>
 
-
+                <td>
+    
+    </a>
+</td>
 
             </div>
             <br>
@@ -45,13 +48,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                       <?php
-                       require_once "../includes/db.php";
+                    <?php
+                    require_once "../includes/db.php";
                        $consulta = mysqli_query($conexion, "SELECT * FROM actividades");
-                       while ($fila = mysqli_fetch_assoc($consulta)):
+                    while ($fila = mysqli_fetch_assoc($consulta)):
                     
 
-                       ?>
+                    ?>
                             <tr>
                             <td><?php echo $fila['idactividades'] ;?></td>
                             <td><?php echo $fila['Nom_act'] ;?></td>
@@ -60,8 +63,12 @@
                             <td><?php echo $fila['Archivo'] ;?></td>
                                 <td>
                                     <a href="../includes/download.php?idactividades= <?php echo $fila['idactividades'] ;?>" class="btn btn-primary">
-                                  <i class="fas fa-download"></i></a>
+                                <i class="fas fa-download"></i></a>
+                                
+                                <a href="actualizar.php?idactividades=<?php echo $fila['idactividades']; ?>" class="btn btn-warning">
+                                <i class="fas fa-edit"></i> Actualizar
                                 </td>
+                            
                                 <?php endwhile ;?>
 
                             </tr>
