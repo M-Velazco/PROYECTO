@@ -94,7 +94,7 @@
 </style>
 
 <footer>
-    <p class="s">Visitanos en <a href="https://www.softcodepm.com/">SoftCodEPM</a></p>
+    
 </footer>
 
 <?php include "agregar.php"; ?>
