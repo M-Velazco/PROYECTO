@@ -17,25 +17,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     die("Error de conexión: " . $conn->connect_error);
   }
 
-  // Consulta SQL
-  $query = "SELECT * FROM usuarios WHERE usuario = ? AND contrasena = ?";
-  $statement = $conn->prepare($query);
-  $statement->bind_param("ss", $id, $contrasena);
-  $statement->execute();
-  $result = $statement->get_result();
-
-  // Verificar el resultado
+  // Check the result
   if ($result->num_rows > 0) {
-    // Inicio de sesión exitoso
-    // Redirigir a otra página
-    header("Location: index.html");
-    exit(); // Asegurar que el script se detenga después de la redirección
-  } else {
-    // Credenciales incorrectas
+    // Successful login
+    // Redirect to another page
+    header("Location: form.html");
+    exit();
+} else {
+    // Incorrect credentials
     echo "Credenciales incorrectas";
-  }
+}
 
-  // Cerrar la conexión
-  $conn->close();
+// Close the connection
+$conn->close();
 }
 ?>
