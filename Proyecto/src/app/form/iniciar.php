@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if ($result->num_rows > 0) {
     // Successful login
     // Redirect to another page
-    header("Location: index.component.html");
+    header("Location: form.html");
     exit();
 } else {
     // Incorrect credentials

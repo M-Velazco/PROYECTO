@@ -1,14 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
 
-<!doctype html>
-<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Proyecto</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DIGIWORM</title>
+    <script src="ola"></script>
+    <script src="https://kit.fontawesome.com/acd7670049.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="Proyecto/src/assets/img/image__1_-removebg-preview (1).png" style="border-radius: 50%; /* Hace que el borde sea circular */" type="image/x-icon">
+    <link rel="stylesheet" href="Proyecto/src/assets/index.component.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet"> 
 </head>
+
 <body>
-  <app-root></app-root>
+    <div id="loader"class="hidden">
+        <img src="Proyecto\src\assets/img/mundor.png" alt="Loading...">
+      </div>
+    <header>
+        <a href="index.component.html" class="logo">
+            <img class="logo" style="border-radius: 55%;width: 120px;; /* Hace que el borde sea circular */" src="Proyecto/src/assets/img/image__1_-removebg-preview (1).png" alt="Logo">
+            
+          </a>
+        <nav class="head_titu">
+        
+           
+           
+            
+            <a href="Proyecto\src\app\form\form.component.html">INICIAR SESIÓN</a>
+           <a href="Contactanos.html">CONTACTANOS</a>
+
+        </nav>
+        <button id="toggle-nav" class="toggle-nav-btn">☰</button>
+
+        <section class="textos-header">
+            <h1 style='--content: "DIGI"; --star-color: #32d9e5; --end-color: #f1147b; --delay: 0s;'>DIGI</h1>
+            <h2 style='--content: "DIGIWORM"; --star-color: #7732e5d2; --end-color: #0f3af8d0; --delay: 0s; '>DIGIWORM</h2>
+
+        </section>
+        <div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+         </div>
+    </header>
+    <main>
+        
+        <section class="clientes contenedor">
+            <h2 class="titulo">Nosotros</h2>
+            <div class="cards">
+                <div class="card" id="c2">
+                    <img src="Proyecto/src/assets/img/esta-es.jpg" alt="">
+                    <div class="contenido-texto-card">
+                        
+                        <p><br> estámos basados en la identidad institucional y las normas emanadas del Ministerio de Educación Nacional. </p>
+                    </div>
+                </div>
+                <div class="card" id="c3">
+                    <img src="/Proyecto/src/assets/img/PQS-capacitacion-online-ninos.jpg" alt="">
+                    <div class="contenido-texto-card">
+                        
+                        <p>En la Media Integral con articulación con el SENA, ofrece el servicio público educativo en doble jornada.</p>
+                    </div>
+                </div>
+                <div class="card" id="c2">
+                    <img src="Proyecto/src/assets/img/niño.jpg" alt="">
+                    <div class="contenido-texto-card">
+                        
+                        <p>así como las leyes y demás tratados vigentes en referencia a la normativa de educación.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+
+    </main>
+    <footer id="footer">
+        <div class="contenedor-footer">
+            <div class="content-foo">
+                <h4>Correo</h4>
+                <p>digiworm04@gmail.com</p>
+            </div>
+            <div class="content-foo">
+                <h4>Instagram</h4>
+              
+                <a href="https://instagram.com/digiworm.s.a?igshid=NGExMmI2YTkyZg==" target="_blank"class="iconoinsta"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+           
+        </div>
+        <h2 class="titulo-final">&copy; Politica de privacidad |          <br>Que cada "No" que recibas<br> 
+              <br>  se convierta en un impulso para continuar.
+ </h2>
+    </footer>
 </body>
+<script>
+    // Ocultamos la pantalla de carga después de un cierto período de tiempo
+    window.addEventListener('load', function(){
+        const loader = document.getElementById('loader');
+        setTimeout(function(){
+            loader.classList.add('fadeOut');
+        }, 2000); // 2 segundos de tiempo de carga
+    });
+</script>
+<script>const toggleNavBtn = document.getElementById('toggle-nav');
+    const nav = document.querySelector('nav');
+    
+    toggleNavBtn.addEventListener('click', function() {
+      nav.classList.toggle('active');
+    });
+    </script>
 </html>
