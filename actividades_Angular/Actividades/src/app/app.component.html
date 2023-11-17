@@ -1,0 +1,27 @@
+<div>
+  <h1>Administración de artículos</h1>
+    <table border="1" *ngIf="hayRegistros(); else sinarticulos">
+      <tr>
+        <td>id</td><td>Nombre</td><td>Materia</td><td>Borrar</td><td>Seleccionar</td>
+      </tr>
+      <tr *ngFor="let act of actividad">
+        <td>{{act.idactividades}}</td>
+        <td>{{act.Nom_act}}</td>
+        <td>{{act.Materia_act}}</td>
+        <td>{{act.Docente}}</td>
+        <td>{{act.Archivo}}</td>
+        <td><button (click)="Read()">Borrar?</button></td>
+        <td><button (click)="Read()">Seleccionar</button></td>        
+      </tr>
+    </table>
+    <ng-template #sinarticulos><p>No hay articulos.</p></ng-template>
+    <div>
+      
+      <p><button *ngIf="mostrarBotonAgregar" routerLink="/agregar" (click)="ocultarBotonAgregar()" href="">Agregar</button>
+
+      <button (click)="create()">Modificar</button></p>
+
+    </div>  
+    <router-outlet></router-outlet>
+</div>
+<app-act-app></app-act-app>
