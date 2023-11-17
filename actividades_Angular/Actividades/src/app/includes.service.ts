@@ -1,12 +1,16 @@
+// includes.service.ts
+
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArticulosService {
 
-  url='http://localhost/iv-Trimestre/actividades_Angular/Actividades/src/app/act-app/includes/views/'; // disponer url de su servidor que tiene las páginas PHP// http://localhost/iv-Trimestre/actividades_Angular/Actividades/src/app/includes/views/ */
+  private url = 'http://localhost/iv-Trimestre/actividades_Angular/Actividades/src/app/act-app/includes/views/';
+  private urld = '/api/';
 
   constructor(private http: HttpClient) { }
 
@@ -14,19 +18,27 @@ export class ArticulosService {
     return this.http.get(`${this.url}index.php`);
   }
 
-  alta(articulo:any) {
-    return this.http.post(`${this.url}alta.php`, JSON.stringify(articulo));    
+  Create(actividad: any) {
+    return this.http.post(`${this.url}upload.php`, JSON.stringify(actividad));    
   }
 
-  baja(codigo:number) {
+  // includes.service.ts
+
+  Download(idactividades: number): Observable<any> {
+    const url = `${this.url}download.php?idactividades=${idactividades}`;
+    return this.http.get(url, { responseType: 'blob' });
+  }
+
+
+  baja(codigo: number) {
     return this.http.get(`${this.url}baja.php?codigo=${codigo}`);
   }
   
-  seleccionar(codigo:number) {
+  seleccionar(codigo: number) {
     return this.http.get(`${this.url}seleccionar.php?codigo=${codigo}`);
   }
 
-  modificacion(articulo:any) {
+  modificacion(articulo: any) {
     return this.http.post(`${this.url}modificacion.php`, JSON.stringify(articulo));    
   } 
 }
