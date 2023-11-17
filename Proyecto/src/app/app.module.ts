@@ -22,7 +22,8 @@ import { IndexComponent } from './index/index.component';
     AppRoutingModule,
     ChatComponent,
     FormComponent,
-    HttpClientModule
+    HttpClientModule,
+    IndexComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
