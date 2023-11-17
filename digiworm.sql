@@ -91,6 +91,7 @@ DROP TABLE IF EXISTS `curso`;
 CREATE TABLE IF NOT EXISTS `curso` (
   `idcurso` int NOT NULL,
   `nom_curso` varchar(50) NOT NULL,
+  `estado` enum('Activo','Inactivo') NOT NULL
   PRIMARY KEY (`idcurso`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
