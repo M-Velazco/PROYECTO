@@ -1,0 +1,24 @@
+<div>
+    <h1>Administración de artículos</h1>
+      <table border="1" *ngIf="hayRegistros(); else sinarticulos">
+        <tr>
+          <td>Codigo</td><td>Descripcion</td><td>Borrar</td><td>Seleccionar</td>
+        </tr>
+        <tr *ngFor="let Materia of Materias">
+          <td>{{Materia.idmaterias}}</td>
+          <td>{{Materia.nom_materia}}</td>
+          
+          <td><button >Borrar?</button></td>
+          <td><button >Seleccionar</button></td>        
+        </tr>
+      </table>
+      <ng-template #sinarticulos><p>No hay articulos.</p></ng-template>
+      <div>
+        
+        <p><button  routerLink="/agregar"  >Agregar</button>
+  
+        <button (click)="Read()">Modificar</button></p>
+  
+      </div>  
+      <router-outlet></router-outlet>
+  </div>
