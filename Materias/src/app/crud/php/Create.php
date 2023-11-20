@@ -1,6 +1,7 @@
 <?php 
   header('Access-Control-Allow-Origin: *'); 
   header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+  header('Content-Type: application/json');
   
   $json = file_get_contents('php://input');
  
@@ -11,7 +12,7 @@
   
 
   mysqli_query($con,"insert into materias(idmaterias,nom_materia) values
-                  ('$params->descripcion',$params->precio)");
+                  ('$params->ID',$params->Name)");
     
   
   class Result {}

@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CrudComponent } from './crud/crud.component';
 import { CommonModule, LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { AgregarComponent } from './agregar/agregar.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -13,10 +15,12 @@ import { CommonModule, LocationStrategy, HashLocationStrategy } from '@angular/c
 @NgModule({
   declarations: [
     AppComponent,
-    CrudComponent
+    CrudComponent,
+    AgregarComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule, 
     AppRoutingModule,
     CommonModule,
     HttpClientModule,
