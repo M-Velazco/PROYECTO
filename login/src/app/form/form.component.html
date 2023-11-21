@@ -1,0 +1,12 @@
+<h2 class="title">Iniciar sesión</h2>
+<div>
+  <label>Idusuario:</label>
+  <input type="number" [(ngModel)]="Idusaurio" />
+</div>
+<div>
+  <label>Contrasena:</label>
+  <input [(ngModel)]="password" [ngModelOptions]="{standalone: true}" />
+</div>
+<button (click)="login()">Iniciar sesión</button>
+<p>{{ message }}</p>
+<a href="#" class="href">Olvidé mi contraseña</a>
