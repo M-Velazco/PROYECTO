@@ -1,7 +1,7 @@
 <?php
 //Se reciben los datos del formulario
-require ( "../modelo\USUARIO.php");
-require "../modelo/conexion.php";
+require ( "Proyecto\src\app\form\modelo\USUARIO.php");
+require "Proyecto\src\app\form\modelo\conexion.php";
 extract ($_REQUEST);
 
 //Forma utilizando la Clase Empleado
