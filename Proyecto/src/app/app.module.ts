@@ -4,15 +4,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { ChatComponent } from './chat/chat.component';
-import { LoginComponent } from './Login/login.component';  
-import { IndexComponent } from './index/index.component';    
+import { LoginComponent } from './Login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ChatComponent,
-    LoginComponent,  
-    IndexComponent,  
+    LoginComponent,
+
   ],
   imports: [
     BrowserModule,
