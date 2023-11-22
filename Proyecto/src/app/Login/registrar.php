@@ -28,7 +28,7 @@ echo "la conexion sirve";
     echo "<p>Nombre: " . $nombre . "</p>";
     echo "<p>correo: " . $correo . "</p>";
     echo "<p>tel: " . $tel . "</p>";
-    header("Location: form.html");
+    header("Location: login.html");
     exit(); // Asegurar que el script se detenga después de la redirección
   } else {
     echo "Error en el registro: " . $conn->error;
