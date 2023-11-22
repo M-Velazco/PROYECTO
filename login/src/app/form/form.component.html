@@ -1,5 +1,16 @@
 
-
+<!DOCTYPE html>
+<html lang="az">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script
+      src="https://kit.fontawesome.com/64d58efce2.js"
+      crossorigin="anonymous"
+    ></script>
+</head>
 <body>
     <div class="container">
       <div class="forms-container">
@@ -24,53 +35,7 @@
             <p>{{ message }}</p>
             
           </div>
-          <form action="validacion/validarRegistroUsuario.php" method="post" class="sign-up-form">
-            <h2 class="title">Registrarse</h2>
-            <div class="input-field">
-              <i class="fa-solid fa-id-card"></i>
-              <input type="int" id="Idusuario" name="Idusuario" placeholder="Numero Identificacion" required />
-            </div>
-            <div class="input-field">
-              <i class="fas fa-user"></i>
-              <input type="text" id="Nombre" name="Nombre" placeholder="Nombre y Apellido" required />
-            </div>
-                      <div class="input-field">
-              <i class="fas fa-envelope"></i>
-              <input type="email" id="Correo" name="Correo"placeholder="Correo electronico" required />
-            </div>
-            <div class="input-field">
-                <i class="fas fa-phone"></i>
-                <input type="tel" name="Telefono" id="Telefono" placeholder="Telefono" required />
-              </div>
-            <div class="input-field">
-              <i class="fas fa-lock"></i>
-              <input type="password" id="Contrasena"name="Contrasena" placeholder="Contraseña" required />
-            </div>
-
-            <div class="input-field">
-              <i class="fa-solid fa-masks-theater"></i>
-              <label for="Rol" id="roles">Rol</label></div>
-              <div class="input-radio">
-                <label for="Docente">Docente</label>
-  <input type="radio" id="Docente" name="Rol" value="Docente">
-  
-  <label for="Estudiante">Estudiante</label>
-  <input type="radio" id="Estudiante" name="Rol" value="Estudiante">
-
-  <label for="Estudiante">Padre de Familia</label>
-  <input type="radio" id="Padre de Familia" name="Rol" value="Estudiante">
-
-  <label for="Coordinador">Coordinador</label>
-  <input type="radio" id="Coordinador" name="Rol" value="Coordinador">
-            </div>
-
-              <div>
-                <input type="checkbox"/><a href="#" class="href"> "Acepto los términos de servicio"</a>
-              </div>
-
-            <input type="submit" class="btn" value="Registro completo"/>
-            
-          </form>
+          
         </div>
       </div>
 
