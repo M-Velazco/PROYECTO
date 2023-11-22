@@ -27,7 +27,7 @@
             "styles": [
               "src/styles.css",
               "src/app/index/index.component.css",
-              "Proyecto/src/app/form/form.component.css"
+              "src/app/Login/login.component.css"
             ],
             "scripts": []
           },
