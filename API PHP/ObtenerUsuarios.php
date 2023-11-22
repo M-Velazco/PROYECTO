@@ -2,7 +2,7 @@
   header('Access-Control-Allow-Origin: *'); 
   header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
   
-  require("conexion.php"); // IMPORTA EL ARCHIVO CON LA CONEXION A LA DB
+  require("conexion.php"); 
 
   $conexion = conexion(); // CREA LA CONEXION
 
