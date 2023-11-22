@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { ChatComponent } from './chat/chat.component';
-import { FormComponent } from './form/form.component';
+import { loginComponent } from './login/login.component';
 import { IndexComponent } from './index/index.component';
 
 
@@ -13,7 +13,7 @@ import { IndexComponent } from './index/index.component';
   declarations: [
     AppComponent,
     ChatComponent,
-    FormComponent,
+    loginComponent,
     IndexComponent,
 
   ],
@@ -21,7 +21,7 @@ import { IndexComponent } from './index/index.component';
     BrowserModule,
     AppRoutingModule,
     ChatComponent,
-    FormComponent,
+    loginComponent,
     HttpClientModule,
     IndexComponent
   ],
