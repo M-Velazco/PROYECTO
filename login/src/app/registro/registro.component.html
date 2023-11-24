@@ -1,1 +1,46 @@
-<p>registro works!</p>
+
+    <h2 class="title">Registrarse</h2>
+    <div class="input-field">
+      <i class="fa-solid fa-id-card"></i>
+      <input type="int" id="Idusuario" name="Idusuario" placeholder="Numero Identificacion" minlength="10" maxlength="10" required />
+    </div>
+    <div class="input-field">
+      <i class="fas fa-user"></i>
+      <input type="text" id="Nombre" name="Nombre" placeholder="Nombre y Apellido" minlength="1" maxlength="100" required />
+    </div>
+              <div class="input-field">
+      <i class="fas fa-envelope"></i>
+      <input type="email" id="Correo" name="Correo"placeholder="Correo electronico"minlength="3" maxlength="100" required />
+    </div>
+    <div class="input-field">
+        <i class="fas fa-phone"></i>
+        <input type="tel" name="Telefono" id="Telefono" placeholder="Telefono" maxlength="10" minlength="10" required />
+      </div>
+    <div class="input-field">
+      <i class="fas fa-lock"></i>
+      <input type="password" id="Contrasena"name="Contrasena" placeholder="Contraseña" maxlength="50" pattern="^(?=.*[a-zA-Z])(?=.*\d).+$" minlength="5" required />
+    </div>
+
+    <div class="input-field">
+      <i class="fa-solid fa-masks-theater"></i>
+      <label for="Rol" id="roles">Rol</label></div>
+      <div class="input-radio">
+        <label for="Docente">Docente</label>
+<input type="radio" id="Docente" name="Rol" value="Docente">
+
+<label for="Estudiante">Estudiante</label>
+<input type="radio" id="Estudiante" name="Rol" value="Estudiante">
+
+<label for="padre">Padre de Familia</label>
+<input type="radio" id="padre" name="Rol" value="padre">
+
+<label for="Coordinador">Coordinador</label>
+<input type="radio" id="Coordinador" name="Rol" value="Coordinador">
+    </div>
+
+      <div>
+        <input type="checkbox"/><a href="#" class="href"> <span class="rules-text">"Acepto los términos de servicio"</a></span> 
+      </div>
+
+    <input type="submit" class="btn" value="Registro completo"/>
+    
