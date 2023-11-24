@@ -27,6 +27,8 @@
             "styles": [
               "Proyecto/sr/styles.css",
               "Proyecto/src/app/Login/login.component.css"
+            
+             
             ],
             "scripts": []
           },
@@ -88,8 +90,14 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
-            ],
+              
+                "src/styles.css",
+                "src/app/Login/login.component.css"
+              ],
+              
+              
+             
+            
             "scripts": []
           }
         }
