@@ -5,7 +5,7 @@
   require("conexion.php");
   $con=retornarConexion();
   
-  mysqli_query($con,"delete from materias where idmaterias=$_GET[idmaterias]");
+  mysqli_query($con,"delete from materias where idmaterias=$_GET[codigo]");
     
   
   class Result {}
