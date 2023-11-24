@@ -2,7 +2,7 @@
   <h1>Administración de artículos</h1>
     <table border="1" *ngIf="hayRegistros(); else sinarticulos">
       <tr>
-        <td>Codigo</td><td>Descripcion</td><td>Precio</td><td>Borrar</td><td>Seleccionar</td>
+        <td>idmateria</td><td>Nombre de la materia</td><td>Borrar</td><td>Seleccionar</td>
       </tr>
       <tr *ngFor="let art of articulos">
         <td>{{art.idmaterias}}</td>
