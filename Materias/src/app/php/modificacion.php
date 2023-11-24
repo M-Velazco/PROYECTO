@@ -10,8 +10,7 @@
   $con=retornarConexion();
   
 
-    mysqli_query($con,"update materias set idmaterias='$params->idmaterias',
-                nom_materia=$params->nom_materia where idmaterias=$params->idmaterias");
+    mysqli_query($con,"update materias set nom_materia=$params->nom_materia where idmaterias=$params->idmaterias");
     
   
   class Result {}

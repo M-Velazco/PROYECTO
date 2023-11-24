@@ -18,9 +18,10 @@ export class ArticulosService {
     return this.http.post(`${this.url}alta.php`, JSON.stringify(articulo));    
   }
 
-  baja(codigo:number) {
-    return this.http.get(`${this.url}baja.php?idmaterias=${codigo}`);
+  baja(idmaterias: number) {
+    return this.http.get(`${this.url}baja.php?idmaterias=${idmaterias}`);
   }
+  
   
   seleccionar(codigo:number) {
     return this.http.get(`${this.url}seleccionar.php?codigo=${codigo}`);

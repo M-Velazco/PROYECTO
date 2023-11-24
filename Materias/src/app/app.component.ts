@@ -8,15 +8,13 @@ import { ArticulosService } from './articulos.service';
 })
 export class AppComponent implements OnInit {
 
-  articulos:any;
-  
-  art={
-    codigo:0,
-    descripcion:"",
-    idmaterias:0,
-    nom_materia:""
-    
-  }
+  articulos: any;
+
+  // Simplificamos el modelo para incluir solo idmaterias y nom_materia
+  art = {
+    idmaterias: 0,
+    nom_materia: ""
+  };
 
   constructor(private articulosServicio: ArticulosService) {}
 
@@ -25,21 +23,21 @@ export class AppComponent implements OnInit {
   }
 
   recuperarTodos() {
-    this.articulosServicio.recuperarTodos().subscribe((result:any) => this.articulos = result);
+    this.articulosServicio.recuperarTodos().subscribe((result: any) => this.articulos = result);
   }
 
   alta() {
-    this.articulosServicio.alta(this.art).subscribe((datos:any) => {
-      if (datos['resultado']=='OK') {
+    this.articulosServicio.alta(this.art).subscribe((datos: any) => {
+      if (datos['resultado'] == 'OK') {
         alert(datos['mensaje']);
         this.recuperarTodos();
       }
     });
   }
 
-  baja(codigo:number) {
-    this.articulosServicio.baja(codigo).subscribe((datos:any) => {
-      if (datos['resultado']=='OK') {
+  baja(idmaterias: number) {
+    this.articulosServicio.baja(idmaterias).subscribe((datos: any) => {
+      if (datos['resultado'] == 'OK') {
         alert(datos['mensaje']);
         this.recuperarTodos();
       }
@@ -47,20 +45,20 @@ export class AppComponent implements OnInit {
   }
 
   modificacion() {
-    this.articulosServicio.modificacion(this.art).subscribe((datos:any) => {
-      if (datos['resultado']=='OK') {
+    this.articulosServicio.modificacion(this.art).subscribe((datos: any) => {
+      if (datos['resultado'] == 'OK') {
         alert(datos['mensaje']);
         this.recuperarTodos();
       }
-    });    
+    });
   }
-  
-  seleccionar(idmaterias:number) {
-    this.articulosServicio.seleccionar(idmaterias).subscribe((result:any) => this.art = result[0]);
+
+  seleccionar(idmaterias: number) {
+    this.articulosServicio.seleccionar(idmaterias).subscribe((result: any) => this.art = result[0]);
   }
 
   hayRegistros() {
     return true;
-  } 
+  }
 
 }
