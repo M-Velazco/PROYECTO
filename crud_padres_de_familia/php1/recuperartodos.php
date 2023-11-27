@@ -16,3 +16,4 @@
   echo $cad;
   header('Content-Type: application/json');
 ?>
+// no me recupera los datos de la base de datos
