@@ -14,9 +14,17 @@ export class RegistroComponent {
     Nombre_apellido:"",
     Correo:"",
     Telefono:0,
-    Contraseña:"",
+    Contrasena:"",
     Rol:""
   }
 
   constructor(private registroservicio:RegistroService){}
+
+  alta(){
+    this.registroservicio.alta(this.user).subscribe((datos:any)=>{
+      if (datos['resultados']=='ok'){
+        alert(datos['mensaje']);
+      }
+    });
+  }
 }

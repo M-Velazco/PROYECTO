@@ -2,23 +2,23 @@
     <h2 class="title">Registrarse</h2>
     <div class="input-field">
       <i class="fa-solid fa-id-card"></i>
-      <input type="int" id="Idusuario" name="Idusuario" placeholder="Numero Identificacion" minlength="10" maxlength="10" required />
+      <input class="form-control" [(ngModel)]="user.Idusuarios" required placeholder="# de identificacion" />
     </div>
     <div class="input-field">
       <i class="fas fa-user"></i>
-      <input type="text" id="Nombre" name="Nombre" placeholder="Nombre y Apellido" minlength="1" maxlength="100" required />
+      <input class="form-control" [(ngModel)]="user.Nombre_apellido" required placeholder="Nombre y apellido"/>
     </div>
               <div class="input-field">
       <i class="fas fa-envelope"></i>
-      <input type="email" id="Correo" name="Correo"placeholder="Correo electronico"minlength="3" maxlength="100" required />
+      <input type="email" id="Correo" name="Correo"placeholder="Correo electronico"minlength="3" maxlength="100"  [(ngModel)]="user.Correo" required />
     </div>
     <div class="input-field">
         <i class="fas fa-phone"></i>
-        <input type="tel" name="Telefono" id="Telefono" placeholder="Telefono" maxlength="10" minlength="10" required />
+        <input type="tel" name="Telefono" id="Telefono" placeholder="Telefono" maxlength="10" minlength="10"  [(ngModel)]="user.Telefono" required />
       </div>
     <div class="input-field">
       <i class="fas fa-lock"></i>
-      <input type="password" id="Contrasena"name="Contrasena" placeholder="Contraseña" maxlength="50" pattern="^(?=.*[a-zA-Z])(?=.*\d).+$" minlength="5" required />
+      <input type="password" id="Contrasena"name="Contrasena" placeholder="Contraseña" maxlength="50" pattern="^(?=.*[a-zA-Z])(?=.*\d).+$" minlength="5"  [(ngModel)]="user.Contrasena" required />
     </div>
 
     <div class="input-field">
@@ -26,21 +26,21 @@
       <label for="Rol" id="roles">Rol</label></div>
       <div class="input-radio">
         <label for="Docente">Docente</label>
-<input type="radio" id="Docente" name="Rol" value="Docente">
+<input type="radio" id="Docente" name="Rol"  [(ngModel)]="user.Rol" value="Docente">
 
 <label for="Estudiante">Estudiante</label>
-<input type="radio" id="Estudiante" name="Rol" value="Estudiante">
+<input type="radio" id="Estudiante" name="Rol" [(ngModel)]="user.Rol" value="Estudiante">
 
 <label for="padre">Padre de Familia</label>
-<input type="radio" id="padre" name="Rol" value="padre">
+<input type="radio" id="padre" name="Rol" [(ngModel)]="user.Rol" value="padre">
 
 <label for="Coordinador">Coordinador</label>
-<input type="radio" id="Coordinador" name="Rol" value="Coordinador">
+<input type="radio" id="Coordinador" name="Rol" [(ngModel)]="user.Rol" value="Coordinador">
     </div>
 
       
         <input type="checkbox"/><a href="#" class="href"> "Acepto los términos de servicio"</a>
       
-
-    <input type="submit" class="btn" value="Registro completo"/>
+<br>
+    <input type="submit" class="btn" (click)="alta()" value="Registro completo"/>
     

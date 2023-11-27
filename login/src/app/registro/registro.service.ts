@@ -5,27 +5,15 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class RegistroService {
-  url='';
+  private apiUrl = 'http://localhost/iv-Trimestre/login/src/app/registro/php/';  // Ajusta la URL según la ubicación de tu servidor
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  recuperarTodos() {
-    return this.http.get(`${this.url}recuperartodos.php`);
+  alta(usuarios: any) {
+    return this.http.post(`${this.apiUrl}alta.php`, usuarios);
   }
 
-  alta(articulo:any) {
-    return this.http.post(`${this.url}alta.php`, JSON.stringify(articulo));
-  }
-
-  baja(codigo:number) {
-    return this.http.get(`${this.url}baja.php?codigo=${codigo}`);
-  }
-
-  seleccionar(codigo:number) {
-    return this.http.get(`${this.url}seleccionar.php?codigo=${codigo}`);
-  }
-
-  modificacion(articulo:any) {
-    return this.http.post(`${this.url}modificacion.php`, JSON.stringify(articulo));
+  seleccionar(idusuarios: number) {
+    return this.http.get(`${this.apiUrl}seleccionar.php?codigo=${idusuarios}`);
   }
 }
