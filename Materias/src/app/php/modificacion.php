@@ -8,11 +8,17 @@
   require("conexion.php");
   $con = retornarConexion();
 
-  // Utiliza mysqli_real_escape_string para escapar el valor de nom_materia
+  // Utiliza mysqli_real_escape_string para escapar los valores
   $nom_materia = mysqli_real_escape_string($con, $params->nom_materia);
+  $Correo = mysqli_real_escape_string($con, $params->Correo);
+  $Curso_pr = mysqli_real_escape_string($con, $params->Curso_pr);
+  $Materia = mysqli_real_escape_string($con, $params->Materia);
 
-  // Actualiza la consulta SQL utilizando comillas para el valor de nom_materia
-  mysqli_query($con, "update materias set nom_materia='$nom_materia' where idmaterias=$params->idmaterias");
+  // Hash de la nueva contraseña
+  $hashedContrasena = password_hash($params->Contrasena, PASSWORD_DEFAULT);
+
+  // Actualiza la consulta SQL utilizando comillas y el hash para el valor de Contrasena
+  mysqli_query($con, "UPDATE docente SET Nombre_apellido='$nom_materia', Correo='$Correo', Contrasena='$hashedContrasena', Curso_pr='$Curso_pr', Materia='$Materia' WHERE iddocente=$params->iddocente");
 
   class Result {}
 
