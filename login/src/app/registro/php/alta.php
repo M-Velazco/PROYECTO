@@ -1,16 +1,14 @@
 <?php
 header('Content-Type: application/json');
-
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type");
 // Recibe los datos del formulario Angular
 $data = json_decode(file_get_contents('php://input'), true);
 
 // Establece la conexión a tu base de datos (ajusta los detalles según tu configuración)
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "digiworm";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
+require("conexion.php");
+$conn = retornarConexion();
 
 // Verifica la conexión
 if ($conn->connect_error) {

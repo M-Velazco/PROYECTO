@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,10 @@ export class RegistroService {
     return this.http.post(`${this.apiUrl}alta.php`, usuarios);
   }
 
-  seleccionar(idusuarios: number) {
-    return this.http.get(`${this.apiUrl}seleccionar.php?codigo=${idusuarios}`);
+  seleccionar(Idusuarios: number, Contrasena: string): Observable<any> {
+    // Realiza una solicitud HTTP al servicio PHP de autenticación
+    const body = { Idusuarios: Idusuarios, Contrasena: Contrasena };
+    return this.http.post(`${this.apiUrl}login.php`, body);
   }
+  
 }

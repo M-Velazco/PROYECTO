@@ -1,27 +1,33 @@
-
-    <h2 class="title">Registrarse</h2>
-    <div class="input-field">
+<!-- <div class="form-container sing-up"[@fadeInOut]>
+  <h1>Create Account</h1>
+  <div class="social-icons">
+      <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+      <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+      <a href="#" class="icon"><i class="fa-brands fa-instagram-f"></i></a>
+  </div>
+    
       <i class="fa-solid fa-id-card"></i>
       <input class="form-control" [(ngModel)]="user.Idusuarios" required placeholder="# de identificacion" />
-    </div>
-    <div class="input-field">
+    
+    
       <i class="fas fa-user"></i>
       <input class="form-control" [(ngModel)]="user.Nombre_apellido" required placeholder="Nombre y apellido"/>
-    </div>
-              <div class="input-field">
+    
+              
       <i class="fas fa-envelope"></i>
       <input type="email" id="Correo" name="Correo"placeholder="Correo electronico"minlength="3" maxlength="100"  [(ngModel)]="user.Correo" required />
-    </div>
-    <div class="input-field">
+    
+    
         <i class="fas fa-phone"></i>
         <input type="tel" name="Telefono" id="Telefono" placeholder="Telefono" maxlength="10" minlength="10"  [(ngModel)]="user.Telefono" required />
-      </div>
-    <div class="input-field">
+      
+    
       <i class="fas fa-lock"></i>
       <input type="password" id="Contrasena"name="Contrasena" placeholder="Contraseña" maxlength="50" pattern="^(?=.*[a-zA-Z])(?=.*\d).+$" minlength="5"  [(ngModel)]="user.Contrasena" required />
-    </div>
+    
 
-    <div class="input-field">
+    
       <i class="fa-solid fa-masks-theater"></i>
       <label for="Rol" id="roles">Rol</label></div>
       <div class="input-radio">
@@ -36,11 +42,80 @@
 
 <label for="Coordinador">Coordinador</label>
 <input type="radio" id="Coordinador" name="Rol" [(ngModel)]="user.Rol" value="Coordinador">
-    </div>
+    
 
       
         <input type="checkbox"/><a href="#" class="href"> "Acepto los términos de servicio"</a>
       
 <br>
     <input type="submit" class="btn" (click)="alta()" value="Registro completo"/>
+  </div>
+ -->
+ <div class="login-container" *ngIf="!showRegisterForm">
+  
     
+      <br><br><br>
+        <h1>Sign in</h1>
+        <div class="social-icons">
+            <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+            <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+            <a href="#" class="icon"><i class="fa-brands fa-instagram-f"></i></a>
+        </div>
+        <span>Or use your id and password</span>
+        <input type="number" [(ngModel)]="user.Idusuarios">
+        <input type="text" [(ngModel)]="user.Contrasena">
+        
+  
+        <a href="#">Forgot your password</a>
+        <button (click)="login()" >Sign in</button>
+    </div>
+  
+  <button (click)="toggleForm()">Registrarse</button>
+
+
+<div class="register-container" [@slideInOut] *ngIf="showRegisterForm">
+  <h1>Create Account</h1>
+  <div class="social-icons">
+      <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+      <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+      <a href="#" class="icon"><i class="fa-brands fa-instagram-f"></i></a>
+  </div>
+    
+      <i class="fa-solid fa-id-card"></i>
+      <input class="form-control" [(ngModel)]="user.Idusuarios" required placeholder="# de identificacion" />
+    
+    
+      <i class="fas fa-user"></i>
+      <input class="form-control" [(ngModel)]="user.Nombre_apellido" required placeholder="Nombre y apellido"/>
+    
+              
+      <i class="fas fa-envelope"></i>
+      <input type="email" id="Correo" name="Correo"placeholder="Correo electronico"minlength="3" maxlength="100"  [(ngModel)]="user.Correo" required />
+    
+    
+        <i class="fas fa-phone"></i>
+        <input type="tel" name="Telefono" id="Telefono" placeholder="Telefono" maxlength="10" minlength="10"  [(ngModel)]="user.Telefono" required />
+      
+    
+      <i class="fas fa-lock"></i>
+      <input type="password" id="Contrasena"name="Contrasena" placeholder="Contraseña" maxlength="50" pattern="^(?=.*[a-zA-Z])(?=.*\d).+$" minlength="5"  [(ngModel)]="user.Contrasena" required />
+      <i class="fa-solid fa-masks-theater"></i>
+      <label for="Rol" id="roles">Rol</label>
+      <div class="input-radio">
+        <label for="Docente">Docente</label>
+<input type="radio" id="Docente" name="Rol"  [(ngModel)]="user.Rol" value="Docente">
+
+<label for="Estudiante">Estudiante</label>
+<input type="radio" id="Estudiante" name="Rol" [(ngModel)]="user.Rol" value="Estudiante">
+
+<label for="padre">Padre de Familia</label>
+<input type="radio" id="padre" name="Rol" [(ngModel)]="user.Rol" value="padre">
+
+<label for="Coordinador">Coordinador</label>
+<input type="radio" id="Coordinador" name="Rol" [(ngModel)]="user.Rol" value="Coordinador">
+<input type="submit" class="btn" (click)="alta()" value="Registro completo"/>
+
+  <button (click)="toggleForm()">Volver al inicio de sesión</button>
+</div>
