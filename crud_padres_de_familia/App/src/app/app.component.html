@@ -9,7 +9,7 @@
   <table class="table">
     <thead class="table-dark">
       <tr>
-        <th scope="col">Código</th>
+
         <th scope="col">idpadre_de_familia</th>
         <th scope="col">est_rep</th>
         <th scope="col">estado_matr</th>
@@ -19,7 +19,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let art of articulos">
-        <td>{{art.codigo}}</td>
+        
         <td>{{art.idpadre_de_familia}}</td>
         <td>{{art.est_rep}}</td>
         <td>{{art.estado_matr  }}</td>
@@ -38,6 +38,6 @@
     </p>
     <p class="lead">
       est_rep: <input class="form-control" type="int" [(ngModel)]="art.estado_matr" />
-    
-    
+
+
   </div>

@@ -34,8 +34,8 @@ est_rep: any;
   articulos:any;
 
   art={
-    codigo:0,
-    idpadre_de_familia:"",
+
+    idpadre_de_familia:0,
     est_rep:"",
     estado_matr:0
 

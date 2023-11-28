@@ -15,19 +15,19 @@ export class ArticulosService {
     return this.http.get(`${this.Url}recuperartodos.php`);
   }
 
-  alta(articulo:any) {
-    return this.http.post(`${this.Url}alta.php`, JSON.stringify(articulo));
+  alta(articulos:any) {
+    return this.http.post(`${this.Url}alta.php`, JSON.stringify(articulos));
   }
 
-  baja(codigo:number) {
-    return this.http.get(`${this.Url}baja.php?codigo=${codigo}`);
+  baja(idpadre_de_familia:number) {
+    return this.http.get(`${this.Url}baja.php?codigo=${idpadre_de_familia}`);
   }
 
-  seleccionar(codigo:number) {
-    return this.http.get(`${this.Url}seleccionar.php?codigo=${codigo}`);
+  seleccionar(idpadre_de_familia:number) {
+    return this.http.get(`${this.Url}seleccionar.php?codigo=${idpadre_de_familia}`);
   }
 
-  modificacion(articulo:any) {
-    return this.http.post(`${this.Url}modificacion.php`, JSON.stringify(articulo));
+  modificacion(articulos:any) {
+    return this.http.post(`${this.Url}modificacion.php`, JSON.stringify(articulos));
   }
 }
