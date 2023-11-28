@@ -10,9 +10,7 @@ import { ArticulosService } from './articulos.service';
 })
 export class AppComponent implements OnInit {
 est_rep: any;
-  title(title: any) {
-    throw new Error('Method not implemented.');
-  }
+ 
 
   articulos:any;
 

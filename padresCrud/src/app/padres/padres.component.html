@@ -1,0 +1,44 @@
+
+
+<div>
+    <h1 class="display-4">padres de familia</h1>
+    <p>
+      <button class="btn btn-success" (click)="alta()">Agregar</button>
+      <button class="btn btn-warning" (click)="modificacion()">Modificar</button>
+    </p>
+    <table class="table">
+      <thead class="table-dark">
+        <tr>
+  
+          <th scope="col">idpadre_de_familia</th>
+          <th scope="col">est_rep</th>
+          <th scope="col">estado_matr</th>
+          <th scope="col">Borrar</th>
+          <th scope="col">Seleccionar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let art of articulos">
+  
+          <td>{{art.idpadre_de_familia}}</td>
+          <td>{{art.est_rep}}</td>
+          <td>{{art.estado_matr  }}</td>
+          <td><button class="btn btn-danger" (click)="baja(art.codigo)">Borrar</button></td>
+          <td><button class="btn btn-primary" (click)="seleccionar(art.codigo)">Seleccionar</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <ng-template #sinarticulos>
+      <p class="lead">No hay artículos.</p>
+    </ng-template>
+  
+    <div>
+      <p class="lead">
+        idpadre_de_familia: <input class="form-control" type="text" [(ngModel)]="art.idpadre_de_familia" />
+      </p>
+      <p class="lead">
+        est_rep: <input class="form-control" type="int" [(ngModel)]="art.estado_matr" />
+  
+  
+    </div>
+  
