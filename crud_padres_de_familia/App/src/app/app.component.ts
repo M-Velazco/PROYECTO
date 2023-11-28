@@ -1,24 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticulosService } from './articulos.service';
 // En tu componente.ts
-export class TuComponente {
-  terminoBusqueda: any;
-  articulos: any;
-  // Otras propiedades y métodos existentes
 
-  // Método que filtra los artículos según el término de búsqueda
-  public filtrarArticulos(): void {
-    if (this.terminoBusqueda.trim() !== '') {
-      // Filtra los artículos según el término de búsqueda
-      this.articulos = this.articulos.filter((articulo: { descripcion: string; }) =>
-        articulo.descripcion.toLowerCase().includes(this.terminoBusqueda.toLowerCase())
-      );
-    } else {
-      // Si el término de búsqueda está vacío, muestra todos los artículos nuevamente
-      // Aquí podrías realizar una nueva solicitud al servidor para obtener todos los artículos
-    }
-  }
-}
 
 @Component({
   selector: 'app-root',
