@@ -13,28 +13,32 @@
 
             <td><button (click)="baja(art.iddocente)">Borrar?</button></td>
             <td><button (click)="seleccionar(art.iddocente)">Seleccionar</button></td>
+            <div class="d-grid gap-2 d-md-block">
+
+</div>
   </tr>
+
   <div>
     <p>
       iddocente:<input type="number" [(ngModel)]="art.iddocente" />
-    </p> 
+    </p>
     <p>
       Nombre_apellido:<input type="text" [(ngModel)]="art.Nombre_apellido" />
     </p>
     <p>
       Correo:<input type="text" [(ngModel)]="art.Correo" />
-    </p> 
+    </p>
     <p>
       Contrasena:<input type="text" [(ngModel)]="art.Contrasena" />
     </p>
     <p>
       Curso_pr:<input type="number" [(ngModel)]="art.Curso_pr" />
-    </p> 
+    </p>
     <p>
       Materia:<input type="number" [(ngModel)]="art.Materia" />
     </p>
-    
+
     <p><button (click)="alta()">Agregar</button>
     <button (click)="modificacion()">Modificar</button></p>
-  </div>  
+  </div>
 
