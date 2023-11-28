@@ -41,8 +41,8 @@ est_rep: any;
     });
   }
 
-  baja(codigo:number) {
-    this.articulosServicio.baja(codigo).subscribe((datos:any) => {
+  baja(idpadre_de_familia:number) {
+    this.articulosServicio.baja(idpadre_de_familia).subscribe((datos:any) => {
       if (datos['resultado']=='OK') {
         alert(datos['mensaje']);
         this.recuperarTodos();
@@ -59,8 +59,8 @@ est_rep: any;
     });
   }
 
-  seleccionar(codigo:number) {
-    this.articulosServicio.seleccionar(codigo).subscribe((result:any) => this.art = result[0]);
+  seleccionar(idpadre_de_familia:number) {
+    this.articulosServicio.seleccionar(idpadre_de_familia).subscribe((result:any) => this.art = result[0]);
   }
 
   hayRegistros() {

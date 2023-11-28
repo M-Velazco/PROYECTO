@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "App": {
+    "crudP": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/app",
+            "outputPath": "dist/crud-p",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -27,9 +27,7 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": ["./node_modules/jquery/dist/jquery.min.js",
-            "./node_modules/popper.js/dist/umd/popper.min.js",
-            "./node_modules/bootstrap/dist/js/bootstrap.min.js"]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -62,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "App:build:production"
+              "browserTarget": "crudP:build:production"
             },
             "development": {
-              "browserTarget": "App:build:development"
+              "browserTarget": "crudP:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -73,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "App:build"
+            "browserTarget": "crudP:build"
           }
         },
         "test": {
@@ -98,7 +96,6 @@
     }
   },
   "cli": {
-    "analytics": "d99bc6ed-9096-4733-af6e-239af7c49b9b"
+    "analytics": "9a5b7261-3d0e-476c-9a26-edff55fb150b"
   }
 }
-

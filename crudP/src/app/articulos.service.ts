@@ -20,11 +20,11 @@ export class ArticulosService {
   }
 
   baja(idpadre_de_familia:number) {
-    return this.http.get(`${this.Url}baja.php?codigo=${idpadre_de_familia}`);
+    return this.http.get(`${this.Url}baja.php?idpadre_de_familia=${idpadre_de_familia}`);
   }
 
   seleccionar(idpadre_de_familia:number) {
-    return this.http.get(`${this.Url}seleccionar.php?codigo=${idpadre_de_familia}`);
+    return this.http.get(`${this.Url}seleccionar.php?idpadre_de_familia=${idpadre_de_familia}`);
   }
 
   modificacion(articulos:any) {

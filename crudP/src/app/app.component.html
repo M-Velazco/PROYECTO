@@ -2,10 +2,7 @@
 
 <div>
   <h1 class="display-4">padres de familia</h1>
-  <p>
-    <button class="btn btn-success" (click)="alta()">Agregar</button>
-    <button class="btn btn-warning" (click)="modificacion()">Modificar</button>
-  </p>
+ 
   <table class="table">
     <thead class="table-dark">
       <tr>
@@ -23,8 +20,8 @@
         <td>{{art.idpadre_de_familia}}</td>
         <td>{{art.est_rep}}</td>
         <td>{{art.estado_matr  }}</td>
-        <td><button class="btn btn-danger" (click)="baja(art.codigo)">Borrar</button></td>
-        <td><button class="btn btn-primary" (click)="seleccionar(art.codigo)">Seleccionar</button></td>
+        <td><button class="btn btn-danger" (click)="baja(art.idpadre_de_familia)">Borrar</button></td>
+        <td><button class="btn btn-primary" (click)="seleccionar(art.idpadre_de_familia)">Seleccionar</button></td>
       </tr>
     </tbody>
   </table>
@@ -35,9 +32,18 @@
   <div>
     <p class="lead">
       idpadre_de_familia: <input class="form-control" type="text" [(ngModel)]="art.idpadre_de_familia" />
+      
     </p>
     <p class="lead">
-      est_rep: <input class="form-control" type="int" [(ngModel)]="art.estado_matr" />
+      est_rep: <input class="form-control" type="int" [(ngModel)]="art.est_rep" />
+    </p>
+    <p class="lead">
+      estado_matr: <input class="form-control" type="int" [(ngModel)]="art.estado_matr" />
+    </p>
+      <p>
+        <button class="btn btn-success" (click)="alta()">Agregar</button>
+        <button class="btn btn-warning" (click)="modificacion()">Modificar</button>
+      </p>
 
 
   </div>
