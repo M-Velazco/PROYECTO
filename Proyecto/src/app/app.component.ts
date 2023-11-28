@@ -4,12 +4,12 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  
 })
 export class AppComponent {
   title = 'Proyecto';
-}
-export class YourComponent {
- 
-}
+  isLogin = true;
 
+  toggleForm() {
+    this.isLogin = !this.isLogin;
+  }
+}
