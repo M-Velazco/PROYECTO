@@ -1,13 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RegistroComponent } from '../app/registro/registro.component'; // Reemplaza con la ubicación real de tu componente de inicio de sesión
-import { LoginComponent } from '../app/login/login.component'; // Reemplaza con la ubicación real de tu componente principal
+import { RegistroComponent } from './components/registro/registro.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
   { path: 'registro', component: RegistroComponent },
-  { path: '', redirectTo: '/registro', pathMatch: 'full' }
-];
+  { path: 'login', component: LoginComponent },
+  { path: '', pathMatch: 'full', redirectTo: 'registro' },
+  { path: '**'
+  
+  , pathMatch: 'full', redirectTo: 'registro' },
+  
+  ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
