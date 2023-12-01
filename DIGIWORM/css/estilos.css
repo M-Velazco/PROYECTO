@@ -205,7 +205,7 @@ body {
     overflow: auto;
     overflow-x: hidden;
 
-    background: linear-gradient(315deg, rgb(29, 2, 65) 38%, rgb(7, 27, 139) 68%, rgb(73, 5, 33) 98%);
+    background: linear-gradient(315deg, rgb(2, 65, 14) 38%, rgb(22, 139, 7) 68%, rgb(6, 73, 5) 98%);
     animation: gradient 15s ease infinite;
     background-size: 400% 400%;
     background-attachment: fixed;
@@ -293,7 +293,7 @@ main .sobre-nosotros{
 
 }
 .contenido-textos h3 span{
-    background:linear-gradient(to top, rgb(226, 12, 144), rgb(22, 234, 217)) ;
+    background:linear-gradient(to top, rgb(12, 226, 69), rgb(22, 234, 79)) ;
     color: #fdfdfd;
     border-radius: 50%;
     display: inline-block;
@@ -493,21 +493,21 @@ margin: 40px;
     border-width: 5px;
     border-style: solid;
     
-    border-image: linear-gradient(to top, rgba(207, 18, 135, 0.753), rgba(0, 0, 255, 0.555));
+    border-image: linear-gradient(to top, rgba(207, 18, 135, 0.753), rgba(0, 255, 30, 0.555));
     box-shadow: 0px 0px 10px rgba(209, 11, 248, 0.637);
     border-image-slice: 1;
     border-image-repeat: round;
 }
 
 .cards .card#c2{
-    background: linear-gradient(to right, hsla(231, 83%, 18%, 0.856), hsla(93, 86%, 28%, 0.479)), url('../img/triangu.jpg');
+    background: linear-gradient(to right, hsla(108, 83%, 18%, 0.856), hsla(93, 86%, 28%, 0.479)), url('../img/triangu.jpg');
     background-color: rgba(0, 0, 0, 0.5);
 
    background-size:cover; 
    background-repeat: no-repeat;
 }
 .cards .card#c3{
-    background: linear-gradient(to right, hsla(231, 83%, 18%, 0.856), hsla(93, 86%, 28%, 0.479)), url('../img/triangu.jpg');
+    background: linear-gradient(to right, hsla(108, 83%, 18%, 0.856), hsla(93, 86%, 28%, 0.479)), url('../img/triangu.jpg');
     background-size:cover; 
     background-repeat: no-repeat;
 
@@ -543,7 +543,7 @@ margin: 40px;
 .about-services{
     margin: auto;
     margin-bottom: 40px;
-    background-image:linear-gradient(to top, hsla(266, 93%, 34%, 0.842), hsla(93, 80%, 39%, 0.479)),url('../img/fondofooter.jpg') ;
+    background-image:linear-gradient(to top, hsla(110, 93%, 34%, 0.842), hsla(93, 80%, 39%, 0.479)),url('../img/fondofooter.jpg') ;
     background-size: cover;
     
 
