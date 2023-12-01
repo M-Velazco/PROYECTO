@@ -5,7 +5,7 @@ extract($_REQUEST);
 
 $objConexion = Conectarse();
 
-$sql = "SELECT * FROM usuarios WHERE idusuarios = '$_REQUEST[Idusuario]'";
+$sql = "SELECT * FROM usuarios WHERE idusuarios = '$_REQUEST[Idusuarios]'";
 $resultadousuarios = $objConexion->query($sql);
 
 if ($resultadousuarios === false) {
@@ -41,11 +41,11 @@ if ($resultadousuarios->num_rows > 0) {
         </div>
         <div class="input-field">
         <i class="fas fa-user"></i>
-        <input type="text" name="Nombre" id="Nombre" placeholder="Nombre" value="<?php echo $usuario->Nombre_apellido ?> "readonly required />
+        <input type="text" name="Nombre" id="Nombre" placeholder="Nombre" value="<?php echo $usuario->Nombre_apellido ?> " required />
     </div>
     <div class="input-field">
               <i class="fas fa-envelope"></i>
-              <input type="email" id="Correo" name="Correo"placeholder="Correo electronico" value="<?php echo $usuario->Correo ?> "readonly required />
+              <input type="email" id="Correo" name="Correo"placeholder="Correo electronico" value="<?php echo $usuario->Correo ?> " required />
             </div>
         <div class="input-field">
         <i class="fas fa-phone"></i>
@@ -61,18 +61,18 @@ if ($resultadousuarios->num_rows > 0) {
               <i class="fa-solid fa-masks-theater"></i>
               <label for="Rol" id="roles">Rol</label></div>
               <div class="input-radio">
-                <label for="Docente">Docente</label>
-  <input type="radio" id="Docente" name="Rol" value="Docente"value="<?php echo $usuario->Rol ?> ">
-  
-  <label for="Estudiante">Estudiante</label>
-  <input type="radio" id="Estudiante" name="Rol" value="Estudiante"value="<?php echo $usuario->Rol ?> ">
+    <label for="Docente">Docente</label>
+    <input type="radio" id="Docente" name="Rol" value="Docente" <?php echo ($usuario->Rol == "Docente") ? 'checked' : ''; ?>>
 
-  <label for="Estudiante">Padre de Familia</label>
-  <input type="radio" id="Padre de Familia" name="Rol" value="Estudiante"value="<?php echo $usuario->Rol ?> ">
+    <label for="Estudiante">Estudiante</label>
+    <input type="radio" id="Estudiante" name="Rol" value="Estudiante" <?php echo ($usuario->Rol == "Estudiante") ? 'checked' : ''; ?>>
 
-  <label for="Coordinador">Coordinador</label>
-  <input type="radio" id="Coordinador" name="Rol" value="Coordinador"value="<?php echo $usuario->Rol ?> ">
-            </div>
+    <label for="PadreDeFamilia">Padre de Familia</label>
+    <input type="radio" id="PadreDeFamilia" name="Rol" value="Padre de Familia" <?php echo ($usuario->Rol == "Padre de Familia") ? 'checked' : ''; ?>>
+
+    <label for="Coordinador">Coordinador</label>
+    <input type="radio" id="Coordinador" name="Rol" value="Coordinador" <?php echo ($usuario->Rol == "Coordinador") ? 'checked' : ''; ?>>
+</div>
 
         <!-- Otras campos del formulario -->
         

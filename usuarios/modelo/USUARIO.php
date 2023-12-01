@@ -202,13 +202,14 @@ public function agregarUsuario()
 		}
 
 	public function eliminarUsuario($Idusuarios)
-	{	
-		$this->Conexion=Conectarse();
-		$sql="delete from usuarios where idusuarios = '$this->Idusuario";
-		$resultado=$this->Conexion->query($sql);
-		$this->Conexion->close();
-		return $resultado;	
-		}
+{	
+    $this->Conexion = Conectarse();
+    $sql = "DELETE FROM usuarios WHERE idusuarios = '$Idusuarios'";
+    $resultado = $this->Conexion->query($sql);
+    $this->Conexion->close();
+    return $resultado;	
+}
+
 
 
 	public function consultarUsuario()

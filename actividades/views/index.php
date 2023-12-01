@@ -19,7 +19,7 @@
 
     <div class="container">
         <div class="col-sm-12">
-            <h2 style="text-align: center;">Subir Archivos Word & PDF | SoftCodEPM</h2>
+            <h2 class="display-4">Subir Archivos Word & PDF | SoftCodEPM</h2>
             <br>
             <div>
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregar"> Agregar </button>
@@ -36,15 +36,15 @@
 
 
             <div class="container">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
+                <table class="table">
+                    <thead class="table-dark">
                         <tr>
-                            <th>#</th>
-                            <th>nombre de la actividad</th>
-                            <th>Materia</th>
-                            <th>Docente</th>
-                            <th>Archivo</th>
-                            <th>Descargar</th>
+                            <th scope="col">#</th>
+                            <th scope="col">nombre de la actividad</th>
+                            <th scope="col">Materia</th>
+                            <th scope="col">Docente</th>
+                            <th scope="col">Archivo</th>
+                            <th scope="col">Descargar</th>
                         </tr>
                     </thead>
                     <tbody>
