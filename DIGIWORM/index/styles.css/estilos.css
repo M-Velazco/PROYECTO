@@ -118,7 +118,7 @@ padding: 10px;
 nav > a:hover{
     
     color: #000000;
-    background: linear-gradient(to right, hsla(252, 93%, 39%, 0.568), hsla(138, 100%, 50%, 0.836));
+    background: linear-gradient(to right, hsla(133, 93%, 39%, 0.568), hsla(138, 100%, 50%, 0.836));
     border-radius: 20px;
     padding: 0.5rem 1rem;
     text-decoration: none;
@@ -205,7 +205,7 @@ body {
     overflow: auto;
     overflow-x: hidden;
 
-    background: linear-gradient(315deg, rgb(29, 2, 65) 38%, rgb(7, 27, 139) 68%, rgb(73, 5, 33) 98%);
+    background: linear-gradient(315deg, rgb(34 149 17) 38%, rgb(#2cc56e 68%,)68%, rgb(5, 73, 17) 98%);
     animation: gradient 15s ease infinite;
     background-size: 400% 400%;
     background-attachment: fixed;
