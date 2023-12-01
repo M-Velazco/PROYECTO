@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-//RUTAS DE LOS COMPONENTES DE LOGIN Y REGISTRO
+
 import { RegistroComponent } from '../components/registro/registro.component';
 import { LoginComponent } from '../components/login/login.component';
 

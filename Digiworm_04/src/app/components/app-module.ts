@@ -13,6 +13,7 @@ import {FormsModule} from '@angular/forms';
     RegistroComponent,
     LoginComponent
     ],
+    
     imports: [
     BrowserModule,
     AppRoutingModule,

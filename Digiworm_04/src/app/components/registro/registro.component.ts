@@ -8,7 +8,9 @@ export class RegistroComponent {
 email: string="";
 password: string="";
 confirmPassword: string="";
+
 constructor() {}
+
 register() {
 console.log(this.email);
 console.log(this.password);
