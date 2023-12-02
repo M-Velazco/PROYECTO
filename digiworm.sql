@@ -313,9 +313,9 @@ DROP TABLE IF EXISTS `talleres`;
 CREATE TABLE IF NOT EXISTS `talleres` (
   `idtalleres` int NOT NULL,
   `Nom_taller` varchar(50) NOT NULL,
-  `Materia_taller` int NOT NULL,
-  `Docente` int NOT NULL,
-  `Archivo` varchar(50) NOT NULL,
+  `Materia_taller`varchar(50) NOT NULL,
+  `Docente` varchar(50) NOT NULL,
+  `Archivo` varchar(300) NOT NULL,
   PRIMARY KEY (`idtalleres`),
   KEY `fk_docentes_has_talleres_talleres1` (`Docente`),
   KEY `fk_materia_has_talleres_talleres` (`Materia_taller`)
