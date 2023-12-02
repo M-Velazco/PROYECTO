@@ -89,7 +89,7 @@ INSERT INTO `coordinador` (`idcoordinador`, `Nombre_apellido`, `Correo`, `Contra
 
 DROP TABLE IF EXISTS `curso`;
 CREATE TABLE IF NOT EXISTS `curso` (
-  `idcurso` int NOT NULL,
+  `idcurso` int (11) NOT NULL,
   `nom_curso` varchar(50) NOT NULL,
   `estado` enum('Activo','Inactivo') NOT NULL
   PRIMARY KEY (`idcurso`)
