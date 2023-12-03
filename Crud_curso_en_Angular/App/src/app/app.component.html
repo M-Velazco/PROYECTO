@@ -1,36 +1,42 @@
 <div>
-    <h1>CRUD CURSO</h1>
-    <table border="1" *ngIf="hayRegistros(); else sincursos">
+  <h1 class="display-4">CRUD CURSO</h1>
+  <table class="table" *ngIf="hayRegistros(); else sincursos">
+    <thead class="table-dark">
       <tr>
-        <td>IdCurso</td><td>Nom_Curso</td><td>Estado</td><td>Borrar</td><td>Seleccionar</td>
+        <th scope="col">IdCurso</th>
+        <th scope="col">Nom_Curso</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Seleccionar</th>
       </tr>
+    </thead>
+    <tbody>
       <tr *ngFor="let curso of cursos">
         <td>{{curso.idcurso}}</td>
         <td>{{curso.nom_curso}}</td>
         <td>{{curso.estado}}</td>
-        <td><button (click)="baja(curso.idcurso)">Borrar?</button></td>
-        <td><button (click)="seleccionar(curso.idcurso)">Seleccionar</button></td>
+        <td><button class="btn btn-primary" (click)="seleccionar(curso.idcurso)">Seleccionar</button></td>
       </tr>
-    </table>
-    <ng-template #sincursos><p>No hay cursos.</p></ng-template>
-    <div>
-      <p>
-        IdCurso: <input type="number" [(ngModel)]="curso.idcurso" />
-      </p>
-      <p>
-        Nom_Curso: <input type="text" [(ngModel)]="curso.nom_curso" />
-      </p>
-      <p>
-        Estado:
-        <select [(ngModel)]="curso.estado">
-          <option value="Activo">Activo</option>
-          <option value="Inactivo">Inactivo</option>
-        </select>
-      </p>
-      <p>
-        <button (click)="alta()">Agregar</button>
-        <button (click)="modificacion()">Modificar</button>
-      </p>
-    </div>
+    </tbody>
+  </table>
+  <ng-template #sincursos><p class="lead">No hay cursos.</p></ng-template>
+
+  <div>
+    <p class="lead">
+      IdCurso: <input class="form-control" type="number" [(ngModel)]="curso.idcurso" [readonly]="!edicionHabilitada" />
+    </p>
+    <p class="lead">
+      Nom_Curso: <input class="form-control" type="text" [(ngModel)]="curso.nom_curso" [readonly]="!edicionHabilitada" />
+    </p>
+    <p class="lead">
+      Estado:
+      <select class="form-control" [(ngModel)]="curso.estado">
+        <option value="Activo">Activo</option>
+        <option value="Inactivo">Inactivo</option>
+      </select>
+    </p>
+    <p>
+      <button class="btn btn-success" (click)="alta()">Agregar</button>
+      <button class="btn btn-warning" (click)="modificacion()">Modificar</button>
+    </p>
   </div>
-  
+</div>

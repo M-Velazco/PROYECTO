@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CursoService } from './curso.service';  
+import { CursoService } from './curso.service';
 
 @Component({
   selector: 'app-root',
@@ -7,17 +7,15 @@ import { CursoService } from './curso.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title(title: any) {
-    throw new Error('Method not implemented.');
-  }
-
   cursos: any;
 
   curso = {
     idcurso: 0,
     nom_curso: '',
-    estado: 'Activo' 
+    estado: 'Activo'
   };
+
+  edicionHabilitada = true;
 
   constructor(private cursosServicio: CursoService) { }
 
@@ -34,15 +32,7 @@ export class AppComponent implements OnInit {
       if (datos['resultado'] === 'OK') {
         alert(datos['mensaje']);
         this.recuperarTodos();
-      }
-    });
-  }
-
-  baja(idcurso: number) {
-    this.cursosServicio.baja(idcurso).subscribe((datos: any) => {
-      if (datos['resultado'] === 'OK') {
-        alert(datos['mensaje']);
-        this.recuperarTodos();
+        this.resetForm();
       }
     });
   }
@@ -52,15 +42,28 @@ export class AppComponent implements OnInit {
       if (datos['resultado'] === 'OK') {
         alert(datos['mensaje']);
         this.recuperarTodos();
+        this.resetForm();
       }
     });
   }
 
   seleccionar(idcurso: number) {
-    this.cursosServicio.seleccionar(idcurso).subscribe((result: any) => this.curso = result[0]);
+    this.cursosServicio.seleccionar(idcurso).subscribe((result: any) => {
+      this.curso = { ...result[0] };
+      this.edicionHabilitada = false;
+    });
   }
 
   hayRegistros() {
     return this.cursos && this.cursos.length > 0;
+  }
+
+  resetForm() {
+    this.curso = {
+      idcurso: 0,
+      nom_curso: '',
+      estado: 'Activo'
+    };
+    this.edicionHabilitada = true;
   }
 }
