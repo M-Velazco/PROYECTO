@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LoginService {
 
-  url='http://localhost/iv-Trimestre/Materias/src/app/php/'; // disponer url de su servidor que tiene las páginas PHP
+  url='http://localhost/proyecto/PROYECTO/DIGIWORM_04/src/app/components/login/php/validacion/'; // disponer url de su servidor que tiene las páginas PHP
 
   constructor(private http: HttpClient) { }
 
