@@ -4,10 +4,8 @@
     padding: 0;
     box-sizing: border-box;
 }
-@font-face {
-    font-family: 'h1.ttf';
-    src: url("../estilos/h1.ttf");
-}
+@font
+   
 @font-face {
     font-family: 'uwu.ttf';
     src: url("../estilos/uwu.ttf");
@@ -615,7 +613,7 @@ margin: 40px;
 /* footer */
 
 footer{
-    background-image:linear-gradient(to top, hsla(231, 76%, 15%, 0.856), hsla(298, 87%, 48%, 0.479)),url('../img/school.jpg') ;
+    
     background-size: cover;
     padding: 60px 0 30px 0;
     margin: 30px;
