@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $objUsuarios = new Usuario($objConexion);
 
     // Intenta realizar el inicio de sesión
-    if ($objUsuarios->obtenerDatosUsuario($Idusuarios, $ContraseñaMD5)) {
+    if ($objUsuarios->consultarUsuarioContraseña($Idusuarios, $ContraseñaMD5)) {
         // Inicio de sesión exitoso, redirige a la página de inicio
         header("location:../Principal.html");
         exit(); // Detiene la ejecución del script después de redirigir

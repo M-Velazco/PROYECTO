@@ -179,22 +179,7 @@ values ('$this->Idusuarios','$this->Nombre_apellido','$this->Correo','$this->Tel
     }
 }
 	
-	public function obtenerDatosUsuario($Idusuarios, $Contraseña) {
-		$Idusuarios = (int)$Idusuarios; // Convierte $Idusuarios a entero
-		// No es necesario modificar la contraseña aquí, simplemente úsala tal como está
-		
-		// Realiza la consulta SQL para verificar el inicio de sesión
-		$sql = "SELECT * FROM usuarios WHERE idusuarios = $Idusuarios AND contraseña = '$Contraseña'";
-		$resultado = $this->conexion->query($sql);
-		
-		if ($resultado && $resultado->num_rows > 0) {
-			// El inicio de sesión es exitoso, devuelve todos los datos del usuario
-			return $resultado->fetch_assoc();
-		} else {
-			// El inicio de sesión falló, devuelve falso
-			return false;
-		}
-	}
+	
 	}
 	
 	
