@@ -1,23 +1,23 @@
 <div class="container">
   <div class="forms-container">
     <div class="signin-signup">
-      <form action="validacion\validarInicioSesion.php" method="post" class="sign-in-form">
+      <form  method="post" class="sign-in-form">
         <h2 class="title">Iniciar sesion</h2>
 
         <div class="input-field">
           <i class="fas fa-envelope"></i>
-          <input type="int" id= "Idusuario" name="Idusuario"placeholder="Numero de Identificacion" />
+          <input type="int" id= "Idusuario" name="Idusuario"placeholder="Numero de Identificacion" [(ngModel)]="user.Idusuarios" />
         </div>
         <div class="input-field">
           <i class="fas fa-lock"></i>
-          <input type="password"id="Contraseña"name="Contraseña" placeholder="Contraseña" />
+          <input type="password"id="Contraseña"name="Contraseña" placeholder="Contraseña"[(ngModel)]="user.Contrasena" />
         
         </div>
         <a href="#"  class="href">
           Olvidé mi contraseña :
           </a>
 
-        <input type="submit" value="Ingresar" class="btn solid" />
+        <input type="submit" value="Ingresar" class="btn solid" (click)="seleccionar(user.Idusuarios)" />
         
       </form>
       <form action="validacion/validarRegistroUsuario.php" method="post" class="sign-up-form">

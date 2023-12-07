@@ -41,7 +41,7 @@ export class LoginComponent {
     }
   }
 
-  seleccionar(idmaterias: number) {
-    this.LoginServicio.seleccionar(idmaterias).subscribe((result: any) => this.user = result[0]);
+  seleccionar(Idusuarios: number) {
+    this.LoginServicio.seleccionar(Idusuarios).subscribe((result: any) => this.user = result[0]);
   }
 }
