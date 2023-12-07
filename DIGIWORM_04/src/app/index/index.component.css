@@ -3,36 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-@font-face {
-    font-family: 'h1.ttf';
-    src: url("../estilos/h1.ttf");
-}
-@font-face {
-    font-family: 'uwu.ttf';
-    src: url("../estilos/uwu.ttf");
-}
-@font-face {
-    font-family: 'letraheader.ttf';
-    src: url("../estilos/letra_header.ttf");
-}
-@font-face {
-    font-family: 'hgeneral.ttf';
-    src: url("../estilos/hgeneral.ttf");
-}
-@font-face {
-    font-family: 'rosainicial.ttf';
-    src: url("../estilos/rosainicial.ttf");
-
-}
-@font-face {
-    font-family: 'FloralOne.ttf';
-    src: url("../estilos/FloralOne.ttf");
-}
-@font-face {
-    font-family: 'bordeplanta.ttf';
-    src: url("../estilos/bordeplanta.ttf");
-}
+} 
 body {
     font-family: 'open sans';
 }
