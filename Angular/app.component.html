@@ -20,13 +20,14 @@
   </table>
 
   <ng-template #sin>
-    <p>No hay usuarios registrados.</p>
+    <p>No hay Estudiantes registrados.</p>
   </ng-template>
 
   <div>
-    <p> Nombre: <input type="text" [(ngModel)]="usuario.nombre" /> </p>
-    <p> Telefono: <input type="number" [(ngModel)]="usuario.telefono" /> </p>
-    <p> Email: <input type="text" [(ngModel)]="usuario.email" /> </p>
+    <p> ID: <input type="text" [(ngModel)]="Estudaintes.ID" /> </p>
+    <p> NOMBRE: <input type="number" [(ngModel)]="Estudiantes.NOMBRE" /> </p>
+    <p> id_estudainte : <input type="text" [(ngModel)]="Estudaintes.id_estudainte" /> </p>
+    <p> Curso : <input type="text" [(ngModel)]="Estudaintes.Curso" /> </p>
     <p> 
       <button (click)="altaUsuario()"> AGREGAR </button> 
       <button (click)="editarUsuario()"> MODIFICAR </button> 
