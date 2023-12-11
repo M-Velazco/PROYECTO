@@ -1,18 +1,23 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams  } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-  private apiUrl = 'http://localhost/proyecto/PROYECTO/DIGIWORM_04/src/app/components/login/php/login.php'; // Reemplaza con la URL de tu servidor
+  private apiUrl = 'http://localhost/proyecto/PROYECTO/DIGIWORM_04/src/app/components/login/php/login.php';
 
   constructor(private http: HttpClient) {}
 
   login(idusuarios: number, Contrasena: string): Observable<any> {
-    const data = { idusuarios, Contrasena };
-    return this.http.post(this.apiUrl, data);
-  }
+    // Construir parámetros de la solicitud GET
+    const params = new HttpParams().set('Idusuarios', idusuarios.toString()).set('Contrasena', Contrasena);
 
+    // Agregar parámetros a la URL
+    const url = `${this.apiUrl}?${params.toString()}`;
+
+    // Realizar la solicitud GET
+    return this.http.get(url);
+  }
 }
