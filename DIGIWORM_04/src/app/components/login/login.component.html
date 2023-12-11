@@ -1,16 +1,16 @@
 <div class="container">
   <div class="forms-container">
     <div class="signin-signup">
-      <form (submit)="login()" [formGroup]="loginForm" class="sign-in-form">
+      <form class="sign-in-form">
         <h2 class="title">Iniciar sesión</h2>
 
         <div class="input-field">
           <i class="fas fa-envelope"></i>
-          <input type="number" formControlName="idusuarios" placeholder="Numero de Identificacion" />
+          <input type="number" name="idusuarios" placeholder="Numero de Identificacion" />
         </div>
         <div class="input-field">
           <i class="fas fa-lock"></i>
-          <input type="password" formControlName="Contrasena" placeholder="Contraseña" />
+          <input type="password" name="Contrasena" placeholder="Contraseña" />
         </div>
         <a href="#" class="href">Olvidé mi contraseña</a>
 
