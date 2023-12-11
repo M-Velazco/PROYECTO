@@ -29,7 +29,7 @@ if ($idusuarios !== null && $contrasena !== null) {
             echo json_encode(['success' => true, 'data' => $vec]);
         } else {
             // No hay resultados
-            echo json_encode(['success' => false, 'error' => 'No se encontraron resultados']);
+            echo json_encode(['success' => false, 'error' => 'Credenciales incorrectas']);
         }
 
         // Liberar recursos

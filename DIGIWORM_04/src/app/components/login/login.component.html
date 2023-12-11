@@ -1,24 +1,20 @@
 <div class="container">
   <div class="forms-container">
     <div class="signin-signup">
-      <form action="validacion\validarInicioSesion.php" method="post" class="sign-in-form">
-        <h2 class="title">Iniciar sesion</h2>
+      <form (submit)="login()" [formGroup]="loginForm" class="sign-in-form">
+        <h2 class="title">Iniciar sesión</h2>
 
         <div class="input-field">
           <i class="fas fa-envelope"></i>
-          <input type="int" id= "Idusuario" name="Idusuario"placeholder="Numero de Identificacion" />
+          <input type="number" formControlName="Idusuario" placeholder="Numero de Identificacion" />
         </div>
         <div class="input-field">
           <i class="fas fa-lock"></i>
-          <input type="password"id="Contraseña"name="Contraseña" placeholder="Contraseña" />
-        
+          <input type="password" formControlName="Contrasena" placeholder="Contraseña" />
         </div>
-        <a href="#"  class="href">
-          Olvidé mi contraseña :
-          </a>
+        <a href="#" class="href">Olvidé mi contraseña</a>
 
-        <input type="submit" value="Ingresar" class="btn solid" />
-        
+        <button type="submit" class="btn solid">Ingresar</button>
       </form>
       <form action="validacion/validarRegistroUsuario.php" method="post" class="sign-up-form">
         <h2 class="title">Registrarse</h2>
