@@ -6,10 +6,12 @@ import { IndexComponent } from './index/index.component';
 import { ChatComponent } from './chat/chat.component';
 import { PrincipalComponent } from './principal/principal.component';
 import { PublicacionesComponent } from './publicaciones/publicaciones.component';
+import { DocentesComponent } from './docentes/docentes.component';
 
 const routes: Routes = [
   { path: '', component: IndexComponent },
   { path: 'Login', component: LoginComponent },
+  { path: 'ocentes', component: DocentesComponent },
   {path:'chat',component:ChatComponent},
   {path:'principal',component: PrincipalComponent},
   {path:'Publicaciones',component: PublicacionesComponent},

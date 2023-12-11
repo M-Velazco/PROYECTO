@@ -13,6 +13,7 @@ import { IndexComponent } from './index/index.component';
 import { ChatComponent } from './chat/chat.component';
 import { PrincipalComponent } from './principal/principal.component';
 import { PublicacionesComponent } from './publicaciones/publicaciones.component';
+import { DocentesComponent } from './docentes/docentes.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { PublicacionesComponent } from './publicaciones/publicaciones.component'
     IndexComponent,
     ChatComponent,
     PrincipalComponent,
-    PublicacionesComponent
+    PublicacionesComponent,
+    DocentesComponent
   ],
   imports: [
     ReactiveFormsModule,

@@ -1,0 +1,44 @@
+<h1 align="center"> Lista Docentes</h1>
+<table width="89%" border="0" align="center">
+  <tr>
+    <td>iddocente</td><td>Nombre del docente</td><td>Correo</td><td>Contraseña</td><td>Curso_pr</td><td>Materia</td><td>Borrar</td><td>Seleccionar</td>
+  </tr>
+  <tr *ngFor="let art of articulos" align="center" bgcolor="46e9f7">
+  <td width="10%"> {{art.iddocente}} </td>
+            <td width="12%"> {{art.Nombre_apellido}} </td>
+            <td width="12%"> {{art.Correo}} </td> <!-- Add columns for other properties -->
+            <td width="12%"> {{art.Contrasena}} </td>
+            <td width="12%"> {{art.Curso_pr}} </td>
+            <td width="12%"> {{art.Materia}} </td>
+
+            <td><button (click)="baja(art.iddocente)">Borrar?</button></td>
+            <td><button (click)="seleccionar(art.iddocente)">Seleccionar</button></td>
+            <div class="d-grid gap-2 d-md-block">
+
+</div>
+  </tr>
+
+  <div>
+    <p>
+      iddocente:<input type="number" [(ngModel)]="art.iddocente" />
+    </p>
+    <p>
+      Nombre_apellido:<input type="text" [(ngModel)]="art.Nombre_apellido" />
+    </p>
+    <p>
+      Correo:<input type="text" [(ngModel)]="art.Correo" />
+    </p>
+    <p>
+      Contrasena:<input type="text" [(ngModel)]="art.Contrasena" />
+    </p>
+    <p>
+      Curso_pr:<input type="number" [(ngModel)]="art.Curso_pr" />
+    </p>
+    <p>
+      Materia:<input type="number" [(ngModel)]="art.Materia" />
+    </p>
+
+    <p><button (click)="alta()">Agregar</button>
+    <button (click)="modificacion()">Modificar</button></p>
+  </div>
+
