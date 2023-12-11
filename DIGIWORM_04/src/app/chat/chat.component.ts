@@ -1,5 +1,6 @@
 import { LoginComponent } from './../components/login/login.component';
 import { Component } from '@angular/core';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-chat',
@@ -8,7 +9,12 @@ import { Component } from '@angular/core';
 })
 export class ChatComponent {
 title='chat'
-Login(){}
+email: string = '';
+password: string = '';
+
+  onSubmit() {
+    // Add your login logic here
+    // You can use services to handle authentication
+  }
+
 }
-
-
