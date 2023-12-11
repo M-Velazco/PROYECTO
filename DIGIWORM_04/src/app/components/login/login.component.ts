@@ -2,6 +2,7 @@
 
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { LoginService } from './login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
 
   private container: HTMLElement | null;
 
-  constructor(private elementRef: ElementRef, private loginService: LoginService) {
+  constructor(private elementRef: ElementRef, private loginService: LoginService, private router: Router) {
     this.container = null;
   }
 
@@ -23,6 +24,17 @@ export class LoginComponent implements OnInit {
       (data) => {
         // Manejar la respuesta del servidor (éxito o error)
         console.log(data);
+
+        if (data.success) {
+          // Credenciales correctas
+          console.log('Inicio de sesión exitoso');
+          
+          // Redirigir al componente deseado, por ejemplo, 'dashboard'
+          this.router.navigate(['/principal']);
+        } else {
+          // Credenciales incorrectas u otros errores
+          console.error(data.message);
+        }
       },
       (error) => {
         // Manejar errores de la solicitud
