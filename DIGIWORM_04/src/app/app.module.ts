@@ -12,6 +12,8 @@ import {HttpClientModule} from '@angular/common/http';
 import { IndexComponent } from './index/index.component';
 import { ChatComponent } from './chat/chat.component';
 import { PrincipalComponent } from './principal/principal.component';
+import { PublicacionesComponent } from './publicaciones/publicaciones.component';
+import { DocentesComponent } from './docentes/docentes.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { PrincipalComponent } from './principal/principal.component';
     LoginComponent,
     IndexComponent,
     ChatComponent,
-    PrincipalComponent
+    PrincipalComponent,
+    PublicacionesComponent,
+    DocentesComponent
   ],
   imports: [
     ReactiveFormsModule,
