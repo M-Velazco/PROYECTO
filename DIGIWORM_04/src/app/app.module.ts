@@ -15,6 +15,7 @@ import { PrincipalComponent } from './principal/principal.component';
 import { PublicacionesComponent } from './publicaciones/publicaciones.component';
 import { DocentesComponent } from './docentes/docentes.component';
 import { PadresFamiliaComponent } from './padres-familia/padres-familia.component';
+import { CursoComponent } from './curso/curso.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { PadresFamiliaComponent } from './padres-familia/padres-familia.componen
     PrincipalComponent,
     PublicacionesComponent,
     DocentesComponent,
-    PadresFamiliaComponent
+    PadresFamiliaComponent,
+    CursoComponent
   ],
   imports: [
     ReactiveFormsModule,
