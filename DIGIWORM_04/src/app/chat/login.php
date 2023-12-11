@@ -30,8 +30,8 @@ if (isset($_SESSION['unique_id'])) {
     </section>
   </div>
 
-  <script src="javascript/pass-show-hide.js"></script>
-  <script src="javascript/login.js"></script>
+  <script src="DIGIWORM_04\src\app\chat\javascript\pass-show-hide.js"></script>
+  <script src="DIGIWORM_04\src\app\chat\javascript\login.js"></script>
 
 </body>
 

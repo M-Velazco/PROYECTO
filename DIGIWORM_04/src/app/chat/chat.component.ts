@@ -5,7 +5,7 @@ import { LoginService } from '../login.service';
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.css']
+  styleUrls: ['./chat.component.css',]
 })
 export class ChatComponent {
 title='chat'

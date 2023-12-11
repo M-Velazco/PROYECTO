@@ -37,7 +37,7 @@ if (!isset($_SESSION['unique_id'])) {
     </section>
   </div>
 
-  <script src="javascript/users.js"></script>
+  <script src="DIGIWORM_04\src\app\chat\javascript\users.js"></script>
 
 </body>
 
