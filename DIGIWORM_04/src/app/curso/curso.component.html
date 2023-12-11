@@ -1,0 +1,44 @@
+<!-- curso.component.html -->
+<div>
+    <h1 class="display-4">CRUD CURSO</h1>
+    <table class="table" *ngIf="hayRegistros(); else sincursos">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">IdCurso</th>
+          <th scope="col">Nom_Curso</th>
+          <th scope="col">Estado</th>
+          <th scope="col">Seleccionar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let curso of cursos">
+          <td>{{curso.idcurso}}</td>
+          <td>{{curso.nom_curso}}</td>
+          <td>{{curso.estado}}</td>
+          <td><button class="btn btn-primary" (click)="seleccionar(curso.idcurso)">Seleccionar</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <ng-template #sincursos><p class="lead">No hay cursos.</p></ng-template>
+  
+    <div>
+      <p class="lead">
+        IdCurso: <input class="form-control" type="number" [(ngModel)]="curso.idcurso" [readonly]="!edicionHabilitada" />
+      </p>
+      <p class="lead">
+        Nom_Curso: <input class="form-control" type="text" [(ngModel)]="curso.nom_curso" [readonly]="!edicionHabilitada" />
+      </p>
+      <p class="lead">
+        Estado:
+        <select class="form-control" [(ngModel)]="curso.estado">
+          <option value="Activo">Activo</option>
+          <option value="Inactivo">Inactivo</option>
+        </select>
+      </p>
+      <p>
+        <button class="btn btn-success" (click)="alta()">Agregar</button>
+        <button class="btn btn-warning" (click)="modificacion()">Modificar</button>
+      </p>
+    </div>
+  </div>
+  

@@ -7,6 +7,7 @@ import { ChatComponent } from './chat/chat.component';
 import { PrincipalComponent } from './principal/principal.component';
 import { PublicacionesComponent } from './publicaciones/publicaciones.component';
 import { DocentesComponent } from './docentes/docentes.component';
+import { CursoComponent } from './curso/curso.component';
 
 const routes: Routes = [
   { path: '', component: IndexComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path:'chat',component:ChatComponent},
   {path:'principal',component: PrincipalComponent},
   {path:'Publicaciones',component: PublicacionesComponent},
+  { path: 'curso', component: CursoComponent },
   { path: '', redirectTo: 'Index', pathMatch: 'full' },
 
    // Ruta por defecto para manejar rutas no encontradas
