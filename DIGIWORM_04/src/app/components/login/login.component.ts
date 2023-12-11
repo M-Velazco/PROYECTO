@@ -1,8 +1,7 @@
-// login.component.ts
-
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from './login.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +20,7 @@ export class LoginComponent implements OnInit {
   ) {
     this.container = null;
     this.loginForm = this.fb.group({
-      idusuario: [0, Validators.required],
+      idusuarios: [0, Validators.required],
       Contrasena: ['', Validators.required]
     });
   }
@@ -44,19 +43,18 @@ export class LoginComponent implements OnInit {
 
   login() {
     if (this.loginForm.valid) {
-      const { idusuario, Contrasena } = this.loginForm.value;
-  
-      this.loginService.login(idusuario, Contrasena).subscribe(
-        (response) => {
+      const { idusuarios, Contrasena } = this.loginForm.value;
+
+      this.loginService.login(idusuarios, Contrasena).subscribe({
+        next: (response: any) => {
           console.log('Login successful', response);
-          // Aquí puedes manejar la respuesta del servicio, redireccionar, etc.
+          // Handle the response here
         },
-        (error) => {
+        error: (error: any) => {
           console.error('Login failed', error);
-          // Aquí puedes manejar errores, como mostrar un mensaje al usuario
+          // Handle errors here
         }
-      );
+      });
     }
   }
-  
 }
