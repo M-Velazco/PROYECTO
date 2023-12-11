@@ -1,28 +1,34 @@
+// login.component.ts
+
 import { Component, ElementRef, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from './login.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
+  Idusuarios!: number;
+  Contrasena!: string;
 
   private container: HTMLElement | null;
 
-  constructor(
-    private elementRef: ElementRef,
-    private loginService: LoginService,
-    private fb: FormBuilder
-  ) {
+  constructor(private elementRef: ElementRef, private loginService: LoginService) {
     this.container = null;
-    this.loginForm = this.fb.group({
-      idusuarios: [0, Validators.required],
-      Contrasena: ['', Validators.required]
-    });
+  }
+
+  onSubmit() {
+    this.loginService.login(this.Idusuarios, this.Contrasena).subscribe(
+      (data) => {
+        // Manejar la respuesta del servidor (éxito o error)
+        console.log(data);
+      },
+      (error) => {
+        // Manejar errores de la solicitud
+        console.error(error);
+      }
+    );
   }
 
   ngOnInit() {
@@ -38,23 +44,6 @@ export class LoginComponent implements OnInit {
   switchToSignIn() {
     if (this.container) {
       this.container.classList.remove('sign-up-mode');
-    }
-  }
-
-  login() {
-    if (this.loginForm.valid) {
-      const { idusuarios, Contrasena } = this.loginForm.value;
-
-      this.loginService.login(idusuarios, Contrasena).subscribe({
-        next: (response: any) => {
-          console.log('Login successful', response);
-          // Handle the response here
-        },
-        error: (error: any) => {
-          console.error('Login failed', error);
-          // Handle errors here
-        }
-      });
     }
   }
 }

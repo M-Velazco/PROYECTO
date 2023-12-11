@@ -1,16 +1,16 @@
 <div class="container">
   <div class="forms-container">
     <div class="signin-signup">
-      <form class="sign-in-form">
+      <form class="sign-in-form" (ngSubmit)="onSubmit()">
         <h2 class="title">Iniciar sesión</h2>
 
         <div class="input-field">
           <i class="fas fa-envelope"></i>
-          <input type="number" name="idusuarios" placeholder="Numero de Identificacion" />
+          <input type="number" name="Idusuarios" placeholder="Numero de Identificacion" [(ngModel)]="Idusuarios"/>
         </div>
         <div class="input-field">
           <i class="fas fa-lock"></i>
-          <input type="password" name="Contrasena" placeholder="Contraseña" />
+          <input type="password" name="Contrasena" placeholder="Contraseña"  [(ngModel)]="Contrasena"/>
         </div>
         <a href="#" class="href">Olvidé mi contraseña</a>
 
@@ -20,7 +20,7 @@
         <h2 class="title">Registrarse</h2>
         <div class="input-field">
           <i class="fa-solid fa-id-card"></i>
-          <input type="int" id="Idusuario" name="Idusuario" placeholder="Numero Identificacion" required />
+          <input type="int" id="Idusuario" name="Idusuarios" placeholder="Numero Identificacion" required />
         </div>
         <div class="input-field">
           <i class="fas fa-user"></i>
