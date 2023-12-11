@@ -10,9 +10,9 @@ export class LoginService {
 
   constructor(private http: HttpClient) {}
 
-  login(Idusuario: number, contrasena: string): Observable<any> {
+  login(idusuario: number, Contrasena: string): Observable<any> {
     const url = `${this.baseUrl}login.php`;
-    const body = { Idusuario: Idusuario, Contraseña: contrasena };
+    const body = { idusuario: idusuario, Contrasena: Contrasena };
     return this.http.post(url, body);
   }
 }

@@ -6,12 +6,12 @@ require('conexion.php');
 $con = retornarConexion();
 
 // Verificar si se reciben los datos
-$idusuarios = isset($_GET['Idusuarios']) ? $_GET['Idusuarios'] : null;
-$contrasena = isset($_GET['Contrasena']) ? $_GET['Contrasena'] : null;
+$idusuarios = isset($_POST['idusuario']) ? $_POST['idusuario'] : null;
+$contrasena = isset($_POST['Contrasena']) ? $_POST['Contrasena'] : null;
 
 if ($idusuarios !== null && $contrasena !== null) {
     // Utilizar parámetros en la consulta SQL para evitar inyecciones SQL
-    $stmt = mysqli_prepare($con, 'SELECT * FROM usuarios WHERE Idusuarios = ? AND Contraseña = ?');
+    $stmt = mysqli_prepare($con, 'SELECT * FROM usuarios WHERE idusuarios = ? AND Contrasena = ?');
     mysqli_stmt_bind_param($stmt, 'is', $idusuarios, $contrasena);
     mysqli_stmt_execute($stmt);
 
@@ -29,7 +29,7 @@ if ($idusuarios !== null && $contrasena !== null) {
             echo json_encode(['success' => true, 'data' => $vec]);
         } else {
             // No hay resultados
-            echo json_encode(['success' => false, 'error' => 'Credenciales incorrectas']);
+            echo json_encode(['success' => false, 'error' => 'No se encontraron resultados']);
         }
 
         // Liberar recursos

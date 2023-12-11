@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   ) {
     this.container = null;
     this.loginForm = this.fb.group({
-      Idusuario: [0, Validators.required],
+      idusuario: [0, Validators.required],
       Contrasena: ['', Validators.required]
     });
   }
@@ -44,9 +44,9 @@ export class LoginComponent implements OnInit {
 
   login() {
     if (this.loginForm.valid) {
-      const { Idusuario, Contrasena } = this.loginForm.value;
+      const { idusuario, Contrasena } = this.loginForm.value;
   
-      this.loginService.login(Idusuario, Contrasena).subscribe(
+      this.loginService.login(idusuario, Contrasena).subscribe(
         (response) => {
           console.log('Login successful', response);
           // Aquí puedes manejar la respuesta del servicio, redireccionar, etc.
