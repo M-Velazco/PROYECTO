@@ -1,8 +1,10 @@
  <h1 align="center"> Lista Docentes</h1>
-<table width="89%" border="0" align="center">
+<table class="table" width="89%" border="0" align="center">
+  <thead class="table-dark">
   <tr>
-    <td>iddocente</td><td>Nombre del docente</td><td>Correo</td><td>Contraseña</td><td>Curso_pr</td><td>Materia</td><td>Borrar</td><td>Seleccionar</td>
+    <th scope="col">iddocente</th><th scope="col">Nombre del docente</th><th scope="col">Correo</th><th scope="col">Contraseña</th><th scope="col">Curso_pr</th><th scope="col">Materia</th><th scope="col">Borrar</th><th scope="col">Seleccionar</th>
   </tr>
+</thead>
   <tr *ngFor="let art of articulos" align="center" bgcolor="46e9f7">
   <td width="10%"> {{art.iddocente}} </td>
             <td width="12%"> {{art.Nombre_apellido}} </td>
@@ -11,8 +13,8 @@
             <td width="12%"> {{art.Curso_pr}} </td>
             <td width="12%"> {{art.Materia}} </td>
 
-            <td><button (click)="baja(art.iddocente)">Borrar?</button></td>
-            <td><button (click)="seleccionar(art.iddocente)">Seleccionar</button></td>
+            <td><button class="btn btn-prymary" (click)="baja(art.iddocente)">Borrar?</button></td>
+            <td><button class="btn btn-prymary" (click)="seleccionar(art.iddocente)">Seleccionar</button></td>
             <div class="d-grid gap-2 d-md-block">
 
 </div>

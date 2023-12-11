@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ArticulosService {
 
-  url='http://localhost/PROYECTO/docentes/src/app/php/'; // disponer url de su servidor que tiene las páginas PHP
+  url='http://localhost/PROYECTO/DIGIWORM_04/src/app/docentes/php/'; // disponer url de su servidor que tiene las páginas PHP
 
   constructor(private http: HttpClient) { }
 
