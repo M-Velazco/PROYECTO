@@ -1,5 +1,5 @@
 import { Component,ElementRef, OnInit  } from '@angular/core';
-import { LoginService } from '../../login.service';
+import { LoginService } from './login.service';
 
 
 @Component({
@@ -21,7 +21,7 @@ export class LoginComponent {
 
   private container: HTMLElement | null;
 
-  constructor(private elementRef: ElementRef ,private LoginServicio: LoginService) {
+  constructor(private elementRef: ElementRef) {
     this.container = null;
   }
 
@@ -39,9 +39,5 @@ export class LoginComponent {
     if (this.container) {
       this.container.classList.remove('sign-up-mode');
     }
-  }
-
-  seleccionar(Idusuarios: number) {
-    this.LoginServicio.seleccionar(Idusuarios).subscribe((result: any) => this.user = result[0]);
   }
 }

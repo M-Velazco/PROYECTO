@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LoginService {
 
-  url='http://localhost/proyecto/PROYECTO/DIGIWORM_04/src/app/components/login/php/validacion/'; // disponer url de su servidor que tiene las páginas PHP
+  url='http://localhost/proyecto/PROYECTO/DIGIWORM_04/src/app/components/login/php/'; // disponer url de su servidor que tiene las páginas PHP
 
   constructor(private http: HttpClient) { }
 
@@ -23,8 +23,8 @@ export class LoginService {
   }
   
   
-  seleccionar(Idusuarios:number) {
-    return this.http.get(`${this.url}seleccionar.php?IdU=${Idusuarios}`);
+  seleccionar(idusuarios:number) {
+    return this.http.get(`${this.url}login.php?IdU=${idusuarios}`);
   }
 
   modificacion(articulo:any) {
