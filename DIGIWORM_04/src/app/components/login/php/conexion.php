@@ -1,6 +1,6 @@
 <?php
 function retornarConexion() {
-  $con=mysqli_connect("localhost","root","sena","digiworm");
+  $con=mysqli_connect("localhost","root","","digiworm");
   return $con;
 }
 ?>

@@ -53,7 +53,7 @@ header {
     /* fallback for old browsers */
     /* background: -webkit-linear-gradient(to right, hsla(261, 95%, 50%, 0.459), hsla(188, 85%, 13%, 0.664)), url(../img/portada.jpg); */
     /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, hsla(231, 83%, 18%, 0), hsla(93, 86%, 28%, 0), url('https://th.bing.com/th/id/R.2cfd400bf4e7792c08b2680fac28b61f?rik=sTZef6WMx0tPJA&pid=ImgRaw&r=0'));
+    background: linear-gradient(to right, hsla(231, 83%, 18%, 0), hsla(93, 86%, 28%, 0)),url(https://img.freepik.com/fotos-premium/vista-superior-espacio-trabajo-gris-oscuro-gadget-oficina-espacio-copia_67155-315.jpg?w=740);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background-size: cover;
     background-attachment: fixed;
@@ -472,14 +472,14 @@ margin: 40px;
 }
 
 .cards .card#c2{
-    background: linear-gradient(to right, hsla(108, 83%, 18%, 0.856), hsla(93, 86%, 28%, 0.479));
+    background: linear-gradient(to right, hsla(108, 83%, 18%, 0.856), hsla(93, 86%, 28%, 0.479)), url('https://th.bing.com/th/id/R.2cfd400bf4e7792c08b2680fac28b61f?rik=sTZef6WMx0tPJA&pid=ImgRaw&r=0');
     background-color: rgba(0, 0, 0, 0.5);
 
    background-size:cover; 
    background-repeat: no-repeat;
 }
 .cards .card#c3{
-    background: linear-gradient(to right, hsla(108, 83%, 18%, 0.856), hsla(93, 86%, 28%, 0.479));
+    background: linear-gradient(to right, hsla(108, 83%, 18%, 0.856), hsla(93, 86%, 28%, 0.479)), url('https://th.bing.com/th/id/R.2cfd400bf4e7792c08b2680fac28b61f?rik=sTZef6WMx0tPJA&pid=ImgRaw&r=0');
     background-size:cover; 
     background-repeat: no-repeat;
 
