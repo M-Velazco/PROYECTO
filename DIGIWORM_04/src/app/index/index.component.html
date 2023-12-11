@@ -1,10 +1,11 @@
 
 <header>
     <a routerLink="/" class="logo">
-        <img class="logo" style="border-radius: 55%; width: 120px;" src="DIGIWORM_04\src\assets\img\image__1_-removebg-preview (1).png" alt="Logo">
+        <img class="logo" style="border-radius: 55%; width: 200px;" src="https://mail.google.com/mail/u/0?ui=2&ik=5d5e3017ce&attid=0.1&permmsgid=msg-f:1784997303659759840&th=18c5959721ab88e0&view=att&disp=safe&realattid=18c594f6b6e641c81a41" alt="Logo">
     </a>
     <nav class="head_titu">
-        <a routerLink="/">INICIAR SESIÓN</a>
+        <a routerLink="/Login">INICIAR SESIÓN</a>
+        <a routerLink="/principal">PAGINA PRINCIPAL</a>
     </nav>
     <h4><button id="toggle-nav" class="toggle-nav-btn">☰</button></h4>
     <section class="textos-header">
@@ -74,11 +75,11 @@
 
             .card {
                 width: 30%;
-                border: 1px solid #dddddd;
+                border: 1px solid #000000;
                 border-radius: 8px;
                 overflow: hidden;
                 margin-bottom: 20px;
-                background-color: #FFFFFF;
+                background-color: #000000;
                 transform-style: preserve-3d;
                 transition: transform 0.5s;
             }
@@ -137,7 +138,7 @@
     </div>
     <div class="row">
       <div class="col-12 p-0">
-          <iframe class="mx-auto" style="width: 100%; height: 500px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.849735523101!2d-74.16059112412562!3d4.620884042342498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9e9ad96db87d%3A0x10e63ee13ae63517!2sColegio%20Paulo%20VI%20I%20E%20D!5e0!3m2!1ses!2sco!4v1691118172018!5m2!1ses!2sco" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <iframe class="custom-map" style="width: 100%; height: 500px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.849735523101!2d-74.16059112412562!3d4.620884042342498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9e9ad96db87d%3A0x10e63ee13ae63517!2sColegio%20Paulo%20VI%20I%20E%20D!5e0!3m2!1ses!2sco!4v1691118172018!5m2!1ses!2sco" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
       <div class="col-12">
           <div class="contact-form bg-white">
@@ -151,6 +152,10 @@
                       background-color: #000000;
                       border-color: #000000;
                   }
+                  .custom-map {
+    width: 100%; /* Ajusta el ancho según tus necesidades */
+    height: 500px; /* Ajusta la altura según tus necesidades */
+}
               </style>
               <form name="sentMessage" id="contactForm" novalidate="novalidate">
                   <h3 class="titulo">MISION</h3>
