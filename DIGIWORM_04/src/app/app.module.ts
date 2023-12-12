@@ -15,6 +15,8 @@ import { PrincipalComponent } from './principal/principal.component';
 import { PublicacionesComponent } from './publicaciones/publicaciones.component';
 import { DocentesComponent } from './docentes/docentes.component';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
