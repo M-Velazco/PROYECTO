@@ -14,8 +14,8 @@ import { ChatComponent } from './chat/chat.component';
 import { PrincipalComponent } from './principal/principal.component';
 import { PublicacionesComponent } from './publicaciones/publicaciones.component';
 import { DocentesComponent } from './docentes/docentes.component';
-import { PadresFamiliaComponent } from './padres-familia/padres_familia.component';
-import { CursoComponent } from './curso/curso.component';
+
+
 
 @NgModule({
   declarations: [
@@ -25,9 +25,7 @@ import { CursoComponent } from './curso/curso.component';
     ChatComponent,
     PrincipalComponent,
     PublicacionesComponent,
-    DocentesComponent,
-    PadresFamiliaComponent,
-    CursoComponent
+    DocentesComponent
   ],
   imports: [
     ReactiveFormsModule,
