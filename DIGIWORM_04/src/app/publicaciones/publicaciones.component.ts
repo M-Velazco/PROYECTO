@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 
+import 'bootstrap';
+import 'owl.carousel';
+
 @Component({
   selector: 'app-publicaciones',
   templateUrl: './publicaciones.component.html',
