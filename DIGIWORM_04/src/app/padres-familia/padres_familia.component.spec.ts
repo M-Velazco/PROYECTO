@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { PadresFamiliaComponent } from './padres-familia.component'; 
+import { PadresFamiliaComponent } from './padres_familia.component'; 
 
 describe('PadresFamiliaComponent', () => {
   let component: PadresFamiliaComponent;
