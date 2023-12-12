@@ -6,18 +6,14 @@ import { ArticulosService } from './articulos.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
-  title = 'docentes';
+export class AppComponents implements OnInit {
+
   articulos: any;
 
   // Simplificamos el modelo para incluir solo idmaterias y nom_materia
   art = {
-    iddocente:0,
-    Nombre_apellido:"",
-    Correo:"",
-    Contrasena:"",
-    Curso_pr:0,
-    Materia:0
+    idmaterias: 0,
+    nom_materia: ""
   };
 
   constructor(private articulosServicio: ArticulosService) {}
@@ -39,8 +35,8 @@ export class AppComponent implements OnInit {
     });
   }
 
-  baja(iddocente: number) {
-    this.articulosServicio.baja(iddocente).subscribe((datos: any) => {
+  baja(idmaterias: number) {
+    this.articulosServicio.baja(idmaterias).subscribe((datos: any) => {
       if (datos['resultado'] == 'OK') {
         alert(datos['mensaje']);
         this.recuperarTodos();
@@ -57,11 +53,12 @@ export class AppComponent implements OnInit {
     });
   }
 
-  seleccionar(iddocente: number) {
-    this.articulosServicio.seleccionar(iddocente).subscribe((result: any) => this.art = result[0]);
+  seleccionar(idmaterias: number) {
+    this.articulosServicio.seleccionar(idmaterias).subscribe((result: any) => this.art = result[0]);
   }
 
   hayRegistros() {
     return true;
   }
+
 }

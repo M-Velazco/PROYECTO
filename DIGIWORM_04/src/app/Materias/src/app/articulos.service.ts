@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ArticulosService {
 
-  url='http://localhost/iv-Trimestre/Materias/src/app/php/'; // disponer url de su servidor que tiene las páginas PHP
+  url='http://localhost/PROYECTO/DIGIWORM_04/src/app/Materias/src/app/php/'; // disponer url de su servidor que tiene las páginas PHP
 
   constructor(private http: HttpClient) { }
 
@@ -15,19 +15,19 @@ export class ArticulosService {
   }
 
   alta(articulo:any) {
-    return this.http.post(`${this.url}alta.php`, JSON.stringify(articulo));    
+    return this.http.post(`${this.url}alta.php`, JSON.stringify(articulo));
   }
 
   baja(idmaterias: number) {
     return this.http.get(`${this.url}baja.php?idmaterias=${idmaterias}`);
   }
-  
-  
+
+
   seleccionar(codigo:number) {
     return this.http.get(`${this.url}seleccionar.php?codigo=${codigo}`);
   }
 
   modificacion(articulo:any) {
-    return this.http.post(`${this.url}modificacion.php`, JSON.stringify(articulo));    
-  } 
+    return this.http.post(`${this.url}modificacion.php`, JSON.stringify(articulo));
+  }
 }

@@ -5,7 +5,7 @@
   require("conexion.php");
   $con=retornarConexion();
 
-  $registros=mysqli_query($con,"select iddocente, Nombre_apellido, Correo, Contrasena, Curso_pr, Materia from docente");
+  $registros=mysqli_query($con,"SELECT * FROM `docente`");
   $vec=[];
   while ($reg=mysqli_fetch_array($registros))
   {
