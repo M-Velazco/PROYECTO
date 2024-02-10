@@ -1,22 +1,32 @@
-<div class="container">
+ <div class="container">
   <div class="forms-container">
     <div class="signin-signup">
-      <form class="sign-in-form" (ngSubmit)="onSubmit()">
+      <form [formGroup]="myForm" (ngSubmit)="submitFormulario()" class="sign-in-form" >
         <h2 class="title">Iniciar sesión</h2>
 
         <div class="input-field">
           <i class="fas fa-envelope"></i>
-          <input type="number" name="Idusuarios" placeholder="Numero de Identificacion" [(ngModel)]="Idusuarios"/>
+          <input formControlName="Idusuarios" [class.is-invalid]="f.Idusuarios.errors && f.Idusuarios.touched" type="number" name="Idusuarios" placeholder="Numero de Identificacion" />
+          <div id="validationServerUsernameFeedback" class="invalid-feedback">
+            usuario invalido
+          </div>
+         
         </div>
+        <br> <br>
         <div class="input-field">
           <i class="fas fa-lock"></i>
-          <input type="password" name="Contrasena" placeholder="Contraseña"  [(ngModel)]="Contrasena"/>
+          <input formControlName="Contrasena"  [class.is-invalid]="f.Contrasena.errors && f.Contrasena.touched" type="password" name="Contrasena" placeholder="Contraseña"  [(ngModel)]="Contrasena"/>
+          <div style="width: 80px;" id="validationServerUsernameFeedback" class="invalid-feedback">
+            contraseña incorrecta
+          </div>
+          <br> <br>
         </div>
         <a href="#" class="href">Olvidé mi contraseña</a>
+        <br><br>
 
         <button type="submit" class="btn solid">Ingresar</button>
       </form>
-      <form action="validacion/validarRegistroUsuario.php" method="post" class="sign-up-form">
+      <form  class="sign-up-form">
         <h2 class="title">Registrarse</h2>
         <div class="input-field">
           <i class="fa-solid fa-id-card"></i>
@@ -93,4 +103,4 @@
     </div>
   </div>
 </div>
-<script src="js/main.js"></script>
+<script src="js/main.js"></script> 
