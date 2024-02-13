@@ -1,7 +1,7 @@
  <div class="container">
   <div class="forms-container">
     <div class="signin-signup">
-      <form   class="sign-in-form" ><!-- [formGroup]="myForm"  (ngSubmit)="submitFormulario()" -->
+      <form  class="sign-in-form" >
         <h2 class="title">Iniciar sesión</h2>
 
         <div class="input-field">
@@ -10,12 +10,12 @@
           <div id="validationServerUsernameFeedback" class="invalid-feedback">
             usuario invalido
           </div>
-         
+
         </div>
         <br> <br>
         <div class="input-field">
           <i class="fas fa-lock"></i>
-          <input formControlName="Contrasena"   type="password" name="Contrasena" placeholder="Contraseña"  [(ngModel)]="Contrasena"/>
+          <input formControlName="Contrasena"  type="password" name="Contrasena" placeholder="Contraseña"  [(ngModel)]="Contrasena"/>
           <div style="width: 80px;" id="validationServerUsernameFeedback" class="invalid-feedback">
             contraseña incorrecta
           </div>
@@ -71,7 +71,7 @@
           </div>
 
         <input type="submit" class="btn" value="Registro completo" routerlink="/principal"/>
-        
+
       </form>
     </div>
   </div>
@@ -87,7 +87,7 @@
           Registro
         </button>
       </div>
-      
+
     </div>
     <div class="panel right-panel">
       <div class="content">
@@ -99,8 +99,7 @@
           Ingresar
         </button>
       </div>
-     
+
     </div>
   </div>
-</div>
-<script src="js/main.js"></script> 
+<script src="js/main.js"></script>
