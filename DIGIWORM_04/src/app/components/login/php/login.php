@@ -1,7 +1,7 @@
-<?php 
- header('Access-Control-Allow-Origin: *'); 
+<?php
+ header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-  
+
 require("conexion.php");
 $con = retornarConexion();
 
@@ -12,7 +12,7 @@ if (isset($_GET['Idusuarios']) && isset($_GET['Contrasena'])) {
     $contrasena = mysqli_real_escape_string($con, $_GET['Contrasena']);
 
     // Construir la consulta
-    $query = "SELECT Idusuarios, Contrasena FROM usuarios WHERE Idusuarios=$idusuarios AND Contrasena='$contrasena'";
+    $query = "SELECT Idusuarios, Contraseña FROM usuarios WHERE Idusuarios=$idusuarios AND Contraseña='$contrasena'";
 
     // Ejecutar la consulta
     $registros = mysqli_query($con, $query);

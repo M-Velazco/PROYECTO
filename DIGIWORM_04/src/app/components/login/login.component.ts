@@ -24,17 +24,6 @@ export class LoginComponent implements OnInit {
       (data) => {
         // Manejar la respuesta del servidor (éxito o error)
         console.log(data);
-
-        if (data.success) {
-          // Credenciales correctas
-          console.log('Inicio de sesión exitoso');
-          
-          // Redirigir al componente deseado, por ejemplo, 'dashboard'
-          this.router.navigate(['/principal']);
-        } else {
-          // Credenciales incorrectas u otros errores
-          console.error(data.message);
-        }
       },
       (error) => {
         // Manejar errores de la solicitud
@@ -42,6 +31,8 @@ export class LoginComponent implements OnInit {
       }
     );
   }
+
+  Register(){}
 
   ngOnInit() {
     this.container = this.elementRef.nativeElement.querySelector('.container');

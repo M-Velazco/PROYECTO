@@ -1,12 +1,12 @@
  <div class="container">
   <div class="forms-container">
     <div class="signin-signup">
-      <form  class="sign-in-form" >
+      <form class="sign-in-form" (ngSubmit)="onSubmit()">
         <h2 class="title">Iniciar sesión</h2>
 
         <div class="input-field">
           <i class="fas fa-envelope"></i>
-          <input  type="number" name="Idusuarios" placeholder="Numero de Identificacion" />
+          <input  type="number" name="Idusuarios" placeholder="Numero de Identificacion" [(ngModel)]="Idusuarios"/>
           <div id="validationServerUsernameFeedback" class="invalid-feedback">
             usuario invalido
           </div>
