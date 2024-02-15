@@ -1,5 +1,5 @@
 <?php
- header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 
 require("conexion.php");
@@ -12,7 +12,7 @@ if (isset($_GET['Idusuarios']) && isset($_GET['Contrasena'])) {
     $contrasena = mysqli_real_escape_string($con, $_GET['Contrasena']);
 
     // Construir la consulta
-    $query = "SELECT Idusuarios, Contraseña FROM usuarios WHERE Idusuarios=$idusuarios AND Contraseña='$contrasena'";
+    $query = "SELECT Idusuarios, Contrasena FROM usuarios WHERE Idusuarios=$idusuarios AND Contrasena='$contrasena'";
 
     // Ejecutar la consulta
     $registros = mysqli_query($con, $query);
@@ -28,13 +28,12 @@ if (isset($_GET['Idusuarios']) && isset($_GET['Contrasena'])) {
             $response = array("success" => false, "message" => "Credenciales incorrectas");
             echo json_encode($response);
         }
+        // Liberar el resultado
+        mysqli_free_result($registros);
     } else {
         $response = array("success" => false, "message" => "Error en la consulta: " . mysqli_error($con));
         echo json_encode($response);
     }
-
-    // Cerrar la conexión
-    mysqli_free_result($registros);
 } else {
     $response = array("success" => false, "message" => "Parámetros incompletos");
     echo json_encode($response);
@@ -42,5 +41,4 @@ if (isset($_GET['Idusuarios']) && isset($_GET['Contrasena'])) {
 
 // Establecer encabezados antes de enviar la respuesta
 header('Content-Type: application/json');
-
 ?>
