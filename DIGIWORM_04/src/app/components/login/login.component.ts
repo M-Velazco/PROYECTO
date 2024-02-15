@@ -23,11 +23,21 @@ export class LoginComponent implements OnInit {
     this.loginService.login(this.Idusuarios, this.Contrasena).subscribe(
       (data) => {
         // Manejar la respuesta del servidor (éxito o error)
-        console.log(data);
+        if (data.success) {
+          // La autenticación fue exitosa, redirigir al usuario a la página deseada
+          console.log("Autenticación exitosa");
+          // Redirigir al usuario a la página deseada
+          this.router.navigate(['/principal']);
+        } else {
+          // La autenticación falló, mostrar un mensaje de error al usuario
+          console.error("Error de autenticación:", data.message);
+          // Puedes mostrar un mensaje de error al usuario si lo deseas
+          // this.errorMessage = data.message;
+        }
       },
       (error) => {
         // Manejar errores de la solicitud
-        console.error(error);
+        console.error("Error al procesar la solicitud:", error);
       }
     );
   }
