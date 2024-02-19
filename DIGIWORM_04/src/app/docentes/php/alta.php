@@ -1,5 +1,5 @@
-<?php 
-header('Access-Control-Allow-Origin: *'); 
+<?php
+header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 
 $json = file_get_contents('php://input');
@@ -9,18 +9,19 @@ require("conexion.php");
 $con = retornarConexion();
 
 // Escapar y validar los datos
-$iddocente = mysqli_real_escape_string($con, $params->iddocente);
-$Nombre_apellido = mysqli_real_escape_string($con, $params->Nombre_apellido);
-$Correo = mysqli_real_escape_string($con, $params->Correo);
+$idDocente = mysqli_real_escape_string($con, $params->idDocente);
+$Nombres = mysqli_real_escape_string($con, $params->Nombres);
+$Apellidos = mysqli_real_escape_string($con, $params->Apellidos);
+$Email = mysqli_real_escape_string($con, $params->Email);
 $Contrasena = mysqli_real_escape_string($con, $params->Contrasena); // Contraseña sin hash
 
 // Aplicar hash a la contraseña
 $hashedContrasena = password_hash($Contrasena, PASSWORD_DEFAULT);
 
-$Curso_pr = mysqli_real_escape_string($con, $params->Curso_pr);
+$Curso = mysqli_real_escape_string($con, $params->Curso);
 $Materia = mysqli_real_escape_string($con, $params->Materia);
 
-$query = "INSERT INTO docente (iddocente, Nombre_apellido, Correo, Contrasena, Curso_pr, Materia) VALUES ($iddocente, '$Nombre_apellido', '$Correo', '$hashedContrasena', '$Curso_pr', '$Materia')";
+$query = "INSERT INTO docente (idDocente , Nombres , Apellidos , Email , Pasword  , Curso , Materia ) VALUES ($idDocente, '$Nombres', '$Apellidos','Email', '$hashedContrasena', '$Curso', '$Materia')";
 
 // Ejecutar la consulta
 $resultado = mysqli_query($con, $query);

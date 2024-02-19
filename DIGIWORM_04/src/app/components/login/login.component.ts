@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
           // La autenticación fue exitosa, redirigir al usuario a la página deseada
           console.log("Autenticación exitosa");
           // Redirigir al usuario a la página deseada
-          this.router.navigate(['/principal']);
+          this.router.navigate(['']);
         } else {
           // La autenticación falló, mostrar un mensaje de error al usuario
           console.error("Error de autenticación:", data.message);

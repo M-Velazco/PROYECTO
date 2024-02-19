@@ -11,7 +11,7 @@ import { CursoComponent } from './curso/curso.component';
 import {AppComponents} from './Materias/src/app/app.component';
 
 const routes: Routes = [
-  { path: '', component: IndexComponent },
+  { path: 'Index', component: IndexComponent },
   { path: 'Login', component: LoginComponent },
   { path: 'docentes', component: DocentesComponent },
   {path:'chat',component:ChatComponent},

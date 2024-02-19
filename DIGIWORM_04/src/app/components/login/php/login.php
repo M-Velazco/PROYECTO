@@ -12,7 +12,7 @@ if (isset($_GET['Idusuarios']) && isset($_GET['Contrasena'])) {
     $contrasena = mysqli_real_escape_string($con, $_GET['Contrasena']);
 
     // Construir la consulta
-    $query = "SELECT Idusuarios, Contrasena FROM usuarios WHERE Idusuarios=$idusuarios AND Contrasena='$contrasena'";
+    $query = "SELECT Idusuarios, Pasword FROM usuarios WHERE Idusuarios=$idusuarios AND Pasword='$contrasena'";
 
     // Ejecutar la consulta
     $registros = mysqli_query($con, $query);
@@ -22,7 +22,7 @@ if (isset($_GET['Idusuarios']) && isset($_GET['Contrasena'])) {
         $reg = mysqli_fetch_array($registros, MYSQLI_ASSOC);
         if ($reg) {
             // Si las credenciales son correctas, devuelve una respuesta JSON con éxito y la URL a la que se debe redirigir
-            $response = array("success" => true, "redirectUrl" => "/principal");
+            $response = array("success" => true, "redirectUrl" => "/index");
             echo json_encode($response);
         } else {
             // Si las credenciales son incorrectas, devuelve una respuesta JSON con un mensaje de error
