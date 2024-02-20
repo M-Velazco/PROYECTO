@@ -168,8 +168,7 @@ class Usuario
 	public function agregarUsuario()
 	{	
 		$this->Conexion=Conectarse();
-		$sql="insert into usuarios(Idusuarios, Nombres, Apellidos, Correo, Telefono, Pasword, Rol) 
-values ('$this->Idusuarios','$this->Nombres','$this->Apellidos','$this->Email','$this->Telefono','$this->Pasword',$this->img','$this->Rol','$this->Estado')";
+		$sql="insert into usuarios(Idusuarios, Nombres, Apellidos, Correo, Telefono, Pasword, Rol) values ('$this->Idusuarios','$this->Nombres','$this->Apellidos','$this->Email','$this->Telefono','$this->Pasword',$this->img','$this->Rol','$this->Estado')";
 		$resultado=$this->Conexion->query($sql);
 		$this->Conexion->close();
 		return $resultado;	
@@ -239,14 +238,7 @@ values ('$this->Idusuarios','$this->Nombres','$this->Apellidos','$this->Email','
     
     // No cerrar la conexión aquí si quieres seguir usándola fuera de esta función
 }
-// 	public function __construct()
-// {
-//     // Inicializar la conexión aquí, por ejemplo:
-//     $this->conexion = new mysqli("localhost", "root", "", "digiworm");
-//     if ($this->conexion->connect_error) {
-//         die("Error de conexión: " . $this->conexion->connect_error);
-//     }
-// }
+
 	
 	
 	}

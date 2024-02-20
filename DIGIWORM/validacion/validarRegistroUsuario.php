@@ -6,10 +6,10 @@ extract ($_REQUEST);
 
 //Forma utilizando la Clase Empleado
 $contrasena = $_REQUEST['Contrasena'];
-$contrasenamd5 = md5($contrasena);
+$paswordmd5 = md5($contrasena);
 $objUsuario = new Usuario();
 
-$objUsuario->crearUsuario($_REQUEST['Idusuario'] , $_REQUEST['Nombre'], $_REQUEST['Correo'], $_REQUEST['Telefono'] ,$contrasenamd5 , $_REQUEST['Rol']);
+$objUsuario->crearUsuario($_REQUEST['Idusuario'] , $_REQUEST['Nombres'], $_REQUEST['Apellidos'], $_REQUEST['Email'], $_REQUEST['Telefono'] ,$paswordmd5 , $_REQUEST['img'], $_REQUEST['Rol'], $_REQUEST['Estado']);
 
 $resultado = $objUsuario->agregarUsuario();
 
