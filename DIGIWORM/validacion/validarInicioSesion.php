@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['Idusuario']) && !empt
     $objUsuarios = new Usuario($objConexion);
 
     // Intenta realizar el inicio de sesión
-    if ($objUsuarios->consultarUsuarioContraseña($Idusuarios, $Pasword)) {
+    if ($objUsuarios->consultarUsuarioContraseña($Idusuarios, $Paswordmd5)) {
         // Inicio de sesión exitoso, redirige a la página de inicio
         header("location:../Principal.html");
         exit(); // Detiene la ejecución del script después de redirigir
