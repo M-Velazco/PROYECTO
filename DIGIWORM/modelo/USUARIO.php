@@ -8,12 +8,15 @@ class Usuario
 {
 
 	Private $Idusuarios;
-	Private $Nombre_apellido;
-	Private $Correo;
+	Private $Nombres;
+	Private $Apellidos;
+	Private $Email;
 	private $Telefono;
-	Private $Contraseña;
+	Private $Pasword;
+	Private $img;
 	Private $Rol;
-	private $conexion;
+	Private $Estado;
+	private $Conexion;
 	
 	
 
@@ -28,14 +31,18 @@ class Usuario
 		return $this->Idusuarios;
 	}
 
-	public function getNombre_apellido()
+	public function getNombres()
 	{
-		return $this->Nombre_apellido;
+		return $this->Nombres;
+	}
+	public function getApellidos()
+	{
+		return $this->Apellidos;
 	}
 
-	public function getCorreo()
+	public function getEmail ()
 	{
-		return $this->Correo;
+		return $this->Email ;
 	}
 
 	public function getTelefono()
@@ -43,21 +50,29 @@ class Usuario
 		return $this->Telefono;
 	}
 
-	private function getContraseña()
+	private function getPasword()
 	{
-		return $this->Contraseña;
+		return $this->Pasword;
+	}
+	private function getimg()
+	{
+		return $this->img;
 	}
 
 	public function getRol()
 	{
 		return $this->Rol;
 	}
+	public function getEstado()
+	{
+		return $this->Estado;
+	}
 
 	
 
 	/**
 	 * 
-	 * @param newVal
+	 *
 	 */
 	public function setIdusuario($newVal)
 	{
@@ -66,25 +81,33 @@ class Usuario
 
 	/**
 	 * 
-	 * @param newVal
+	 *
 	 */
-	public function setNombre_apellido($newVal)
+	public function setNombres($newVal)
 	{
-		$this->Nombre_apellido = $newVal;
+		$this->Nombres = $newVal;
+	}
+	/**
+	 * 
+	 *
+	 */
+	public function setApellidos($newVal)
+	{
+		$this->Apellidos = $newVal;
 	}
 
 	/**
 	 * 
-	 * @param newVal
+	 * 
 	 */
 	public function setCorreo($newVal)
 	{
-		$this->Correo = $newVal;
+		$this->Email  = $newVal;
 	}
 
 	/**
 	 * 
-	 * @param newVal
+	 * 
 	 */
 	public function setTelefono($newVal)
 	{
@@ -93,41 +116,60 @@ class Usuario
 
 	/**
 	 * 
-	 * @param newVal
+	 * 
 	 */
-	public function setContraseña($newVal)
+	public function setPasword($newVal)
 	{
-		$this->Contraseña = $newVal;
+		$this->Pasword = $newVal;
+	}
+	/**
+	 * 
+	 * 
+	 */
+	public function setimg($newVal)
+	{
+		$this->img = $newVal;
 	}
 
 	/**
 	 * 
-	 * @param newVal
+	 * 
 	 */
 	public function setRol($newVal)
 	{
 		$this->Rol = $newVal;
 	}
+	/**
+	 * 
+	 * 
+	 */
+	public function setEstado($newVal)
+	{
+		$this->Estado = $newVal;
+	}
 
 	
 	
 
-	public function crearUsuario($Idusuarios,$Nombre_apellido,$Correo,$Telefono,$Contraseña,$Rol)
+	public function crearUsuario($Idusuarios,$Nombres,$Apellidos,$Email,$Telefono,$Pasword,$img,$Rol,$Estado)
 	{
 		$this->Idusuarios=$Idusuarios;
-		$this->Nombre_apellido=$Nombre_apellido;
-		$this->Correo=$Correo;
+		$this->Nombres=$Nombres;
+		$this->Apellidos=$Apellidos;
+		$this->Email=$Email;
 		$this->Telefono=$Telefono;
-		$this->Contraseña=$Contraseña ;
+		$this->Pasword=$Pasword ;
+		$this->img=$img ;
 		$this->Rol=$Rol;
+		$this->Estado=$Estado;
 		
 	}
 	
 	public function agregarUsuario()
 	{	
 		$this->Conexion=Conectarse();
-		$sql="insert into usuarios(idusuarios, Nombre_apellido, Correo, Telefono, Contraseña, Rol) 
-values ('$this->Idusuarios','$this->Nombre_apellido','$this->Correo','$this->Telefono','$this->Contraseña','$this->Rol')";
+		$sql="insert into usuarios(Idusuarios, Nombres, Apellidos, Correo, Telefono, Pasword, Rol) 
+values ('$this->Idusuarios','$this->Nombres','$this->Apellidos','$this->Email','$this->Telefono','$this->Pasword',$this->img','$this->Rol','$this->Estado')";
 		$resultado=$this->Conexion->query($sql);
 		$this->Conexion->close();
 		return $resultado;	
@@ -136,7 +178,7 @@ values ('$this->Idusuarios','$this->Nombre_apellido','$this->Correo','$this->Tel
 	public function modificarUsuario($Idusuarios)
 	{	
 		$this->Conexion=Conectarse();
-		$sql="update  set idusuario =$this->Idusuarios', Nombre_apellido=$this->Nombre_apellido', Correo='$this->Correo', Contraseña='$this->contraseña', Rol = $this->Rol' where idusuarios = '$this->Idusuario";
+		$sql="update  set Idusuarios =$this->Idusuarios','$this->Nombres','$this->Apellidos','$this->Email','$this->Telefono','$this->Pasword',$this->img','$this->Rol','$this->Estado' where Idusuarios = '$this->Idusuarios";
 		$resultado=$this->Conexion->query($sql);
 		$this->Conexion->close();
 		return $resultado;	
@@ -145,7 +187,7 @@ values ('$this->Idusuarios','$this->Nombre_apellido','$this->Correo','$this->Tel
 	public function eliminarUsuario($Idusuarios)
 	{	
 		$this->Conexion=Conectarse();
-		$sql="delete from usuarios where idusuarios = '$this->Idusuario";
+		$sql="delete from usuarios where Idusuarios = '$this->Idusuarios";
 		$resultado=$this->Conexion->query($sql);
 		$this->Conexion->close();
 		return $resultado;	
@@ -161,23 +203,50 @@ values ('$this->Idusuarios','$this->Nombre_apellido','$this->Correo','$this->Tel
 		return $resultado;	
 	}
 	
-	public function consultarUsuarioContraseña($Idusuarios, $Contraseña)
-	{
-		$this->Conexion = Conectarse();
-		$sql = "SELECT * FROM usuarios WHERE idusuarios = '$Idusuarios' AND contraseña = '$Contraseña'";
-	
-		$resultado = $this->Conexion->query($sql);
-		$this->Conexion->close();
-		return $resultado;
-	}
-	public function __construct()
+	public function consultarUsuarioContraseña($Idusuarios, $Paswordmd5)
 {
-    // Inicializar la conexión aquí, por ejemplo:
-    $this->conexion = new mysqli("localhost", "root", "", "digiworm");
-    if ($this->conexion->connect_error) {
-        die("Error de conexión: " . $this->conexion->connect_error);
+    $this->Conexion = Conectarse();
+    
+    // Preparar la consulta con parámetros
+    $sql = "SELECT * FROM usuarios WHERE Idusuarios = ? AND Pasword = ?";
+    $stmt = $this->Conexion->prepare($sql);
+    
+    // Verificar si la preparación de la consulta tuvo éxito
+    if ($stmt === false) {
+        // Manejar el error de preparación de la consulta
+        die('Error en la preparación de la consulta: ' . $this->Conexion->error);
     }
+    
+    // Vincular parámetros con sus tipos de datos
+    $stmt->bind_param("is", $Idusuarios, $Paswordmd5); // "i" para integer, "s" para string
+    
+    // Ejecutar la consulta
+    $stmt->execute();
+    
+    // Obtener el resultado
+    $resultado = $stmt->get_result();
+    
+    // Verificar si se encontró un usuario con las credenciales proporcionadas
+    if ($resultado->num_rows > 0) {
+        // Usuario autenticado correctamente
+        return true;
+    } else {
+        // Usuario no autenticado
+        return false;
+    }
+    
+    // Cerrar el statement
+    
+    // No cerrar la conexión aquí si quieres seguir usándola fuera de esta función
 }
+// 	public function __construct()
+// {
+//     // Inicializar la conexión aquí, por ejemplo:
+//     $this->conexion = new mysqli("localhost", "root", "", "digiworm");
+//     if ($this->conexion->connect_error) {
+//         die("Error de conexión: " . $this->conexion->connect_error);
+//     }
+// }
 	
 	
 	}
