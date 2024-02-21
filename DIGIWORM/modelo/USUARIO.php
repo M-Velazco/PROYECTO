@@ -271,7 +271,7 @@ class Usuario
             $jornada = $_POST['Jornada'];
 
             // Preparamos la consulta para insertar en la tabla 'coordinador'
-            $sqlCoordinador = "INSERT INTO coordinador (idCoordinador, Nombres, Apellidos, Email, Contraseña, Jornada) 
+            $sqlCoordinador = "INSERT INTO coordinador (idCoordinador, Nombres, Apellidos, Email, Pasword, Jornada) 
                                VALUES (?, ?, ?, ?, ?, ?)";
 
             // Preparamos la sentencia
