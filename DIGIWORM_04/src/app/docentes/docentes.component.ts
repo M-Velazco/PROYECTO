@@ -12,11 +12,12 @@ export class DocentesComponent implements OnInit {
 
   // Simplificamos el modelo para incluir solo idmaterias y nom_materia
   art = {
-    iddocente:0,
-    Nombre_apellido:"",
-    Correo:"",
-    Contrasena:"",
-    Curso_pr:0,
+    idDocente:0,
+    Nombres:"",
+    Apellidos:"",
+    Email:"",
+    Pasword:"",
+    Curso:0,
     Materia:0
   };
 
@@ -39,8 +40,8 @@ export class DocentesComponent implements OnInit {
     });
   }
 
-  baja(iddocente: number) {
-    this.articulosServicio.baja(iddocente).subscribe((datos: any) => {
+  baja(idDocente: number) {
+    this.articulosServicio.baja(idDocente).subscribe((datos: any) => {
       if (datos['resultado'] == 'OK') {
         alert(datos['mensaje']);
         this.recuperarTodos();
@@ -57,8 +58,8 @@ export class DocentesComponent implements OnInit {
     });
   }
 
-  seleccionar(iddocente: number) {
-    this.articulosServicio.seleccionar(iddocente).subscribe((result: any) => this.art = result[0]);
+  seleccionar(idDocente: number) {
+    this.articulosServicio.seleccionar(idDocente).subscribe((result: any) => this.art = result[0]);
   }
 
   hayRegistros() {

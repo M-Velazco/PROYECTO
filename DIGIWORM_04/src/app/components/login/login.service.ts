@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class LoginService {
-  private apiUrl = 'http://localhost/proyecto/PROYECTO/DIGIWORM_04/src/app/components/login/php/login.php';
+  private apiUrl = 'http://localhost/PROYECTO/DIGIWORM_04/src/app/components/login/php/login.php';
 
   constructor(private http: HttpClient) {}
 

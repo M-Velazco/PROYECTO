@@ -8,12 +8,18 @@ class Usuario
 {
 
 	Private $Idusuarios;
-	Private $Nombre_apellido;
-	Private $Correo;
+	Private $Nombres;
+	Private $Apellidos;
+	Private $Email;
 	private $Telefono;
-	Private $Contraseña;
+	Private $Pasword;
+	Private $img;
 	Private $Rol;
-	private $conexion;
+	Private $Estado;
+	Private $Curso;
+	Private $Materia;
+	Private $Jornada;
+	private $Conexion;
 	
 	
 
@@ -28,14 +34,18 @@ class Usuario
 		return $this->Idusuarios;
 	}
 
-	public function getNombre_apellido()
+	public function getNombres()
 	{
-		return $this->Nombre_apellido;
+		return $this->Nombres;
+	}
+	public function getApellidos()
+	{
+		return $this->Apellidos;
 	}
 
-	public function getCorreo()
+	public function getEmail ()
 	{
-		return $this->Correo;
+		return $this->Email ;
 	}
 
 	public function getTelefono()
@@ -43,21 +53,41 @@ class Usuario
 		return $this->Telefono;
 	}
 
-	private function getContraseña()
+	private function getPasword()
 	{
-		return $this->Contraseña;
+		return $this->Pasword;
+	}
+	private function getimg()
+	{
+		return $this->img;
 	}
 
 	public function getRol()
 	{
 		return $this->Rol;
 	}
+	public function getEstado()
+	{
+		return $this->Estado;
+	}
+	public function getCurso()
+	{
+		return $this->Curso;
+	}
+	public function getMateria()
+	{
+		return $this->Materia;
+	}
+	public function getJornada()
+	{
+		return $this->Jornada;
+	}
 
 	
 
 	/**
 	 * 
-	 * @param newVal
+	 *
 	 */
 	public function setIdusuario($newVal)
 	{
@@ -66,25 +96,33 @@ class Usuario
 
 	/**
 	 * 
-	 * @param newVal
+	 *
 	 */
-	public function setNombre_apellido($newVal)
+	public function setNombres($newVal)
 	{
-		$this->Nombre_apellido = $newVal;
+		$this->Nombres = $newVal;
+	}
+	/**
+	 * 
+	 *
+	 */
+	public function setApellidos($newVal)
+	{
+		$this->Apellidos = $newVal;
 	}
 
 	/**
 	 * 
-	 * @param newVal
+	 * 
 	 */
 	public function setCorreo($newVal)
 	{
-		$this->Correo = $newVal;
+		$this->Email  = $newVal;
 	}
 
 	/**
 	 * 
-	 * @param newVal
+	 * 
 	 */
 	public function setTelefono($newVal)
 	{
@@ -93,50 +131,183 @@ class Usuario
 
 	/**
 	 * 
-	 * @param newVal
+	 * 
 	 */
-	public function setContraseña($newVal)
+	public function setPasword($newVal)
 	{
-		$this->Contraseña = $newVal;
+		$this->Pasword = $newVal;
+	}
+	/**
+	 * 
+	 * 
+	 */
+	public function setimg($newVal)
+	{
+		$this->img = $newVal;
 	}
 
 	/**
 	 * 
-	 * @param newVal
+	 * 
 	 */
 	public function setRol($newVal)
 	{
 		$this->Rol = $newVal;
 	}
+	/**
+	 * 
+	 * 
+	 */
+	public function setEstado($newVal)
+	{
+		$this->Estado = $newVal;
+	}
+	public function setCurso($newVal)
+	{
+		$this->Curso = $newVal;
+	}
+	public function setMateria($newVal)
+	{
+		$this->Materia = $newVal;
+	}
+	public function setJornada($newVal)
+	{
+		$this->Jornada = $newVal;
+	}
 
 	
-	
+	public function __construct()
+    {
+        // Inicializar la conexión desde el archivo de conexión
+        $this->conexion = Conectarse();
+    }
 
-	public function crearUsuario($Idusuarios,$Nombre_apellido,$Correo,$Telefono,$Contraseña,$Rol)
+
+	public function crearUsuario($Idusuarios,$Nombres,$Apellidos,$Email,$Telefono,$Contraseña,$img,$Rol,$Estado,$Curso , $Materia, $Jornada )
 	{
 		$this->Idusuarios=$Idusuarios;
-		$this->Nombre_apellido=$Nombre_apellido;
-		$this->Correo=$Correo;
+		$this->Nombres=$Nombres;
+		$this->Apellidos=$Apellidos;
+		$this->Email=$Email;
 		$this->Telefono=$Telefono;
 		$this->Contraseña=$Contraseña ;
+		$this->img=$img;
 		$this->Rol=$Rol;
+		$this->Estado=$Estado;
+		$this->Curso=$Curso;
+		$this->Materia=$Materia;
+		$this->Jornada=$Jornada;
 		
 	}
 	
 	public function agregarUsuario()
-	{	
-		$this->Conexion=Conectarse();
-		$sql="insert into usuarios(idusuarios, Nombre_apellido, Correo, Telefono, Contraseña, Rol) 
-values ('$this->Idusuarios','$this->Nombre_apellido','$this->Correo','$this->Telefono','$this->Contraseña','$this->Rol')";
-		$resultado=$this->Conexion->query($sql);
-		$this->Conexion->close();
-		return $resultado;	
-	}
+{
+    // Preparamos la consulta para insertar en la tabla 'usuarios'
+    $sqlUsuarios = "INSERT INTO usuarios (Idusuarios, Nombres, Apellidos, Email, Telefono, Contrasena, img, Rol, Estado) 
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+    // Preparamos la sentencia
+    $stmtUsuarios = $this->conexion->prepare($sqlUsuarios);
+
+    // Enlazamos los parámetros
+    $stmtUsuarios->bind_param("isssissss", $this->Idusuarios, $this->Nombres, $this->Apellidos, $this->Email, $this->Telefono, $this->Contraseña, $this->img, $this->Rol, $this->Estado);
+
+
+    // Ejecutamos la sentencia
+    $resultadoUsuarios = $stmtUsuarios->execute();
+
+    // Verificamos si la inserción fue exitosa
+    if (!$resultadoUsuarios) {
+        $this->conexion->close();
+        return false;
+    }
+
+    // Insertamos datos específicos según el rol del usuario
+    switch ($this->Rol) {
+        case "Docente":
+            // Preparamos la consulta para insertar en la tabla 'docente'
+            $sqlDocente = "INSERT INTO docente (idDocente, Nombres, Apellidos, Email, Pasword, Curso, Materia) 
+                        VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+            // Preparamos la sentencia
+            $stmtDocente = $this->conexion->prepare($sqlDocente);
+
+            // Enlazamos los parámetros
+            $stmtDocente->bind_param("issssii", $this->Idusuarios, $this->Nombres, $this->Apellidos, $this->Email, $this->Contraseña, $this->Curso, $this->Materia);
+
+            // Ejecutamos la sentencia
+            $resultadoDocente = $stmtDocente->execute();
+
+            // Verificamos si la inserción fue exitosa
+            if (!$resultadoDocente) {
+                $this->conexion->close();
+                return false;
+            }
+            break;
+
+        case "Estudiante":
+            // Preparamos la consulta para insertar en la tabla 'estudiante'
+            $sqlEstudiante = "INSERT INTO estudiante (idEstudiante, Nombres, Apellidos, Email, Pasword, Curso) 
+                              VALUES (?, ?, ?, ?, ?, ?)";
+
+            // Preparamos la sentencia
+            $stmtEstudiante = $this->conexion->prepare($sqlEstudiante);
+
+            // Enlazamos los parámetros
+            $stmtEstudiante->bind_param("issssi", $this->Idusuarios, $this->Nombres, $this->Apellidos, $this->Email, $this->Contraseña, $this->Curso);
+
+            // Ejecutamos la sentencia
+            $resultadoEstudiante = $stmtEstudiante->execute();
+
+            // Verificamos si la inserción fue exitosa
+            if (!$resultadoEstudiante) {
+                $this->conexion->close();
+                return false;
+            }
+            break;
+
+        case "Coordinador":
+            // Asegúrate de obtener la jornada del formulario y validarla correctamente
+            $jornada = $_POST['Jornada'];
+
+            // Preparamos la consulta para insertar en la tabla 'coordinador'
+            $sqlCoordinador = "INSERT INTO coordinador (idCoordinador, Nombres, Apellidos, Email, Pasword, Jornada) 
+                               VALUES (?, ?, ?, ?, ?, ?)";
+
+            // Preparamos la sentencia
+            $stmtCoordinador = $this->conexion->prepare($sqlCoordinador);
+
+            // Enlazamos los parámetros
+            $stmtCoordinador->bind_param("isssss", $this->Idusuarios, $this->Nombres, $this->Apellidos, $this->Email, $this->Contraseña, $jornada);
+
+            // Ejecutamos la sentencia
+            $resultadoCoordinador = $stmtCoordinador->execute();
+
+            // Verificamos si la inserción fue exitosa
+            if (!$resultadoCoordinador) {
+                $this->conexion->close();
+                return false;
+            }
+            break;
+
+        // Agrega más casos según los diferentes roles
+
+        default:
+            // No es necesario agregar ningún dato adicional para otros roles
+            break;
+    }
+
+    // Cerramos la conexión
+    $this->conexion->close();
+    return true;
+}
+
+
 
 	public function modificarUsuario($Idusuarios)
 	{	
 		$this->Conexion=Conectarse();
-		$sql="update  set idusuario =$this->Idusuarios', Nombre_apellido=$this->Nombre_apellido', Correo='$this->Correo', Contraseña='$this->contraseña', Rol = $this->Rol' where idusuarios = '$this->Idusuario";
+		$sql="update  set Idusuarios =$this->Idusuarios','$this->Nombres','$this->Apellidos','$this->Email','$this->Telefono','$this->Pasword',$this->img','$this->Rol','$this->Estado' where Idusuarios = '$this->Idusuarios";
 		$resultado=$this->Conexion->query($sql);
 		$this->Conexion->close();
 		return $resultado;	
@@ -145,7 +316,7 @@ values ('$this->Idusuarios','$this->Nombre_apellido','$this->Correo','$this->Tel
 	public function eliminarUsuario($Idusuarios)
 	{	
 		$this->Conexion=Conectarse();
-		$sql="delete from usuarios where idusuarios = '$this->Idusuario";
+		$sql="delete from usuarios where Idusuarios = '$this->Idusuarios";
 		$resultado=$this->Conexion->query($sql);
 		$this->Conexion->close();
 		return $resultado;	
@@ -161,23 +332,43 @@ values ('$this->Idusuarios','$this->Nombre_apellido','$this->Correo','$this->Tel
 		return $resultado;	
 	}
 	
-	public function consultarUsuarioContraseña($Idusuarios, $Contraseña)
-	{
-		$this->Conexion = Conectarse();
-		$sql = "SELECT * FROM usuarios WHERE idusuarios = '$Idusuarios' AND contraseña = '$Contraseña'";
-	
-		$resultado = $this->Conexion->query($sql);
-		$this->Conexion->close();
-		return $resultado;
-	}
-	public function __construct()
+	public function consultarUsuarioContraseña($Idusuarios, $Paswordmd5)
 {
-    // Inicializar la conexión aquí, por ejemplo:
-    $this->conexion = new mysqli("localhost", "root", "", "digiworm");
-    if ($this->conexion->connect_error) {
-        die("Error de conexión: " . $this->conexion->connect_error);
+    $this->Conexion = Conectarse();
+    
+    // Preparar la consulta con parámetros
+    $sql = "SELECT * FROM usuarios WHERE Idusuarios = ? AND Pasword = ?";
+    $stmt = $this->Conexion->prepare($sql);
+    
+    // Verificar si la preparación de la consulta tuvo éxito
+    if ($stmt === false) {
+        // Manejar el error de preparación de la consulta
+        die('Error en la preparación de la consulta: ' . $this->Conexion->error);
     }
+    
+    // Vincular parámetros con sus tipos de datos
+    $stmt->bind_param("is", $Idusuarios, $Paswordmd5); // "i" para integer, "s" para string
+    
+    // Ejecutar la consulta
+    $stmt->execute();
+    
+    // Obtener el resultado
+    $resultado = $stmt->get_result();
+    
+    // Verificar si se encontró un usuario con las credenciales proporcionadas
+    if ($resultado->num_rows > 0) {
+        // Usuario autenticado correctamente
+        return true;
+    } else {
+        // Usuario no autenticado
+        return false;
+    }
+    
+    // Cerrar el statement
+    
+    // No cerrar la conexión aquí si quieres seguir usándola fuera de esta función
 }
+
 	
 	
 	}
