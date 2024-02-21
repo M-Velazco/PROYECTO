@@ -161,14 +161,14 @@ class Usuario
 		$this->Pasword=$Pasword ;
 		$this->img=$img ;
 		$this->Rol=$Rol;
-		$this->Estado=$Estado;
+		$this->Estado=$c;
 		
 	}
 	
 	public function agregarUsuario()
 	{	
 		$this->Conexion=Conectarse();
-		$sql="insert into usuarios(Idusuarios, Nombres, Apellidos, Correo, Telefono, Pasword, Rol) values ('$this->Idusuarios','$this->Nombres','$this->Apellidos','$this->Email','$this->Telefono','$this->Pasword',$this->img','$this->Rol','$this->Estado')";
+		$sql="insert into usuarios(Idusuarios, Nombres, Apellidos, Email, Telefono, Pasword, img, Rol, Estado) values ('$this->Idusuarios','$this->Nombres','$this->Apellidos','$this->Email','$this->Telefono','$this->Pasword',$this->img','$this->Rol','$this->Estado')";
 		$resultado=$this->Conexion->query($sql);
 		$this->Conexion->close();
 		return $resultado;	
