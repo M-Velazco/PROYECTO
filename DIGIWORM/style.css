@@ -81,6 +81,16 @@ form.sign-in-form {
     padding: 0 0.4rem;
     position: relative;
   }
+  .input-radio {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 2rem;
+  }
+  
+  .input-radio label {
+    margin-bottom: 0.5rem;
+  }
 
 
   .sign-up-form  .input-field i {

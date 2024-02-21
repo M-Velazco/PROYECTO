@@ -19,15 +19,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['Idusuario']) && !empt
     // Intenta realizar el inicio de sesión
     if ($objUsuarios->consultarUsuarioContraseña($Idusuarios, $Paswordmd5)) {
         // Inicio de sesión exitoso, redirige a la página de inicio
-        header("location:../Principal.html");
+        header("location:../Principal.php?succes=logeado");
         exit(); // Detiene la ejecución del script después de redirigir
     } else {
-        // Inicio de sesión fallido, muestra un mensaje de error
-        $mensajeError = "Nombre de usuario o contraseña incorrectos";
-        echo "Inicio de sesión fallido. $mensajeError";
+        // Inicio de sesión fallido, redirige a la página de inicio de sesión con un mensaje de error
+        header("Location: ../form.php?error=usuario_no_encontrado");
+        exit;
     }
 } else {
     // Si alguno de los campos está vacío, muestra un mensaje de error
-    echo "Por favor, complete todos los campos del formulario.";
+    header("Location: ../form.php?error=campo_incompleto");
+    exit;
 }
 ?>

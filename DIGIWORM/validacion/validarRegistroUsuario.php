@@ -3,7 +3,6 @@ require "../modelo/USUARIO.php";
 require "../modelo/conexion.php";
 
 // Recoger datos del formulario
-echo $_POST['Materia']; // Verificar si se recibe el valor correctamente
 $contrasena = $_POST['Pasword'];
 $paswordmd5 = md5($contrasena);
 

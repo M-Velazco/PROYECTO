@@ -22,8 +22,26 @@
 
     <link href="security-guard-website-template/scss/style.scss" rel="stylesheet">
     <link href="css/map.css" rel="stylesheet">
-    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+    <style>
+    </style>
 </head>
+<?php 
+if (isset($_GET['succes']) && $_GET['succes'] == 'logeado') {
+    echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@10'></script>"; // Incluye SweetAlert desde CDN
+
+    echo "<script>
+            document.addEventListener('DOMContentLoaded', function() {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Haz iniciado',
+                    text: 'Bienvenido/a haz logrado ingresar'
+                    
+                });
+            });
+          </script>";
+}
+?>
 
 <body class="bg-white">
 

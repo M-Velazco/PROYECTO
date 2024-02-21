@@ -227,7 +227,7 @@ class Usuario
         case "Docente":
             // Preparamos la consulta para insertar en la tabla 'docente'
             $sqlDocente = "INSERT INTO docente (idDocente, Nombres, Apellidos, Email, Pasword, Curso, Materia) 
-                           VALUES (?, ?, ?, ?, ?, ?, ?)";
+                        VALUES (?, ?, ?, ?, ?, ?, ?)";
 
             // Preparamos la sentencia
             $stmtDocente = $this->conexion->prepare($sqlDocente);
