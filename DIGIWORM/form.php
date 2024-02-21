@@ -82,14 +82,34 @@
                     <input type="radio" id="Coordinador" name="Rol" value="Coordinador">
                 </div>
 
+
+
                 <div class="input-field" id="curso_field" style="display:none;">
                     <i class="fas fa-graduation-cap"></i>
-                    <input type="text" id="Curso" name="Curso" placeholder="Curso" />
+                    <select id="Curso" name="Curso">
+                        <option value=""></option>
+                        <?php
+                        // Conexión a la base de datos y consulta de las materias
+                        $conexion = new mysqli("localhost", "root", "", "digiworm_04");
+                        if ($conexion->connect_error) {
+                            die("Error de conexión: " . $conexion->connect_error);
+                        }
+                        $consulta = $conexion->query("SELECT  idCurso, Nombre_curso, Estado FROM curso");
+
+                        // Generar las opciones del select
+                        while ($fila = $consulta->fetch_assoc()) {
+                            echo "<option value='" . $fila['idCurso'] . "'>" . $fila['Nombre_curso'] . "</option>";
+                        }
+                        // Cerrar la conexión
+                        $conexion->close();
+                        ?>
+                    </select>
                 </div>
                 
                 <div class="input-field" id="materia_field" style="display:none;">
                     <i class="fas fa-book"></i>
                     <select id="Materia" name="Materia">
+                        <option value=""></option>
                         <?php
                         // Conexión a la base de datos y consulta de las materias
                         $conexion = new mysqli("localhost", "root", "", "digiworm_04");
@@ -100,13 +120,32 @@
 
                         // Generar las opciones del select
                         while ($fila = $consulta->fetch_assoc()) {
-                            echo "<option value='" . $fila['idmaterias'] . "'>" . $fila['Nombre_Materia'] . "</option>";
+                            echo "<option value='" . $fila['idMaterias'] . "'>" . $fila['Nombre_Materia'] . "</option>";
                         }
                         // Cerrar la conexión
                         $conexion->close();
                         ?>
                     </select>
                 </div>
+
+                <div class="input-field" id="estado" style="display:none;">
+    <label for="Estado">Estado</label>
+    <select id="Estado" name="Estado">
+        <option value=""></option>
+        <option value="Activo">Activo</option>
+        <option value="Inactivo">Inactivo</option>
+    </select>
+</div>
+
+<div class="input-field" id="jornada_field" style="display:none;">
+    <i class="fas fa-clock"></i>
+    <select id="Jornada" name="Jornada">
+        <option value=""></option>
+        <option value="mañana">Mañana</option>
+        <option value="tarde">Tarde</option>
+    </select>
+</div>
+
 
                 <div>
                     <input type="checkbox"/><a href="#" class="href"> <span class="rules-text">"Acepto los términos de servicio"</a></span> 
@@ -116,26 +155,45 @@
 
             </form>
             <script>
-                document.addEventListener("DOMContentLoaded", function() {
-                    var radioButtons = document.querySelectorAll('input[name="Rol"]');
-                    var cursoField = document.getElementById('curso_field');
-                    var materiaField = document.getElementById('materia_field');
+    document.addEventListener("DOMContentLoaded", function() {
+        var radioButtons = document.querySelectorAll('input[name="Rol"]');
+        var cursoField = document.getElementById('curso_field');
+        var materiaField = document.getElementById('materia_field');
+        var estadoField = document.getElementById('estado');
+        var jornadaField = document.getElementById('jornada_field');
 
-                    // Escuchar el cambio en los radios de opción de rol
-                    radioButtons.forEach(function(radioButton) {
-                        radioButton.addEventListener('change', function() {
-                            // Mostrar u ocultar campos según el rol seleccionado
-                            if (this.value === 'Docente') {
-                                cursoField.style.display = 'block';
-                                materiaField.style.display = 'block';
-                            } else {
-                                cursoField.style.display = 'none';
-                                materiaField.style.display = 'none';
-                            }
-                        });
-                    });
-                });
-            </script>
+        // Escuchar el cambio en los radios de opción de rol
+        radioButtons.forEach(function(radioButton) {
+            radioButton.addEventListener('change', function() {
+                // Mostrar u ocultar campos según el rol seleccionado
+                if (this.value === 'Docente') {
+                    cursoField.style.display = 'block';
+                    materiaField.style.display = 'block';
+                    estadoField.style.display = 'block'; // Mostrar el campo de estado
+                    jornadaField.style.display = 'none'; // Ocultar el campo de jornada
+                } else if (this.value === 'Estudiante') {
+                    cursoField.style.display = 'block'; // Mostrar el campo de curso
+                    materiaField.style.display = 'none'; // Ocultar el campo de materia
+                    estadoField.style.display = 'block'; // Ocultar el campo de estado
+                    jornadaField.style.display = 'none'; // Ocultar el campo de jornada
+                } else if (this.value === 'Coordinador') {
+                    cursoField.style.display = 'none';
+                    materiaField.style.display = 'none';
+                    estadoField.style.display = 'block'; // Mostrar el campo de estado
+                    jornadaField.style.display = 'block'; // Mostrar el campo de jornada
+                } else {
+                    cursoField.style.display = 'none';
+                    materiaField.style.display = 'none';
+                    estadoField.style.display = 'block'; // Mostrar el campo de estado
+                    jornadaField.style.display = 'none'; // Ocultar el campo de jornada
+                }
+            });
+        });
+    });
+</script>
+
+
+
         </div>
     </div>
 
