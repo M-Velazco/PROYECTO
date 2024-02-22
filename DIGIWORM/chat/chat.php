@@ -23,7 +23,7 @@ if (!isset($_SESSION['unique_id'])) {
         <a href="usuarios.php" class="back-icon"><i class="fas fa-arrow-left"></i></a>
         <img src="php/images/<?php echo $row['img']; ?>" alt="">
         <div class="details">
-          <span><?php echo $row['fname'] . " " . $row['lname'] ?></span>
+          <span><?php echo $row['Nombres'] . " " . $row['Apellidos'] ?></span>
           <p><?php echo $row['status']; ?></p>
         </div>
       </header>
@@ -32,7 +32,7 @@ if (!isset($_SESSION['unique_id'])) {
       </div>
       <form action="#" class="typing-area">
         <input type="text" class="incoming_id" name="incoming_id" value="<?php echo $user_id; ?>" hidden>
-        <input type="text" name="message" class="input-field" placeholder="Escribe tu mensaje aquí..." autocomplete="off">
+        <input type="text" name="mensajes" class="input-field" placeholder="Escribe tu mensaje aquí..." autocomplete="off">
         <button><i class="fab fa-telegram-plane"></i></button>
       </form>
     </section>
