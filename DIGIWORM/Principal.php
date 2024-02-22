@@ -149,12 +149,8 @@ if (isset($_GET['succes']) && $_GET['succes'] == 'logeado') {
                 <div class="feature-item d-flex align-items-center border-right px-5 mb-4 mb-lg-0">
                     <i class="flaticon-policeman display-3 text-primary mr-4"></i>
                     <div class="">
-                        <h5 class="mb-3">distinguete</h5>
-                        <p class="m-0">No tengas
-                            miedo ala
-                            perfecciön,
-                            nunca la
-                            alcanzaräs.
+                        <h5 class="mb-3">Puentes hacia el Mañana</h5>
+                        <p class="m-0">No veas los obstáculos como barreras, sino como puentes hacia el mañana. Cada desafío es una oportunidad para crecer y avanzar hacia tus metas.
                         </p>
                     </div>
                 </div>
@@ -163,11 +159,8 @@ if (isset($_GET['succes']) && $_GET['succes'] == 'logeado') {
                 <div class="feature-item d-flex align-items-center border-right px-5 mb-4 mb-lg-0">
                     <i class="flaticon-helmet display-3 text-primary mr-4"></i>
                     <div class="">
-                        <h5 class="mb-3">todo es posible</h5>
-                        <p class="m-0">Lo ünico
-                            imposible es
-                            aquello que
-                            no intentas.
+                        <h5 class="mb-3">Cultivando la Mente</h5>
+                        <p class="m-0">Alimenta tu mente con grandes ideas, sueños y conocimientos.
                         </p>
                     </div>
                 </div>
@@ -176,8 +169,8 @@ if (isset($_GET['succes']) && $_GET['succes'] == 'logeado') {
                 <div class="feature-item d-flex align-items-center px-5">
                     <i class="flaticon-surveillance display-3 text-primary mr-4"></i>
                     <div class="">
-                        <h5 class="mb-3">no dejes de dar ideas descabelladas</h5>
-                        <p class="m-0">Siempre calvo,nunca con trenzas
+                        <h5 class="mb-3">Sembrando el Futuro</h5>
+                        <p class="m-0">Cada libro abierto ilumina tu camino hacia oportunidades infinitas. El conocimiento es la semilla, tu esfuerzo la tierra fértil.
                         </p>
                     </div>
                 </div>
@@ -193,24 +186,17 @@ if (isset($_GET['succes']) && $_GET['succes'] == 'logeado') {
             <div class="col-lg-6 py-5 py-lg-0 px-3 px-lg-5">
                 <h5 class="text-primary mb-3">Sigue tus metas</h5>
                 <h1 class="mb-4">Nunca te Rindas</h1>
-                <p>Mirá de cerca al presente
-                    que estás construyendo,
-                    porque debe parecerse
-                    al futuro con el que soñas.</p>
+                <p>Observa detenidamente el presente que estás moldeando; debe reflejar el futuro que deseas.</p>
                 <div class="row py-2">
                     <div class="col-sm-6">
                         <i class="flaticon-approved display-3 text-primary"></i>
-                        <h5 class="mt-2">Alegrate</h5>
-                        <p>Si Ia vida
-                            no te sonrie...
-                            !hazle cosquillas!</p>
+                        <h5 class="mt-2">Páginas de Sabiduría</h5>
+                        <p>En cada página, hallarás la esencia de la verdadera sabiduría.</p>
                     </div>
                     <div class="col-sm-6">
                         <i class="flaticon-medal display-3 text-primary"></i>
                         <h5 class="mt-2">Cree en ti</h5>
-                        <p>HAY ALGO EN Tl
-                            QUE EL MUNDO
-                            NECESITA.</p>
+                        <p>Creer en ti mismo es el cimiento del éxito.</p>
                     </div>
                 </div>
                 <a href="" class="btn btn-lg px-4 btn-primary">Inicio</a>
@@ -220,7 +206,7 @@ if (isset($_GET['succes']) && $_GET['succes'] == 'logeado') {
   
     <div class="container pt-5">
         <div class="d-flex flex-column text-center mb-5">
-            <h5 class="text-primary mb-3">Our Services</h5>
+            <h5 class="text-primary mb-3">Nuestros servicios</h5>
             <h1 class="m-0">Ofreciendo el mejor servicio</h1>
         </div>
         <div class="row pb-3">
@@ -229,13 +215,10 @@ if (isset($_GET['succes']) && $_GET['succes'] == 'logeado') {
                     <img class="card-img-top" src="img/esta-es.jpg" alt="">
                     <div class="card-body bg-secondary d-flex align-items-center p-0">
                         <h3 class="flaticon-desk font-weight-normal d-flex flex-shrink-0 align-items-center justify-content-center bg-primary text-white m-0 mr-3" style="width: 45px; height: 45px;"></h3>
-                        <h6 class="card-title text-white text-truncate m-0">Vida</h6>
+                        <h6 class="card-title text-white text-truncate m-0">Desarrollo Integral</h6>
                     </div>
                     <div class="card-footer">
-                        «Si estås 10 suficientemente
-preocupado por un resultado,
-posiblemente harås algo para
-solucionarlo»
+                        Ofrecemos un ambiente de desarrollo integral donde cada estudiante encuentra el éxito asegurado en cada paso de su educación.
                     </div>
                 </div>
             </div>
@@ -244,13 +227,10 @@ solucionarlo»
                     <img class="card-img-top" src="img/funiblog-fp-empatia.jpg" alt="">
                     <div class="card-body bg-secondary d-flex align-items-center p-0">
                         <h3 class="flaticon-home font-weight-normal d-flex flex-shrink-0 align-items-center justify-content-center bg-primary text-white m-0 mr-3" style="width: 45px; height: 45px;"></h3>
-                        <h6 class="card-title text-white text-truncate m-0">Terrible</h6>
+                        <h6 class="card-title text-white text-truncate m-0">Innovación Educativa</h6>
                     </div>
                     <div class="card-footer">
-                        "Piensa,
-cree,
-sueña y
-atrévete"
+                        Invertimos en innovación educativa, preparándote para el futuro.
                     </div>
                 </div>
             </div>
@@ -259,13 +239,11 @@ atrévete"
                     <img class="card-img-top" src="img/39526785l.jpg" alt="">
                     <div class="card-body bg-secondary d-flex align-items-center p-0">
                         <h3 class="flaticon-factory font-weight-normal d-flex flex-shrink-0 align-items-center justify-content-center bg-primary text-white m-0 mr-3" style="width: 45px; height: 45px;"></h3>
-                        <h6 class="card-title text-white text-truncate m-0" style="color: hwb(120 0% 50%);">Esto tambien</h6>
+                        <h6 class="card-title text-white text-truncate m-0" style="color: hwb(120 0% 50%);"> Estimulación Creativa</h6>
                     </div>
                     <div class="card-footer">
-                        Si Iloras porque no puedes ver el
-                        sol, las lågrimas no te dejarån
-                        ver las estrellas.
-                        </div>
+                        Ofrecemos el espacio perfecto para liberar tu creatividad.                    
+                    </div>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4 mb-4">
@@ -273,14 +251,11 @@ atrévete"
                     <img class="card-img-top" src="img/imagesxd.jpg" alt="">
                     <div class="card-body bg-secondary d-flex align-items-center p-0">
                         <h3 class="flaticon-transportation font-weight-normal d-flex flex-shrink-0 align-items-center justify-content-center bg-primary text-white m-0 mr-3" style="width: 45px; height: 45px;"></h3>
-                        <h6 class="card-title text-white text-truncate m-0">Esto</h6>
+                        <h6 class="card-title text-white text-truncate m-0">Entorno de Inclusión</h6>
                     </div>
                     <div class="card-footer">
-                        Cada
-                        sonrisa te
-                        hace un
-                        dia mås
-                        joven.    </div>
+                        Creamos un entorno de inclusión donde cada estudiante brilla, fomentando un sentido de comunidad y respeto mutuo. 
+                    </div>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4 mb-4">
@@ -288,28 +263,25 @@ atrévete"
                     <img class="card-img-top" src="img/PQS-capacitacion-online-ninos.jpg" alt="">
                     <div class="card-body bg-secondary d-flex align-items-center p-0">
                         <h3 class="flaticon-desk font-weight-normal d-flex flex-shrink-0 align-items-center justify-content-center bg-primary text-white m-0 mr-3" style="width: 45px; height: 45px;"></h3>
-                        <h6 class="card-title text-white text-truncate m-0">Cambiar</h6>
+                        <h6 class="card-title text-white text-truncate m-0">Énfasis en Valores</h6>
                     </div>
                     <div class="card-footer">
-                        iAcepta lo que no puedes cambiar,
-cambia 10 que no puedes aceptar! </div>
-                </div>
+                        Nuestro énfasis en valores va más allá del aula, contribuyendo a la formación de ciudadanos íntegros y comprometidos con la sociedad.                
+                    </div>    
+            </div>
             </div>
             <div class="col-md-6 col-lg-4 mb-4">
                 <div class="card mb-2 p-3">
                     <img class="card-img-top" src="img/crece.jpg" alt="">
                     <div class="card-body bg-secondary d-flex align-items-center p-0">
                         <h3 class="flaticon-bodyguard font-weight-normal d-flex flex-shrink-0 align-items-center justify-content-center bg-primary text-white m-0 mr-3" style="width: 45px; height: 45px;"></h3>
-                        <h6 class="card-title text-white text-truncate m-0">Dios mio perdonalo</h6>
+                        <h6 class="card-title text-white text-truncate m-0">Apoyo Académico </h6>
                     </div>
                     <div class="card-footer">
-                        El 80% de un examen siempre
-                        se basa en una clase
-                        que teperdistey en un tema
-                        que no preparaste.                   </div>
+                        Brindamos un apoyo académico de calidad, cimentando el conocimiento y preparándote para enfrentar cualquier desafío académico                  
+                    </div>
                 </div>
             </div>
-        </div>
     </div>
   
 
