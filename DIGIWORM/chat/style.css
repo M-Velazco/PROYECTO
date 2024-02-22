@@ -13,7 +13,10 @@ body {
   min-height: 100vh;
   padding: 0 10px;
   background-image: url("https://st2.depositphotos.com/1025794/5228/v/950/depositphotos_52280789-stock-illustration-school-supplies-on-blackboard-background.jpg");
+  background-repeat: no-repeat; /* Evitar la repetición de la imagen */
+  background-size: cover; /* Ajustar el tamaño de la imagen para cubrir todo el cuerpo */
 }
+
 
 
 .wrapper{
