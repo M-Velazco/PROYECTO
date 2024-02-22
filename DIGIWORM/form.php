@@ -6,6 +6,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+    
     <link rel="stylesheet" href="style.css" />
     <title>Inicio de sesion</title>
     
@@ -60,27 +61,79 @@
                     <i class="fas fa-lock"></i>
                     <input type="password" id="Pasword" name="Pasword" placeholder="Contraseña" required />
                 </div>
-                <div class="input-field">
-                    <i class="fas fa-lock"></i>
-                    <input type="file" id="img" name="img" placeholder="img" required />
-                </div>
+                
+    
 
-                <div class="input-field">
-                    <i class="fa-solid fa-masks-theater"></i>
-                    <label for="Rol" id="roles">Rol</label></div>
-                <div class="input-radio">
-                    <label for="Docente">Docente</label>
-                    <input type="radio" id="Docente" name="Rol" value="Docente">
-  
-                    <label for="Estudiante">Estudiante</label>
-                    <input type="radio" id="Estudiante" name="Rol" value="Estudiante">
+                <style>
+                       /* Ocultar el input de tipo file */
+   
+    .input-field.custom {
+        /* Estilos específicos para el input-field que deseas afectar */
+        border: 2px solid transparent;
+        border-radius: 25px;
+        padding: 20px;
+        text-align: center;
+        display: inline-block;
+        position: relative;
+        height: 200px;
+    }
 
-                    <label for="Padre de Familia">Padre de Familia</label>
-                    <input type="radio" id="Padre de Familia" name="Rol" value="Padre de Familia">
+    .input-radio {
+    display: grid;
+    grid-template-columns: 8fr 5fr;
+    gap: 28px;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: center;
+    position: absolute;
+    top: 46%;
+    left: 13%;
+    transform: translate(-17%, -30%);
+}
+    .input-radio label {
+        margin-left: 5px;
+    }
 
-                    <label for="Coordinador">Coordinador</label>
-                    <input type="radio" id="Coordinador" name="Rol" value="Coordinador">
-                </div>
+    .input-radio input[type="radio"] {
+        margin-right: 5px;
+    }
+
+    /* Para cubrir los radio buttons con el fondo */
+    .input-field.custom::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #fff; /* Color del fondo */
+        z-index: -1;
+        border-radius: 8px;
+    }
+</style>
+
+<div class="input-field custom">
+    <label for="Rol" id="roles" style="padding-bottom: 10px;">Rol</label>
+    <div class="input-radio">
+        <div style="display: flex; flex-direction: column;">
+            <input type="radio" id="Docente" name="Rol" value="Docente">
+            <label for="Docente">Docente</label>
+        </div>
+        <div style="display: flex; flex-direction: column;">
+            <input type="radio" id="Estudiante" name="Rol" value="Estudiante">
+            <label for="Estudiante">Estudiante</label>
+        </div>
+        <div style="display: flex; flex-direction: column;">
+            <input type="radio" id="Padre de Familia" name="Rol" value="Padre de Familia">
+            <label for="Padre de Familia">Padre de Familia</label>
+        </div>
+        <div style="display: flex; flex-direction: column;">
+            <input type="radio" id="Coordinador" name="Rol" value="Coordinador">
+            <label for="Coordinador">Coordinador</label>
+        </div>
+    </div>
+</div>
 
 
 

@@ -83,10 +83,10 @@ form.sign-in-form {
   }
   .input-radio {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
     margin-left: 2rem;
-  }
+}
   
   .input-radio label {
     margin-bottom: 0.5rem;

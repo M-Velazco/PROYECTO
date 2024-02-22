@@ -3,8 +3,10 @@ require "../modelo/USUARIO.php";
 require "../modelo/conexion.php";
 
 // Recoger datos del formulario
+echo $_POST['Materia']; // Verificar si se recibe el valor correctamente
 $contrasena = $_POST['Pasword'];
 $paswordmd5 = md5($contrasena);
+$img=NULL;
 
 // Crear instancia de la clase Usuario
 $objUsuario = new Usuario();
@@ -17,7 +19,7 @@ $objUsuario->crearUsuario(
     $_POST['Email'],
     $_POST['Telefono'],
     $paswordmd5,
-    $_POST['img'],
+    $img,
     $_POST['Rol'],
     $_POST['Estado'],
 	$_POST['Curso'],

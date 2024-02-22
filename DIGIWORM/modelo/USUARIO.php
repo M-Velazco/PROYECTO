@@ -183,14 +183,14 @@ class Usuario
     }
 
 
-	public function crearUsuario($Idusuarios,$Nombres,$Apellidos,$Email,$Telefono,$Contraseña,$img,$Rol,$Estado,$Curso , $Materia, $Jornada )
+	public function crearUsuario($Idusuarios,$Nombres,$Apellidos,$Email,$Telefono,$Pasword,$img = NULL,$Rol,$Estado,$Curso , $Materia, $Jornada )
 	{
 		$this->Idusuarios=$Idusuarios;
 		$this->Nombres=$Nombres;
 		$this->Apellidos=$Apellidos;
 		$this->Email=$Email;
 		$this->Telefono=$Telefono;
-		$this->Contraseña=$Contraseña ;
+		$this->Pasword=$Pasword ;
 		$this->img=$img;
 		$this->Rol=$Rol;
 		$this->Estado=$Estado;
@@ -199,25 +199,32 @@ class Usuario
 		$this->Jornada=$Jornada;
 		
 	}
-	
 	public function agregarUsuario()
 {
     // Preparamos la consulta para insertar en la tabla 'usuarios'
-    $sqlUsuarios = "INSERT INTO usuarios (Idusuarios, Nombres, Apellidos, Email, Telefono, Contrasena, img, Rol, Estado) 
+    $sqlUsuarios = "INSERT INTO usuarios (Idusuarios, Nombres, Apellidos, Email, Telefono, Pasword, img, Rol, Estado) 
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-    // Preparamos la sentencia
+    // Ejecutamos la consulta para insertar en la tabla 'usuarios'
     $stmtUsuarios = $this->conexion->prepare($sqlUsuarios);
 
-    // Enlazamos los parámetros
-    $stmtUsuarios->bind_param("isssissss", $this->Idusuarios, $this->Nombres, $this->Apellidos, $this->Email, $this->Telefono, $this->Contraseña, $this->img, $this->Rol, $this->Estado);
+    // Verificamos si la preparación fue exitosa
+    if (!$stmtUsuarios) {
+        return false;
+    }
 
+    // Asignamos el valor NULL al campo img
+   
+
+    // Enlazamos los parámetros
+    $stmtUsuarios->bind_param("isssissss", $this->Idusuarios, $this->Nombres, $this->Apellidos, $this->Email, $this->Telefono, $this->Pasword, $this->img, $this->Rol, $this->Estado);
 
     // Ejecutamos la sentencia
     $resultadoUsuarios = $stmtUsuarios->execute();
 
-    // Verificamos si la inserción fue exitosa
+    // Verificamos si la inserción en la tabla 'usuarios' fue exitosa
     if (!$resultadoUsuarios) {
+        $stmtUsuarios->close();
         $this->conexion->close();
         return false;
     }
@@ -225,82 +232,75 @@ class Usuario
     // Insertamos datos específicos según el rol del usuario
     switch ($this->Rol) {
         case "Docente":
-            // Preparamos la consulta para insertar en la tabla 'docente'
-            $sqlDocente = "INSERT INTO docente (idDocente, Nombres, Apellidos, Email, Pasword, Curso, Materia) 
-                        VALUES (?, ?, ?, ?, ?, ?, ?)";
-
-            // Preparamos la sentencia
-            $stmtDocente = $this->conexion->prepare($sqlDocente);
-
-            // Enlazamos los parámetros
-            $stmtDocente->bind_param("issssii", $this->Idusuarios, $this->Nombres, $this->Apellidos, $this->Email, $this->Contraseña, $this->Curso, $this->Materia);
-
-            // Ejecutamos la sentencia
-            $resultadoDocente = $stmtDocente->execute();
-
-            // Verificamos si la inserción fue exitosa
-            if (!$resultadoDocente) {
-                $this->conexion->close();
-                return false;
-            }
+            $resultadoInsercion = $this->insertarDocente();
             break;
 
         case "Estudiante":
-            // Preparamos la consulta para insertar en la tabla 'estudiante'
-            $sqlEstudiante = "INSERT INTO estudiante (idEstudiante, Nombres, Apellidos, Email, Pasword, Curso) 
-                              VALUES (?, ?, ?, ?, ?, ?)";
-
-            // Preparamos la sentencia
-            $stmtEstudiante = $this->conexion->prepare($sqlEstudiante);
-
-            // Enlazamos los parámetros
-            $stmtEstudiante->bind_param("issssi", $this->Idusuarios, $this->Nombres, $this->Apellidos, $this->Email, $this->Contraseña, $this->Curso);
-
-            // Ejecutamos la sentencia
-            $resultadoEstudiante = $stmtEstudiante->execute();
-
-            // Verificamos si la inserción fue exitosa
-            if (!$resultadoEstudiante) {
-                $this->conexion->close();
-                return false;
-            }
+            $resultadoInsercion = $this->insertarEstudiante();
             break;
 
         case "Coordinador":
-            // Asegúrate de obtener la jornada del formulario y validarla correctamente
-            $jornada = $_POST['Jornada'];
-
-            // Preparamos la consulta para insertar en la tabla 'coordinador'
-            $sqlCoordinador = "INSERT INTO coordinador (idCoordinador, Nombres, Apellidos, Email, Pasword, Jornada) 
-                               VALUES (?, ?, ?, ?, ?, ?)";
-
-            // Preparamos la sentencia
-            $stmtCoordinador = $this->conexion->prepare($sqlCoordinador);
-
-            // Enlazamos los parámetros
-            $stmtCoordinador->bind_param("isssss", $this->Idusuarios, $this->Nombres, $this->Apellidos, $this->Email, $this->Contraseña, $jornada);
-
-            // Ejecutamos la sentencia
-            $resultadoCoordinador = $stmtCoordinador->execute();
-
-            // Verificamos si la inserción fue exitosa
-            if (!$resultadoCoordinador) {
-                $this->conexion->close();
-                return false;
-            }
+            $resultadoInsercion = $this->insertarCoordinador();
             break;
 
         // Agrega más casos según los diferentes roles
 
         default:
             // No es necesario agregar ningún dato adicional para otros roles
+            $resultadoInsercion = true;
             break;
     }
 
-    // Cerramos la conexión
+    $stmtUsuarios->close();
     $this->conexion->close();
-    return true;
+
+    return $resultadoInsercion;
 }
+
+
+
+private function insertarDocente()
+{
+    // Preparar e insertar en la tabla 'docente'
+    $sqlDocente = "INSERT INTO docente (idDocente, Nombres, Apellidos, Email, Pasword, Curso, Materia) 
+                   VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $stmtDocente = $this->conexion->prepare($sqlDocente);
+    $stmtDocente->bind_param("isssssi", $this->Idusuarios, $this->Nombres, $this->Apellidos, $this->Email, $this->Pasword, $this->Curso, $this->Materia);
+    $resultadoDocente = $stmtDocente->execute();
+    $stmtDocente->close();
+
+    return $resultadoDocente;
+}
+
+private function insertarEstudiante()
+{
+    // Preparar e insertar en la tabla 'estudiante'
+    $sqlEstudiante = "INSERT INTO estudiante (idEstudiante, Nombres, Apellidos, Email, Pasword, Curso) 
+                      VALUES (?, ?, ?, ?, ?, ?)";
+    $stmtEstudiante = $this->conexion->prepare($sqlEstudiante);
+    $stmtEstudiante->bind_param("issssi", $this->Idusuarios, $this->Nombres, $this->Apellidos, $this->Email, $this->Pasword, $this->Curso);
+    $resultadoEstudiante = $stmtEstudiante->execute();
+    $stmtEstudiante->close();
+
+    return $resultadoEstudiante;
+}
+
+private function insertarCoordinador()
+{
+    // Asegúrate de obtener la jornada del formulario y validarla correctamente
+    $jornada = $_POST['Jornada'];
+
+    // Preparar e insertar en la tabla 'coordinador'
+    $sqlCoordinador = "INSERT INTO coordinador (idCoordinador, Nombres, Apellidos, Email, Pasword, Jornada) 
+                       VALUES (?, ?, ?, ?, ?, ?)";
+    $stmtCoordinador = $this->conexion->prepare($sqlCoordinador);
+    $stmtCoordinador->bind_param("isssss", $this->Idusuarios, $this->Nombres, $this->Apellidos, $this->Email, $this->Pasword, $jornada);
+    $resultadoCoordinador = $stmtCoordinador->execute();
+    $stmtCoordinador->close();
+
+    return $resultadoCoordinador;
+}
+
 
 
 
