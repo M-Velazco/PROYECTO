@@ -3,7 +3,7 @@
 $host = "localhost";
 $user = "root";
 $password = "";
-$database = "digiworm";
+$database = "digiworm_04";
 
 
 $conexion = mysqli_connect($host, $user, $password, $database);

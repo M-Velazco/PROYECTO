@@ -1,6 +1,6 @@
 <?php
 if (isset($_POST['registrar'])) {
-    $idactividades = $_GET['idactividades']; // Obtén el ID del registro a actualizar
+    $idactividades = $_GET['idActividades']; // Obtén el ID del registro a actualizar
     $nombreA = $_POST['nombreA'];
     $Materia = $_POST['Materia'];
 

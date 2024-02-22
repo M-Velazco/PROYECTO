@@ -23,14 +23,48 @@
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <label for="Materia" class="form-label">Materia</label>
-                                <input type="number" id="Materia" name="Materia" class="form-control" required>
+                                <select id="Materia" name="Materia" class="form-control">
+                        <option value=""></option>
+                        <?php
+                        // Conexión a la base de datos y consulta de las materias
+                        $conexion = new mysqli("localhost", "root", "", "digiworm_04");
+                        if ($conexion->connect_error) {
+                            die("Error de conexión: " . $conexion->connect_error);
+                        }
+                        $consulta = $conexion->query("SELECT  idMaterias, Nombre_Materia FROM materias");
+
+                        // Generar las opciones del select
+                        while ($fila = $consulta->fetch_assoc()) {
+                            echo "<option value='" . $fila['idMaterias'] . "'>" . $fila['Nombre_Materia'] . "</option>";
+                        }
+                        // Cerrar la conexión
+                        $conexion->close();
+                        ?>
+                    </select> 
                             </div>
                         </div>
                     </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <label for="docente" class="form-label">Docente</label>
-                                <input type="number" id="docente" name="docente" class="form-control" required>
+                                <label for="Docente" class="form-label">Docente</label>
+                                <select id="Docente" name="Docente" class="form-control">
+                        <option value=""></option>
+                        <?php
+                        // Conexión a la base de datos y consulta de las materias
+                        $conexion = new mysqli("localhost", "root", "", "digiworm_04");
+                        if ($conexion->connect_error) {
+                            die("Error de conexión: " . $conexion->connect_error);
+                        }
+                        $consulta = $conexion->query("SELECT  idDocente, Nombres, Apellidos FROM docente");
+
+                        // Generar las opciones del select
+                        while ($fila = $consulta->fetch_assoc()) {
+                            echo "<option value='" . $fila['idDocente'] . "'>" . $fila['Nombres'] . "' " . $fila['Apellidos'] . "</option>";
+                        }
+                        // Cerrar la conexión
+                        $conexion->close();
+                        ?>
+                    </select> 
                             </div>
                         </div>
                     </div>
@@ -43,6 +77,14 @@
                         <input type="file" name="Archivo" id="Archivo" class="form-control" required>
 
                     </div>
+                    <div class="col-sm-6">
+                            <div class="mb-3">
+                    <select id="Estado" name="Estado" >
+    <option value="">Selecciona una opción</option>
+    <option value="Activo">Activo</option>
+    <option value="Inactivo">Inactivo</option>
+</select>  </div>
+                        </div>
 
                     <br>
 

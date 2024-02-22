@@ -44,6 +44,7 @@
                             <th scope="col">Materia</th>
                             <th scope="col">Docente</th>
                             <th scope="col">Archivo</th>
+                            <th scope="col">Estado</th>
                             <th scope="col">Descargar</th>
                         </tr>
                     </thead>
@@ -56,19 +57,20 @@
 
                     ?>
                             <tr>
-                            <td><?php echo $fila['idactividades'] ;?></td>
-                            <td><?php echo $fila['Nom_act'] ;?></td>
-                            <td><?php echo $fila['Materia_act'] ;?></td>
+                            <td><?php echo $fila['idActividades'] ;?></td>
+                            <td><?php echo $fila['Nombre_act'] ;?></td>
+                            <td><?php echo $fila['Asignatura'] ;?></td>
                             <td><?php echo $fila['Docente'] ;?></td>
                             <td><?php echo $fila['Archivo'] ;?></td>
+                            <td><?php echo $fila['Estado'] ;?></td>
                                 <td>
-                                    <a href="../includes/download.php?idactividades= <?php echo $fila['idactividades'] ;?>" class="btn btn-primary">
+                                    <a href="../includes/download.php?idActividades= <?php echo $fila['idActividades'] ;?>" class="btn btn-primary">
                                 <i class="fas fa-download"></i></a>
                                 
-                                <a href="actualizar.php?idactividades=<?php echo $fila['idactividades']; ?>" class="btn btn-warning">
+                                <a href="actualizar.php?idActividades=<?php echo $fila['idActividades']; ?>" class="btn btn-warning">
                                 <i class="fas fa-edit"></i> Actualizar
 
-                                <a href="../includes/eliminar.php?idactividades=<?php echo $fila['idactividades']; ?>" class="btn btn-danger">
+                                <a href="../includes/eliminar.php?idActividades=<?php echo $fila['idActividades']; ?>" class="btn btn-danger">
                                 <i class="fas fa-trash"></i> Eliminar
                                 </td>
                             

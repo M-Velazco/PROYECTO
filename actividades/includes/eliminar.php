@@ -1,12 +1,12 @@
 <?php
-if (isset($_GET['idactividades'])) {
-    $idactividades = $_GET['idactividades'];
+if (isset($_GET['idActividades'])) {
+    $idactividades = $_GET['idActividades'];
 
     // Realiza la conexión a la base de datos (asegúrate de incluir tu archivo de conexión)
     require_once "../includes/db.php";
 
     // Realiza una consulta para eliminar el registro con el ID proporcionado
-    $sql = "DELETE FROM actividades WHERE idactividades = $idactividades";
+    $sql = "DELETE FROM actividades WHERE idActividades = $idactividades";
 
     if (mysqli_query($conexion, $sql)) {
         // La eliminación se realizó con éxito
