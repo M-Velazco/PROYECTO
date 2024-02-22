@@ -101,10 +101,10 @@ if (isset($_GET['succes']) && $_GET['succes'] == 'logeado') {
                                                 <li><a href="#"><span>Foros</span></a></li>
                                                 <li><a href="#"><span>Actividades</span></a></li>
                                                 <li><a href="#"><span>Cursos</span></a></li>
-                                                <li><a href="spa-html-template\Publicaciones.html"><span>Publicaciones</span></a></li>
+                                                <li><a href="Publicaciones.html"><span>Publicaciones</span></a></li>
                                                 <li><a href="#"><span>Notas</span></a></li>
                                                 <li><a href="spa-html-template\Docentes.php"><span>Docentes</span></a></li>
-                                                <li><a href="#"><span>Boletines</span></a></li>
+                                                <li><a href="chat"><span>Chat</span></a></li>
                                              </ul>
                                         </div>
                                         <!-- End of Nav Structure -->
