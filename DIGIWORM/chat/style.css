@@ -11,8 +11,10 @@ body{
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: #3beb84;
+  background: #74ed4f;
   padding: 0 10px;
+  background-image: url("https://st4.depositphotos.com/10325396/23951/i/1600/depositphotos_239513046-stock-photo-programming-code-abstract-technology-background.jpg");
+
 }
 .wrapper{
   background: #fff;
@@ -31,7 +33,7 @@ body{
   font-size: 25px;
   font-weight: 600;
   padding-bottom: 10px;
-  border-bottom: 1px solid #20ab38;
+  border-bottom: 1px solid #4eeb80;
 }
 .form form{
   margin: 20px 0;
@@ -70,7 +72,7 @@ body{
   font-size: 16px;
   padding: 0 10px;
   border-radius: 5px;
-  border: 1px solid #73eb5b;
+  border: 1px solid #1926da;
 }
 .form form .field input{
   outline: none;
@@ -83,7 +85,7 @@ body{
   border: none;
   color: #fff;
   font-size: 17px;
-  background: #41df5b;
+  background: #34c4e0;
   border-radius: 5px;
   cursor: pointer;
   margin-top: 13px;

@@ -1,17 +1,17 @@
 <?php
 session_start();
 include_once "config.php";
-$email = mysqli_real_escape_string($conn, $_POST['email']);
-$password = mysqli_real_escape_string($conn, $_POST['password']);
-if (!empty($email) && !empty($password)) {
-    $sql = mysqli_query($conn, "SELECT * FROM users WHERE email = '{$email}'");
+$Email = mysqli_real_escape_string($conn, $_POST['Email']);
+$Password = mysqli_real_escape_string($conn, $_POST['Password']);
+if (!empty($Email) && !empty($Password)) {
+    $sql = mysqli_query($conn, "SELECT * FROM usuarios WHERE Email = '{$Email}'");
     if (mysqli_num_rows($sql) > 0) {
         $row = mysqli_fetch_assoc($sql);
-        $user_pass = md5($password);
-        $enc_pass = $row['password'];
+        $user_pass = md5($Password);
+        $enc_pass = $row['Password'];
         if ($user_pass === $enc_pass) {
             $status = "Disponible";
-            $sql2 = mysqli_query($conn, "UPDATE users SET status = '{$status}' WHERE unique_id = {$row['unique_id']}");
+            $sql2 = mysqli_query($conn, "UPDATE usuarios SET status = '{$status}' WHERE unique_id = {$row['unique_id']}");
             if ($sql2) {
                 $_SESSION['unique_id'] = $row['unique_id'];
                 echo "Proceso Exitoso";
@@ -22,7 +22,7 @@ if (!empty($email) && !empty($password)) {
             echo "¡Correo electrónico o la contraseña son incorrectos!";
         }
     } else {
-        echo "$email - ¡Este correo electrónico no existe!";
+        echo "$Email - ¡Este correo electrónico no existe!";
     }
 } else {
     echo "¡Todos los campos de entrada son obligatorios!";

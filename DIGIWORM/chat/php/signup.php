@@ -1,15 +1,15 @@
 <?php
 session_start();
 include_once "config.php";
-$fname = mysqli_real_escape_string($conn, $_POST['fname']);
-$lname = mysqli_real_escape_string($conn, $_POST['lname']);
-$email = mysqli_real_escape_string($conn, $_POST['Email']);
-$password = mysqli_real_escape_string($conn, $_POST['password']);
-if (!empty($fname) && !empty($lname) && !empty($email) && !empty($password)) {
-    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $sql = mysqli_query($conn, "SELECT * FROM usuarios WHERE Email = '{$email}'");
+$Nombres = mysqli_real_escape_string($conn, $_POST['Nombres']);
+$Apellidos = mysqli_real_escape_string($conn, $_POST['Apellidos']);
+$Email = mysqli_real_escape_string($conn, $_POST['Email']);
+$Password = mysqli_real_escape_string($conn, $_POST['Password']);
+if (!empty($Nombres) && !empty($Apellidos) && !empty($Email) && !empty($Password)) {
+    if (filter_var($Email, FILTER_VALIDATE_EMAIL)) {
+        $sql = mysqli_query($conn, "SELECT * FROM usuarios WHERE Email = '{$Email}'");
         if (mysqli_num_rows($sql) > 0) {
-            echo "$email - ¡Este e-mail ya existe!";
+            echo "$Email - ¡Este e-mail ya existe!";
         } else {
             if (isset($_FILES['image'])) {
                 $img_name = $_FILES['image']['name'];
@@ -28,11 +28,11 @@ if (!empty($fname) && !empty($lname) && !empty($email) && !empty($password)) {
                         if (move_uploaded_file($tmp_name, "images/" . $new_img_name)) {
                             $ran_id = rand(time(), 100000000);
                             $status = "Disponible";
-                            $encrypt_pass = md5($password);
-                            $insert_query = mysqli_query($conn, "INSERT INTO usuarios (unique_id, fname, lname, Email, password, img, status)
-                                VALUES ({$ran_id}, '{$fname}','{$lname}', '{$email}', '{$encrypt_pass}', '{$new_img_name}', '{$status}')");
+                            $encrypt_pass = md5($Password);
+                            $insert_query = mysqli_query($conn, "INSERT INTO usuarios (unique_id, fname, lname, Email, Password, img, status)
+                                VALUES ({$ran_id}, '{$Nombres}','{$Apellidos}', '{$Email}', '{$encrypt_pass}', '{$new_img_name}', '{$status}')");
                             if ($insert_query) {
-                                $select_sql2 = mysqli_query($conn, "SELECT * FROM usuarios WHERE email = '{$email}'");
+                                $select_sql2 = mysqli_query($conn, "SELECT * FROM usuarios WHERE Email = '{$Email}'");
                                 if (mysqli_num_rows($select_sql2) > 0) {
                                     $result = mysqli_fetch_assoc($select_sql2);
                                     $_SESSION['unique_id'] = $result['unique_id'];
