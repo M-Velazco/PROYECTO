@@ -183,7 +183,7 @@ class Usuario
     }
 
 
-	public function crearUsuario($Idusuarios,$Nombres,$Apellidos,$Email,$Telefono,$Pasword,$img = NULL,$Rol,$Estado,$Curso , $Materia, $Jornada )
+	public function crearUsuario($Idusuarios,$Nombres,$Apellidos,$Email,$Telefono,$Pasword,$img ,$Rol,$Estado,$Curso , $Materia, $Jornada )
 	{
 		$this->Idusuarios=$Idusuarios;
 		$this->Nombres=$Nombres;
@@ -242,6 +242,9 @@ class Usuario
         case "Coordinador":
             $resultadoInsercion = $this->insertarCoordinador();
             break;
+        case "Padre_de_Familia":
+            $resultadoInsercion = $this->insertarPadre_F();
+            break;
 
         // Agrega más casos según los diferentes roles
 
@@ -275,10 +278,10 @@ private function insertarDocente()
 private function insertarEstudiante()
 {
     // Preparar e insertar en la tabla 'estudiante'
-    $sqlEstudiante = "INSERT INTO estudiante (idEstudiante, Nombres, Apellidos, Email, Pasword, Curso) 
+    $sqlEstudiante = "INSERT INTO estudiante (idEstudiante, Nombres, Apellidos, Email, Pasword, Curso, Estado) 
                       VALUES (?, ?, ?, ?, ?, ?)";
     $stmtEstudiante = $this->conexion->prepare($sqlEstudiante);
-    $stmtEstudiante->bind_param("issssi", $this->Idusuarios, $this->Nombres, $this->Apellidos, $this->Email, $this->Pasword, $this->Curso);
+    $stmtEstudiante->bind_param("issssi", $this->Idusuarios, $this->Nombres, $this->Apellidos, $this->Email, $this->Pasword, $this->Curso, $this->Estado);
     $resultadoEstudiante = $stmtEstudiante->execute();
     $stmtEstudiante->close();
 
@@ -299,6 +302,22 @@ private function insertarCoordinador()
     $stmtCoordinador->close();
 
     return $resultadoCoordinador;
+}
+
+private function insertarPadre_F()
+{
+    // Asegúrate de obtener la jornada del formulario y validarla correctamente
+    $estado = $_POST['Estado'];
+
+    // Preparar e insertar en la tabla 'coordinador'
+    $sqlPadre_F = "INSERT INTO padre_familia (idPadre_Familia, Estado_representante, Estado	) 
+                       VALUES (?, ?, ?)";
+    $stmtPadre_F = $this->conexion->prepare($sqlPadre_F);
+    $stmtPadre_F->bind_param("iss", $this->Idusuarios, $this->Estado, $this->Estado);
+    $resultadoPadre_F = $stmtPadre_F->execute();
+    $stmtPadre_F->close();
+
+    return $resultadoPadre_F;
 }
 
 

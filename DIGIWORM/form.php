@@ -125,7 +125,7 @@
             <label for="Estudiante">Estudiante</label>
         </div>
         <div style="display: flex; flex-direction: column;">
-            <input type="radio" id="Padre de Familia" name="Rol" value="Padre de Familia">
+            <input type="radio" id="Padre de Familia" name="Rol" value="Padre_de_Familia">
             <label for="Padre de Familia">Padre de Familia</label>
         </div>
         <div style="display: flex; flex-direction: column;">
@@ -190,6 +190,8 @@
     </select>
 </div>
 
+
+
 <div class="input-field" id="jornada_field" style="display:none;">
     <i class="fas fa-clock"></i>
     <select id="Jornada" name="Jornada">
@@ -244,6 +246,36 @@
         });
     });
 </script>
+<?php
+if (isset($_GET['error']) && $_GET['error'] == 'usuario_no_encontrado') {
+    echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@10'></script>"; // Incluye SweetAlert desde CDN
+
+    echo "<script>
+            document.addEventListener('DOMContentLoaded', function() {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error de inicio de sesión',
+                    text: 'Usuario no encontrado. Por favor, verifica tus credenciales e intenta nuevamente.'
+                });
+            });
+          </script>";
+}
+?>
+<?php
+if (isset($_GET['error']) && $_GET['error'] == 'campo_incompleto') {
+    echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@10'></script>"; // Incluye SweetAlert desde CDN
+
+    echo "<script>
+            document.addEventListener('DOMContentLoaded', function() {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error de inicio de sesión',
+                    text: 'Usuario no encontrado. Por favor, verifica tus credenciales e intenta nuevamente.'
+                });
+            });
+          </script>";
+}
+?>
 
 
 
