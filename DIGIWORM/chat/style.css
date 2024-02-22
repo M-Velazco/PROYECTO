@@ -6,16 +6,16 @@
   text-decoration: none;
   font-family: 'Poppins', sans-serif;
 }
-body{
+body {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: #74ed4f;
   padding: 0 10px;
-  background-image: url("https://st4.depositphotos.com/10325396/23951/i/1600/depositphotos_239513046-stock-photo-programming-code-abstract-technology-background.jpg");
-
+  background-image: url("https://st2.depositphotos.com/1025794/5228/v/950/depositphotos_52280789-stock-illustration-school-supplies-on-blackboard-background.jpg");
 }
+
+
 .wrapper{
   background: #fff;
   max-width: 450px;
