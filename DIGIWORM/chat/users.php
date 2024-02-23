@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once "php/config.php";
-if (!isset($_SESSION['unique_id'])) {
+if (!isset($_SESSION['Idusuarios'])) {
   header("location: login.php");
 }
 ?>
@@ -13,18 +13,18 @@ if (!isset($_SESSION['unique_id'])) {
       <header>
         <div class="content">
           <?php
-          $sql = mysqli_query($conn, "SELECT * FROM usuarios WHERE unique_id = {$_SESSION['unique_id']}");
+          $sql = mysqli_query($conn, "SELECT * FROM usuarios WHERE Idusuarios = {$_SESSION['Idusuarios']}");
           if (mysqli_num_rows($sql) > 0) {
             $row = mysqli_fetch_assoc($sql);
           }
           ?>
           <img src="php/images/<?php echo $row['img']; ?>" alt="">
           <div class="details">
-            <span><?php echo $row['fname'] . " " . $row['lname'] ?></span>
+            <span><?php echo $row['Nombres'] . " " . $row['Apellidos'] ?></span>
             <p><?php echo $row['status']; ?></p>
           </div>
         </div>
-        <a href="php/logout.php?logout_id=<?php echo $row['unique_id']; ?>" class="logout">Cerrar Sesión</a>
+        <a href="php/logout.php?logout_id=<?php echo $row['Idusuarios']; ?>" class="logout">Cerrar Sesión</a>
       </header>
       <div class="search">
         <span class="text">Selecciona un usuario para iniciar el chat</span>

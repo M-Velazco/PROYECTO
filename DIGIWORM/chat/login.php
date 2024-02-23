@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION['unique_id'])) {
+if (isset($_SESSION['Idusuarios'])) {
   header("location: users.php");
 }
 ?>
@@ -19,7 +19,7 @@ if (isset($_SESSION['unique_id'])) {
         </div>
         <div class="field input">
           <label>Contraseña</label>
-          <input type="password" name="Password" placeholder="Ingresa tu Contraseña" required>
+          <input type="password" name="Pasword" placeholder="Ingresa tu Contraseña" required>
           <i class="fas fa-eye"></i>
         </div>
         <div class="field button">
