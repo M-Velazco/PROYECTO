@@ -8,15 +8,17 @@ import { PrincipalComponent } from './principal/principal.component';
 import { PublicacionesComponent } from './publicaciones/publicaciones.component';
 import { DocentesComponent } from './docentes/docentes.component';
 import { CursoComponent } from './curso/curso.component';
+import {AppComponents} from './Materias/src/app/app.component';
 
 const routes: Routes = [
-  { path: '', component: IndexComponent },
+  { path: 'Index', component: IndexComponent },
   { path: 'Login', component: LoginComponent },
   { path: 'docentes', component: DocentesComponent },
   {path:'chat',component:ChatComponent},
   {path:'principal',component: PrincipalComponent},
   {path:'Publicaciones',component: PublicacionesComponent},
   { path: 'curso', component: CursoComponent },
+  { path: 'Materias', component: AppComponents },
   { path: '', redirectTo: 'Index', pathMatch: 'full' },
 
    // Ruta por defecto para manejar rutas no encontradas

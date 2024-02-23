@@ -1,8 +1,8 @@
 <?php
 $hostname = "localhost";
 $username = "root";
-$password = "sena";
-$dbname = "digiworm";
+$password = "";
+$dbname = "digiworm_04";
 
 $conn = mysqli_connect($hostname, $username, $password, $dbname);
 if (!$conn) {

@@ -15,12 +15,14 @@ import { PrincipalComponent } from './principal/principal.component';
 import { PublicacionesComponent } from './publicaciones/publicaciones.component';
 import { DocentesComponent } from './docentes/docentes.component';
 import { CursoComponent } from './curso/curso.component';
+import {AppComponents} from './Materias/src/app/app.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    AppComponents,
     LoginComponent,
     IndexComponent,
     ChatComponent,

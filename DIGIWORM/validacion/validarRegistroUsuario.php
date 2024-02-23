@@ -1,21 +1,39 @@
 <?php
-//Se reciben los datos del formulario
-require ( "../modelo\USUARIO.php");
+require "../modelo/USUARIO.php";
 require "../modelo/conexion.php";
-extract ($_REQUEST);
 
-//Forma utilizando la Clase Empleado
-$contrasena = $_REQUEST['Contrasena'];
-$contrasenamd5 = md5($contrasena);
+// Recoger datos del formulario
+echo $_POST['Materia']; // Verificar si se recibe el valor correctamente
+$contrasena = $_POST['Pasword'];
+$paswordmd5 = md5($contrasena);
+$img=NULL;
+
+// Crear instancia de la clase Usuario
 $objUsuario = new Usuario();
 
-$objUsuario->crearUsuario($_REQUEST['Idusuario'] , $_REQUEST['Nombre'], $_REQUEST['Correo'], $_REQUEST['Telefono'] ,$contrasenamd5 , $_REQUEST['Rol']);
+// Llamar al método para crear el usuario
+$objUsuario->crearUsuario(
+    $_POST['Idusuario'],
+    $_POST['Nombres'],
+    $_POST['Apellidos'],
+    $_POST['Email'],
+    $_POST['Telefono'],
+    $paswordmd5,
+    $img,
+    $_POST['Rol'],
+    $_POST['Estado'],
+	$_POST['Curso'],
+	$_POST['Materia'],
+	$_POST['Jornada']
 
+);
+
+// Llamar al método para agregar el usuario
 $resultado = $objUsuario->agregarUsuario();
 
-if ($resultado == TRUE)
-header("Location: " . $_SERVER['HTTP_REFERER']);  //x=5 quiere decir que se agrego bien
-else
-	echo "no se ha registrado bien"; //x=6 quiere decir que no se pudo agregar
-
+if ($resultado) {
+    header("Location: " . $_SERVER['HTTP_REFERER']); // Redireccionar si se agregó correctamente
+} else {
+    echo "No se ha registrado correctamente"; // Mostrar mensaje de error si falla
+}
 ?>

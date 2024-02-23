@@ -12,9 +12,9 @@ body,
 input {
   font-family: "Poppins", sans-serif;
 }
-
+  
 .container {
-  position: relative;
+  
   width: 100%;
   background-color: rgba(219, 206, 213, 0);
   min-height: 100vh;
@@ -66,7 +66,7 @@ form.sign-in-form {
   font-size: 2.2rem;
   color: #444;
   margin-bottom: 10px;
-
+  
 }
 
 .sign-up-form .input-field {
@@ -281,7 +281,7 @@ form.sign-in-form {
     font-size: 0.8rem;
     transition: 00.5s ease-in-out;
   }
-
+  
 .href{
   font-family: "Poppins", sans-serif;
   text-decoration: none;

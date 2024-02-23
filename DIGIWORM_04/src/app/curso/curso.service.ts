@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CursoService {
 
-  url = 'http://localhost/Backend/Curso/';
+  url = 'http://localhost/PROYECTO/DIGIWORM_04/src/app/curso/Backend/Curso/';
 
   constructor(private http: HttpClient) { }
 

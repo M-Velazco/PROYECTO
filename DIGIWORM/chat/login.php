@@ -15,11 +15,11 @@ if (isset($_SESSION['unique_id'])) {
         <div class="error-text"></div>
         <div class="field input">
           <label>Dirección de Correo Electrónico</label>
-          <input type="text" name="email" placeholder="Ingresa tu Correo Registrado" required>
+          <input type="text" name="Email" placeholder="Ingresa tu Correo Registrado" required>
         </div>
         <div class="field input">
           <label>Contraseña</label>
-          <input type="password" name="password" placeholder="Ingresa tu Contraseña" required>
+          <input type="password" name="Password" placeholder="Ingresa tu Contraseña" required>
           <i class="fas fa-eye"></i>
         </div>
         <div class="field button">
