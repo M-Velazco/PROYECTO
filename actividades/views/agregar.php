@@ -25,21 +25,21 @@
                                 <label for="Materia" class="form-label">Materia</label>
                                 <select id="Materia" name="Materia" class="form-control">
                         <option value=""></option>
-                        <?php
-                        // Conexión a la base de datos y consulta de las materias
-                        $conexion = new mysqli("localhost", "root", "", "digiworm_04");
-                        if ($conexion->connect_error) {
-                            die("Error de conexión: " . $conexion->connect_error);
-                        }
-                        $consulta = $conexion->query("SELECT  idMaterias, Nombre_Materia FROM materias");
+                       <?php
+                                    // Conexión a la base de datos y consulta de las materias
+                                    $conexion = new mysqli("localhost", "root", "", "digiworm_04");
+                                    if ($conexion->connect_error) {
+                                        die("Error de conexión: " . $conexion->connect_error);
+                                    }
+                                    $consulta = $conexion->query("SELECT Nombre_Materia FROM materias");
 
-                        // Generar las opciones del select
-                        while ($fila = $consulta->fetch_assoc()) {
-                            echo "<option value='" . $fila['idMaterias'] . "'>" . $fila['Nombre_Materia'] . "</option>";
-                        }
-                        // Cerrar la conexión
-                        $conexion->close();
-                        ?>
+                                    // Generar las opciones del select
+                                    while ($fila = $consulta->fetch_assoc()) {
+                                        echo "<option value='" . $fila['Nombre_Materia'] . "'>" . $fila['Nombre_Materia'] . "</option>";
+                                    }
+                                    // Cerrar la conexión
+                                    $conexion->close();
+                                    ?>
                     </select> 
                             </div>
                         </div>
