@@ -29,7 +29,7 @@ if (!empty($Nombres) && !empty($Apellidos) && !empty($Email) && !empty($Password
                             $ran_id = rand(time(), 100000000);
                             $status = "Disponible";
                             $encrypt_pass = md5($Password);
-                            $insert_query = mysqli_query($conn, "INSERT INTO usuarios (unique_id, Nombres, Apellidos, Email, Password, img, status)
+                            $insert_query = mysqli_query($conn, "INSERT INTO usuarios (Idusuarios, Nombres, Apellidos, Email, Pasword, img, status)
                                 VALUES ({$ran_id}, '{$Nombres}','{$Apellidos}', '{$Email}', '{$encrypt_pass}', '{$new_img_name}', '{$status}')");
                             if ($insert_query) {
                                 $select_sql2 = mysqli_query($conn, "SELECT * FROM usuarios WHERE Email = '{$Email}'");
