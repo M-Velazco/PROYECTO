@@ -98,7 +98,7 @@ if (isset($_GET['succes']) && $_GET['succes'] == 'logeado') {
                                         <button class="cn-button" id="cn-button">Menu</button>
                                         <div class="cn-wrapper" id="cn-wrapper">
                                             <ul>
-                                                <li><a href="#"><span>Foros</span></a></li>
+                                                <li><a href="foros\principal.php"><span>Foros</span></a></li>
                                                 <li><a href="#"><span>Actividades</span></a></li>
                                                 <li><a href="#"><span>Cursos</span></a></li>
                                                 <li><a href="Publicaciones.html"><span>Publicaciones</span></a></li>
