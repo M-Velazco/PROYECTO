@@ -279,9 +279,9 @@ private function insertarEstudiante()
 {
     // Preparar e insertar en la tabla 'estudiante'
     $sqlEstudiante = "INSERT INTO estudiante (idEstudiante, Nombres, Apellidos, Email, Pasword, Curso, Estado) 
-                      VALUES (?, ?, ?, ?, ?, ?)";
+                      VALUES (?, ?, ?, ?, ?, ?, ?)";
     $stmtEstudiante = $this->conexion->prepare($sqlEstudiante);
-    $stmtEstudiante->bind_param("issssi", $this->Idusuarios, $this->Nombres, $this->Apellidos, $this->Email, $this->Pasword, $this->Curso, $this->Estado);
+    $stmtEstudiante->bind_param("issssis", $this->Idusuarios, $this->Nombres, $this->Apellidos, $this->Email, $this->Pasword, $this->Curso, $this->Estado);
     $resultadoEstudiante = $stmtEstudiante->execute();
     $stmtEstudiante->close();
 
