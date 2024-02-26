@@ -270,7 +270,7 @@ if (isset($_GET['error']) && $_GET['error'] == 'campo_incompleto') {
                 Swal.fire({
                     icon: 'error',
                     title: 'Error de inicio de sesión',
-                    text: 'Usuario no encontrado. Por favor, verifica tus credenciales e intenta nuevamente.'
+                    text: 'Campo incompleto. Por favor, verifica que estan todos los campos completos he intenta nuevamente.'
                 });
             });
           </script>";
