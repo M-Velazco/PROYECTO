@@ -7,7 +7,22 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
+    <?php 
+if (isset($_GET['succes']) && $_GET['succes'] == 'logeado') {
+    echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@10'></script>"; // Incluye SweetAlert desde CDN
 
+    echo "<script>
+            document.addEventListener('DOMContentLoaded', function() {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Haz iniciado',
+                    text: 'Bienvenido/a haz logrado ingresar'
+                    
+                });
+            });
+          </script>";
+}
+?>
     <!-- Favicon -->
     <link href="img/LOGO.png" rel="icon">
 
