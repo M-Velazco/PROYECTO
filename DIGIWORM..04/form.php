@@ -143,7 +143,7 @@
                         <option value=""></option>
                         <?php
                         // Conexión a la base de datos y consulta de las materias
-                        $conexion = new mysqli("localhost", "root", "", "digiworm_04");
+                        $conexion = new mysqli("localhost", "root", "sena", "digiworm_04");
                         if ($conexion->connect_error) {
                             die("Error de conexión: " . $conexion->connect_error);
                         }
@@ -165,7 +165,7 @@
                         <option value=""></option>
                         <?php
                         // Conexión a la base de datos y consulta de las materias
-                        $conexion = new mysqli("localhost", "root", "", "digiworm_04");
+                        $conexion = new mysqli("localhost", "root", "sena", "digiworm_04");
                         if ($conexion->connect_error) {
                             die("Error de conexión: " . $conexion->connect_error);
                         }
