@@ -309,6 +309,6 @@ if (isset($_GET['error']) && $_GET['error'] == 'campo_incompleto') {
         </div>
     </div>
 </div>
-<script src="js\main.js"></script>
+<script src="js\main04.js"></script>
 </body>
 </html>
