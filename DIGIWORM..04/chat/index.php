@@ -9,6 +9,14 @@ if (isset($_SESSION['Idusuarios'])) {
 
 <body>
   <div class="wrapper">
+    <nav>
+      <ul>
+      <ul>
+  <li><a href="javascript:history.go(-1);" style="background-color: #FF5733; color: white; padding: 10px 20px; border-radius: 3px; text-decoration: none;">Salir</a></li>
+</ul>
+
+      </ul>
+    </nav>
     <section class="form signup">
       <header> Registro De Chat en Línea </header>
       <form action="#" method="POST" enctype="multipart/form-data" autocomplete="off">

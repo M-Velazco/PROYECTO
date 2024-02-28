@@ -86,7 +86,7 @@ if (isset($_GET['succes']) && $_GET['succes'] == 'Comentado') {
                     <a href="Docentes.html" class="nav-item nav-link">Docentes</a>
                     <a href="Foros.html" class="nav-item nav-link">Foros</a>
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
+                        <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
                         <div class="dropdown-menu rounded-0 m-0">
                             <a href="Actividades.html" class="dropdown-item">Actividades</a>
                             <a href="Publicaciones.html" class="dropdown-item">Publicaciones</a>
