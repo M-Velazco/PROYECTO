@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 23-02-2024 a las 23:14:42
+-- Tiempo de generación: 28-02-2024 a las 20:35:02
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.0.26
 
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `actividades` (
   PRIMARY KEY (`idActividades`),
   KEY `Docente_nom_docente` (`Docente`),
   KEY `Asignaturas_Materias` (`Asignatura`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Volcado de datos para la tabla `actividades`
@@ -131,11 +131,11 @@ CREATE TABLE IF NOT EXISTS `docente` (
 --
 
 INSERT INTO `docente` (`idDocente`, `Nombres`, `Apellidos`, `Email`, `Pasword`, `Curso`, `Materia`) VALUES
-(1087956, 'manolo', 'rodriguez', 'villabilons@gmail.com', '6cbd30439c17ba8f35216e676a37596c', 1, 3),
 (142223657, 'Didier', 'Orozco', 'Orozco09@gmail.com', '598d8591e55346928b3a3a0a01da9ee5', 1, NULL),
 (1025538177, 'Aurelio', 'Rivas Renteria', 'Aurelio2023@gmail.com', '8223b621da582c18a06f35b39efcdbed', 1, NULL),
 (1054115102, 'Vilma ', 'Barrios Gomez', 'EldiabloAndante@gmail.com', '93d7abad7bbf270154ff3270fe46f4d3', 1, NULL),
-(1059643579, 'Luz Jenny', 'Romero', 'Luzdetusojos@gmail.com', '5da2297bad6924526e48e00dbfc3c27a', 1, NULL);
+(1059643579, 'Luz Jenny', 'Romero', 'Luzdetusojos@gmail.com', '5da2297bad6924526e48e00dbfc3c27a', 1, NULL),
+(2147483647, 'luis ', 'fernando', 'jeapnieto1@soy.sena.edu.co', 'e10adc3949ba59abbe56e057f20f883e', 1, 3);
 
 -- --------------------------------------------------------
 
@@ -168,8 +168,7 @@ CREATE TABLE IF NOT EXISTS `estudiante` (
 INSERT INTO `estudiante` (`idEstudiante`, `Nombres`, `Apellidos`, `Email`, `Pasword`, `Curso`, `Estado`) VALUES
 (15479320, 'Bladimir', 'Perez', 'BladimirPerez@gmail.com', 'ad05f53f6bc2c9525e016c8d2415dbe8', NULL, 'Activo'),
 (100030256, 'Santiago', 'Orjuela', 'orjtailand@gmail.com', '12157a63af655888c72bcb10bfbf0cc7', NULL, 'Activo'),
-(1030521423, 'Alejandra', 'Andrade', 'jennyandrade1302@gmail.com', '3c9f06a12a72aa72674e57e05a7a56f0', NULL, 'Activo'),
-(1068732649, 'Juan David', 'Julio Rodriguez', 'drax4544@gmail.com', 'c2ad0505b278b44c423fd08fd8a85d72', NULL, 'Activo');
+(1030521423, 'Alejandra', 'Andrade', 'jennyandrade1302@gmail.com', '3c9f06a12a72aa72674e57e05a7a56f0', NULL, 'Activo');
 
 -- --------------------------------------------------------
 
@@ -223,7 +222,7 @@ CREATE TABLE IF NOT EXISTS `mensajes` (
   `Mensaje_saliente` int DEFAULT NULL,
   `Mensaje` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`Idmensaje`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Volcado de datos para la tabla `mensajes`
@@ -234,7 +233,36 @@ INSERT INTO `mensajes` (`Idmensaje`, `Mensaje_entrante`, `Mensaje_saliente`, `Me
 (2, 1059643579, 1030521423, 'hola'),
 (3, 1030521423, 1059643579, 'como estas'),
 (4, 10000, 1059643579, 'hola mkon'),
-(5, 1059643579, 10000, 'hola pendeja');
+(5, 1059643579, 10000, 'hola pendeja'),
+(6, 1030521423, 1101443174, 'hola');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `opiniones`
+--
+
+DROP TABLE IF EXISTS `opiniones`;
+CREATE TABLE IF NOT EXISTS `opiniones` (
+  `iDopinion` int NOT NULL AUTO_INCREMENT,
+  `Nombres_Apellidos` varchar(200) DEFAULT NULL,
+  `Email` varchar(100) NOT NULL,
+  `Opinion` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  PRIMARY KEY (`iDopinion`),
+  KEY `iDpadres` (`Nombres_Apellidos`) USING BTREE
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `opiniones`
+--
+
+INSERT INTO `opiniones` (`iDopinion`, `Nombres_Apellidos`, `Email`, `Opinion`) VALUES
+(1, 'Juan David Julio Rodriguez', 'draxjulio13@gmail.com', 'Es un desarrollo bastante fructífero y bastante versátil y sencillo para el fácil manejo de el mismo'),
+(2, 'Dilan Romero', 'DilanRom@gmail.com', '¡¡Me gusta!!'),
+(3, 'johan santiago villanueva roa', 'villabilons@gmail.com', 'Me parece super la pagina'),
+(4, 'Juan David Julio Rodríguez', 'draxjulio13@gmail.com', 'es super importante la educacion hoy en dia siendo que asi guiamos a la persona del mañana para poder tener un futuro mejor'),
+(5, 'magdy velazco', 'magdy17@gmail.com', 'este es un buen aplicativo por que fue elaborado por nosotros hajajajja'),
+(6, 'stiven oliveros', 'oliverossilvajohan@gmail.com', 'sobelo .com');
 
 -- --------------------------------------------------------
 
@@ -249,14 +277,6 @@ CREATE TABLE IF NOT EXISTS `padre_familia` (
   `Estado` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idPadre_Familia`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
-
---
--- Volcado de datos para la tabla `padre_familia`
---
-
-INSERT INTO `padre_familia` (`idPadre_Familia`, `Estado_representante`, `Estado`) VALUES
-(123456789, 0, 'Activo'),
-(1000162100, 0, 'Activo');
 
 -- --------------------------------------------------------
 
@@ -293,9 +313,9 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `Estado` enum('Activo','Inactivo') CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
   `status` varchar(255) NOT NULL,
   PRIMARY KEY (`Idusuarios`),
+  UNIQUE KEY `Email` (`Email`) USING BTREE,
   KEY `Nombres` (`Nombres`) USING BTREE,
   KEY `Apellidos` (`Apellidos`),
-  KEY `Email` (`Email`),
   KEY `Password` (`Pasword`),
   KEY `Estado` (`Estado`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
@@ -306,25 +326,20 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 
 INSERT INTO `usuarios` (`Idusuarios`, `Nombres`, `Apellidos`, `Email`, `Telefono`, `Pasword`, `img`, `Rol`, `Estado`, `status`) VALUES
 (10000, 'Jimmy', 'Avila', 'Jimmy2020@gmail.com', 3241742555, '5a1dfc0934d7a2fe6b9d1c41e2913dca', '1652660564avatar.png', 'Coordinador', 'Activo', 'Offline now'),
-(1087956, 'manolo', 'rodriguez', 'villabilons@gmail.com', 3234167037, '6cbd30439c17ba8f35216e676a37596c', '1652660564avatar.png', 'Docente', 'Activo', ''),
-(1220121, 'ray', 'reinols', 'villabilons@gmail.com', 3234167037, 'e10adc3949ba59abbe56e057f20f883e', '1652660564avatar.png', '', 'Activo', ''),
 (1563298, 'leydi ', 'Roa', 'Coordinadora@gmail.com', 3152363254, '7b9c0a9b357cd7c707742562f82add2c', '1652660564avatar.png', 'Coordinador', 'Activo', ''),
 (10000568, 'Johan Santiagooo', 'Villanueva Roa', 'villabilons@gmail.com', 3234167037, '0f81efae2d3ada62b2208b530c89a820', '1652660564avatar.png', 'Estudiante', 'Activo', ''),
 (15479320, 'Bladimir', 'Perez', 'BladimirPerez@gmail.com', 3114574875, 'ad05f53f6bc2c9525e016c8d2415dbe8', '1652660564avatar.png', 'Estudiante', 'Activo', ''),
 (100030256, 'Santiago', 'Orjuela', 'orjtailand@gmail.com', 3154897654, '12157a63af655888c72bcb10bfbf0cc7', '1652660564avatar.png', 'Estudiante', 'Activo', ''),
-(123456789, 'ray', 'reinolsss', 'villabilons@gmail.com', 3234167037, '202cb962ac59075b964b07152d234b70', '1652660564avatar.png', '', 'Activo', ''),
 (142223657, 'Didier', 'Orozco', 'Orozco09@gmail.com', 3215642585, '598d8591e55346928b3a3a0a01da9ee5', '1652660564avatar.png', 'Docente', 'Activo', ''),
 (144789442, 'Carlos', 'Ñampira', 'ñampira@gmail.com', 3212652555, '766d6265e98dd6f396ef768ed988036f', '1652660564avatar.png', 'Coordinador', 'Activo', ''),
-(188999999, 'saintsens', 'Villanueva Roa', 'villabilons@gmail.com', 3234167037, '25f9e794323b453885f5181f1b624d0b', NULL, 'Estudiante', 'Activo', ''),
-(1000162100, 'OLIVEROSG', 'JOHAN', 'villabilons@gmail.com', 3234167037, 'e10adc3949ba59abbe56e057f20f883e', NULL, '', 'Activo', ''),
 (1023537206, 'Jeison', 'Villanueva', 'jei555555@gmail.com', 3144787155, '7c4c5a96ac34d000f49e9ecefad47722', '1652660564avatar.png', 'Coordinador', 'Activo', ''),
 (1025538177, 'Aurelio', 'Rivas Renteria', 'Aurelio2023@gmail.com', 3172548978, '8223b621da582c18a06f35b39efcdbed', '1652660564avatar.png', 'Docente', 'Activo', ''),
 (1030521423, 'Alejandra', 'Andrade', 'jennyandrade1302@gmail.com', 3198792555, '3c9f06a12a72aa72674e57e05a7a56f0', '1652660564avatar.png', 'Estudiante', 'Activo', 'Offline now'),
-(1030537206, 'Johan Santiago ', 'Villanueva Roa', 'villabilons@gmail.com', 3234167037, '6bb86ea7e413b4ca009b617f43880de0', '1652660564avatar.png', 'Docente', 'Activo', ''),
 (1037589660, 'johan saintana', 'hurtado', 'johnhurt2305@gmail.com', 3555897987, 'e10adc3949ba59abbe56e057f20f883e', '1652660564avatar.png', 'Coordinador', 'Activo', ''),
 (1054115102, 'Vilma ', 'Barrios Gomez', 'EldiabloAndante@gmail.com', 3241742555, '93d7abad7bbf270154ff3270fe46f4d3', '1652660564avatar.png', 'Docente', 'Activo', ''),
 (1059643579, 'Luz Jenny', 'Romero', 'Luzdetusojos@gmail.com', 3241242155, '5da2297bad6924526e48e00dbfc3c27a', '1652660564avatar.png', 'Docente', 'Activo', 'Offline now'),
-(1068732649, 'Juan David', 'Julio Rodriguez', 'drax4544@gmail.com', 3211211121, 'c2ad0505b278b44c423fd08fd8a85d72', '1652660564avatar.png', 'Estudiante', 'Activo', '');
+(1101443174, 'Juan David', 'Julio Rodríguez ', 'draxjulio13@gmail.com', 3136065261, '3882a7d8c99e7f13c7b4debae42cbb91', NULL, 'Estudiante', 'Activo', 'Offline now'),
+(2147483647, 'luis ', 'fernando', 'jeapnieto1@soy.sena.edu.co', 12035310, 'e10adc3949ba59abbe56e057f20f883e', NULL, 'Docente', 'Activo', '');
 
 --
 -- Restricciones para tablas volcadas
@@ -357,6 +372,7 @@ ALTER TABLE `docente`
 -- Filtros para la tabla `estudiante`
 --
 ALTER TABLE `estudiante`
+  ADD CONSTRAINT `Curso_idCurse` FOREIGN KEY (`Curso`) REFERENCES `curso` (`idCurso`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   ADD CONSTRAINT `EmailEst_Email` FOREIGN KEY (`Email`) REFERENCES `usuarios` (`Email`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   ADD CONSTRAINT `idEstudiante_usuarios` FOREIGN KEY (`idEstudiante`) REFERENCES `usuarios` (`Idusuarios`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
