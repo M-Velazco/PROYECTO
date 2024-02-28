@@ -80,7 +80,7 @@ if (isset($_GET['succes']) && $_GET['succes'] == 'Comentado') {
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav font-weight-bold mx-auto py-0">
-                    <a href="index.php" class="nav-item nav-link active">Home</a>
+                    <a href="index04.php" class="nav-item nav-link active">Home</a>
                     <a href="Principal.html" class="nav-item nav-link">Principal</a>
                     <a href="chat" class="nav-item nav-link">Chat</a>
                     <a href="Docentes.html" class="nav-item nav-link">Docentes</a>

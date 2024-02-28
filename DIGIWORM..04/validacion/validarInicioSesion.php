@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['Idusuario']) && !empt
         // Inicio de sesión exitoso, redirige a la página de inicio
         session_start();
         if (isset($_SESSION['Idusuarios'])) {
-          header("location:../index04.php?succes=logeado");
+          header("location:../index.html?succes=logeado");
         }
         exit(); // Detiene la ejecución del script después de redirigir
     } else {
