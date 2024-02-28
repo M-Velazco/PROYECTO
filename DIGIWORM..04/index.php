@@ -394,61 +394,46 @@ if (isset($_GET['succes']) && $_GET['succes'] == 'logeado') {
                 <h1 class="mb-4">¡Qué dicen los padres!</h1>
             </div>
             <div class="owl-carousel testimonial-carousel">
-                <div class="testimonial-item px-3">
-                    <div class="bg-light shadow-sm rounded mb-4 p-4">
-                        <h3 class="fas fa-quote-left text-primary mr-3"></h3>
-                        ¡Descubre un mundo de aprendizaje y crecimiento en nuestra institución educativa! Con programas innovadores, profesores apasionados y un ambiente de apoyo, estamos aquí para ayudarte a alcanzar tus metas académicas y personales.
-                    </div>
-                    <div class="d-flex align-items-center">
-                        <img class="rounded-circle" src="img/testimonial-1.jpg" style="width: 70px; height: 70px;" alt="Image">
-                        <div class="pl-3">
-                            <h5>Jose Maria</h5>
-                            <i>Padre de Familia</i>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-item px-3">
-                    <div class="bg-light shadow-sm rounded mb-4 p-4">
-                        <h3 class="fas fa-quote-left text-primary mr-3"></h3>
-                        Creando oportunidades para el mañana.
+    <?php 
+    $conexion = new mysqli("localhost", "root", "sena", "digiworm_04");
 
-"¡Bienvenido a tu nueva casa educativa!
-                    </div>
-                    <div class="d-flex align-items-center">
-                        <img class="rounded-circle" src="img/testimonial-2.jpg" style="width: 70px; height: 70px;" alt="Image">
-                        <div class="pl-3">
-                            <h5>Maria Vargas</h5>
-                            <i>Docente</i>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-item px-3">
-                    <div class="bg-light shadow-sm rounded mb-4 p-4">
-                        <h3 class="fas fa-quote-left text-primary mr-3"></h3>
-                        "Recuerda que el éxito no es solo el destino final, sino el viaje que recorres para llegar allí. Disfruta del proceso y celebra cada pequeño logro."
-                    </div>
-                    <div class="d-flex align-items-center">
-                        <img class="rounded-circle" src="img/testimonial-3.jpg" style="width: 70px; height: 70px;" alt="Image">
-                        <div class="pl-3">
-                            <h5>Manuel Eduardo</h5>
-                            <i>Padre de Familia</i>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-item px-3">
-                    <div class="bg-light shadow-sm rounded mb-4 p-4">
-                        <h3 class="fas fa-quote-left text-primary mr-3"></h3>
-                        El conocimiento es el poder que te permite transformar tu vida y el mundo que te rodea. ¡No subestimes el poder de tu educación!"
-                    </div>
-                    <div class="d-flex align-items-center">
-                        <img class="rounded-circle" src="img/testimonial-4.jpg" style="width: 70px; height: 70px;" alt="Image">
-                        <div class="pl-3">
-                            <h5>Francisco Javier</h5>
-                            <i>Padre de Familia</i>
-                        </div>
-                    </div>
-                </div>
+    // Verificar si hay errores de conexión
+    if ($conexion->connect_error) {
+        die("Error de conexión: " . $conexion->connect_error);
+    }
+
+    // Ejecutar la consulta SQL
+    $consulta = $conexion->query("SELECT Opinion, Nombres_Apellidos FROM opiniones");
+
+    // Verificar si la consulta se ejecutó correctamente
+    if (!$consulta) {
+        die("Error en la consulta SQL: " . $conexion->error);
+    }
+
+    // Inicio del bucle para repetir el bloque
+    while ($fila = $consulta->fetch_assoc()) {
+    ?>
+    <div class="testimonial-item px-3">
+        <div class="bg-light shadow-sm rounded mb-4 p-4">
+            <h3 class="fas fa-quote-left text-primary mr-3"></h3>
+            <?php echo $fila['Opinion']; ?>
+        </div>
+        <div class="d-flex align-items-center">
+            <img class="rounded-circle" src="img/profp.png" style="width: 70px; height: 70px;" alt="Image">
+            <div class="pl-3">
+                <h5><?php echo $fila['Nombres_Apellidos']; ?></h5>
+                <i>Padre de Familia</i>
             </div>
+        </div>
+    </div>
+    <?php 
+    } // Fin del bucle
+
+    // Cerrar la conexión
+    $conexion->close();
+    ?>
+</div>
+
         </div>
     </div>
     <!-- Testimonial End -->
@@ -559,19 +544,20 @@ if (isset($_GET['succes']) && $_GET['succes'] == 'logeado') {
             
             <div class="col-lg-3 col-md-6 mb-5">
                 <h3 class="text-primary mb-4">Testimonio</h3>
-                <form action="">
+                <form action="validacion/opinion.php" method="POST" >
                     <div class="form-group">
-                        <input type="text" class="form-control border-0 py-4" placeholder="Nombres y Apellidos" required="required" />
+                        <input type="text" class="form-control border-0 py-4" name="Nombres_Apellidos" id="Nombres_Apellidos" placeholder="Nombres y Apellidos" required="required" />
                     </div>
                     <div class="form-group">
-                        <input type="email" class="form-control border-0 py-4" placeholder="Email"
+                        <input type="email" class="form-control border-0 py-4" name="Email" id="Email" placeholder="Email"
                             required="required" />
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control border-0 py-4" placeholder="Mensaje" required="required" />
+                        <input type="text" class="form-control border-0 py-4" name="Opinion" id="Opinion" placeholder="Mensaje" required="required" />
                     </div>
                     <div>
-                        <button class="btn btn-primary btn-block border-0 py-3" type="submit">Enviar</button>
+                        
+                        <input type="submit" value="Ingresar" class="btn btn-primary btn-block border-0 py-3" />
                     </div>
                 </form>
             </div>
