@@ -12,7 +12,7 @@ $sql = "INSERT INTO opiniones (Nombres_Apellidos, Email, Opinion) VALUES ('$Nomb
 
 // Ejecutar la consulta
 if ($Conexion->query($sql) === TRUE) {
-    echo "Registro insertado correctamente";
+    header("location:../index04.php?succes=Comentado");
 } else {
     echo "Error al insertar registro: " . $Conexion->error;
 }

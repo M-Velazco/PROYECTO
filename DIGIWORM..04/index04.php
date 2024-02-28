@@ -1,6 +1,12 @@
+<?php
+session_start();
+include_once "php/config.php";
+if (!isset($_SESSION['Idusuarios'])) {
+  header("location: login.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <title>DIGIWORM</title>
@@ -17,6 +23,22 @@ if (isset($_GET['succes']) && $_GET['succes'] == 'logeado') {
                     icon: 'success',
                     title: 'Haz iniciado',
                     text: 'Bienvenido/a haz logrado ingresar'
+                    
+                });
+            });
+          </script>";
+}
+?>
+<?php 
+if (isset($_GET['succes']) && $_GET['succes'] == 'Comentado') {
+    echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@10'></script>"; // Incluye SweetAlert desde CDN
+
+    echo "<script>
+            document.addEventListener('DOMContentLoaded', function() {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Felicidades',
+                    text: 'Opinion  enviada correctamente!'
                     
                 });
             });
