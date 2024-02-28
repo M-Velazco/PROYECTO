@@ -19,7 +19,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['Idusuario']) && !empt
     // Intenta realizar el inicio de sesión
     if ($objUsuarios->consultarUsuarioContraseña($Idusuarios, $Paswordmd5)) {
         // Inicio de sesión exitoso, redirige a la página de inicio
-        header("location:../index.php?succes=logeado");
+        session_start();
+        if (isset($_SESSION['Idusuarios'])) {
+          header("location:../index04.php?succes=logeado");
+        }
         exit(); // Detiene la ejecución del script después de redirigir
     } else {
         // Inicio de sesión fallido, redirige a la página de inicio de sesión con un mensaje de error
