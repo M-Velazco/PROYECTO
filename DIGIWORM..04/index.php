@@ -58,16 +58,16 @@ if (isset($_GET['succes']) && $_GET['succes'] == 'logeado') {
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav font-weight-bold mx-auto py-0">
-                    <a href="index.html" class="nav-item nav-link active">Home</a>
-                    <a href="about.html" class="nav-item nav-link">Principal</a>
+                    <a href="index.php" class="nav-item nav-link active">Home</a>
+                    <a href="Principal.html" class="nav-item nav-link">Principal</a>
                     <a href="chat" class="nav-item nav-link">Chat</a>
-                    <a href="team.html" class="nav-item nav-link">Docentes</a>
-                    <a href="gallery.html" class="nav-item nav-link">Foros</a>
+                    <a href="Docentes.html" class="nav-item nav-link">Docentes</a>
+                    <a href="Foros.html" class="nav-item nav-link">Foros</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
                         <div class="dropdown-menu rounded-0 m-0">
-                            <a href="blog.html" class="dropdown-item">Actividades</a>
-                            <a href="single.html" class="dropdown-item">Publicaciones</a>
+                            <a href="Actividades.html" class="dropdown-item">Actividades</a>
+                            <a href="Publicaciones.html" class="dropdown-item">Publicaciones</a>
                         </div>
                     </div>
                     
