@@ -319,12 +319,8 @@ if (isset($_GET['succes']) && $_GET['succes'] == 'logeado') {
                                     <input type="email" class="form-control border-0 p-4" placeholder="Su Email" required="required" />
                                 </div>
                                 <div class="form-group">
-                                    <select class="custom-select border-0 px-4" style="height: 47px;">
-                                        <option selected>Seleccione una clase</option>
-                                        <option value="1">Validacion</option>
-                                        <option value="2">Certificacion</option>
-                                        <option value="3">Class </option>
-                                    </select>
+                                    <input type="Date">
+                                    <input type="time">
                                 </div>
                                 <div>
                                     <button class="btn btn-secondary btn-block border-0 py-3" type="submit">Enviar</button>
@@ -342,6 +338,7 @@ if (isset($_GET['succes']) && $_GET['succes'] == 'logeado') {
     <!-- Team Start -->
     <div class="container-fluid pt-5">
         <div class="container">
+            
             <div class="text-center pb-2">
                 <p class="section-title px-5"><span class="px-2">Docentes</span></p>
                 <h1 class="mb-4">Conoce a nuestros Docentes
