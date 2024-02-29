@@ -247,6 +247,21 @@
     });
 </script>
 <?php
+if (isset($_GET['error']) && $_GET['error'] == 'nologeado') {
+    echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@10'></script>"; // Incluye SweetAlert desde CDN
+
+    echo "<script>
+            document.addEventListener('DOMContentLoaded', function() {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error al ingresar usuario no logeado',
+                    text: 'Usuario no logeado. Por favor, inicie sesion.'
+                });
+            });
+          </script>";
+}
+?>
+<?php
 if (isset($_GET['error']) && $_GET['error'] == 'usuario_no_encontrado') {
     echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@10'></script>"; // Incluye SweetAlert desde CDN
 
