@@ -33,13 +33,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
-            $mail->Username = 'villabilons@gmail.com'; // Tu dirección de correo electrónico de Gmail
-            $mail->Password = 'qgjn maps yzqa vtpv'; // Tu contraseña de Gmail
+            $mail->Username = 'digiworm04@gmail.com'; // Tu dirección de correo electrónico de Gmail
+            $mail->Password = 'dvlg rorn frlt jtgy'; // Tu contraseña de Gmail
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587; // Puerto SMTP para TLS/STARTTLS
 
             // Configurar remitente y destinatario
-            $mail->setFrom('villabilons@gmail.com', 'Johan');
+            $mail->setFrom('Digiworm04@gmail.com', 'Digiworm');
             $mail->addAddress($email, $nombre);
 
             // Configurar el contenido del correo
