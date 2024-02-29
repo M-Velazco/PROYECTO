@@ -1,3 +1,13 @@
+
+<?php
+session_start();
+include_once "modelo/conexion.php";
+if (!isset($_SESSION['Idusuarios'])) {
+  header("location: form.php?error=nologeado");
+}
+?>
+
+
 <?php
 // Inicia la sesión
 session_start();
