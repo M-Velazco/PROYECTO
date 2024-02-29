@@ -320,8 +320,71 @@ private function insertarPadre_F()
     return $resultadoPadre_F;
 }
 
+public function obtenerRolUsuario($Idusuario) {
+	// Query para obtener el rol del usuario basado en su ID
+	$query = "SELECT Rol FROM usuarios WHERE Idusuarios = ?";
 
+	// Preparar la sentencia
+	$stmt = $this->conexion->prepare($query);
 
+	// Vincular parámetros
+	$stmt->bind_param("i", $Idusuario);
+
+	// Ejecutar la consulta
+	$stmt->execute();
+
+	// Obtener el resultado
+	$stmt->bind_result($rol);
+
+	// Obtener el rol del usuario
+	if ($stmt->fetch()) {
+		return $rol;
+	} else {
+		return null; // Si no se encuentra el usuario, devolver null o manejar el caso adecuadamente
+	}
+
+	// Cerrar la sentencia
+	$stmt->close();
+}
+
+function obtenerRutaImagenUsuario($Idusuario) {
+    // Conecta a la base de datos
+    require_once "conexion.php";
+    $objConexion = Conectarse();
+
+    // Prepara la consulta SQL para obtener la ruta de la imagen del usuario
+    $consulta = $objConexion->prepare("SELECT img FROM usuarios WHERE Idusuarios = ?");
+    $consulta->bind_param("i", $Idusuario);
+    $consulta->execute();
+    $consulta->bind_result($imagen);
+    
+    // Obtiene el resultado
+    $consulta->fetch();
+    
+    // Devuelve la ruta de la imagen
+    return $imagen;
+}
+
+public function obtenerNombreUsuario($Idusuarios) {
+        // Preparar la consulta SQL
+        $consulta = $this->conexion->prepare("SELECT Nombres, Apellidos FROM usuarios WHERE Idusuarios = ?");
+        
+        // Vincular parámetros y ejecutar la consulta
+        $consulta->bind_param("i", $Idusuarios);
+        $consulta->execute();
+
+        // Obtener el resultado de la consulta
+        $resultado = $consulta->get_result();
+        
+        // Verificar si se encontraron resultados
+        if ($resultado->num_rows > 0) {
+            // Obtener el nombre del primer usuario (asumiendo que el ID es único)
+            $fila = $resultado->fetch_assoc();
+            return $fila['Nombres'] . ' ' . $fila['Apellidos'];
+        } else {
+            return "Usuario no encontrado";
+        }
+    }
 
 	public function modificarUsuario($Idusuarios)
 	{	

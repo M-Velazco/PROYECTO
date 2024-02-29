@@ -1,10 +1,31 @@
 <?php
+// Inicia la sesión
 session_start();
-include_once "php/config.php";
-if (!isset($_SESSION['Idusuarios'])) {
-  header("location: login.php");
+
+// Verifica si la variable de sesión 'Idusuario' está establecida para determinar si el usuario está conectado
+if(isset($_SESSION['Idusuario'])) {
+    $usuario_conectado = true;
+
+    // Crea una instancia de la clase Usuario y conecta a la base de datos
+    require_once "modelo/USUARIO.php";
+    require_once "modelo/conexion.php";
+    $objConexion = Conectarse();
+    $objUsuarios = new Usuario($objConexion);
+
+    // Obtiene el nombre del usuario basado en su ID
+    $nombre_usuario = $objUsuarios->obtenerNombreUsuario($_SESSION['Idusuario']);
+
+    // Obtiene la ruta de la imagen de perfil del usuario
+    $ruta_imagen = $objUsuarios->obtenerRutaImagenUsuario($_SESSION['Idusuario']);
+    $rol_usuario = $objUsuarios->obtenerRutaImagenUsuario($_SESSION['Idusuario']);
+
+
+    
+} else {
+    $usuario_conectado = false;
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,6 +88,8 @@ if (isset($_GET['succes']) && $_GET['succes'] == 'Comentado') {
 </head>
 
 <body>
+
+
     <!-- Navbar Start -->
     <div class="container-fluid bg-light position-relative shadow">
         <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0 px-lg-5">
@@ -79,24 +102,39 @@ if (isset($_GET['succes']) && $_GET['succes'] == 'Comentado') {
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                <div class="navbar-nav font-weight-bold mx-auto py-0">
-                    <a href="index04.php" class="nav-item nav-link active">Home</a>
-                    <a href="Principal.html" class="nav-item nav-link">Principal</a>
-                    <a href="chat" class="nav-item nav-link">Chat</a>
-                    <a href="Docentes.html" class="nav-item nav-link">Docentes</a>
-                    <a href="Foros.html" class="nav-item nav-link">Foros</a>
-                    <div class="nav-item dropdown">
-                        <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
-                        <div class="dropdown-menu rounded-0 m-0">
-                            <a href="Actividades.html" class="dropdown-item">Actividades</a>
-                            <a href="Publicaciones.html" class="dropdown-item">Publicaciones</a>
-                        </div>
-                    </div>
-                    
+    <div class="navbar-nav font-weight-bold mx-auto py-0">
+        <a href="index04.php" class="nav-item nav-link active">Home</a>
+        <a href="Principal.html" class="nav-item nav-link">Principal</a>
+        <?php if ($rol_usuario === 'Estudiante'): ?>
+            <a href="chat" class="nav-item nav-link">Chat</a>
+            <a href="Foros.html" class="nav-item nav-link">Foros</a>
+        <?php else: ?>
+            <a href="Docentes.html" class="nav-item nav-link">Docentes</a>
+            <div class="nav-item dropdown">
+                <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
+                <div class="dropdown-menu rounded-0 m-0">
+                    <a href="Actividades.html" class="dropdown-item">Actividades</a>
+                    <a href="Publicaciones.html" class="dropdown-item">Publicaciones</a>
                 </div>
-            
             </div>
-
+        <?php endif; ?>
+    </div>
+    <div class="navbar-nav font-weight-bold mx-auto py-0">
+        <div class="DatosU">
+            <p class="nav-item nav-link">
+            <?php if ($ruta_imagen): ?>
+                    <img src="<?php echo $ruta_imagen; ?>" style="width: 40px; height: 40px; border-radius: 50%;">
+                <?php else: ?>
+                    <span>No hay </span>
+                <?php endif; ?>
+                <?php echo $nombre_usuario; ?>.
+                
+                <a href="CerrarSession.php">Cerrar sesion</a>
+            </p>
+            
+        </div>
+    </div>
+</div>
 
         </nav>
     </div>
