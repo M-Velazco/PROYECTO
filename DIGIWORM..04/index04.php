@@ -95,7 +95,7 @@ if (isset($_GET['succes']) && $_GET['succes'] == 'Comentado') {
         <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0 px-lg-5">
             <a href="" class="navbar-brand font-weight-bold text-secondary" style="font-size: 50px;">
                 
-             <span class="text-primary">DIGIWORM</span>
+            <span class="text-primary">DIGIWORM</span>
                 
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -105,10 +105,10 @@ if (isset($_GET['succes']) && $_GET['succes'] == 'Comentado') {
     <div class="navbar-nav font-weight-bold mx-auto py-0">
         <a href="index04.php" class="nav-item nav-link active">Home</a>
         <a href="Principal.html" class="nav-item nav-link">Principal</a>
-        <?php if ($rol_usuario === 'Estudiante'): ?>
+        
             <a href="chat" class="nav-item nav-link">Chat</a>
             <a href="Foros.html" class="nav-item nav-link">Foros</a>
-        <?php else: ?>
+        
             <a href="Docentes.html" class="nav-item nav-link">Docentes</a>
             <div class="nav-item dropdown">
                 <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
@@ -117,7 +117,7 @@ if (isset($_GET['succes']) && $_GET['succes'] == 'Comentado') {
                     <a href="Publicaciones.html" class="dropdown-item">Publicaciones</a>
                 </div>
             </div>
-        <?php endif; ?>
+        
     </div>
     <div class="navbar-nav font-weight-bold mx-auto py-0">
         <div class="DatosU">
@@ -371,21 +371,56 @@ if (isset($_GET['succes']) && $_GET['succes'] == 'Comentado') {
                             <h1 class="text-white m-0">Reservar un asiento</h1>
                         </div>
                         <div class="card-body rounded-bottom bg-primary p-5">
-                            <form>
-                                <div class="form-group">
-                                    <input type="text" class="form-control border-0 p-4" placeholder="Su Nombre" required="required" />
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control border-0 p-4" placeholder="Su Email" required="required" />
-                                </div>
-                                <div class="form-group">
-                                    <input type="Date">
-                                    <input type="time">
-                                </div>
-                                <div>
-                                    <button class="btn btn-secondary btn-block border-0 py-3" type="submit">Enviar</button>
-                                </div>
-                            </form>
+                        <form action="validacion/citas.php" method="POST" >
+    <div class="form-group">
+        <input type="text" name="nombre" class="form-control border-0 p-4" placeholder="Su Nombre" required="required" />
+    </div>
+    <div class="form-group">
+        <input type="email" name="email" class="form-control border-0 p-4" placeholder="Su Email" required="required" />
+    </div>
+    <div class="form-group">
+        <label for="fecha">Fecha:</label>
+        <input type="date" id="fecha" name="fecha" min="<?= date('Y-m-d') ?>" required>
+        <br>
+        <label for="hora">Hora:</label>
+        <input type="time" id="hora" name="hora" required>
+    </div>
+    <div>
+        <button class="btn btn-secondary btn-block border-0 py-3" type="submit">Enviar</button>
+    </div>
+</form>
+
+<script>
+    // Obtener la fecha actual
+    var fechaActual = new Date().toISOString().split('T')[0];
+    document.getElementById("fecha").setAttribute('min', fechaActual);
+
+    // Obtener la hora actual
+    var horaActual = new Date();
+    var hora = horaActual.getHours();
+    var minutos = horaActual.getMinutes();
+    var horaString = ("0" + hora).slice(-2) + ":" + ("0" + minutos).slice(-2);
+
+    // Establecer la hora actual como valor predeterminado
+    document.getElementById("hora").value = horaString;
+
+    // Limitar la selección de hora a intervalos de 30 minutos entre 8am y 4pm
+    var horaInput = document.getElementById("hora");
+    horaInput.addEventListener("change", function() {
+        var horaSeleccionada = horaInput.value.split(':');
+        var hora = parseInt(horaSeleccionada[0]);
+        var minuto = parseInt(horaSeleccionada[1]);
+
+        if (hora < 8 || hora >= 16 || (hora === 15 && minuto > 30)) {
+            horaInput.setCustomValidity("Seleccione una hora válida entre las 8 am y las 4 pm");
+        } else if (minuto % 30 !== 0) {
+            horaInput.setCustomValidity("Seleccione un intervalo de 30 minutos");
+        } else {
+            horaInput.setCustomValidity("");
+        }
+    });
+</script>
+
                         </div>
                     </div>
                 </div>
