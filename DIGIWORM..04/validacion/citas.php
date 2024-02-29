@@ -49,7 +49,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Enviar el correo
             $mail->send();
-            echo "Cita registrada exitosamente. Se ha enviado un correo de confirmación.";
+            
+            header("location:../index04.php?succes=citaS");
         } catch (Exception $e) {
             echo "Error al enviar el correo de confirmación: {$mail->ErrorInfo}";
         }

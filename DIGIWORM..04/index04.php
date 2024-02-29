@@ -51,6 +51,22 @@ if (isset($_GET['succes']) && $_GET['succes'] == 'logeado') {
 }
 ?>
 <?php 
+if (isset($_GET['succes']) && $_GET['succes'] == 'citaS') {
+    echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@10'></script>"; // Incluye SweetAlert desde CDN
+
+    echo "<script>
+            document.addEventListener('DOMContentLoaded', function() {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Haz agendado cita',
+                    text: 'Por Favor verifica tu correo para confirmacion'
+                    
+                });
+            });
+          </script>";
+}
+?>
+<?php 
 if (isset($_GET['succes']) && $_GET['succes'] == 'Comentado') {
     echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@10'></script>"; // Incluye SweetAlert desde CDN
 
