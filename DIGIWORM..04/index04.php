@@ -129,7 +129,7 @@ if (isset($_GET['succes']) && $_GET['succes'] == 'Comentado') {
                 <?php endif; ?>
                 <?php echo $nombre_usuario; ?>.
                 
-                <a href="CerrarSession.php">Cerrar sesion</a>
+                <a href="modelo/CerrarSession.php">Cerrar sesion</a>
             </p>
             
         </div>
