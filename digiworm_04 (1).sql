@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 28-02-2024 a las 20:35:02
+-- Tiempo de generación: 29-02-2024 a las 19:25:37
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.0.26
 
@@ -20,6 +20,31 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `digiworm_04`
 --
+
+DELIMITER $$
+--
+-- Procedimientos
+--
+DROP PROCEDURE IF EXISTS `MoverCitasRealizadas`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `MoverCitasRealizadas` ()   BEGIN
+    -- Declara variables para la fecha y hora actual
+    DECLARE fecha_actual DATE;
+    DECLARE hora_actual TIME;
+    SET fecha_actual = CURDATE();
+    SET hora_actual = CURTIME();
+
+    -- Mueve los registros de citas a citas_realizadas si la fecha y hora de la cita son anteriores a la fecha y hora actual
+    INSERT INTO citas_realizadas (nombre, email, fecha, hora)
+    SELECT nombre, email, fecha, hora
+    FROM citas
+    WHERE fecha < fecha_actual OR (fecha = fecha_actual AND hora < hora_actual);
+
+    -- Elimina los registros de citas que se han movido a citas_realizadas
+    DELETE FROM citas
+    WHERE fecha < fecha_actual OR (fecha = fecha_actual AND hora < hora_actual);
+END$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -48,6 +73,69 @@ INSERT INTO `actividades` (`idActividades`, `Nombre_act`, `Asignatura`, `Docente
 (8, 'quimica basica', 'Calculo', 1054115102, NULL, 'Activo'),
 (9, 'quimica basica', 'Calculo', 1054115102, NULL, 'Activo'),
 (24, 'biomedica', 'Calculo', 142223657, 'mapa mental johan (2) (1).pdf', 'Activo');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `citas`
+--
+
+DROP TABLE IF EXISTS `citas`;
+CREATE TABLE IF NOT EXISTS `citas` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `fecha` date NOT NULL,
+  `hora` time NOT NULL,
+  `creado_en` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `citas`
+--
+
+INSERT INTO `citas` (`id`, `nombre`, `email`, `fecha`, `hora`, `creado_en`) VALUES
+(2, 'Johan Santiago Villanueva', 'andreina301094@hotmail.com', '2024-03-01', '11:28:00', '2024-02-29 16:29:07'),
+(3, 'Johan Santiago Villanueva', 'andreina301094@hotmail.com', '2024-03-01', '11:28:00', '2024-02-29 16:31:56'),
+(4, 'Johan Santiago Villanueva', 'andreina301094@hotmail.com', '2024-03-01', '11:32:00', '2024-02-29 16:33:01'),
+(5, 'Johan Santiago Villanueva', 'andreina301094@hotmail.com', '2024-03-01', '11:32:00', '2024-02-29 17:11:34'),
+(6, 'Johan Santiago Villanueva', 'andreina301094@hotmail.com', '2024-03-01', '12:15:00', '2024-02-29 17:15:23'),
+(7, 'Johan Santiago Villanueva', 'villabilons@gmail.com', '2024-03-02', '13:30:00', '2024-02-29 17:18:03'),
+(8, 'Johan Santiago Villanueva', 'villabilons@gmail.com', '2024-03-02', '13:30:00', '2024-02-29 17:21:25'),
+(9, 'Johan Santiago Villanueva', 'villabilons@gmail.com', '2024-03-08', '12:28:00', '2024-02-29 17:28:44'),
+(10, 'Johan Santiago Villanueva', 'villabilons@gmail.com', '2024-03-08', '12:28:00', '2024-02-29 17:34:47'),
+(11, 'Johan Santiago Villanueva', 'villabilons@gmail.com', '2024-03-08', '12:28:00', '2024-02-29 17:35:30'),
+(12, 'Johan Santiago Villanueva', 'villabilons@gmail.com', '2024-03-08', '12:28:00', '2024-02-29 17:35:38'),
+(13, 'Johan Santiago Villanueva', 'villabilons@gmail.com', '2024-03-08', '12:28:00', '2024-02-29 17:42:10'),
+(15, 'magdy velasco', 'mvelazcovelasco17@gmail.com', '2024-02-29', '15:00:00', '2024-02-29 17:56:22'),
+(16, 'magdy velasco', 'villabilons@gmail.com', '2024-02-29', '15:00:00', '2024-02-29 17:59:18');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `citas_realizadas`
+--
+
+DROP TABLE IF EXISTS `citas_realizadas`;
+CREATE TABLE IF NOT EXISTS `citas_realizadas` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `fecha` date NOT NULL,
+  `hora` time NOT NULL,
+  `creado_en` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `citas_realizadas`
+--
+
+INSERT INTO `citas_realizadas` (`id`, `nombre`, `email`, `fecha`, `hora`, `creado_en`) VALUES
+(1, '', '', '0000-00-00', '00:00:00', '2024-02-29 19:09:18'),
+(2, 'magdy velasco', 'villabilons@gmail.com', '2024-02-29', '13:00:00', '2024-02-29 19:09:18'),
+(3, 'johan oliveros', 'oliverossilvajohan@gmail.com', '2024-02-29', '14:22:00', '2024-02-29 19:24:18');
 
 -- --------------------------------------------------------
 
@@ -250,7 +338,7 @@ CREATE TABLE IF NOT EXISTS `opiniones` (
   `Opinion` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   PRIMARY KEY (`iDopinion`),
   KEY `iDpadres` (`Nombres_Apellidos`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `opiniones`
@@ -262,7 +350,8 @@ INSERT INTO `opiniones` (`iDopinion`, `Nombres_Apellidos`, `Email`, `Opinion`) V
 (3, 'johan santiago villanueva roa', 'villabilons@gmail.com', 'Me parece super la pagina'),
 (4, 'Juan David Julio Rodríguez', 'draxjulio13@gmail.com', 'es super importante la educacion hoy en dia siendo que asi guiamos a la persona del mañana para poder tener un futuro mejor'),
 (5, 'magdy velazco', 'magdy17@gmail.com', 'este es un buen aplicativo por que fue elaborado por nosotros hajajajja'),
-(6, 'stiven oliveros', 'oliverossilvajohan@gmail.com', 'sobelo .com');
+(6, 'stiven oliveros', 'oliverossilvajohan@gmail.com', 'sobelo .com'),
+(7, 'andreina melgarejo', 'andreina301094@hotmail.com', 'buena herramienta de trabajo ');
 
 -- --------------------------------------------------------
 
@@ -325,7 +414,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 --
 
 INSERT INTO `usuarios` (`Idusuarios`, `Nombres`, `Apellidos`, `Email`, `Telefono`, `Pasword`, `img`, `Rol`, `Estado`, `status`) VALUES
-(10000, 'Jimmy', 'Avila', 'Jimmy2020@gmail.com', 3241742555, '5a1dfc0934d7a2fe6b9d1c41e2913dca', '1652660564avatar.png', 'Coordinador', 'Activo', 'Offline now'),
+(10000, 'Jimmy', 'Avila', 'Jimmy2020@gmail.com', 3241742555, '5a1dfc0934d7a2fe6b9d1c41e2913dca', 'img/testimonial-4.jpg', 'Coordinador', 'Activo', 'Offline now'),
 (1563298, 'leydi ', 'Roa', 'Coordinadora@gmail.com', 3152363254, '7b9c0a9b357cd7c707742562f82add2c', '1652660564avatar.png', 'Coordinador', 'Activo', ''),
 (10000568, 'Johan Santiagooo', 'Villanueva Roa', 'villabilons@gmail.com', 3234167037, '0f81efae2d3ada62b2208b530c89a820', '1652660564avatar.png', 'Estudiante', 'Activo', ''),
 (15479320, 'Bladimir', 'Perez', 'BladimirPerez@gmail.com', 3114574875, 'ad05f53f6bc2c9525e016c8d2415dbe8', '1652660564avatar.png', 'Estudiante', 'Activo', ''),
@@ -393,6 +482,26 @@ ALTER TABLE `padre_familia`
 --
 ALTER TABLE `publicaciones`
   ADD CONSTRAINT `usuario_usuarioId` FOREIGN KEY (`usuario`) REFERENCES `usuarios` (`Idusuarios`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+DELIMITER $$
+--
+-- Eventos
+--
+DROP EVENT IF EXISTS `mover_citas_pasadas`$$
+CREATE DEFINER=`root`@`localhost` EVENT `mover_citas_pasadas` ON SCHEDULE EVERY 1 MINUTE STARTS '2024-02-29 11:24:18' ON COMPLETION NOT PRESERVE ENABLE DO BEGIN
+    DECLARE fecha_actual DATE;
+    SET fecha_actual = CURDATE();
+
+    INSERT INTO citas_realizadas (nombre, email, fecha, hora)
+    SELECT nombre, email, fecha, hora
+    FROM citas
+    WHERE fecha < fecha_actual OR (fecha = fecha_actual AND hora < CURTIME());
+
+    DELETE FROM citas
+    WHERE fecha < fecha_actual OR (fecha = fecha_actual AND hora < CURTIME());
+END$$
+
+DELIMITER ;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
