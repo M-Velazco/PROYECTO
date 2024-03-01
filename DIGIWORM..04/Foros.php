@@ -1,11 +1,4 @@
 
-<?php
-session_start();
-include_once "modelo/conexion.php";
-if (!isset($_SESSION['Idusuarios'])) {
-  header("location: form.php?error=nologeado");
-}
-?>
 
 
 <?php
@@ -33,6 +26,7 @@ if(isset($_SESSION['Idusuario'])) {
     
 } else {
     $usuario_conectado = false;
+    header( 'Location: form.php?error=nologeado' );
 }
 ?>
 <!DOCTYPE html>
