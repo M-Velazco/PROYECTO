@@ -6,7 +6,13 @@ if (isset($_SESSION['Idusuarios'])) {
 ?>
 
 <?php include_once "header.php"; ?>
-
+<body>
+  <div class="wrapper">
+    <nav>
+      <ul>
+      <ul>
+  <li><a href="javascript:history.go(-1);" style="background-color: #FF5733; color: white; padding: 10px 20px; border-radius: 3px; text-decoration: none;">Salir</a></li>
+</ul>
 <body>
   <div class="wrapper">
     <section class="form login">
@@ -22,11 +28,16 @@ if (isset($_SESSION['Idusuarios'])) {
           <input type="password" name="Pasword" placeholder="Ingresa tu Contraseña" required>
           <i class="fas fa-eye"></i>
         </div>
+        <div class="field image">
+    <label>Avatar</label>
+    <input type="file" name="img" accept="image/x-png,image/gif,image/jpeg,image/jpg" required>
+</div>
+
         <div class="field button">
           <input type="submit" name="submit" value="Chatear">
         </div>
       </form>
-      <div class="link">Aún no te has registrado? <a href="index.php">Ingresar</a></div>
+     
     </section>
   </div>
 
