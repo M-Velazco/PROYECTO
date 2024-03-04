@@ -41,8 +41,8 @@
         event.preventDefault();
         
         // Redirigir al usuario a la URL especificada
-        window.location.href = "Restablecer_Contraseña.html";
-    });
+        window.location.href = "Restablecer_Contraseña.htmlv";
+    }); 
 </script>
 
                 
