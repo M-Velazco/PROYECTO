@@ -75,12 +75,8 @@ header {
     
     width: 100%;
     height: 600px;
-    background: #00000000;
-    /* fallback for old browsers */
-    /* background: -webkit-linear-gradient(to right, hsla(261, 95%, 50%, 0.459), hsla(188, 85%, 13%, 0.664)), url(../img/portada.jpg); */
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, hsla(231, 83%, 18%, 0), hsla(93, 86%, 28%, 0)), url('../img/fondo.oficial.jpg');
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #ffffff;
+    background: linear-gradient(to right, hsla(231, 83%, 18%, 0), hsla(93, 86%, 28%, 0)), url('../img/flup-fondo.jpg');
     background-size: cover;
     background-attachment: fixed;
     position: center;
@@ -94,14 +90,15 @@ nav{
    
 }
 
-nav > a{
+nav > a {
     font-family: 'uwu.ttf';
-    color:#000000;
+    color: #ffffff;
     font-size: 15px;
-    font-weight: 30;
+    font-weight: 30; /* Ajusta este valor si es necesario */
     text-decoration: none;
     margin-right: 10px;
 }
+
 nav > a.incioh{
     
 color: rgb(255, 255, 255);
@@ -189,7 +186,7 @@ opacity: 1;
     content: var(--content);
     position:absolute;
     inset: 0;
-    -webkit-background-clip: text;
+    -webkit-background-clip:    text;
     -webkit-text-fill-color: transparent;
     animation: animated 7s infinite;
     animation-duration: 9s;
@@ -203,7 +200,7 @@ body {
     overflow: auto;
     overflow-x: hidden;
 
-    background: linear-gradient(315deg, rgb(105, 230, 128) 38%, rgb(22, 139, 7) 68%, rgb(43, 221, 40) 98%);
+    background: linear-gradient(315deg, rgba(115, 180, 241, 0.596) 38%, rgb(22, 139, 7) 68%, rgb(40, 170, 221) 98%);
     animation: gradient 15s ease infinite;
     background-size: 400% 400%;
     background-attachment: fixed;
