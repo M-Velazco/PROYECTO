@@ -28,9 +28,24 @@
                     <input type="password" id="Contraseña" name="Contraseña" placeholder="Contraseña" />
 
                 </div>
-                <a href="#"  class="href">
-                    Olvidé mi contraseña :
-                </a>
+                <a href="#" class="href" id="forgotPassword">
+    Olvidé mi contraseña
+</a>
+<script>
+    // Obtener el elemento del enlace
+    var forgotPasswordLink = document.getElementById("forgotPassword");
+
+    // Agregar un evento de clic al enlace
+    forgotPasswordLink.addEventListener("click", function(event) {
+        // Prevenir el comportamiento predeterminado del enlace
+        event.preventDefault();
+        
+        // Redirigir al usuario a la URL especificada
+        window.location.href = "Restablecer_Contraseña.html";
+    });
+</script>
+
+                
 
                 <input type="submit" value="Ingresar" class="btn solid" />
 
@@ -118,7 +133,7 @@
 </style>
 
 <div class="input-field custom">
-    <label for="Rol" id="roles" style="padding-bottom: 10px;">Rol</label>
+    <label for="Rol" id="roles" style="padding-bottom: 10px;"> SELECCIONE SU ROL</label>
     <div class="input-radio">
         <div style="display: flex; flex-direction: column;">
             <input type="radio" id="Docente" name="Rol" value="Docente">
