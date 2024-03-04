@@ -35,7 +35,7 @@
                 <input type="submit" value="Ingresar" class="btn solid" />
 
             </form>
-            <form action="validacion/validarRegistroUsuario.php" method="post" class="sign-up-form">
+            <form action="validacion/validarRegistroUsuario.php" method="post" class="sign-up-form"enctype="multipart/form-data">
                 <h2 class="title">Registrarse</h2>
                 <div class="input-field">
                     <i class="fa-solid fa-id-card"></i>
@@ -60,6 +60,10 @@
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
                     <input type="password" id="Pasword" name="Pasword" placeholder="Contraseña" required />
+                </div>
+                <div class="input-field">
+                    <i class="fas fa-lock"></i>
+                    <input type="file" id="img" name="img" placeholder="img" required />
                 </div>
                 
     
