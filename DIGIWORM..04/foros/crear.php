@@ -69,7 +69,7 @@ if (isset($_SESSION['Idusuario'])) {
     
     
     body {
-        background-color: #f0f8f7; /* Color de fondo verde pastel */
+        background-color: #73cdff; /* Color de fondo verde pastel */
         font-family: Arial, sans-serif;
         color: #333;
         margin: 0;

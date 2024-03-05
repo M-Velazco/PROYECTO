@@ -4,11 +4,13 @@
     <title>Responder Foro</title>
     <style>
         body {
-            background-color: #f0f8f7; /* Color de fondo verde pastel */
+            background-img:url("img/header.png");
+            background-color: #73B0FF; /* Color de fondo verde pastel */
             font-family: Arial, sans-serif;
             color: #333;
             margin: 0;
             padding: 0;
+    
         }
         form {
             background-color: #fff; /* Fondo blanco */
