@@ -18,10 +18,14 @@ if (!isset($_SESSION['Idusuarios'])) {
             $row = mysqli_fetch_assoc($sql);
           }
           ?>
-          <img src="php/images/<?php echo $row['img']; ?>" alt="">
+          <img src="../<?php echo $row['img']; ?>" alt="">
           <div class="details">
-            <span><?php echo $row['Nombres'] . " " . $row['Apellidos'] ?></span>
-            <p><?php echo $row['status']; ?></p>
+            <span>
+              <?php echo $row['Nombres'] . " " . $row['Apellidos'] ?>
+            </span>
+            <p>
+              <?php echo $row['status']; ?>
+            </p>
           </div>
         </div>
         <a href="php/logout.php?logout_id=<?php echo $row['Idusuarios']; ?>" class="logout">Cerrar Sesión</a>
