@@ -201,35 +201,36 @@ class Usuario
 	}
 	public function agregarUsuario()
 {
-    // Preparamos la consulta para insertar en la tabla 'usuarios'
+    // Preparar la consulta para insertar en la tabla 'usuarios'
     $sqlUsuarios = "INSERT INTO usuarios (Idusuarios, Nombres, Apellidos, Email, Telefono, Pasword, img, Rol, Estado) 
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-    // Ejecutamos la consulta para insertar en la tabla 'usuarios'
+    // Ejecutar la consulta para insertar en la tabla 'usuarios'
     $stmtUsuarios = $this->conexion->prepare($sqlUsuarios);
 
-    // Verificamos si la preparación fue exitosa
+    // Verificar si la preparación fue exitosa
     if (!$stmtUsuarios) {
+        echo "Error en la preparación de la consulta para usuarios: " . $this->conexion->error;
         return false;
     }
 
-    // Asignamos el valor NULL al campo img
-   
-
-    // Enlazamos los parámetros
+    // Enlazar los parámetros
     $stmtUsuarios->bind_param("isssissss", $this->Idusuarios, $this->Nombres, $this->Apellidos, $this->Email, $this->Telefono, $this->Pasword, $this->img, $this->Rol, $this->Estado);
 
-    // Ejecutamos la sentencia
+    // Ejecutar la sentencia
     $resultadoUsuarios = $stmtUsuarios->execute();
 
-    // Verificamos si la inserción en la tabla 'usuarios' fue exitosa
+    // Verificar si la inserción en la tabla 'usuarios' fue exitosa
     if (!$resultadoUsuarios) {
+        echo "Error al insertar en la tabla usuarios: " . $stmtUsuarios->error;
         $stmtUsuarios->close();
         $this->conexion->close();
         return false;
     }
 
-    // Insertamos datos específicos según el rol del usuario
+    echo "Inserción en la tabla usuarios exitosa.";
+
+    // Insertar datos específicos según el rol del usuario
     switch ($this->Rol) {
         case "Docente":
             $resultadoInsercion = $this->insertarDocente();
@@ -246,7 +247,7 @@ class Usuario
             $resultadoInsercion = $this->insertarPadre_F();
             break;
 
-        // Agrega más casos según los diferentes roles
+        // Agregar más casos según los diferentes roles
 
         default:
             // No es necesario agregar ningún dato adicional para otros roles
@@ -254,11 +255,18 @@ class Usuario
             break;
     }
 
+    if ($resultadoInsercion) {
+        echo "Datos adicionales insertados correctamente.";
+    } else {
+        echo "Error al insertar datos adicionales.";
+    }
+
     $stmtUsuarios->close();
     $this->conexion->close();
 
-    return $resultadoInsercion;
+    return $resultadoUsuarios && $resultadoInsercion;
 }
+
 
 
 
@@ -279,7 +287,7 @@ private function insertarEstudiante()
 {
     // Preparar e insertar en la tabla 'estudiante'
     $sqlEstudiante = "INSERT INTO estudiante (idEstudiante, Nombres, Apellidos, Email, Pasword, Curso, Estado) 
-                      VALUES (?, ?, ?, ?, ?, ?, ?)";
+                      VALUES (?, ?, ?, ?, ?, ?)";
     $stmtEstudiante = $this->conexion->prepare($sqlEstudiante);
     $stmtEstudiante->bind_param("issssis", $this->Idusuarios, $this->Nombres, $this->Apellidos, $this->Email, $this->Pasword, $this->Curso, $this->Estado);
     $resultadoEstudiante = $stmtEstudiante->execute();
