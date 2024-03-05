@@ -34,7 +34,7 @@ if (isset($_SESSION['Idusuario'])) {
     <title>Ver Foros</title>
     <style>
         body {
-            background-color: #f0f8f7;
+            background-color: #73cdff;
             /* Color de fondo verde pastel */
             font-family: Arial, sans-serif;
             color: #333;
