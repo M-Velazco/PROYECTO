@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 29-02-2024 a las 19:25:37
--- Versión del servidor: 8.0.31
--- Versión de PHP: 8.0.26
+-- Tiempo de generación: 05-03-2024 a las 19:47:27
+-- Versión del servidor: 8.0.33
+-- Versión de PHP: 8.2.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -96,20 +96,11 @@ CREATE TABLE IF NOT EXISTS `citas` (
 --
 
 INSERT INTO `citas` (`id`, `nombre`, `email`, `fecha`, `hora`, `creado_en`) VALUES
-(2, 'Johan Santiago Villanueva', 'andreina301094@hotmail.com', '2024-03-01', '11:28:00', '2024-02-29 16:29:07'),
-(3, 'Johan Santiago Villanueva', 'andreina301094@hotmail.com', '2024-03-01', '11:28:00', '2024-02-29 16:31:56'),
-(4, 'Johan Santiago Villanueva', 'andreina301094@hotmail.com', '2024-03-01', '11:32:00', '2024-02-29 16:33:01'),
-(5, 'Johan Santiago Villanueva', 'andreina301094@hotmail.com', '2024-03-01', '11:32:00', '2024-02-29 17:11:34'),
-(6, 'Johan Santiago Villanueva', 'andreina301094@hotmail.com', '2024-03-01', '12:15:00', '2024-02-29 17:15:23'),
-(7, 'Johan Santiago Villanueva', 'villabilons@gmail.com', '2024-03-02', '13:30:00', '2024-02-29 17:18:03'),
-(8, 'Johan Santiago Villanueva', 'villabilons@gmail.com', '2024-03-02', '13:30:00', '2024-02-29 17:21:25'),
 (9, 'Johan Santiago Villanueva', 'villabilons@gmail.com', '2024-03-08', '12:28:00', '2024-02-29 17:28:44'),
 (10, 'Johan Santiago Villanueva', 'villabilons@gmail.com', '2024-03-08', '12:28:00', '2024-02-29 17:34:47'),
 (11, 'Johan Santiago Villanueva', 'villabilons@gmail.com', '2024-03-08', '12:28:00', '2024-02-29 17:35:30'),
 (12, 'Johan Santiago Villanueva', 'villabilons@gmail.com', '2024-03-08', '12:28:00', '2024-02-29 17:35:38'),
-(13, 'Johan Santiago Villanueva', 'villabilons@gmail.com', '2024-03-08', '12:28:00', '2024-02-29 17:42:10'),
-(15, 'magdy velasco', 'mvelazcovelasco17@gmail.com', '2024-02-29', '15:00:00', '2024-02-29 17:56:22'),
-(16, 'magdy velasco', 'villabilons@gmail.com', '2024-02-29', '15:00:00', '2024-02-29 17:59:18');
+(13, 'Johan Santiago Villanueva', 'villabilons@gmail.com', '2024-03-08', '12:28:00', '2024-02-29 17:42:10');
 
 -- --------------------------------------------------------
 
@@ -126,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `citas_realizadas` (
   `hora` time NOT NULL,
   `creado_en` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `citas_realizadas`
@@ -135,7 +126,16 @@ CREATE TABLE IF NOT EXISTS `citas_realizadas` (
 INSERT INTO `citas_realizadas` (`id`, `nombre`, `email`, `fecha`, `hora`, `creado_en`) VALUES
 (1, '', '', '0000-00-00', '00:00:00', '2024-02-29 19:09:18'),
 (2, 'magdy velasco', 'villabilons@gmail.com', '2024-02-29', '13:00:00', '2024-02-29 19:09:18'),
-(3, 'johan oliveros', 'oliverossilvajohan@gmail.com', '2024-02-29', '14:22:00', '2024-02-29 19:24:18');
+(3, 'johan oliveros', 'oliverossilvajohan@gmail.com', '2024-02-29', '14:22:00', '2024-02-29 19:24:18'),
+(4, 'Johan Santiago Villanueva', 'andreina301094@hotmail.com', '2024-03-01', '11:28:00', '2024-03-05 18:59:18'),
+(5, 'Johan Santiago Villanueva', 'andreina301094@hotmail.com', '2024-03-01', '11:28:00', '2024-03-05 18:59:18'),
+(6, 'Johan Santiago Villanueva', 'andreina301094@hotmail.com', '2024-03-01', '11:32:00', '2024-03-05 18:59:18'),
+(7, 'Johan Santiago Villanueva', 'andreina301094@hotmail.com', '2024-03-01', '11:32:00', '2024-03-05 18:59:18'),
+(8, 'Johan Santiago Villanueva', 'andreina301094@hotmail.com', '2024-03-01', '12:15:00', '2024-03-05 18:59:18'),
+(9, 'Johan Santiago Villanueva', 'villabilons@gmail.com', '2024-03-02', '13:30:00', '2024-03-05 18:59:18'),
+(10, 'Johan Santiago Villanueva', 'villabilons@gmail.com', '2024-03-02', '13:30:00', '2024-03-05 18:59:18'),
+(11, 'magdy velasco', 'mvelazcovelasco17@gmail.com', '2024-02-29', '15:00:00', '2024-03-05 18:59:18'),
+(12, 'magdy velasco', 'villabilons@gmail.com', '2024-02-29', '15:00:00', '2024-03-05 18:59:18');
 
 -- --------------------------------------------------------
 
@@ -165,9 +165,7 @@ CREATE TABLE IF NOT EXISTS `coordinador` (
 INSERT INTO `coordinador` (`idCoordinador`, `Nombres`, `Apellidos`, `Email`, `Pasword`, `Jornada`) VALUES
 (10000, 'Jimmy', 'Avila', 'Jimmy2020@gmail.com', '5a1dfc0934d7a2fe6b9d1c41e2913dca', 'Mañana'),
 (1563298, 'leydi ', 'Roa', 'Coordinadora@gmail.com', '7b9c0a9b357cd7c707742562f82add2c', 'Mañana'),
-(144789442, 'Carlos', 'Ñampira', 'ñampira@gmail.com', '766d6265e98dd6f396ef768ed988036f', 'Tarde'),
-(1023537206, 'Jeison', 'Villanueva', 'jei555555@gmail.com', '7c4c5a96ac34d000f49e9ecefad47722', 'Tarde'),
-(1037589660, 'johan saintana', 'hurtado', 'johnhurt2305@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 'Tarde');
+(1023537206, 'Jeison', 'Villanueva', 'jei555555@gmail.com', '7c4c5a96ac34d000f49e9ecefad47722', 'Tarde');
 
 -- --------------------------------------------------------
 
@@ -221,9 +219,7 @@ CREATE TABLE IF NOT EXISTS `docente` (
 INSERT INTO `docente` (`idDocente`, `Nombres`, `Apellidos`, `Email`, `Pasword`, `Curso`, `Materia`) VALUES
 (142223657, 'Didier', 'Orozco', 'Orozco09@gmail.com', '598d8591e55346928b3a3a0a01da9ee5', 1, NULL),
 (1025538177, 'Aurelio', 'Rivas Renteria', 'Aurelio2023@gmail.com', '8223b621da582c18a06f35b39efcdbed', 1, NULL),
-(1054115102, 'Vilma ', 'Barrios Gomez', 'EldiabloAndante@gmail.com', '93d7abad7bbf270154ff3270fe46f4d3', 1, NULL),
-(1059643579, 'Luz Jenny', 'Romero', 'Luzdetusojos@gmail.com', '5da2297bad6924526e48e00dbfc3c27a', 1, NULL),
-(2147483647, 'luis ', 'fernando', 'jeapnieto1@soy.sena.edu.co', 'e10adc3949ba59abbe56e057f20f883e', 1, 3);
+(1054115102, 'Vilma ', 'Barrios Gomez', 'EldiabloAndante@gmail.com', '93d7abad7bbf270154ff3270fe46f4d3', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -254,7 +250,6 @@ CREATE TABLE IF NOT EXISTS `estudiante` (
 --
 
 INSERT INTO `estudiante` (`idEstudiante`, `Nombres`, `Apellidos`, `Email`, `Pasword`, `Curso`, `Estado`) VALUES
-(15479320, 'Bladimir', 'Perez', 'BladimirPerez@gmail.com', 'ad05f53f6bc2c9525e016c8d2415dbe8', NULL, 'Activo'),
 (100030256, 'Santiago', 'Orjuela', 'orjtailand@gmail.com', '12157a63af655888c72bcb10bfbf0cc7', NULL, 'Activo'),
 (1030521423, 'Alejandra', 'Andrade', 'jennyandrade1302@gmail.com', '3c9f06a12a72aa72674e57e05a7a56f0', NULL, 'Activo');
 
@@ -417,18 +412,13 @@ INSERT INTO `usuarios` (`Idusuarios`, `Nombres`, `Apellidos`, `Email`, `Telefono
 (10000, 'Jimmy', 'Avila', 'Jimmy2020@gmail.com', 3241742555, '5a1dfc0934d7a2fe6b9d1c41e2913dca', 'img/testimonial-4.jpg', 'Coordinador', 'Activo', 'Offline now'),
 (1563298, 'leydi ', 'Roa', 'Coordinadora@gmail.com', 3152363254, '7b9c0a9b357cd7c707742562f82add2c', '1652660564avatar.png', 'Coordinador', 'Activo', ''),
 (10000568, 'Johan Santiagooo', 'Villanueva Roa', 'villabilons@gmail.com', 3234167037, '0f81efae2d3ada62b2208b530c89a820', '1652660564avatar.png', 'Estudiante', 'Activo', ''),
-(15479320, 'Bladimir', 'Perez', 'BladimirPerez@gmail.com', 3114574875, 'ad05f53f6bc2c9525e016c8d2415dbe8', '1652660564avatar.png', 'Estudiante', 'Activo', ''),
 (100030256, 'Santiago', 'Orjuela', 'orjtailand@gmail.com', 3154897654, '12157a63af655888c72bcb10bfbf0cc7', '1652660564avatar.png', 'Estudiante', 'Activo', ''),
 (142223657, 'Didier', 'Orozco', 'Orozco09@gmail.com', 3215642585, '598d8591e55346928b3a3a0a01da9ee5', '1652660564avatar.png', 'Docente', 'Activo', ''),
-(144789442, 'Carlos', 'Ñampira', 'ñampira@gmail.com', 3212652555, '766d6265e98dd6f396ef768ed988036f', '1652660564avatar.png', 'Coordinador', 'Activo', ''),
 (1023537206, 'Jeison', 'Villanueva', 'jei555555@gmail.com', 3144787155, '7c4c5a96ac34d000f49e9ecefad47722', '1652660564avatar.png', 'Coordinador', 'Activo', ''),
 (1025538177, 'Aurelio', 'Rivas Renteria', 'Aurelio2023@gmail.com', 3172548978, '8223b621da582c18a06f35b39efcdbed', '1652660564avatar.png', 'Docente', 'Activo', ''),
 (1030521423, 'Alejandra', 'Andrade', 'jennyandrade1302@gmail.com', 3198792555, '3c9f06a12a72aa72674e57e05a7a56f0', '1652660564avatar.png', 'Estudiante', 'Activo', 'Offline now'),
-(1037589660, 'johan saintana', 'hurtado', 'johnhurt2305@gmail.com', 3555897987, 'e10adc3949ba59abbe56e057f20f883e', '1652660564avatar.png', 'Coordinador', 'Activo', ''),
 (1054115102, 'Vilma ', 'Barrios Gomez', 'EldiabloAndante@gmail.com', 3241742555, '93d7abad7bbf270154ff3270fe46f4d3', '1652660564avatar.png', 'Docente', 'Activo', ''),
-(1059643579, 'Luz Jenny', 'Romero', 'Luzdetusojos@gmail.com', 3241242155, '5da2297bad6924526e48e00dbfc3c27a', '1652660564avatar.png', 'Docente', 'Activo', 'Offline now'),
-(1101443174, 'Juan David', 'Julio Rodríguez ', 'draxjulio13@gmail.com', 3136065261, '3882a7d8c99e7f13c7b4debae42cbb91', NULL, 'Estudiante', 'Activo', 'Offline now'),
-(2147483647, 'luis ', 'fernando', 'jeapnieto1@soy.sena.edu.co', 12035310, 'e10adc3949ba59abbe56e057f20f883e', NULL, 'Docente', 'Activo', '');
+(1101443174, 'Juan David', 'Julio Rodríguez ', 'draxjulio13@gmail.com', 3136065261, '3882a7d8c99e7f13c7b4debae42cbb91', NULL, 'Estudiante', 'Activo', 'Offline now');
 
 --
 -- Restricciones para tablas volcadas
