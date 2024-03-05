@@ -29,8 +29,7 @@ if (isset($_SESSION['Idusuarios'])) {
           <i class="fas fa-eye"></i>
         </div>
         <div class="field image">
-    <label>Avatar</label>
-    <input type="file" name="img" accept="image/x-png,image/gif,image/jpeg,image/jpg" required>
+    
 </div>
 
         <div class="field button">
