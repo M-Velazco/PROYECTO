@@ -1,42 +1,60 @@
 <?php
-require('configuracion.php');
+// Inicia la sesión
+session_start();
 
-// Verificar si se ha enviado el formulario
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Obtener los datos del formulario
-    $titulo = $_POST["titulo"];
-    $descripcion = $_POST["descripcion"];
-    $fecha_creacion = $_POST["fecha_creacion"];
+// Verifica si el usuario está conectado
+if (isset($_SESSION['Idusuario'])) {
+    // Crea una instancia de la clase Usuario y conecta a la base de datos
+    require_once "../modelo/USUARIO.php";
+    require_once "../modelo/conexion.php";
+    require_once "configuracion.php";
+    $objConexion = Conectarse();
+    $objUsuarios = new Usuario($objConexion);
 
-    // Manejo de archivos adjuntos (si los hay)
-    $archivos = array();
-    if (!empty($_FILES['archivos']['name'][0])) {
-        foreach ($_FILES['archivos']['name'] as $key => $value) {
-            $nombre_archivo = $_FILES['archivos']['name'][$key];
-            $ruta_temporal = $_FILES['archivos']['tmp_name'][$key];
-            $ruta_destino = "archivos/" . $nombre_archivo;
-            move_uploaded_file($ruta_temporal, $ruta_destino);
-            $archivos[] = $ruta_destino;
+    // Obtiene el nombre del usuario basado en su ID
+    $nombre_usuario = $objUsuarios->obtenerNombreUsuario($_SESSION['Idusuario']);
+
+    // Obtiene la ruta de la imagen de perfil del usuario
+    $ruta_imagen = $objUsuarios->obtenerRutaImagenUsuario($_SESSION['Idusuario']);
+    $rol_usuario = $objUsuarios->obtenerRutaImagenUsuario($_SESSION['Idusuario']);
+
+    // Verifica si se ha enviado el formulario
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Obtener los datos del formulario
+        $titulo = $_POST["titulo"];
+        $descripcion = $_POST["descripcion"];
+        $fecha_creacion = $_POST["fecha_creacion"];
+        $id_usuario = $_SESSION['Idusuario'];
+
+        // Manejo de archivos adjuntos
+        $archivos = array();
+        if (!empty($_FILES['archivos']['name'][0])) {
+            foreach ($_FILES['archivos']['name'] as $key => $value) {
+                $nombre_archivo = $_FILES['archivos']['name'][$key];
+                $ruta_temporal = $_FILES['archivos']['tmp_name'][$key];
+                $ruta_destino = "archivos/" . $nombre_archivo;
+                move_uploaded_file($ruta_temporal, $ruta_destino);
+                $archivos[] = $ruta_destino;
+            }
         }
-    }
 
-    // Insertar los datos en la base de datos
-    $sql = "INSERT INTO foro (titulo, descripcion, fecha_creacion) VALUES (?, ?, ?)";
-    $stmt = mysqli_prepare($con, $sql);
-    mysqli_stmt_bind_param($stmt, "sss", $titulo, $descripcion, $fecha_creacion);
-    mysqli_stmt_execute($stmt);
-    $id_foro = mysqli_insert_id($con);
-
-    // Guardar los archivos adjuntos en la base de datos (si los hay)
-    foreach ($archivos as $archivo) {
-        $sql = "INSERT INTO archivos (id_foro, ruta_archivo) VALUES (?, ?)";
+        // Insertar los datos en la base de datos
+        $sql = "INSERT INTO `foros`(`Titulo`, `Contenido`, `Fecha_Hora`, `archivo`, `idusuario`) VALUES (?, ?, ?, ?, ?)";
         $stmt = mysqli_prepare($con, $sql);
-        mysqli_stmt_bind_param($stmt, "is", $id_foro, $archivo);
-        mysqli_stmt_execute($stmt);
-    }
 
-    // Redirigir a una página de éxito
-    header("Location: exito.php");
+        // Enlaza los parámetros con sus respectivos tipos
+        mysqli_stmt_bind_param($stmt, "ssssi", $titulo, $descripcion, $fecha_creacion, $ruta_destino, $id_usuario);
+
+        // Ejecuta la declaración
+        mysqli_stmt_execute($stmt);
+
+        // Redirige a una página de éxito
+        header("Location: ver.php");
+        exit();
+    }
+} else {
+    // Si el usuario no está conectado, redirige a la página de inicio de sesión
+    header('Location: form.php?error=nologeado');
     exit();
 }
 ?>
@@ -46,9 +64,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <title>Crear Foro</title>
     <style>
+        
         /* Estilos CSS */
-    </style>
-    <style>
+    
+    
     body {
         background-color: #f0f8f7; /* Color de fondo verde pastel */
         font-family: Arial, sans-serif;
@@ -126,15 +145,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         background-color: #45a049; /* Cambio de color al pasar el ratón */
     }
 </style>
-
+    
 </head>
 <body>
     <h2 style="text-align: center;">Crear Foro</h2>
-    <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post" enctype="multipart/form-data">
-        Título: <input type="text" name="titulo" required><br><br>
-        Descripción: <textarea name="descripcion" required></textarea><br><br>
-        Fecha y hora de creación: <input type="datetime-local" name="fecha_creacion" required><br><br>
-        Archivos adjuntos (opcional): <input type="file" name="archivos[]" multiple><br><br>
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" name="titulo" required><br><br>
+        <label for="descripcion">Descripción:</label>
+        <textarea id="descripcion" name="descripcion" required></textarea><br><br>
+        <label for="fecha_creacion">Fecha y hora de creación:</label>
+        <input type="datetime-local" id="fecha_creacion" name="fecha_creacion" required><br><br>
+        <label for="archivos">Archivos adjuntos (opcional):</label>
+        <input type="file" id="archivos" name="archivos[]" multiple><br><br>
+        <!-- Agregamos un campo oculto para enviar el ID de usuario -->
+        <input type="hidden" name="idusuario" value="<?php echo $_SESSION['Idusuario']; ?>">
         <input type="submit" value="Crear Foro">
     </form>
 </body>
