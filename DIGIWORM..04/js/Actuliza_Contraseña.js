@@ -13,6 +13,7 @@ function sendEmail(email, newPassword) {
     var formData = new FormData();
     formData.append("email", email);
     formData.append("newPassword", newPassword);
+    
 
     fetch("send_email.php", {
         method: "POST",
@@ -43,3 +44,4 @@ forgotPasswordLink.addEventListener("click", function(event) {
         sendEmail(email, newPassword);
     }
 });
+
