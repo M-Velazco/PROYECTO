@@ -32,7 +32,6 @@ function sendEmail(email, newPassword) {
     });
 }
 
-
 var forgotPasswordLink = document.getElementById("forgotPassword");
 
 forgotPasswordLink.addEventListener("click", function(event) {
@@ -44,4 +43,3 @@ forgotPasswordLink.addEventListener("click", function(event) {
         sendEmail(email, newPassword);
     }
 });
-    
