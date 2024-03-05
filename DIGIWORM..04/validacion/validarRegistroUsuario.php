@@ -14,7 +14,7 @@ if(isset($_POST['Materia'], $_POST['Pasword'], $_POST['Idusuario'], $_POST['Nomb
     // Verificar si se subió una imagen
     if(isset($_FILES['img']) && $_FILES['img']['error'] === UPLOAD_ERR_OK) {
         // Directorio donde se guardará la imagen (ajusta esto según tu estructura de carpetas)
-        $directorio_destino = "img/";
+        $directorio_destino = "../img/";
         
         // Generar un nombre único para la imagen
         $nombre_archivo = uniqid('img_') . '_' . $_FILES['img']['name'];
@@ -22,10 +22,12 @@ if(isset($_POST['Materia'], $_POST['Pasword'], $_POST['Idusuario'], $_POST['Nomb
         // Ruta completa donde se guardará la imagen
         $ruta_archivo = $directorio_destino . $nombre_archivo;
 
+        $ruta="img/";
+
         // Mover el archivo cargado al directorio de destino
         if(move_uploaded_file($_FILES['img']['tmp_name'], $ruta_archivo)) {
             // Asignar la ruta de la imagen al campo img
-            $img = $ruta_archivo;
+            $img = $ruta . $nombre_archivo;
         } else {
             echo "Error al mover el archivo de imagen.";
             exit;
