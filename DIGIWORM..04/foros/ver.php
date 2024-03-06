@@ -90,15 +90,9 @@ if (isset($_SESSION['Idusuario'])) {
 </head>
 
 <body>
-<a href="DIGIWORM..04\Foros.php" class="boton">Salir</a>
+<a href="javascript:history.go(-1);" class="boton">Salir</a>
     <h1>Foros</h1>
-    <div class="foro">
-        <h2></h2>
-        <p>Descripción del foro</p>
-        <p><strong>Fecha de creación:</strong> 2024-02-29</p>
-        <p><strong>Creado por:</strong> Usuario123</p>
-        <a href="ver_foro.php?id=1">Ver Foro</a>
-    </div>
+   
     <div class="foro">
         <?php
         // Conexión a la base de datos y consulta de las materias

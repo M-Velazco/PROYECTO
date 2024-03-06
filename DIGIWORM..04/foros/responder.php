@@ -1,3 +1,32 @@
+<?php
+// Inicia la sesión
+session_start();
+
+// Verifica si la variable de sesión 'Idusuario' está establecida para determinar si el usuario está conectado
+if (isset($_SESSION['Idusuario'])) {
+    $usuario_conectado = true;
+
+    // Crea una instancia de la clase Usuario y conecta a la base de datos
+    require_once "../modelo/USUARIO.php";
+    require_once "../modelo/conexion.php";
+    require_once "configuracion.php";
+    $objConexion = Conectarse();
+    $objUsuarios = new Usuario($objConexion);
+
+    // Obtiene el nombre del usuario basado en su ID
+    $nombre_usuario = $objUsuarios->obtenerNombreUsuario($_SESSION['Idusuario']);
+
+    // Obtiene la ruta de la imagen de perfil del usuario
+    $ruta_imagen = $objUsuarios->obtenerRutaImagenUsuario($_SESSION['Idusuario']);
+    $rol_usuario = $objUsuarios->obtenerRutaImagenUsuario($_SESSION['Idusuario']);
+
+
+
+} else {
+    $usuario_conectado = false;
+    header('Location: form.php?error=nologeado');
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,9 +73,28 @@
         input[type="submit"]:hover {
             background-color: #45a049; /* Cambio de color al pasar el ratón */
         }
+        .boton {
+    background-color: #4caf50;
+    /* Color de fondo verde */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.boton:hover {
+    background-color: #45a049;
+    /* Cambio de color al pasar el ratón */
+}
     </style>
 </head>
 <body>
+<a href="javascript:history.go(-1);" class="boton">Salir</a>
     <h2 style="text-align: center;">Responder Foro</h2>
     <form action="responder.php" method="post" enctype="multipart/form-data">
         <input type="hidden" name="id_foro" value=>
