@@ -76,7 +76,7 @@ if(isset($_SESSION['Idusuario'])) {
     <div class="navbar-nav font-weight-bold mx-auto py-0">
         <a href="index04.php" class="nav-item nav-link active">Home</a>
         <a href="Principal.php" class="nav-item nav-link">Principal</a>
-            <a href="chat" class="nav-item nav-link">Chat</a>
+            <a href="chat/login.php" class="nav-item nav-link">Chat</a>
             <a href="Foros.php" class="nav-item nav-link">Foros</a>
             <a href="Docentes.php" class="nav-item nav-link">Docentes</a>
             <div class="nav-item dropdown">
