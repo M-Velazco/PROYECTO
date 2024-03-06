@@ -15,7 +15,7 @@ if (!empty($Email) && !empty($Password)) {
             if ($sql2) {
                 $_SESSION['Idusuarios'] = $row['Idusuarios'];
                 echo "Proceso Exitoso";
-                header("Location: " . $_SERVER['HTTP_REFERER']);
+                
             } else {
                 echo "Algo salió mal. ¡Inténtalo de nuevo!";
             }
