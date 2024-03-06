@@ -66,10 +66,31 @@ if (isset($_SESSION['Idusuario'])) {
         .foro p {
             margin-bottom: 10px;
         }
+
+    
+.boton {
+    background-color: #4caf50;
+    /* Color de fondo verde */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.boton:hover {
+    background-color: #45a049;
+    /* Cambio de color al pasar el ratón */
+}
     </style>
 </head>
 
 <body>
+<a href="DIGIWORM..04\Foros.php" class="boton">Salir</a>
     <h1>Foros</h1>
     <div class="foro">
         <h2></h2>

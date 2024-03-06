@@ -107,9 +107,28 @@ if (isset($_SESSION['Idusuario'])) {
         input[type="submit"]:hover {
             background-color: #45a049; /* Cambio de color al pasar el ratón */
         }
+        .boton {
+    background-color: #4caf50;
+    /* Color de fondo verde */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.boton:hover {
+    background-color: #45a049;
+    /* Cambio de color al pasar el ratón */
+}
     </style>
 </head>
 <body>
+<a href="DIGIWORM..04\Foros.php" class="boton">Salir</a>
     <h2 style="text-align: center;">Crear Foro</h2>
     <?php if (!empty($mensaje)) : ?>
         <div style="text-align: center; color: <?php echo strpos($mensaje, "Error") !== false ? 'red' : 'green'; ?>;">
