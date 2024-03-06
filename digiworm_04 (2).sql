@@ -236,7 +236,7 @@ CREATE TABLE IF NOT EXISTS `foros` (
   `Nombres` varchar(100) NOT NULL,
   PRIMARY KEY (`idForos`),
   KEY `idUsuarios` (`idusuario`),
-  KEY `Nombre_for` (`Nombres`)
+  
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
