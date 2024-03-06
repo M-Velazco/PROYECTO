@@ -94,7 +94,7 @@ if (isset($_SESSION['Idusuario'])) {
     </style>
 </head>
 <body>
-<a href="javascript:history.go(-1);" class="boton">Salir</a>
+<a href="javascript:history.go(-2);" class="boton">Salir</a>
     <h2 style="text-align: center;">Responder Foro</h2>
     <form action="responder.php" method="post" enctype="multipart/form-data">
         <input type="hidden" name="id_foro" value=>
