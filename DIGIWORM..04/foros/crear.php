@@ -2,6 +2,9 @@
 // Inicia la sesión
 session_start();
 
+// Variable para almacenar el mensaje de éxito o error
+$mensaje = "";
+
 // Verifica si el usuario está conectado
 if (isset($_SESSION['Idusuario'])) {
     // Crea una instancia de la clase Usuario y conecta a la base de datos
@@ -46,11 +49,13 @@ if (isset($_SESSION['Idusuario'])) {
         mysqli_stmt_bind_param($stmt, "ssssi", $titulo, $descripcion, $fecha_creacion, $ruta_destino, $id_usuario);
 
         // Ejecuta la declaración
-        mysqli_stmt_execute($stmt);
-
-        // Redirige a una página de éxito
-        header("Location: ver.php");
-        exit();
+        if (mysqli_stmt_execute($stmt)) {
+            // Mensaje de éxito si la inserción fue exitosa
+            $mensaje = "Foro creado exitosamente";
+        } else {
+            // Mensaje de error si hubo un problema con la inserción
+            $mensaje = "Error al insertar los datos: " . mysqli_error($con);
+        }
     }
 } else {
     // Si el usuario no está conectado, redirige a la página de inicio de sesión
@@ -64,91 +69,53 @@ if (isset($_SESSION['Idusuario'])) {
 <head>
     <title>Crear Foro</title>
     <style>
-        
         /* Estilos CSS */
-    
-    
-    body {
-        background-color: #73cdff; /* Color de fondo verde pastel */
-        font-family: Arial, sans-serif;
-        color: #333;
-        margin: 0;
-        padding: 0;
-    }
-    form {
-        background-color: #fff; /* Fondo blanco */
-        padding: 20px;
-        border-radius: 10px;
-        width: 50%;
-        margin: 0 auto;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    input[type="text"],
-    textarea,
-    input[type="datetime-local"],
-    input[type="file"],
-    input[type="submit"] {
-        width: 100%;
-        padding: 8px;
-        margin-bottom: 10px;
-        box-sizing: border-box;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        font-size: 14px;
-    }
-    input[type="submit"] {
-        background-color: #4caf50; /* Color de fondo verde */
-        color: white;
-        cursor: pointer;
-        font-size: 16px;
-    }
-    input[type="submit"]:hover {
-        background-color: #45a049; /* Cambio de color al pasar el ratón */
-    }
-</style>
-<style>
-    body {
-        background-color: #f0f8f7; /* Color de fondo verde pastel */
-        font-family: Arial, sans-serif;
-        color: #333;
-        margin: 0;
-        padding: 0;
-    }
-    form {
-        background-color: #fff; /* Fondo blanco */
-        padding: 20px;
-        border-radius: 10px;
-        width: 50%;
-        margin: 0 auto;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    input[type="text"],
-    textarea,
-    input[type="datetime-local"],
-    input[type="file"],
-    input[type="submit"] {
-        width: 100%;
-        padding: 8px;
-        margin-bottom: 10px;
-        box-sizing: border-box;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        font-size: 14px;
-    }
-    input[type="submit"] {
-        background-color: #4caf50; /* Color de fondo verde */
-        color: white;
-        cursor: pointer;
-        font-size: 16px;
-    }
-    input[type="submit"]:hover {
-        background-color: #45a049; /* Cambio de color al pasar el ratón */
-    }
-</style>
-    
+        body {
+            background-color: #73cdff; /* Color de fondo verde pastel */
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        form {
+            background-color: #fff; /* Fondo blanco */
+            padding: 20px;
+            border-radius: 10px;
+            width: 50%;
+            margin: 0 auto;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        input[type="text"],
+        textarea,
+        input[type="datetime-local"],
+        input[type="file"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        input[type="submit"] {
+            background-color: #4caf50; /* Color de fondo verde */
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049; /* Cambio de color al pasar el ratón */
+        }
+    </style>
 </head>
 <body>
     <h2 style="text-align: center;">Crear Foro</h2>
+    <?php if (!empty($mensaje)) : ?>
+        <div style="text-align: center; color: <?php echo strpos($mensaje, "Error") !== false ? 'red' : 'green'; ?>;">
+            <?php echo $mensaje; ?>
+        </div>
+    <?php endif; ?>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
         <label for="titulo">Título:</label>
         <input type="text" id="titulo" name="titulo" required><br><br>
@@ -158,8 +125,6 @@ if (isset($_SESSION['Idusuario'])) {
         <input type="datetime-local" id="fecha_creacion" name="fecha_creacion" required><br><br>
         <label for="archivos">Archivos adjuntos (opcional):</label>
         <input type="file" id="archivos" name="archivos[]" multiple><br><br>
-        <!-- Agregamos un campo oculto para enviar el ID de usuario -->
-        <input type="hidden" name="idusuario" value="<?php echo $_SESSION['Idusuario']; ?>">
         <input type="submit" value="Crear Foro">
     </form>
 </body>

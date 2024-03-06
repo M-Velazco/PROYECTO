@@ -99,6 +99,7 @@ if (isset($_SESSION['Idusuario'])) {
             <p><strong>Creado por:</strong>
                 <?php echo $nombre_usuario; ?>
             </p>
+            <a href="responder.php?id=1">responder Foro</a>
             <?php
         }
 
