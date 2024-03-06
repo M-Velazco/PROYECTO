@@ -139,9 +139,6 @@ if(isset($_SESSION['Idusuario'])) {
                             <a href="foros/crear.php" class="text-decoration-none text-dark">crear foros</a>
                         </li>
                         <li class="btn btn-outline-primary m-1">
-                            <a href="foros/responder.php" class="text-decoration-none text-dark">responder foros</a>
-                        </li>
-                        <li class="btn btn-outline-primary m-1">
                             <a href="foros/ver.php" class="text-decoration-none text-dark">ver foros</a>
                         </li>
                     </ul>
