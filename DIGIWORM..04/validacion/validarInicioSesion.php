@@ -28,13 +28,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['Idusuario']) && !empt
         // Redirige según el rol del usuario
         switch ($_SESSION['rol_usuario']) {
             case 'Docente':
-                header("Location: vista_docente.php");//casos foros, actividades, chats, publicaciones/no_publicar
+                header("Location: ../index04.php");//casos foros, actividades, chats, publicaciones/no_publicar
                 exit();
             case 'Padre_de_Familia':
                 header("Location: Visual_padres");// casos de visual padres chats
                 exit();
             case 'Estudiante':
-                header("Location: vista_estudiante.php");// casos foros, actividades/no_publicar, chats, publicaciones/no_publicar
+                header("Location: ../index04.php");// casos foros, actividades/no_publicar, chats, publicaciones/no_publicar
                 exit();
             case 'Coordinador':
                 header("Location: ../Actividades.php");//casos foros, actividades/no_publicar,publicaciones
