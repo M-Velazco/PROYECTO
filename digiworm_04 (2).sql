@@ -227,24 +227,23 @@ INSERT INTO `estudiante` (`idEstudiante`, `Nombres`, `Apellidos`, `Email`, `Pasw
 
 DROP TABLE IF EXISTS `foros`;
 CREATE TABLE IF NOT EXISTS `foros` (
-  `idForos` int(11) NOT NULL AUTO_INCREMENT,
+  `idForos` int NOT NULL AUTO_INCREMENT,
   `Titulo` varchar(60) DEFAULT NULL,
   `Contenido` varchar(700) DEFAULT NULL,
   `Fecha_Hora` datetime NOT NULL,
   `archivo` varchar(500) NOT NULL,
-  `idusuario` int(11) DEFAULT NULL,
-  `Nombres` varchar(100) NOT NULL,
+  `idusuario` int DEFAULT NULL,
+  `respuesta` varchar(500) NOT NULL,
   PRIMARY KEY (`idForos`),
-  KEY `idUsuarios` (`idusuario`),
-  
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+  KEY `idUsuarios` (`idusuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb3;
+
 
 --
 -- Volcado de datos para la tabla `foros`
 --
 
-INSERT INTO `foros` (`idForos`, `Titulo`, `Contenido`, `Fecha_Hora`, `archivo`, `idusuario`, `Nombres`) VALUES
-(5, 'hola', 'holax2', '2024-03-05 16:49:48', 'FRIMA.PNG', 1025538177, 'Aurelio');
+
 
 -- --------------------------------------------------------
 
