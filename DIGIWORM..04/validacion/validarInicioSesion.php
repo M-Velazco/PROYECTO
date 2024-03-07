@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['Idusuario']) && !empt
             case 'Docente':
                 header("Location: ../index04.php");//casos foros, actividades, chats, publicaciones/no_publicar
                 exit();
-            case 'Padre_de_Familia':
+            case 'Padre_Familia':
                 header("Location: Visual_padres");// casos de visual padres chats
                 exit();
             case 'Estudiante':
