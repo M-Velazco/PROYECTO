@@ -173,7 +173,7 @@ endif;
                 <?php else: ?>
                     <span>No hay </span>
                 <?php endif; ?>
-                <?php echo $nombre_usuario." ". $rol_usuario.""; ?>.
+                <?php echo $nombre_usuario."/". $rol_usuario."/"; ?>.
                 
                 
                 <br>

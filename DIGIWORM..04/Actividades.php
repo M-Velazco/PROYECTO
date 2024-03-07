@@ -20,7 +20,7 @@ if(isset($_SESSION['Idusuario'])) {
 
     // Obtiene la ruta de la imagen de perfil del usuario
     $ruta_imagen = $objUsuarios->obtenerRutaImagenUsuario($_SESSION['Idusuario']);
-    $rol_usuario = $objUsuarios->obtenerRutaImagenUsuario($_SESSION['Idusuario']);
+    $rol_usuario = $objUsuarios->obtenerRolUsuario($_SESSION['Idusuario']);
 
 
     
@@ -127,7 +127,7 @@ endif;
                 <?php else: ?>
                     <span>No hay </span>
                 <?php endif; ?>
-                <?php echo $nombre_usuario; ?>.
+                <?php echo $nombre_usuario."/". $rol_usuario."/"; ?>.
                 
                 <a href="modelo/CerrarSession.php">Cerrar sesion</a>
             </p>
