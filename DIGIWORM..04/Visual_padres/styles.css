@@ -3,7 +3,12 @@ body {
     margin: 0;
     padding: 0;
     background-color: #85eaf1;
+    background-image: url(../img/Fondo_padres.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+
+
 
 header {
     text-align: center;
@@ -58,7 +63,9 @@ header {
     background-color: white; 
     padding: 5px; 
     border-radius: 8px; 
+   
 }
+
 
 .search-bar input[type="text"] {
     width: 400px;

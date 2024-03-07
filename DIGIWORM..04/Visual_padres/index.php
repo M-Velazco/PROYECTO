@@ -33,13 +33,16 @@
 <body>
 
     <header>
-        <div class="logo">
-            <img src="imagenes\LOGO.png" alt="Logo">
-            <a href="principal.php" class="principal-link">Principal</a>
-        </div>
+    <div class="logo">
+    <img src="imagenes\LOGO.png" alt="Logo">
+  <h3>  <a href="#" onclick="history.go(-1);" class="principal-link">Principal</a> <h3>
+</div>
+
         <h1>Bienvenido</h1>
-        <p>Información importante para padres de familia</p>
+        <p> <h2>Información importante para padres de familia<h2></p>
+        
     </header>
+    
 
     <div class="navbar">
         <div class="search-bar">
@@ -111,20 +114,21 @@
         }
 
         function realizarBusqueda() {
-            var idEstudiante = document.getElementById('idEstudiante').value;
+    var idEstudiante = document.getElementById('idEstudiante').value;
 
-            if (idEstudiante.trim() === "") {
-                alert("Es necesario llenar el campo de búsqueda.");
-                return false;
-            }
+    if (idEstudiante.trim() === "") {
+        alert("Por favor, ingrese un ID de estudiante válido.");
+        return false;
+    }
 
-            if (!/^\d+$/.test(idEstudiante)) {
-                alert("La búsqueda solo permite números.");
-                return false;
-            }
+    if (!/^\d+$/.test(idEstudiante)) {
+        alert("El ID de estudiante debe contener solo números.");
+        return false;
+    }
 
-            document.getElementById('searchForm').submit();
-        }
+    document.getElementById('searchForm').submit();
+}
+
     </script>
 
 </body>
