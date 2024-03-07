@@ -46,12 +46,14 @@ if (isset($_SESSION['Idusuario'])) {
     <style>
       /* Estilos CSS */
       body {
-            background-color: #73cdff; /* Color de fondo verde pastel */
-            font-family: Arial, sans-serif;
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
+    background-color: #73cdff; /* Color de fondo verde pastel */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('../img/coolegio.jpg');
+    background-size: cover; 
+    background-repeat: no-repeat; 
+}
         form {
             background-color: #fff; /* Fondo blanco */
             padding: 20px;
