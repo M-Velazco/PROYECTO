@@ -18,7 +18,11 @@ if (!isset($_SESSION['Idusuarios'])) {
             $row = mysqli_fetch_assoc($sql);
           }
           ?>
-          <img src="../<?php echo $row['img']; ?>" alt="">
+          <div class="image-container">
+    <img src="../<?php echo $row['img']; ?>" alt="Image"style="width: 40px; height: 40px; border-radius: 50%;">
+     
+</div>
+
           <div class="details">
             <span>
               <?php echo $row['Nombres'] . " " . $row['Apellidos'] ?>
