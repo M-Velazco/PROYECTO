@@ -20,7 +20,7 @@ while ($row = mysqli_fetch_assoc($query)) {
 
     $output .= '<a href="chat.php?Idusuarios=' . $row['Idusuarios'] . '">
                     <div class="content">
-                    <img src="php/images/' . $row['img'] . '" alt="">
+                    <img src="../' . $row['img'] . '" alt="">
                     <div class="details">
                         <span>' . $row['Nombres'] . " " . $row['Apellidos'] . '</span>
                         <p>' . $you . $Mensaje . '</p>
