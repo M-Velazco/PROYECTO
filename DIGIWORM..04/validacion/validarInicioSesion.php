@@ -25,9 +25,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['Idusuario']) && !empt
         $_SESSION['Idusuario'] = $Idusuario;
         $_SESSION['rol_usuario'] = $objUsuarios->obtenerRolUsuario($Idusuario);
 
-        // Redirige a la página de inicio
-        header("Location: ../index04.php?success=logeado");
-        exit(); // Detiene la ejecución del script después de redirigir
+        // Redirige según el rol del usuario
+        switch ($_SESSION['rol_usuario']) {
+            case 'Docente':
+                header("Location: ../index04.php");//casos foros, actividades, chats, publicaciones/no_publicar
+                exit();
+            case 'Padre_de_Familia':
+                header("Location: Visual_padres");// casos de visual padres chats
+                exit();
+            case 'Estudiante':
+                header("Location: ../index04.php");// casos foros, actividades/no_publicar, chats, publicaciones/no_publicar
+                exit();
+            case 'Coordinador':
+                header("Location: ../Actividades.php");//casos foros, actividades/no_publicar,publicaciones
+                exit();
+            default:
+                // En caso de un rol desconocido, redirige a algún lugar predeterminado
+                header("Location: ../index04.php");
+                exit();
+        }
     } else {
         // Inicio de sesión fallido, redirige a la página de inicio de sesión con un mensaje de error
         header("Location: ../form.php?error=usuario_no_encontrado");
