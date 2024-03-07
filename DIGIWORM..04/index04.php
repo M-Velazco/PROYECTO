@@ -130,7 +130,7 @@ if (isset($_GET['succes']) && $_GET['succes'] == 'Comentado') {
                 <div class="dropdown-menu rounded-0 m-0">
                     <a href="Actividades.php" class="dropdown-item">Actividades</a>
                     <a href="Publicaciones.php" class="dropdown-item">Publicaciones</a>
-                    <a href="Publicaciones.php" class="dropdown-item">Padres de Familia</a>
+                    <a href="Visual_padres" class="dropdown-item">Padres de Familia</a>
                 </div>
             </div>
         
