@@ -144,7 +144,7 @@
             <label for="Estudiante">Estudiante</label>
         </div>
         <div style="display: flex; flex-direction: column;">
-            <input type="radio" id="Padre de Familia" name="Rol" value="Padre_de_Familia">
+            <input type="radio" id="Padre de Familia" name="Rol" value="Padre_Familia">
             <label for="Padre de Familia">Padre de Familia</label>
         </div>
         <div style="display: flex; flex-direction: column;">
