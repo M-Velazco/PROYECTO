@@ -69,16 +69,6 @@ if(isset($_SESSION['Idusuario'])) {
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="container-fluid bg-light position-relative shadow">
-        <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0 px-lg-5">
-            <a href="" class="navbar-brand font-weight-bold text-secondary" style="font-size: 50px;">
-                
-            <span class="text-primary">DIGIWORM</span>
-                
-            </a>
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
     <div class="navbar-nav font-weight-bold mx-auto py-0">
     <?php 
@@ -134,9 +124,12 @@ endif;
                 <?php else: ?>
                     <span>No hay </span>
                 <?php endif; ?>
-                <?php echo $nombre_usuario; ?>.
+                <?php echo $nombre_usuario." ". $rol_usuario.""; ?>.
                 
-                <a href="modelo/CerrarSession.php">Cerrar sesion</a>
+                
+                <br>
+                
+                <a href="modelo/CerrarSession.php" style="">Cerrar sesion</a>
             </p>
             
         </div>

@@ -127,9 +127,12 @@ endif;
                 <?php else: ?>
                     <span>No hay </span>
                 <?php endif; ?>
-                <?php echo $nombre_usuario; ?>.
+                <?php echo $nombre_usuario." ". $rol_usuario.""; ?>.
                 
-                <a href="modelo/CerrarSession.php">Cerrar sesion</a>
+                
+                <br>
+                
+                <a href="modelo/CerrarSession.php" style="">Cerrar sesion</a>
             </p>
             
         </div>
