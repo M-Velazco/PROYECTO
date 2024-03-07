@@ -107,6 +107,11 @@ if (isset($_SESSION['Idusuario'])) {
 <body>
 <a href="javascript:history.go(-3);" class="boton">Salir</a>
     <h2 style="text-align: center;">Responder Foro</h2>
+    <?php if (!empty($mensaje)) : ?>
+        <div style="text-align: center; color: <?php echo strpos($mensaje, "Error") !== false ? 'red' : 'green'; ?>;">
+            <?php echo $mensaje; ?>
+        </div>
+    <?php endif; ?>
     <form action="responder.php" method="post">
         Título del foro: <input type="text" name="titulo" required><br><br>
         Respuesta: <textarea name="respuesta" required></textarea><br><br>
