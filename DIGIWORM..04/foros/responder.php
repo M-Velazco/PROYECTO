@@ -2,44 +2,55 @@
 // Inicia la sesión
 session_start();
 
-// Verifica si la variable de sesión 'Idusuario' está establecida para determinar si el usuario está conectado
+// Verifica si el usuario está conectado
 if (isset($_SESSION['Idusuario'])) {
-    $usuario_conectado = true;
+    // Verifica si se ha enviado el formulario
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Obtener los datos del formulario
+        $titulo = $_POST["titulo"];
+        $respuesta = htmlspecialchars($_POST["respuesta"]);
+        $id_usuario = $_SESSION['Idusuario'];
 
-    // Crea una instancia de la clase Usuario y conecta a la base de datos
-    require_once "../modelo/USUARIO.php";
-    require_once "../modelo/conexion.php";
-    require_once "configuracion.php";
-    $objConexion = Conectarse();
-    $objUsuarios = new Usuario($objConexion);
+        // Guardar la respuesta en la base de datos
+        // Reemplaza 'tu_conexion' con tu conexión a la base de datos
+        $conn = new mysqli('localhost', 'root', 'sena', 'digiworm_04');
+        if ($conn->connect_error) {
+            die("Error de conexión: " . $conn->connect_error);
+        }
 
-    // Obtiene el nombre del usuario basado en su ID
-    $nombre_usuario = $objUsuarios->obtenerNombreUsuario($_SESSION['Idusuario']);
+        // Escapar los valores para prevenir inyección SQL
+        $titulo = $conn->real_escape_string($titulo);
+        $id_usuario = $conn->real_escape_string($id_usuario);
+        $respuesta = $conn->real_escape_string($respuesta);
 
-    // Obtiene la ruta de la imagen de perfil del usuario
-    $ruta_imagen = $objUsuarios->obtenerRutaImagenUsuario($_SESSION['Idusuario']);
-    $rol_usuario = $objUsuarios->obtenerRutaImagenUsuario($_SESSION['Idusuario']);
+        $sql = "UPDATE foros SET respuesta = CONCAT(IFNULL(respuesta, ''), '$respuesta\n') WHERE titulo = '$titulo'";
+        if ($conn->query($sql) === TRUE) {
+            echo "Respuesta enviada correctamente.<br>";
+        } else {
+            echo "Error al enviar la respuesta: " . $conn->error;
+        }
 
-
-
+        $conn->close();
+    }
 } else {
-    $usuario_conectado = false;
+    // Si el usuario no está conectado, redirige a la página de inicio de sesión
     header('Location: form.php?error=nologeado');
+    exit();
 }
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>Responder Foro</title>
     <style>
-        body {
-            background-img:url("img/header.png");
-            background-color: #73B0FF; /* Color de fondo verde pastel */
+      /* Estilos CSS */
+      body {
+            background-color: #73cdff; /* Color de fondo verde pastel */
             font-family: Arial, sans-serif;
             color: #333;
             margin: 0;
             padding: 0;
-    
         }
         form {
             background-color: #fff; /* Fondo blanco */
@@ -49,7 +60,11 @@ if (isset($_SESSION['Idusuario'])) {
             margin: 0 auto;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        textarea {
+        input[type="text"],
+        textarea,
+        input[type="datetime-local"],
+        input[type="file"],
+        input[type="submit"] {
             width: 100%;
             padding: 8px;
             margin-bottom: 10px;
@@ -58,15 +73,9 @@ if (isset($_SESSION['Idusuario'])) {
             border-radius: 4px;
             font-size: 14px;
         }
-        input[type="file"] {
-            margin-bottom: 20px;
-        }
         input[type="submit"] {
             background-color: #4caf50; /* Color de fondo verde */
             color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
         }
@@ -94,12 +103,11 @@ if (isset($_SESSION['Idusuario'])) {
     </style>
 </head>
 <body>
-<a href="javascript:history.go(-2);" class="boton">Salir</a>
+<a href="javascript:history.go(-3);" class="boton">Salir</a>
     <h2 style="text-align: center;">Responder Foro</h2>
-    <form action="responder.php" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="id_foro" value=>
+    <form action="responder.php" method="post">
+        Título del foro: <input type="text" name="titulo" required><br><br>
         Respuesta: <textarea name="respuesta" required></textarea><br><br>
-        Archivos adjuntos (opcional): <input type="file" name="archivos[]" multiple><br><br>
         <input type="submit" value="Enviar Respuesta">
     </form>
 </body>
