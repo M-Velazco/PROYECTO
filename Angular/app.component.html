@@ -1,0 +1,37 @@
+<div align="center">
+  <h1>LISTA DE ESTUDIANTES </h1>
+  <table border="1" *ngIf="hayRegistros(); else sin">
+    <tr>
+      <td>ID</td>
+      <td>NOMBRE</td>
+      <td>id_estudainte</td>
+      <td>EMAIL</td>
+      <td>BORRAR</td>
+      <td>SELECCIONAR</td>
+    </tr>
+    <tr *ngFor="let usuario of usuarios">
+      <td> {{usuario.idUsuario }} </td>
+      <td> {{usuario.nombre }} </td>
+      <td> {{usuario.telefono }} </td>
+      <td> {{usuario.email }} </td>
+      <td> <button (click)="bajaUsuario(usuario.idUsuario)"> Borrar </button> </td>
+      <td> <button (click)="seleccionarUsuario(usuario.idUsuario)"> Seleccionar </button> </td>
+    </tr>
+  </table>
+
+  <ng-template #sin>
+    <p>No hay Estudiantes registrados.</p>
+  </ng-template>
+
+  <div>
+    <p> ID: <input type="text" [(ngModel)]="Estudaintes.ID" /> </p>
+    <p> NOMBRE: <input type="number" [(ngModel)]="Estudiantes.NOMBRE" /> </p>
+    <p> id_estudainte : <input type="text" [(ngModel)]="Estudaintes.id_estudainte" /> </p>
+    <p> Curso : <input type="text" [(ngModel)]="Estudaintes.Curso" /> </p>
+    <p> 
+      <button (click)="altaUsuario()"> AGREGAR </button> 
+      <button (click)="editarUsuario()"> MODIFICAR </button> 
+    </p>
+  </div>
+
+</div>
