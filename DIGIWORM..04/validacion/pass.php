@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email'])) {
             }
 
             // Enviar correo electrónico al usuario con el enlace de recuperación de contraseña
-            $reset_link = "http://tu-sitio.com/reset_password.php?token=$token";
+            $reset_link = "http://localhost/PROYECTO/DIGIWORM..04/recovery.php?token=$token";
             $mail = new PHPMailer(true);
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';
