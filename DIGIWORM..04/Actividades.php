@@ -77,6 +77,7 @@ if(isset($_SESSION['Idusuario'])) {
     <?php 
 if ($rol_usuario == 'Coordinador'):
     echo '<a href="index04.php" class="nav-item nav-link active">Home</a>
+    <a href="Principal.php" class="nav-item nav-link">Principal</a>
     
     <div class="nav-item dropdown">
         <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
@@ -162,6 +163,16 @@ endif;
                 <p class="section-title px-5"><span class="px-2">Propuestas</span></p>
                 <h1 class="mb-4">Actividades</h1>
             </div>
+            <?php 
+            $conexion = new mysqli("localhost", "root", "sena", "digiworm_04");
+            if ($conexion->connect_error) {
+                die("Error de conexión: " . $conexion->connect_error);
+            }
+            $consulta = $conexion->query("SELECT  * FROM actividades");
+    
+            // Generar las opciones del select
+            while ($fila = $consulta->fetch_assoc()) {?>
+            
             <div class="row pb-3">
                 <div class="col-lg-4 mb-4">
                     <div class="card border-0 shadow-sm mb-2">
@@ -180,85 +191,7 @@ endif;
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 mb-4">
-                    <div class="card border-0 shadow-sm mb-2">
-                        <img class="card-img-top mb-2" src="img/blog-2.jpg" alt="">
-                        <div class="card-body bg-light text-center p-4">
-                            <h4 class="">Actividad Fisica</h4>
-                            <div class="d-flex justify-content-center mb-3">
-                                <small class="mr-3"><i class="fa fa-user text-primary"></i> Docente</small>
-                                <small class="mr-3"><i class="fa fa-folder text-primary"></i> Materia</small>
-                                <small class="mr-3"><i class="fa fa-comments text-primary"></i> Entregados</small>
-                            </div>
-                            <p>Investigacion sobre que es la fisica </p>
-                            <p>De donde proviene la fisica</p>
-                            <p>Quien invento la fisica</p>
-                            <a href="" class="btn btn-primary px-4 mx-auto my-2">Publicar</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 mb-4">
-                    <div class="card border-0 shadow-sm mb-2">
-                        <img class="card-img-top mb-2" src="img/blog-3.jpg" alt="">
-                        <div class="card-body bg-light text-center p-4">
-                            <h4 class="">Actividad Español</h4>
-                            <div class="d-flex justify-content-center mb-3">
-                                <small class="mr-3"><i class="fa fa-user text-primary"></i> Docente</small>
-                                <small class="mr-3"><i class="fa fa-folder text-primary"></i> Materia</small>
-                                <small class="mr-3"><i class="fa fa-comments text-primary"></i> Entregados</small>
-                            </div>
-                            <p>S <p>Investigar las tendencias del sector</p>
-                              <p> Desarrollar estrategias de marca</p> 
-                               
-                            <a href="" class="btn btn-primary px-4 mx-auto my-2">Publicar</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 mb-4">
-                    <div class="card border-0 shadow-sm mb-2">
-                        <img class="card-img-top mb-2" src="img/blog-1.jpg" alt="">
-                        <div class="card-body bg-light text-center p-4">
-                            <h4 class="">Actividad Filosofia</h4>
-                            <div class="d-flex justify-content-center mb-3">
-                                <small class="mr-3"><i class="fa fa-user text-primary"></i> Docente</small>
-                                <small class="mr-3"><i class="fa fa-folder text-primary"></i> Materia</small>
-                                <small class="mr-3"><i class="fa fa-comments text-primary"></i> Entregados</small>
-                            </div>
-                            <p>Si tu empleador acepta ajustar tu función a la descripción que crees, puede que te encuentres con un trabajo gratificante y agradable hecho a tu medida.</p>
-                            <a href="" class="btn btn-primary px-4 mx-auto my-2">Publicar</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 mb-4">
-                    <div class="card border-0 shadow-sm mb-2">
-                        <img class="card-img-top mb-2" src="img/blog-2.jpg" alt="">
-                        <div class="card-body bg-light text-center p-4">
-                            <h4 class="">Actividad Religion</h4>
-                            <div class="d-flex justify-content-center mb-3">
-                                <small class="mr-3"><i class="fa fa-user text-primary"></i> Docente</small>
-                                <small class="mr-3"><i class="fa fa-folder text-primary"></i> Materia</small>
-                                <small class="mr-3"><i class="fa fa-comments text-primary"></i> Entregados</small>
-                            </div>
-                            <p>En lugar de esperar a encontrar el puesto de trabajo perfecto o a que tu empleador te ascienda a un puesto mejor, pasa a la acción creando una nueva descripción del puesto y presentándola a tu jefe. Las ventajas de redactar tu propia descripción del puesto son, entre otras, las siguientes:</p>
-                            <a href="" class="btn btn-primary px-4 mx-auto my-2">Publicar</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 mb-4">
-                    <div class="card border-0 shadow-sm mb-2">
-                        <img class="card-img-top mb-2" src="img/blog-3.jpg" alt="">
-                        <div class="card-body bg-light text-center p-4">
-                            <h4 class="">Actividad Danzas</h4>
-                            <div class="d-flex justify-content-center mb-3">
-                                <small class="mr-3"><i class="fa fa-user text-primary"></i> Docente</small>
-                                <small class="mr-3"><i class="fa fa-folder text-primary"></i> Materia</small>
-                                <small class="mr-3"><i class="fa fa-comments text-primary"></i> Entregados</small>
-                            </div>
-                            <p>Crear el trabajo perfecto para ti y para tu empleador es posible si escribes tu propia descripción del trabajo. Es posible que quieras escribir tu propia descripción del trabajo por las siguientes razones:</p>
-                            <a href="" class="btn btn-primary px-4 mx-auto my-2">Publicar</a>
-                        </div>
-                    </div>
-                </div>
+                <>?
                 <div class="col-md-12 mb-4">
                     <nav aria-label="Page navigation">
                       <ul class="pagination justify-content-center mb-0">

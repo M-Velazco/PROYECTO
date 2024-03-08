@@ -15,7 +15,7 @@ function sendEmail(email, newPassword) {
     formData.append("newPassword", newPassword);
     
 
-    fetch("send_email.php", {
+    fetch("../Restablecer_Contraseña.html", {
         method: "POST",
         body: formData
     })

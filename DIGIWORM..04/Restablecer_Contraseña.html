@@ -20,9 +20,9 @@
             <div class="container">
                 <div class="form">
                     <h2>Recuperar contraseña</h2>
-                    <form id="recoverPasswordForm">
+                    <form id="recoverPasswordForm"  action="validacion/pass.php" method="post">
                         <div class="inputBox">
-                            <input type="text" id="email" placeholder="Correo electrónico"/>
+                            <input type="text" id="email" name="email" placeholder="Correo electrónico"/>
                         </div>
                         <div class="inputBox">
                             <input type="submit" value="Enviar" />
@@ -37,6 +37,7 @@
         </div>
     </section>
 
+<<<<<<< Updated upstream
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var recoverPasswordForm = document.getElementById("recoverPasswordForm");
@@ -60,5 +61,8 @@
             // For example, you might use XMLHttpRequest or fetch API to send a request to a PHP script
         }
     </script>
+=======
+    
+>>>>>>> Stashed changes
 </body>
 </html>
