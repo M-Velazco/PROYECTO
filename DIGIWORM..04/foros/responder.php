@@ -105,21 +105,7 @@ if (isset($_SESSION['Idusuario'])) {
     </style>
 </head>
 <body>
-<?php
-        // Conexión a la base de datos y consulta de las materias
-        $conexion = new mysqli("localhost", "root", "sena", "digiworm_04");
-        if ($conexion->connect_error) {
-            die("Error de conexión: " . $conexion->connect_error);
-        }
-        $consulta = $conexion->query("SELECT  * FROM foros WHERE idForos={$_GET['id']}");
-
-        // Generar las opciones del select
-        
-        // Cerrar la conexión
-        $conexion->close();
-        ?>
-<a href="javascript:history.go(-2);" class="boton">Salir</a>
-
+<a href="javascript:history.go(-3);" class="boton">Salir</a>
     <h2 style="text-align: center;">Responder Foro</h2>
     <?php if (!empty($mensaje)) : ?>
         <div style="text-align: center; color: <?php echo strpos($mensaje, "Error") !== false ? 'red' : 'green'; ?>;">
@@ -127,7 +113,7 @@ if (isset($_SESSION['Idusuario'])) {
         </div>
     <?php endif; ?>
     <form action="responder.php" method="post">
-    Título del foro: <input type="text" name="titulo"value='<?php echo'Titulo' ?>' required><br><br>
+        Título del foro: <input type="text" name="titulo" required><br><br>
         Respuesta: <textarea name="respuesta" required></textarea><br><br>
         <input type="submit" value="Enviar Respuesta">
     </form>
