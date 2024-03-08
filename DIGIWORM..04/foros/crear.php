@@ -71,14 +71,14 @@ if (isset($_SESSION['Idusuario'])) {
     <style>
         /* Estilos CSS */
         body {
-    background-color: #73cdff; /* Color de fondo verde pastel */
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-image: url('../img/coolegio.jpg');
-    background-size: cover; 
-    background-repeat: no-repeat; 
-}
+            background-color: #73cdff; /* Color de fondo verde pastel */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('../img/coolegio.jpg');
+            background-size: cover; 
+            background-repeat: no-repeat; 
+        }
 
         form {
             background-color: #fff; /* Fondo blanco */
@@ -111,23 +111,23 @@ if (isset($_SESSION['Idusuario'])) {
             background-color: #45a049; /* Cambio de color al pasar el ratón */
         }
         .boton {
-    background-color: #4caf50;
-    /* Color de fondo verde */
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    position: absolute;
-    top: 20px;
-    left: 20px;
-}
+            background-color: #4caf50;
+            /* Color de fondo verde */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
 
-.boton:hover {
-    background-color: #45a049;
-    /* Cambio de color al pasar el ratón */
-}
+        .boton:hover {
+            background-color: #45a049;
+            /* Cambio de color al pasar el ratón */
+        }
     </style>
 </head>
 <body>
@@ -138,7 +138,7 @@ if (isset($_SESSION['Idusuario'])) {
             <?php echo $mensaje; ?>
         </div>
     <?php endif; ?>
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data" onsubmit="return validarFecha()">
         <label for="titulo">Título:</label>
         <input type="text" id="titulo" name="titulo" required><br><br>
         <label for="descripcion">Descripción:</label>
@@ -149,5 +149,17 @@ if (isset($_SESSION['Idusuario'])) {
         <input type="file" id="archivos" name="archivos[]" multiple><br><br>
         <input type="submit" value="Crear Foro">
     </form>
+
+    <script>
+        function validarFecha() {
+            var fecha = new Date(document.getElementById("fecha_creacion").value);
+            var fechaActual = new Date();
+            if (fecha < fechaActual) {
+                alert("La fecha y hora de creación no puede ser anterior al día de hoy.");
+                return false;
+            }
+            return true;
+        }
+    </script>
 </body>
 </html>
