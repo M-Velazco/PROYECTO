@@ -353,8 +353,23 @@ CREATE TABLE IF NOT EXISTS `publicaciones` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `reset_password`
+--
+CREATE TABLE reset_password_tokens (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    token VARCHAR(255) NOT NULL,
+    expiry_timestamp INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES usuarios(Idusuarios)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuarios`
 --
+
 
 DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE IF NOT EXISTS `usuarios` (
