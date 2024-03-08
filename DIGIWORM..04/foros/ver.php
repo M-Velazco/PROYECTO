@@ -15,33 +15,26 @@ if (isset($_SESSION['Idusuario'])) {
 
     // Obtiene el nombre del usuario basado en su ID
     $nombre_usuario = $objUsuarios->obtenerNombreUsuario($_SESSION['Idusuario']);
-
-    // Obtiene la ruta de la imagen de perfil del usuario
-    $ruta_imagen = $objUsuarios->obtenerRutaImagenUsuario($_SESSION['Idusuario']);
-    $rol_usuario = $objUsuarios->obtenerRutaImagenUsuario($_SESSION['Idusuario']);
-
-
-
 } else {
     $usuario_conectado = false;
     header('Location: form.php?error=nologeado');
+    exit(); // Termina el script para evitar que se siga ejecutando
 }
 ?>
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Ver Foros</title>
     <style>
-          body {
-    background-color: #73cdff; /* Color de fondo verde pastel */
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-image: url('../img/coolegio.jpg');
-    background-size: cover; 
-    background-repeat: no-repeat; 
-}
+        body {
+            background-color: #73cdff; /* Color de fondo verde pastel */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('../img/coolegio.jpg');
+            background-size: cover; 
+            background-repeat: no-repeat; 
+        }
 
         h1 {
             text-align: center;
@@ -68,28 +61,23 @@ if (isset($_SESSION['Idusuario'])) {
             margin-bottom: 10px;
         }
 
-    
-.boton {
-    background-color: #4caf50;
-    /* Color de fondo verde */
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    position: absolute;
-    top: 20px;
-    left: 20px;
-}
+        .boton {
+            background-color: #4caf50;
+            /* Color de fondo verde */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
 
-.boton:hover {
-    background-color: #45a049;
-    /* Cambio de color al pasar el ratón */
-}
+        .boton:hover {
+            background-color: #45a049;
+            /* Cambio de color al pasar el ratón */
+        }
     </style>
 </head>
-
 <body>
 <a href="javascript:history.go(-1);" class="boton">Salir</a>
     <h1>Foros</h1>
@@ -101,7 +89,7 @@ if (isset($_SESSION['Idusuario'])) {
         if ($conexion->connect_error) {
             die("Error de conexión: " . $conexion->connect_error);
         }
-        $consulta = $conexion->query("SELECT  * FROM foros");
+        $consulta = $conexion->query("SELECT * FROM foros");
 
         // Generar las opciones del select
         while ($fila = $consulta->fetch_assoc()) {
@@ -115,7 +103,7 @@ if (isset($_SESSION['Idusuario'])) {
             <p><strong>Creado por:</strong>
                 <?php echo $nombre_usuario; ?>
             </p>
-            <a href="responder.php?id=1">responder Foro</a>
+            <a href="responder.php?id=<?php echo $fila['idForos']; ?>" class="boton">Responder</a>
             <?php
         }
 
@@ -124,5 +112,4 @@ if (isset($_SESSION['Idusuario'])) {
         ?>
     </div>
 </body>
-
 </html>
