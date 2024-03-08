@@ -103,7 +103,8 @@ if (isset($_SESSION['Idusuario'])) {
             <p><strong>Creado por:</strong>
                 <?php echo $nombre_usuario; ?>
             </p>
-            <a href="responder.php?id=<?php echo $fila['idForos']; ?>" class="boton">Responder</a>
+            <a href="responder.php?titulo=<?php echo urlencode($fila['Titulo']); ?>" class="boton">Responder Foro</a>
+
             <?php
         }
 
