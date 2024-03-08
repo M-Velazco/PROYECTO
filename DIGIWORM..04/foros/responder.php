@@ -1,7 +1,5 @@
-<?php
-// Obtener el título del foro de la URL
-$titulo_foro = isset($_GET['titulo']) ? htmlspecialchars($_GET['titulo']) : '';
-
+ <?php
+ $titulo = isset($_GET['titulo']) ? htmlspecialchars($_GET['titulo']) : '';
 // Inicia la sesión
 session_start();
 
@@ -14,7 +12,26 @@ if (isset($_SESSION['Idusuario'])) {
         $respuesta = htmlspecialchars($_POST["respuesta"]);
         $id_usuario = $_SESSION['Idusuario'];
 
-        // Resto del código para guardar la respuesta en la base de datos...
+        // Guardar la respuesta en la base de datos
+        // Reemplaza 'tu_conexion' con tu conexión a la base de datos
+        $conn = new mysqli('localhost', 'root', 'sena', 'digiworm_04');
+        if ($conn->connect_error) {
+            die("Error de conexión: " . $conn->connect_error);
+        }
+
+        // Escapar los valores para prevenir inyección SQL
+        $titulo = $conn->real_escape_string($titulo);
+        $id_usuario = $conn->real_escape_string($id_usuario);
+        $respuesta = $conn->real_escape_string($respuesta);
+
+        $sql = "UPDATE foros SET respuesta = CONCAT(IFNULL(respuesta, ''), '$respuesta\n') WHERE titulo = '$titulo'";
+        if ($conn->query($sql) === TRUE) {
+            echo "Respuesta enviada correctamente.<br>";
+        } else {
+            echo "Error al enviar la respuesta: " . $conn->error;
+        }
+
+        $conn->close();
     }
 } else {
     // Si el usuario no está conectado, redirige a la página de inicio de sesión
@@ -28,16 +45,16 @@ if (isset($_SESSION['Idusuario'])) {
 <head>
     <title>Responder Foro</title>
     <style>
-        /* Estilos CSS */
-        body {
-            background-color: #73cdff; /* Color de fondo verde pastel */
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-image: url('../img/coolegio.jpg');
-            background-size: cover; 
-            background-repeat: no-repeat; 
-        }
+      /* Estilos CSS */
+      body {
+    background-color: #73cdff; /* Color de fondo verde pastel */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('../img/coolegio.jpg');
+    background-size: cover; 
+    background-repeat: no-repeat; 
+}
         form {
             background-color: #fff; /* Fondo blanco */
             padding: 20px;
@@ -69,23 +86,23 @@ if (isset($_SESSION['Idusuario'])) {
             background-color: #45a049; /* Cambio de color al pasar el ratón */
         }
         .boton {
-            background-color: #4caf50;
-            /* Color de fondo verde */
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            position: absolute;
-            top: 20px;
-            left: 20px;
-        }
+    background-color: #4caf50;
+    /* Color de fondo verde */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
 
-        .boton:hover {
-            background-color: #45a049;
-            /* Cambio de color al pasar el ratón */
-        }
+.boton:hover {
+    background-color: #45a049;
+    /* Cambio de color al pasar el ratón */
+}
     </style>
 </head>
 <body>
@@ -97,7 +114,7 @@ if (isset($_SESSION['Idusuario'])) {
         </div>
     <?php endif; ?>
     <form action="responder.php" method="post">
-        Título del foro: <input type="text" name="titulo" value="<?php echo $titulo_foro; ?>" required><br><br>
+        Título del foro: <input type="text" name="titulo" value="<?php echo $titulo; ?>" required><br><br>
         Respuesta: <textarea name="respuesta" required></textarea><br><br>
         <input type="submit" value="Enviar Respuesta">
     </form>
