@@ -178,7 +178,7 @@ endif;
                     <div class="card border-0 shadow-sm mb-2">
                         <img class="card-img-top mb-2" src="img/blog-1.jpg" alt="">
                         <div class="card-body bg-light text-center p-4">
-                            <h4 class=""><?php echo ?></h4>
+                            <h4 class=""><?php echo $fila['Nombre_act']; ?></h4>
                             <div class="d-flex justify-content-center mb-3">
                                 <small class="mr-3"><i class="fa fa-user text-primary"></i> Docente</small>
                                 <small class="mr-3"><i class="fa fa-folder text-primary"></i> Materia</small>
