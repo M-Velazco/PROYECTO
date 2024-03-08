@@ -1,28 +1,20 @@
 
-
-
 <?php
 // Inicia la sesión
 session_start();
-
 // Verifica si la variable de sesión 'Idusuario' está establecida para determinar si el usuario está conectado
 if(isset($_SESSION['Idusuario'])) {
     $usuario_conectado = true;
-
     // Crea una instancia de la clase Usuario y conecta a la base de datos
     require_once "modelo/USUARIO.php";
     require_once "modelo/conexion.php";
     $objConexion = Conectarse();
     $objUsuarios = new Usuario($objConexion);
-
     // Obtiene el nombre del usuario basado en su ID
     $nombre_usuario = $objUsuarios->obtenerNombreUsuario($_SESSION['Idusuario']);
-
     // Obtiene la ruta de la imagen de perfil del usuario
     $ruta_imagen = $objUsuarios->obtenerRutaImagenUsuario($_SESSION['Idusuario']);
     $rol_usuario = $objUsuarios->obtenerRolUsuario($_SESSION['Idusuario']);
-
-
     
 } else {
     $usuario_conectado = false;
@@ -31,35 +23,27 @@ if(isset($_SESSION['Idusuario'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <title>DIGIWORM</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
-
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
-
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Handlee&family=Nunito&display=swap" rel="stylesheet">
-
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-
     <!-- Flaticon Font -->
     <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
-
     <!-- Libraries Stylesheet -->
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 </head>
-
 <body>
     <!-- Navbar Start -->
     <div class="container-fluid bg-light position-relative shadow">
@@ -115,7 +99,6 @@ if ($rol_usuario == 'Coordinador'):
                 </div>';
 endif;
 ?>
-
        
             </div>
         
@@ -136,12 +119,9 @@ endif;
         </div>
     </div>
 </div>
-
         </nav>
     </div>
     <!-- Navbar End -->
-
-
     <!-- Header Start -->
     <div class="container-fluid bg-primary mb-5">
         <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px">
@@ -154,8 +134,6 @@ endif;
         </div>
     </div>
     <!-- Header End -->
-
-
     <!-- Blog Start -->
     <div class="container-fluid pt-5">
         <div class="container">
@@ -169,16 +147,16 @@ endif;
                 die("Error de conexión: " . $conexion->connect_error);
             }
             $consulta = $conexion->query("SELECT  * FROM actividades");
-    
+
             // Generar las opciones del select
-            while ($fila = $consulta->fetch_assoc()) {?>
-            
+            // while ($fila = $consulta->fetch_assoc()) {?>
+
             <div class="row pb-3">
                 <div class="col-lg-4 mb-4">
                     <div class="card border-0 shadow-sm mb-2">
                         <img class="card-img-top mb-2" src="img/blog-1.jpg" alt="">
                         <div class="card-body bg-light text-center p-4">
-                            <h4 class=""><?php echo $fila['Nombre_act']; ?></h4>
+                            <h4 class="">Actividad Quimica</h4>
                             <div class="d-flex justify-content-center mb-3">
                                 <small class="mr-3"><i class="fa fa-user text-primary"></i> Docente</small>
                                 <small class="mr-3"><i class="fa fa-folder text-primary"></i> Materia</small>
@@ -187,6 +165,85 @@ endif;
                             <p>Habilidades de investigación sólidas
                                 Analítico y con visión de futuro</p>
                                 <p>Buena solución de problemas</p>
+                            <a href="" class="btn btn-primary px-4 mx-auto my-2">Publicar</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card border-0 shadow-sm mb-2">
+                        <img class="card-img-top mb-2" src="img/blog-2.jpg" alt="">
+                        <div class="card-body bg-light text-center p-4">
+                            <h4 class="">Actividad Fisica</h4>
+                            <div class="d-flex justify-content-center mb-3">
+                                <small class="mr-3"><i class="fa fa-user text-primary"></i> Docente</small>
+                                <small class="mr-3"><i class="fa fa-folder text-primary"></i> Materia</small>
+                                <small class="mr-3"><i class="fa fa-comments text-primary"></i> Entregados</small>
+                            </div>
+                            <p>Investigacion sobre que es la fisica </p>
+                            <p>De donde proviene la fisica</p>
+                            <p>Quien invento la fisica</p>
+                            <a href="" class="btn btn-primary px-4 mx-auto my-2">Publicar</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card border-0 shadow-sm mb-2">
+                        <img class="card-img-top mb-2" src="img/blog-3.jpg" alt="">
+                        <div class="card-body bg-light text-center p-4">
+                            <h4 class="">Actividad Español</h4>
+                            <div class="d-flex justify-content-center mb-3">
+                                <small class="mr-3"><i class="fa fa-user text-primary"></i> Docente</small>
+                                <small class="mr-3"><i class="fa fa-folder text-primary"></i> Materia</small>
+                                <small class="mr-3"><i class="fa fa-comments text-primary"></i> Entregados</small>
+                            </div>
+                            <p>S <p>Investigar las tendencias del sector</p>
+                              <p> Desarrollar estrategias de marca</p> 
+
+                            <a href="" class="btn btn-primary px-4 mx-auto my-2">Publicar</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card border-0 shadow-sm mb-2">
+                        <img class="card-img-top mb-2" src="img/blog-1.jpg" alt="">
+                        <div class="card-body bg-light text-center p-4">
+                            <h4 class="">Actividad Filosofia</h4>
+                            <div class="d-flex justify-content-center mb-3">
+                                <small class="mr-3"><i class="fa fa-user text-primary"></i> Docente</small>
+                                <small class="mr-3"><i class="fa fa-folder text-primary"></i> Materia</small>
+                                <small class="mr-3"><i class="fa fa-comments text-primary"></i> Entregados</small>
+                            </div>
+                            <p>Si tu empleador acepta ajustar tu función a la descripción que crees, puede que te encuentres con un trabajo gratificante y agradable hecho a tu medida.</p>
+                            <a href="" class="btn btn-primary px-4 mx-auto my-2">Publicar</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card border-0 shadow-sm mb-2">
+                        <img class="card-img-top mb-2" src="img/blog-2.jpg" alt="">
+                        <div class="card-body bg-light text-center p-4">
+                            <h4 class="">Actividad Religion</h4>
+                            <div class="d-flex justify-content-center mb-3">
+                                <small class="mr-3"><i class="fa fa-user text-primary"></i> Docente</small>
+                                <small class="mr-3"><i class="fa fa-folder text-primary"></i> Materia</small>
+                                <small class="mr-3"><i class="fa fa-comments text-primary"></i> Entregados</small>
+                            </div>
+                            <p>En lugar de esperar a encontrar el puesto de trabajo perfecto o a que tu empleador te ascienda a un puesto mejor, pasa a la acción creando una nueva descripción del puesto y presentándola a tu jefe. Las ventajas de redactar tu propia descripción del puesto son, entre otras, las siguientes:</p>
+                            <a href="" class="btn btn-primary px-4 mx-auto my-2">Publicar</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card border-0 shadow-sm mb-2">
+                        <img class="card-img-top mb-2" src="img/blog-3.jpg" alt="">
+                        <div class="card-body bg-light text-center p-4">
+                            <h4 class="">Actividad Danzas</h4>
+                            <div class="d-flex justify-content-center mb-3">
+                                <small class="mr-3"><i class="fa fa-user text-primary"></i> Docente</small>
+                                <small class="mr-3"><i class="fa fa-folder text-primary"></i> Materia</small>
+                                <small class="mr-3"><i class="fa fa-comments text-primary"></i> Entregados</small>
+                            </div>
+                            <p>Crear el trabajo perfecto para ti y para tu empleador es posible si escribes tu propia descripción del trabajo. Es posible que quieras escribir tu propia descripción del trabajo por las siguientes razones:</p>
                             <a href="" class="btn btn-primary px-4 mx-auto my-2">Publicar</a>
                         </div>
                     </div>
@@ -217,8 +274,6 @@ endif;
         </div>
     </div>
     <!-- Blog End -->
-
-<?php  } ?>
     <!-- Footer Start -->
     <div class="container-fluid bg-secondary text-white mt-5 py-5 px-sm-3 px-md-5">
         <div class="row pt-5">
@@ -300,12 +355,8 @@ endif;
         </div>
     </div>
     <!-- Footer End -->
-
-
     <!-- Back to Top -->
     <a href="#" class="btn btn-primary p-3 back-to-top"><i class="fa fa-angle-double-up"></i></a>
-
-
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
@@ -313,13 +364,10 @@ endif;
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
     <script src="lib/isotope/isotope.pkgd.min.js"></script>
     <script src="lib/lightbox/js/lightbox.min.js"></script>
-
     <!-- Contact Javascript File -->
     <script src="mail/jqBootstrapValidation.min.js"></script>
     <script src="mail/contact.js"></script>
-
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
 </body>
-
 </html>
