@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,22 +37,28 @@
         </div>
     </section>
 
-    <script src="js/Actuliza_Contraseña.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            var forgotPasswordLink = document.getElementById("forgotPassword");
+            var recoverPasswordForm = document.getElementById("recoverPasswordForm");
 
-            forgotPasswordLink.addEventListener("click", function(event) {
+            recoverPasswordForm.addEventListener("submit", function(event) {
                 event.preventDefault();
 
-                var email = prompt("Ingrese su dirección de correo electrónico:");
-                if (email) {
-                    var newPassword = generatePassword(10);
-                    sendEmail(email, newPassword);
-                }
+                var email = document.getElementById("email").value;
+                var newPassword = generatePassword(10); // Assuming you have a function to generate passwords
+                sendEmail(email, newPassword); // Assuming you have a function to send emails
             });
         });
-		
+
+        function generatePassword(length) {
+            // Your password generation logic here
+        }
+
+        function sendEmail(email, newPassword) {
+            // Your email sending logic here
+            // This could involve an AJAX request to a server-side script that sends the email
+            // For example, you might use XMLHttpRequest or fetch API to send a request to a PHP script
+        }
     </script>
 </body>
 </html>
