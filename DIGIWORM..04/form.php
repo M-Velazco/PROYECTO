@@ -28,8 +28,9 @@
                     <input type="password" id="Contraseña" name="Contraseña" placeholder="Contraseña" />
 
                 </div>
-                <a href="Restablecer_Contraseña" class="href" id="forgotPassword">
+                <a href="Restablecer_Contraseña.html" class="href" id="forgotPassword">
     Olvidé mi contraseña
+    
 </a>
 <script>
     // Obtener el elemento del enlace
