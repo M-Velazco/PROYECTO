@@ -123,6 +123,7 @@ if (isset($_GET['succes']) && $_GET['succes'] == 'Comentado') {
     <?php 
 if ($rol_usuario == 'Coordinador'):
     echo '<a href="index04.php" class="nav-item nav-link active">Home</a>
+    <a href="Principal.php" class="nav-item nav-link">Principal</a>
     
     <div class="nav-item dropdown">
         <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
