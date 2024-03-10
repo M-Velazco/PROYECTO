@@ -402,7 +402,24 @@ public function obtenerNombreUsuario($Idusuarios) {
 		$this->Conexion->close();
 		return $resultado;	
 		}
-
+		public function actualizarDatosUsuario($idUsuario, $nombres, $apellidos, $email, $telefono, $password, $rol, $estado, $status, $Conexion) {
+			// Encriptar la contraseña antes de almacenarla en la base de datos (puedes usar la función password_hash)
+			$hashedPassword = md5($password);
+	
+			// Construir la consulta SQL para actualizar los datos del usuario
+			$sql = "UPDATE usuarios SET Nombres='$nombres', Apellidos='$apellidos', Email='$email', Telefono='$telefono', Pasword='$hashedPassword', Rol='$rol', Estado='$estado', status='$status' WHERE Idusuarios=$idUsuario";
+	
+			// Ejecutar la consulta y verificar si la actualización fue exitosa
+			if ($Conexion->query($sql) === TRUE) {
+				return true; // La actualización fue exitosa
+			} else {
+				return false; // Hubo un error al ejecutar la consulta
+			}
+		}
+	
+	 
+		// Nota: Recuerda encriptar la contraseña antes de almacenarla en la base de datos
+		
 	public function eliminarUsuario($Idusuarios)
 	{	
 		$this->Conexion=Conectarse();

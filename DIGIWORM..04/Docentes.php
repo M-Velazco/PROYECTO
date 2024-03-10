@@ -127,7 +127,8 @@ endif;
                 <?php else: ?>
                     <span>No hay </span>
                 <?php endif; ?>
-                <?php echo $nombre_usuario."-". $rol_usuario." "; ?>.
+                <a href="Datos.php">
+                <?php echo $nombre_usuario."-". $rol_usuario." "; ?>.</a>
                 
                 
                 <br>
