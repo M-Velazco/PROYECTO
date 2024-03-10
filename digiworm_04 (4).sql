@@ -54,23 +54,24 @@ DELIMITER ;
 
 DROP TABLE IF EXISTS `actividades`;
 CREATE TABLE IF NOT EXISTS `actividades` (
-  `idActividades` int(11) NOT NULL AUTO_INCREMENT,
+  `idActividades` int NOT NULL AUTO_INCREMENT,
   `Nombre_act` varchar(60) DEFAULT NULL,
   `Asignatura` varchar(100) NOT NULL,
-  `Docente` int(11) DEFAULT NULL,
-  `Archivo` varchar(45) DEFAULT NULL,
+  `Docente` int DEFAULT NULL,
+  `Archivo` varchar(450) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
   `Estado` enum('Activo','Inactivo') DEFAULT NULL,
+  `Descripcion` varchar(1000) NOT NULL,
   PRIMARY KEY (`idActividades`),
   KEY `Docente_nom_docente` (`Docente`),
   KEY `Asignaturas_Materias` (`Asignatura`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Volcado de datos para la tabla `actividades`
 --
 
 INSERT INTO `actividades` (`idActividades`, `Nombre_act`, `Asignatura`, `Docente`, `Archivo`, `Estado`) VALUES
-(9, 'quimica basica', 'Calculo', 1054115102, NULL, 'Activo');
+(1, 'quimica basica', 'Calculo', 1054115102, NULL, 'Activo','prueba de descripcion');
 
 -- --------------------------------------------------------
 
