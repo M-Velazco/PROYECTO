@@ -142,7 +142,9 @@ endif;
             <p class="section-title px-5"><span class="px-2">Propuestas</span></p>
             <h1 class="mb-4">Actividades</h1>
         </div>
-        
+        <a href="agregar.php" >
+        <button class="btn btn-primary px-4 mx-auto my-2" > agregar</button>
+        </a>
         <div class="row pb-3">
             <?php
             $conexion = new mysqli("localhost", "root", "sena", "digiworm_04");
