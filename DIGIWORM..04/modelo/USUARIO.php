@@ -14,7 +14,7 @@ class Usuario
 	Private $Curso;
 	Private $Materia;
 	Private $Jornada;
-	private $Conexion;
+	private $conexion;
 	
 	
 
