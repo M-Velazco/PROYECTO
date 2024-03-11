@@ -380,7 +380,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `Email` varchar(45) DEFAULT NULL,
   `Telefono` bigint(20) DEFAULT NULL,
   `Pasword` varchar(45) DEFAULT NULL,
-  `img` varchar(45) DEFAULT NULL,
+  `img` varchar(500) DEFAULT NULL,
   `Rol` enum('Docente','Coordinador','Estudiante','Padre_familia') DEFAULT NULL,
   `Estado` enum('Activo','Inactivo') DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL,
