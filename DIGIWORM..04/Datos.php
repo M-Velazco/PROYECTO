@@ -6,6 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script> <!-- Agregamos SweetAlert -->
+    <link rel="stylesheet" href="css/Datos.css" />
 </head>
 <body>
 <?php 
@@ -76,89 +77,6 @@ if ($resultado->num_rows > 0) {
     // Mostrar los datos del usuario en un formulario
     echo "<h1>Datos del Usuario</h1>"; ?>
 
-<style>
-        .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        form {
-            width: 300px;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        input[type="text"],
-        input[type="password"],
-        input[type="file"] {
-            width: 100%;
-            padding: 8px;
-            margin: 5px 0;
-            box-sizing: border-box;
-        }
-
-        input[type="submit"] {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #45a049;
-        }
-
-        .img-container {
-            text-align: center;
-            margin-bottom: 10px;
-            position: relative;
-        }
-
-        .img-container img {
-            width: 150px; /* Cambiado a 150px */
-            height: 150px; /* Cambiado a 150px */
-            border-radius: 50%;
-            cursor: pointer;
-            position: relative;
-            opacity: 0.8;
-            transition: opacity 0.3s ease;
-        }
-
-        .img-container img:hover {
-            opacity: 1;
-        }
-
-        .img-container .camera-icon {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 50px; /* Cambiado a 50px */
-            cursor: pointer;
-            display: none;
-            opacity: 0.7;
-            transition: all 0.3s ease;
-        }
-
-        .img-container img:hover + .camera-icon {
-            display: block;
-            transform: translate(-50%, -50%) scale(1.2);
-        }
-
-        .img-container input[type="file"] {
-            display: none;
-        }
-        .readonly-input {
-            background-color: #f0f0f0; /* Color de fondo opaco */
-            color: #666; /* Color de texto un poco oscurecido */
-            cursor: not-allowed; /* Cursor no permitido */
-        }
-    </style>
 
 
     <div class="container">
