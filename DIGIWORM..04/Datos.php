@@ -84,15 +84,15 @@ if ($resultado->num_rows > 0) {
             <div class="img-container">
                 <img src="<?php echo $ruta_imagen; ?>" onclick="document.getElementById('imagen').click();" id="preview-image">
                 <i class="fas fa-camera camera-icon" onclick="document.getElementById('imagen').click();"></i>
-                <input type="file" name="imagen" id="imagen" accept="image/*" onchange="previewImage()">
+                <input type="file" name="img" id="imagen" accept="image/*" onchange="previewImage()">
             </div>
             Nombres: <input type="text" name="nombres" value="<?php echo $nombres; ?>" readonly class="readonly-input"><br>
             Apellidos: <input type="text" name="apellidos" value="<?php echo $apellidos; ?>"readonly class="readonly-input"><br>
             Email: <input type="text" name="email" value="<?php echo $email; ?>"><br>
             Teléfono: <input type="text" name="telefono" value="<?php echo $telefono; ?>"><br>
             Contraseña: <input type="password" name="password" value="<?php echo $password; ?>" onclick="mostrarSweetAlert()"><br> <!-- Agregamos onclick -->
-            Rol: <input type="text" name="rol" value="<?php echo $rol; ?>"><br>
-            Estado: <input type="text" name="estado" value="<?php echo $estado; ?>"><br>
+            Rol: <input type="text" name="rol" value="<?php echo $rol; ?>"readonly class="readonly-input"><br>
+            Estado: <input type="text" name="estado" value="<?php echo $estado; ?>"readonly class="readonly-input"><br>
             <input type="submit" value="Actualizar">
         </form>
     </div>
@@ -127,7 +127,7 @@ if ($resultado->num_rows > 0) {
             }).then((result) => {
                 if (result.isConfirmed) {
                     // Aquí puedes redirigir al usuario al enlace donde puede cambiar la contraseña
-                    window.location.href = 'Recovery.php';
+                    window.location.href = 'Restablecer_Contraseña.html';
                 }
             });
         }
