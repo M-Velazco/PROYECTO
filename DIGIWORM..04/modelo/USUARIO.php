@@ -1,9 +1,4 @@
 <?php
-/**
- * @author Johan Santiago VR
- * @version 1.0
- * @created 31-oct-2022 04:28:23 p.m.
- */
 class Usuario
 {
 
