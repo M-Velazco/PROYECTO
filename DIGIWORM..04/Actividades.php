@@ -81,7 +81,7 @@ if ($rol_usuario == 'Coordinador'):
         </div>
     </div>
         ';
-        elseif($rol_usuario=='Padre_de_Familia') :
+        elseif($rol_usuario=='Padre_familia') :
             echo '<a href="index04.php" class="nav-item nav-link active">Home</a>
             <a href="Visual_padres" class="dropdown-item">Padres de Familia</a>';
         
@@ -142,9 +142,16 @@ endif;
             <p class="section-title px-5"><span class="px-2">Propuestas</span></p>
             <h1 class="mb-4">Actividades</h1>
         </div>
-        <a href="agregar.php" >
-        <button class="btn btn-primary px-4 mx-auto my-2" > agregar</button>
-        </a>
+        <?php
+// Verifica si el usuario tiene el rol de docente para mostrar el botón de agregar
+if ($rol_usuario == 'Docente'):
+?>
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregar"> Agregar </button>
+<?php
+endif;
+?>
+        
+        
         <div class="row pb-3">
             <?php
             $conexion = new mysqli("localhost", "root", "sena", "digiworm_04");
@@ -169,10 +176,21 @@ endif;
                                 <small class="mr-3"><i class="fas fa-book" style="color: #38ee2b;"></i><?php echo $fila['Asignatura']; ?></small>
                                 <small class="mr-3"><i class="fa fa-folder text-primary"></i> <?php echo $fila['Archivo']; ?></small>
                                 <small class="mr-3"><i class="fa fa-comments text-primary"></i> <?php echo $fila['Estado']; ?></small>
+                                
                             </div>
+                            <p>Plazo:<?php echo $fila['FechaEntrega']; ?></p>
 
                             <p><?php echo $fila['Descripcion']; ?></p>
-                            <a href="includes/download.php?idActividades= <?php echo $fila['idActividades'] ;?>" class="btn btn-primary px-4 mx-auto my-2">Publicar</a>
+
+                            <a href="includes/download.php?idActividades= <?php echo $fila['idActividades'] ;?>" class="btn btn-primary px-4 mx-auto my-2">Descargar</a>
+                            <?php
+// Verifica si el usuario tiene el rol de docente para mostrar el botón de agregar
+if ($rol_usuario == 'Docente'):
+?>
+                            <a href="includes/eliminar.php?idActividades= <?php echo $fila['idActividades'] ;?>" class="btn btn-danger">Eliminar</a>
+                            <?php
+endif;
+?>
                         </div>
                     </div>
                 </div>
@@ -285,6 +303,7 @@ endif;
         </div>
     </div>
     <!-- Footer End -->
+    <footer><?php include "views/agregar.php"; ?></footer>
     <!-- Back to Top -->
     <a href="#" class="btn btn-primary p-3 back-to-top"><i class="fa fa-angle-double-up"></i></a>
     <!-- JavaScript Libraries -->

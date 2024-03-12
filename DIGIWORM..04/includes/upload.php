@@ -4,7 +4,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['registrar'])) {
     $nombre_actividad = $_POST['nombreA'];
     $materia = $_POST['Materia'];
     $docente = $_POST['Docente'];
-    $estado = $_POST['Estado'];
+    $fecha_entrega = $_POST['FechaEntrega'];
+    $descripcion = $_POST['Descripcion']; // Obtener la descripción del formulario
+    
+    // Generar la fecha de publicación automáticamente
+    $fecha_publicacion = date('Y-m-d');
 
     // Manejar el archivo enviado
     if ($_FILES['Archivo']['error'] === UPLOAD_ERR_OK) {
@@ -26,17 +30,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['registrar'])) {
             }
 
             // Preparar la consulta SQL para insertar los datos
-            $sql = "INSERT INTO actividades (Nombre_act, Asignatura, Docente, Archivo, Estado) VALUES (?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO actividades (Nombre_act, Asignatura, Docente, Archivo, Estado, Descripcion, FechaEntrega, FechaPublicacion) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt = $conexion->prepare($sql);
 
             // Vincular los parámetros
-            $stmt->bind_param("sssss", $nombre_actividad, $materia, $docente, $nombre_archivo, $estado);
+            $estado = 'Activo'; // Por defecto, el estado es 'Activo'
+            $stmt->bind_param("ssssssss", $nombre_actividad, $materia, $docente, $nombre_archivo, $estado, $descripcion, $fecha_entrega, $fecha_publicacion);
 
             // Ejecutar la consulta
             if ($stmt->execute()) {
                 // La inserción fue exitosa
                 echo "<script>alert('Registro insertado correctamente');</script>";
-                header('location:../views/index.php');
+                header('location:../Actividades.php');
             } else {
                 // Ocurrió un error durante la inserción
                 echo "<script>alert('Error al insertar el registro: " . $stmt->error . "');</script>";

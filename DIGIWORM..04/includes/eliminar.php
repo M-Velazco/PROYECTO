@@ -12,13 +12,13 @@ if (isset($_GET['idActividades'])) {
         // La eliminación se realizó con éxito
         echo "<script language='JavaScript'>
         alert('Registro eliminado con éxito.');
-        location.assign('../views/index.php');
+        location.assign('../Actividades.php');
         </script>";
     } else {
         // Error en la eliminación
         echo "<script language='JavaScript'>
         alert('Error al eliminar el registro: " . mysqli_error($conexion) . "');
-        location.assign('../views/index.php');
+        location.assign('../Actividades.php');
         </script>";
     }
 } else {
