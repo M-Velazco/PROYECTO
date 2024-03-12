@@ -215,7 +215,7 @@ endif;
 
                 <!-- Comment Form -->
                 <div class="bg-light p-5">
-                    <h2 class="mb-4">Estructura de las Publicaciones</h2>
+                    <h2 class="mb-4">Con una buena Institucion Educativa</h2>
                     <p>
                         <img src="img/profesor-con-alumnos.jpg" alt="Descripción de la imagen">
                     </p>
