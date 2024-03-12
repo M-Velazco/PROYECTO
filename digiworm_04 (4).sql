@@ -61,17 +61,20 @@ CREATE TABLE IF NOT EXISTS `actividades` (
   `Archivo` varchar(450) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
   `Estado` enum('Activo','Inactivo') DEFAULT NULL,
   `Descripcion` varchar(1000) NOT NULL,
+  `FechaEntrega` date NOT NULL,
+  `FechaPublicacion` date NOT NULL,
   PRIMARY KEY (`idActividades`),
   KEY `Docente_nom_docente` (`Docente`),
   KEY `Asignaturas_Materias` (`Asignatura`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Volcado de datos para la tabla `actividades`
 --
 
-INSERT INTO `actividades` (`idActividades`, `Nombre_act`, `Asignatura`, `Docente`, `Archivo`, `Estado`) VALUES
-(1, 'quimica basica', 'Calculo', 1054115102, NULL, 'Activo','prueba de descripcion');
+INSERT INTO `actividades` (`idActividades`, `Nombre_act`, `Asignatura`, `Docente`, `Archivo`, `Estado`, `Descripcion`, `FechaEntrega`, `FechaPublicacion`) VALUES
+(35, 'taller circuitos', 'Calculo', 142223657, 'Taller Circuitos Basicos.docx', 'Activo', 'taller de circuitos y resistencias favor completar para mañana', '2024-03-14', '2024-03-12');
+
 
 -- --------------------------------------------------------
 
