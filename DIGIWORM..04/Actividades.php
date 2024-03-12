@@ -73,6 +73,7 @@ if ($rol_usuario == 'Coordinador'):
     elseif($rol_usuario=='Estudiante') :
         echo '<a href="index04.php" class="nav-item nav-link active">Home</a>
         <a href="chat/login.php" class="nav-item nav-link">Chat</a>
+        <a href="Foros.php" class="nav-item nav-link">Foros</a>
     <div class="nav-item dropdown">
         <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
         <div class="dropdown-menu rounded-0 m-0">
