@@ -83,7 +83,13 @@ if ($rol_usuario == 'Coordinador'):
         ';
         elseif($rol_usuario=='Padre_familia') :
             echo '<a href="index04.php" class="nav-item nav-link active">Home</a>
-            <a href="Visual_padres" class="dropdown-item">Padres de Familia</a>';
+            <div class="nav-item dropdown">
+                <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
+                <div class="dropdown-menu rounded-0 m-0">
+                    
+                    
+                    <a href="Visual_padres" class="dropdown-item">Padres de Familia</a>
+                </div>';
         
         else: echo '<a href="index04.php" class="nav-item nav-link active">Home</a>
         <a href="Principal.php" class="nav-item nav-link">Principal</a>

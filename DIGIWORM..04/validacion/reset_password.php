@@ -44,6 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['password'], $_POST['co
                 $delete_sql = "DELETE FROM reset_password_tokens WHERE token='$token'";
                 $conexion->query($delete_sql);
                 echo "Contraseña restablecida exitosamente.";
+                header( 'Location: ../form.php');
             } else {
                 echo "Error al restablecer la contraseña: " . $conexion->error;
             }
