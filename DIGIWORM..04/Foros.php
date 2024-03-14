@@ -176,6 +176,11 @@ endif;
                         </li>
                         <li class="btn btn-outline-primary m-1">
                             <a href="foros/ver.php" class="text-decoration-none text-dark">ver foros</a>
+                            
+                        </li>
+                        <li class="btn btn-outline-primary m-1">
+                            <a href="foros/respuestas.php" class="text-decoration-none text-dark">ver respuestas</a>
+                            
                         </li>
                     </ul>
                 </div>
