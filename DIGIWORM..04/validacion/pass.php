@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email'])) {
             $mail->Body = "Hola,<br><br>Has solicitado restablecer tu contraseña. Haz clic en el siguiente enlace para restablecerla: <a href='$reset_link'>Restablecer contraseña</a>";
             $mail->send();
             echo "<script language='JavaScript'>alert('Se ha enviado un correo electrónico con instrucciones para restablecer tu contraseña.')</script>";
-            header('Location: ../form.html');
+            header('Location: ../form.php');
         } else {
             echo "No se encontró ningún usuario con ese correo electrónico.";
         }
