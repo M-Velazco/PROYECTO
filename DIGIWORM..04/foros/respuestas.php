@@ -56,6 +56,12 @@ if (isset($_SESSION['Idusuario'])) {
             margin-bottom: 10px;
         }
 
+        .foro .respuesta {
+            color: #333; /* Color de texto */
+            font-size: 14px; /* Tamaño de fuente */
+            margin-bottom: 5px; /* Espaciado inferior */
+        }
+
         .boton {
             background-color: #4caf50; /* Color de fondo verde */
             color: white;
@@ -97,7 +103,7 @@ if (isset($_SESSION['Idusuario'])) {
         <p><strong>Fecha de creación:</strong>
             <?php echo $filaForo['Fecha_Hora']; ?>
         </p>
-        <p><strong>Creado por:</strong>
+        <p><strong>Respondido por:</strong>
             <?php echo $nombre_usuario; ?>
         </p>
 
@@ -112,20 +118,13 @@ if (isset($_SESSION['Idusuario'])) {
                 $consultaUsuario = $conexion->query("SELECT Nombres FROM usuarios WHERE idusuario = " . $filaRespuesta['idusuario']);
                 $nombreUsuarioRespuesta = "";
                 if ($consultaUsuario !== false && $consultaUsuario->num_rows > 0) {
-                    $nombreUsuarioRespuesta = $consultaUsuario->fetch_assoc()['nombre'];
+                    $nombreUsuarioRespuesta = $consultaUsuario->fetch_assoc()['Nombres'];
                 }
                 ?>
                 <h3>Respuesta de <?php echo $nombreUsuarioRespuesta ?>:</h3>
-                <p><?php echo $filaRespuesta['respuesta']; ?></p>
-                <p><strong>Fecha de respuesta:</strong>
-                    <?php
-                    // Verificar si la fecha de respuesta es válida antes de convertirla a un objeto DateTime
-                    if ($fechaHoraRespuesta = DateTime::createFromFormat('Y-m-d H:i:s', $filaRespuesta['Fecha_Hora'])) {
-                        echo $fechaHoraRespuesta->format('Y-m-d H:i:s'); // Formatear la fecha y hora si es válido
-                    } else {
-                        echo "Fecha de respuesta inválida"; // Manejar el caso de una fecha inválida
-                    }
-                    ?>
+                <p class="respuesta"><?php echo $filaRespuesta['respuesta']; ?></p>
+                
+                    
                 </p>
                 <?php
             }
