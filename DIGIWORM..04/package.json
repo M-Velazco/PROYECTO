@@ -4,6 +4,6 @@
     "swagger-ui-express": "^5.0.0"
   },
   "scripts": {
-    "dev": ""
+    "dev": "../PROYECTO/DIGIWORM..04"
   }
 }

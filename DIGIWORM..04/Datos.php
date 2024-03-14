@@ -75,9 +75,11 @@ if ($resultado->num_rows > 0) {
     $estado = $fila['Estado'];
 
     // Mostrar los datos del usuario en un formulario
-    echo "<h1>Datos del Usuario</h1>"; ?>
-
+   
     
+    echo "<h1 style='color:#CF1D0F ; text-align: center;'>PERFIL</h1>";
+    ?>
+
 
     <div class="container">
         <form action="./validacion/actualizar_datos.php" method="POST" enctype="multipart/form-data">

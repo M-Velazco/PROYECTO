@@ -3,6 +3,13 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-image: url('https://img.freepik.com/free-photo/top-view-notebooks-accessories-studying-library-school-yellow-background-idea-education_109549-3403.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+}
+perfil-header{
+color: aliceblue;
+text-align: center;
 }
 
 form {
