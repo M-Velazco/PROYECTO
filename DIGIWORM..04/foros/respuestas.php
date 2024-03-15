@@ -31,6 +31,7 @@ if (isset($_SESSION['Idusuario'])) {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            background-image: url('../img/coolegio.jpg');
         }
 
         h1 {
