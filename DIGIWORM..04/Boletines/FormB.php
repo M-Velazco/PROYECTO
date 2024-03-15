@@ -19,11 +19,11 @@
             <label for="apellido">Apellido:</label>
             <input type="text" id="apellido" name="apellido" required>
 
-            <label for="trimestre">Trimestre:</label>
+            <label for="trimestre">Periodos:</label>
             <select id="trimestre" name="trimestre" required>
-                <option value="1">Trimestre 1</option>
-                <option value="2">Trimestre 2</option>
-                <option value="3">Trimestre 3</option>
+                <option value="1">Periodo 1</option>
+                <option value="2">Periodo 2</option>
+                <option value="3">Periodo 3</option>
             </select>
 
             <label for="cantidad_materias">Cantidad de Materias:</label>
