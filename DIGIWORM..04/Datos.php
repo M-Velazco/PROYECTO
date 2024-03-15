@@ -77,7 +77,7 @@ if ($resultado->num_rows > 0) {
     // Mostrar los datos del usuario en un formulario
    
     
-    echo "<h1 style='color:#CF1D0F ; text-align: center;'>PERFIL</h1>";
+    echo "<h1 style='color:#CF1D0F ; text-align: center;  font-style: oblique;'>PERFIL</h1>";
     ?>
 
 
@@ -96,6 +96,7 @@ if ($resultado->num_rows > 0) {
             Rol: <input type="text" name="rol" value="<?php echo $rol; ?>"readonly class="readonly-input"><br>
             Estado: <input type="text" name="estado" value="<?php echo $estado; ?>"readonly class="readonly-input"><br>
             <input type="submit" value="Actualizar">
+            <input type="button" value="Volver" onclick="window.location.href='index04.php'">
         </form>
     </div>
 
