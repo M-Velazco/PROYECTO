@@ -56,6 +56,7 @@ form {
 form.sign-up-form {
   opacity: 0;
   z-index: 1;
+  font-style: oblique;
 }
 
 form.sign-in-form {

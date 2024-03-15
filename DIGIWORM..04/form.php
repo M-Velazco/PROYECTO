@@ -96,6 +96,7 @@
         display: inline-block;
         position: relative;
         height: 200px;
+        font-style: oblique;
     }
 
     .input-radio {
@@ -110,6 +111,7 @@
     top: 46%;
     left: 13%;
     transform: translate(-17%, -30%);
+    font-style: oblique;
 }
     .input-radio label {
         margin-left: 5px;
