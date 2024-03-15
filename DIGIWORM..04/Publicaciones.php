@@ -110,8 +110,9 @@ if ($rol_usuario == 'Coordinador'):
                     <a href="Actividades.php" class="dropdown-item">Actividades</a>
                     <a href="Publicaciones.php" class="dropdown-item">Publicaciones</a>
                     <a href="Visual_padres" class="dropdown-item">Padres de Familia</a>
+                    <a href="Boletines/FormB.php" class="dropdown-item">Boletines</a>
                 </div>';
-        elseif($rol_usuario=='Padre_de_Familia') :
+        elseif($rol_usuario=='Padre_familia') :
             echo '<a href="index04.php" class="nav-item nav-link active">Home</a>
             <a href="Visual_padres" class="dropdown-item">Padres de Familia</a>';
         
