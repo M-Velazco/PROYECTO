@@ -10,7 +10,7 @@
     <div class="container">
         <h2>Formulario de Estudiante</h2>
         <form action="Validacion/procesar_formulario.php" method="post" id="formulario">
-            <label for="id">ID del Estudiante:</label>
+            <h2><label for="id">ID del Estudiante:</label><h2>
             <input type="number" id="id" name="id" required>
 
             <label for="nombre">Nombre:</label>
@@ -31,11 +31,12 @@
                 <?php for ($i = 1; $i <= 13; $i++) { ?>
                     <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
                 <?php } ?>
-            </select>
+            </select>   
 
             <div id="campos_materias"></div>
 
             <input type="submit" value="Enviar">
+            <input type="button" value="Volver" onclick="window.location.href='../index04.php'">
         </form>
     </div>
 

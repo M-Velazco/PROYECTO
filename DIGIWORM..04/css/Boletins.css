@@ -1,16 +1,37 @@
+/* Estilos generales */
 body {
     font-style: oblique;
+    background-image: url("../img/Fondo_padres.jpg");
+    background-repeat: no-repeat;
+    background-size: cover; 
 }
 
 .container {
     width: 80%;
     margin: 0 auto;
+    font-style: oblique;
+    background-image: url("../img/datos.jpg");
+    border-radius: 30px; 
 }
 
 form {
-    background-color: #f2f2f2;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 30px; /* Bordes redondeados */
+    background-size: cover; 
+    background-position: center;
+}
+
+input[type="button"]:hover {
+    background-color: #4bf261;
+}
+
+input[type="button"] {
+    background-color: #18d91b;
+    color: rgb(11, 11, 11);
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
 h2 {
@@ -24,25 +45,18 @@ label {
 
 input[type="number"],
 input[type="text"],
-select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
+select,
 textarea {
-    width: 100%;
+    width: 100%; /* Ancho completo */
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid #0a49d1; /* Color de borde */
 }
 
 input[type="submit"] {
-    background-color: #4CAF50;
-    color: white;
+    background-color: #18d91b;
+    color: rgb(4, 4, 4);
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -50,22 +64,23 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #45a049;
+    background-color: #4bf261;
 }
 
 .materia {
     margin-bottom: 20px;
 }
 
-@media screen and (max-width: 600px) {
+/* Media queries para hacer el formulario responsive */
+@media screen and (max-width: 1024px) {
     .container {
-        width: 100%;
+        width: 90%; /* Reducir el ancho del contenedor */
     }
 
-    input[type="text"],
     input[type="number"],
+    input[type="text"],
     select,
     textarea {
-        width: 100%;
+        width: 100%; /* Ancho completo para campos en pantallas pequeñas */
     }
 }
