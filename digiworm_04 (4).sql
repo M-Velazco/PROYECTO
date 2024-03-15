@@ -404,7 +404,8 @@ INSERT INTO `usuarios` (`Idusuarios`, `Nombres`, `Apellidos`, `Email`, `Telefono
 (1000162100, 'johan stiven', 'oliveros silva', 'oliverosilvajohan@gmail.com', 1234574125, 'c5d7790b7bd682f9b2aef12aa94eb8bb', 'img/img_65ea26a00e49a_oliver.jpg', 'Estudiante', 'Activo', NULL),
 (1030537206, 'johan santiago', 'villanueva roa', 'villabilons@gmail.com', 3234167037, '2d95666e2649fcfc6e3af75e09f5adb9', 'img/img_65ea376a3a058_OIP (1).jpg', 'Padre_familia', 'Activo', 'Offline now'),
 (1081394327, 'magdy', 'velazco', 'mvelazcovelasco17@gmail.com', 3142093310, '06a9d63a716592aafc74e37c4326e2db', 'img/img_65ea21409343f_avatar.jpg', 'Coordinador', 'Activo', 'Offline now'),
-(1101343174, 'juan david', 'julio rodriguez', 'draxjulio13@gmail.com', 3145896225, 'dfdc20cbab482c8d159f42d3250d1f7c', 'img/img_65ea251924323_OIP.jpg', 'Docente', 'Activo', 'Offline now');
+(1101343174, 'juan david', 'julio rodriguez', 'draxjulio13@gmail.com', 3145896225, 'dfdc20cbab482c8d159f42d3250d1f7c', 'img/img_65ea251924323_OIP.jpg', 'Docente', 'Activo', 'Offline now'),
+    (3143996415, 'ADMIN', 'VELAZCO VELASCO', 'digiworm04@gmail.com', 3143996415, '4d3bd6b319887ff8c7314551d1b5dd64', 'img/LOGO.png', 'Administrador', 'Activo', 'Offline now');
 
 --
 -- Restricciones para tablas volcadas
