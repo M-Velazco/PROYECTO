@@ -30,6 +30,7 @@ if (isset($_SESSION['Idusuario'])) {
         } else {
             echo "Error al enviar la respuesta: " . $conn->error;
         }
+        
 
         $conn->close();
     }
