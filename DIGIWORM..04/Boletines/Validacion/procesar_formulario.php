@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-
 <?php
-require_once('tcpdf/tcpdf.php');
+require_once('../../tcpdf/tcpdf.php');
 
 // Recuperar datos del formulario
 $id_estudiante = $_POST['id'];
@@ -27,19 +18,18 @@ $pdf->SetTitle('Boletín de Estudiante');
 $pdf->SetSubject('Boletín de Estudiante');
 $pdf->SetKeywords('Boletín, Estudiante, PDF');
 
-// Agregar una página
+// Establecer la imagen de fondo
+$pdf->setPrintHeader(false);
+$pdf->setPrintFooter(false);
+$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 $pdf->AddPage();
 
-// Establecer la fuente para la marca de agua
-$pdf->SetFont('helvetica', 'B', 50);
-$pdf->SetTextColor(211, 211, 211); // Color gris claro para la marca de agua
+// Establecer la imagen como fondo de página
 
-// Agregar la marca de agua
-$pdf->RotatedText(35, 190, 'M A R C A   D E   A G U A', 45); // Personaliza la posición según tus necesidades
 
-// Establecer la fuente y el color para los datos principales
+// Establecer la fuente y el color para el contenido principal
 $pdf->SetFont('helvetica', 'B', 16);
-$pdf->SetTextColor(0, 0, 0); // Color negro para los datos principales
+$pdf->SetTextColor(0, 0, 0); // Color negro para el contenido principal
 
 // Datos en la barra superior
 $pdf->Cell(0, 10, 'ID del Estudiante: ' . $id_estudiante, 0, 1, 'C');
@@ -52,7 +42,7 @@ $pdf->SetTextColor(0, 0, 0); // Color negro para el contenido
 
 // Escribir el contenido del boletín
 $html = '<h1>Boletín de Estudiante</h1>';
-$html .= '<p>Trimestre: ' . $trimestre . '</p>';
+$html .= '<p>Periodo: ' . $trimestre . '</p>';
 
 $html .= '<h2>Materias</h2>';
 $html .= '<table border="1">';
@@ -80,5 +70,4 @@ $nombre_archivo = 'boletin_' . $id_estudiante . '.pdf';
 
 // Generar el PDF y enviar al navegador para su descarga
 $pdf->Output($nombre_archivo, 'D');
-
 ?>
