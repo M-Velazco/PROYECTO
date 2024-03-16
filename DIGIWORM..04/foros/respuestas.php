@@ -104,9 +104,7 @@ if (isset($_SESSION['Idusuario'])) {
         <p><strong>Fecha de creación:</strong>
             <?php echo $filaForo['Fecha_Hora']; ?>
         </p>
-        <p><strong>Respondido por:</strong>
-            <?php echo $nombre_usuario; ?>
-        </p>
+       
 
         <?php
         // Consulta de las respuestas para el foro actual
