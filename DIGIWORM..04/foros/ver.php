@@ -90,9 +90,10 @@ if (isset($_SESSION['Idusuario'])) {
             die("Error de conexión: " . $conexion->connect_error);
         }
         $consulta = $conexion->query("SELECT * FROM foros");
-
+        
         // Generar las opciones del select
         while ($fila = $consulta->fetch_assoc()) {
+            $Nombres_FU = $objUsuarios->obtenerNombreUsuario($fila['idusuario']);
             ?>
             <h2>
                 <?php echo $fila['Titulo']; ?>
@@ -101,7 +102,7 @@ if (isset($_SESSION['Idusuario'])) {
                 <?php echo $fila['Fecha_Hora']; ?>
             </p>
             <p><strong>Creado por:</strong>
-                <?php echo $nombre_usuario; ?>
+                <?php echo $Nombres_FU; ?>
             </p>
             <a href="responder.php?titulo=<?php echo urlencode($fila['Titulo']); ?>" class="boton">Responder Foro</a>
 
