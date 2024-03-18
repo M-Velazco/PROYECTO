@@ -192,9 +192,12 @@ endif;
                 <div class="col-12 text-center mb-2">
                     <ul class="list-inline mb-4" id="portfolio-flters">
                         <li class="btn btn-outline-primary m-1" data-filter=".first"> </li>
+                        <?php if($rol_usuario == 'Docente'): ?>
                         <li class="btn btn-outline-primary m-1">
+
                             <a href="foros/crear.php" class="text-decoration-none text-dark">crear foros</a>
                         </li>
+                        <?php endif;?>
                         <li class="btn btn-outline-primary m-1">
                             <a href="foros/ver.php" class="text-decoration-none text-dark">ver foros</a>
                             

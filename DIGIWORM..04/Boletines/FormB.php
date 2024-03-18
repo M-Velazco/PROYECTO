@@ -1,3 +1,25 @@
+<?php
+// Inicia la sesión
+session_start();
+// Verifica si la variable de sesión 'Idusuario' está establecida para determinar si el usuario está conectado
+if(isset($_SESSION['Idusuario'])) {
+    $usuario_conectado = true;
+    // Crea una instancia de la clase Usuario y conecta a la base de datos
+    require_once "../modelo/USUARIO.php";
+    require_once "../modelo/conexion.php";
+    $objConexion = Conectarse();
+    $objUsuarios = new Usuario($objConexion);
+    // Obtiene el nombre del usuario basado en su ID
+    $nombre_usuario = $objUsuarios->obtenerNombreUsuario($_SESSION['Idusuario']);
+    // Obtiene la ruta de la imagen de perfil del usuario
+    $ruta_imagen = $objUsuarios->obtenerRutaImagenUsuario($_SESSION['Idusuario']);
+    $rol_usuario = $objUsuarios->obtenerRolUsuario($_SESSION['Idusuario']);
+    
+} else {
+    $usuario_conectado = false;
+    header( 'Location: form.php?error=nologeado' );
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -34,8 +56,9 @@
             </select>   
 
             <div id="campos_materias"></div>
-
+            <?php if($rol_usuario == 'Docente'): ?>
             <input type="submit" value="Enviar">
+            <?php endif; ?>
             <input type="button" value="Volver" onclick="window.location.href='../index04.php'">
         </form>
     </div>

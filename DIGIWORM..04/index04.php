@@ -161,11 +161,26 @@ if ($rol_usuario == 'Coordinador'):
                 elseif($rol_usuario=='Padre_familia') :
                     echo '
                     <a href="index04.php" class="nav-item nav-link active">Home</a>
+                    <a href="Foros.php" class="nav-item nav-link">Foros</a>
+                    <a href="chat/login.php" class="nav-item nav-link">Chat</a>
                     <div class="nav-item dropdown">
                 <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
                 <div class="dropdown-menu rounded-0 m-0">
                     <a href="Visual_padres" class="dropdown-item">Padres de Familia</a>
                 </div>';
+                elseif($rol_usuario=='Docente') :
+                    echo '
+                    <a href="index04.php" class="nav-item nav-link active">Home</a>
+                    <a href="Foros.php" class="nav-item nav-link">Foros</a>
+                    
+                    <div class="nav-item dropdown">
+                    <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
+                    <div class="dropdown-menu rounded-0 m-0">
+                        <a href="Actividades.php" class="dropdown-item">Actividades</a>
+                        <a href="Publicaciones.php" class="dropdown-item">Publicaciones</a>
+                        <a href="Visual_padres" class="dropdown-item">Estudiantes</a>
+                        <a href="Boletines/FormB.php" class="dropdown-item">Boletines</a>
+                    </div>';
         
         else: echo '<a href="index04.php" class="nav-item nav-link active">Home</a>
         <a href="Principal.php" class="nav-item nav-link">Principal</a>
