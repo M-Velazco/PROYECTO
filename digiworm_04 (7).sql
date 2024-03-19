@@ -147,7 +147,7 @@ INSERT INTO `coordinador` (`idCoordinador`, `Nombres`, `Apellidos`, `Email`, `Pa
 DROP TABLE IF EXISTS `curso`;
 CREATE TABLE IF NOT EXISTS `curso` (
   `idCurso` int(11) NOT NULL AUTO_INCREMENT,
-  `Nombre_curso` varchar(45) DEFAULT NULL,
+  `Nombre_curso` int(45) DEFAULT NULL,
   `Estado` enum('Activo','Inactivo') DEFAULT NULL,
   PRIMARY KEY (`idCurso`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
