@@ -388,27 +388,36 @@ public function obtenerNombreUsuario($Idusuarios) {
             return "Usuario no encontrado";
         }
     }
-public function obtenerCurso($Idusuarios) {
-        // Preparar la consulta SQL
-        $consulta = $this->conexion->prepare("SELECT Curso FROM estudiante WHERE idEstudiante = ?");
-        
-        // Vincular parámetros y ejecutar la consulta
-        $consulta->bind_param("i", $Idusuarios);
-        $consulta->execute();
-
-        // Obtener el resultado de la consulta
-        $resultado = $consulta->get_result();
-        
-        // Verificar si se encontraron resultados
-        if ($resultado->num_rows > 0) {
-            // Obtener el nombre del primer usuario (asumiendo que el ID es único)
-            $fila = $resultado->fetch_assoc();
-            return $fila['Curso'];
-        } else {
-            return "Usuario no encontrado";
-        }
-    }
-
+	public function obtenerNombreCurso($idEstudiante) {
+		// Preparar la consulta SQL para obtener el ID del curso
+		$consulta = $this->conexion->prepare("SELECT Curso FROM estudiante WHERE idEstudiante = ?");
+		$consulta->bind_param("i", $idEstudiante);
+		$consulta->execute();
+		$resultado = $consulta->get_result();
+	
+		if ($resultado->num_rows > 0) {
+			// Obtener el ID del curso
+			$fila = $resultado->fetch_assoc();
+			$idCurso = $fila['Curso'];
+	
+			// Preparar la consulta SQL para obtener el nombre del curso usando el ID obtenido anteriormente
+			$consulta = $this->conexion->prepare("SELECT Nombre_curso FROM curso WHERE idCurso = ?");
+			$consulta->bind_param("i", $idCurso);
+			$consulta->execute();
+			$resultado = $consulta->get_result();
+	
+			if ($resultado->num_rows > 0) {
+				// Retornar el nombre del curso
+				$fila = $resultado->fetch_assoc();
+				return $fila['Nombre_curso'];
+			} else {
+				return "Curso no encontrado";
+			}
+		} else {
+			return "Estudiante no encontrado";
+		}
+	}
+	
 	public function modificarUsuario($Idusuarios)
 	{	
 		$this->Conexion=Conectarse();
