@@ -355,6 +355,15 @@
     padding-left: 15px;
   }
   
+  .col-lg-0817 {
+    position: relative;
+    width: 200%;
+    padding-right: 15px;
+    padding-left: 15px;
+    width: 5000px;
+    display: contents;
+  }
+  
   .col {
     flex-basis: 0;
     flex-grow: 1;
