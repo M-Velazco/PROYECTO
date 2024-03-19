@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Enviar el correo
             $mail->send();
             
-            header("location:../index04.php?succes=citaS");
+            header("location:../index.html?succes=citas");
         } catch (Exception $e) {
             echo "Error al enviar el correo de confirmación: {$mail->ErrorInfo}";
         }
