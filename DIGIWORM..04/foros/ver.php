@@ -105,7 +105,7 @@ if (isset($_SESSION['Idusuario'])) {
                 <?php echo $Nombres_FU; ?>
             </p>
             <a href="responder.php?titulo=<?php echo urlencode($fila['Titulo']); ?>" class="boton">Responder Foro</a>
-            <a href="editar.php?id_foro=<?php echo $fila['Titulo']; ?>" class="boton">Editar Foro</a>
+            <a href="editar.php?idForos=<?php echo $fila['idForos']; ?>" class="boton">Editar Foro</a>
 
             <?php
         }
