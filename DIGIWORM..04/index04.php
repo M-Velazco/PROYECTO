@@ -14,7 +14,7 @@ if(isset($_SESSION['Idusuario'])) {
 
     // Obtiene el nombre del usuario basado en su ID
     $nombre_usuario = $objUsuarios->obtenerNombreUsuario($_SESSION['Idusuario']);
-    $Curso_estudiante =$objUsuarios->obtenerCurso( $_SESSION['Idusuario'] ); 
+    $Curso_estudiante =$objUsuarios->obtenerNombreCurso( $_SESSION['Idusuario'] ); 
 
     // Obtiene la ruta de la imagen de perfil del usuario
     $ruta_imagen = $objUsuarios->obtenerRutaImagenUsuario($_SESSION['Idusuario']);
@@ -162,8 +162,8 @@ if ($rol_usuario == 'Coordinador'):
                 elseif($rol_usuario=='Padre_familia') :
                     echo '
                     <a href="index04.php" class="nav-item nav-link active">Home</a>
-                    <a href="Foros.php" class="nav-item nav-link">Foros</a>
-                    <a href="chat/login.php" class="nav-item nav-link">Chat</a>
+                    
+                    
                     <div class="nav-item dropdown">
                 <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
                 <div class="dropdown-menu rounded-0 m-0">
