@@ -135,7 +135,7 @@ header .textos-header{
     position: relative;
     margin: 0 0 16px;
     font-family: 'rosainicial.ttf';
-    background: linear-gradient(to right, #4262f1, #33ff8b,#00ff88);
+    background: linear-gradient(to right, #44c8e9, #8c59ec,#00ff88);
 
     display: block;
     line-height: 1.1;
@@ -200,7 +200,7 @@ body {
     overflow: auto;
     overflow-x: hidden;
 
-    background: linear-gradient(315deg, rgba(115, 180, 241, 0.596) 38%, rgb(22, 139, 7) 68%, rgb(40, 170, 221) 98%);
+    background: linear-gradient(315deg, rgb(87, 183, 238) 38%, rgb(135, 231, 156) 68%, rgb(19, 170, 230) 98%);
     animation: gradient 15s ease infinite;
     background-size: 400% 400%;
     background-attachment: fixed;
@@ -822,6 +822,8 @@ header .logo {
   @media (max-width: 768px) {
     header {
       flex-wrap: wrap;
+      text-align: center;
+
     }
   
     h1 {
