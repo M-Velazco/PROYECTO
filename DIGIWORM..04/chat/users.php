@@ -16,7 +16,7 @@ if(isset($_SESSION['Idusuario'])) {
 
     // Obtiene el nombre del usuario basado en su ID
     $nombre_usuario = $objUsuarios->obtenerNombreUsuario($_SESSION['Idusuario']);
-    $Curso_estudiante =$objUsuarios->obtenerCurso( $_SESSION['Idusuario'] ); 
+    
 
     // Obtiene la ruta de la imagen de perfil del usuario
     $ruta_imagen = $objUsuarios->obtenerRutaImagenUsuario($_SESSION['Idusuario']);
@@ -56,7 +56,7 @@ if(isset($_SESSION['Idusuario'])) {
             </p>
           </div>
         </div>
-        <a href="php/logout.php?logout_id=<?php echo $row['Idusuarios']; ?>" class="logout">Cerrar Sesión</a>
+        <a href="../index04.php"class="logout">Volver</a>
       </header>
       <div class="search">
         <span class="text">Selecciona un usuario para iniciar el chat</span>

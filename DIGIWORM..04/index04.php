@@ -134,17 +134,28 @@ if ($rol_usuario == 'Coordinador'):
         </div>
     </div>';
     elseif($rol_usuario=='Estudiante') :
-        echo '<a href="index04.php" class="nav-item nav-link active">Home</a>
-        <a href="chat/login.php" class="nav-item nav-link">Chat</a>
-        <a href="Foros.php" class="nav-item nav-link">Foros</a>
-    <div class="nav-item dropdown">
-        <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
-        <div class="dropdown-menu rounded-0 m-0">
-            <a href="Publicaciones.php" class="dropdown-item">Publicaciones</a>
-            <a href="Actividades.php" class="dropdown-item">Actividades</a>
-        </div>
-    </div>
-        ';
+        if ($Curso_estudiante && intval($Curso_estudiante) < 601) {
+            echo '<a href="index04.php" class="nav-item nav-link active">Home</a>
+                  <a href="Foros.php" class="nav-item nav-link">Foros</a>
+                  <div class="nav-item dropdown">
+                      <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
+                      <div class="dropdown-menu rounded-0 m-0">
+                          <a href="Publicaciones.php" class="dropdown-item">Publicaciones</a>
+                          <a href="Actividades.php" class="dropdown-item">Actividades</a>
+                      </div>
+                  </div>';
+        } else {
+            echo '<a href="index04.php" class="nav-item nav-link active">Home</a>
+                  <a href="chat/login.php" class="nav-item nav-link">Chat</a>
+                  <a href="Foros.php" class="nav-item nav-link">Foros</a>
+                  <div class="nav-item dropdown">
+                      <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
+                      <div class="dropdown-menu rounded-0 m-0">
+                          <a href="Publicaciones.php" class="dropdown-item">Publicaciones</a>
+                          <a href="Actividades.php" class="dropdown-item">Actividades</a>
+                      </div>
+                  </div>';
+        }
         elseif($rol_usuario=='administrador') :
             echo '<a href="index04.php" class="nav-item nav-link active">Home</a>
         <a href="Principal.php" class="nav-item nav-link">Principal</a>
