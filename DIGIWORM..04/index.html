@@ -224,7 +224,7 @@
                             <div class="col-lg-7 mb-5 mb-lg-0">
 
                                 <div class="col-12 text-center mb-4">
-                                    <h1 class="mb-4">Agendamiento De Citas Para Matricula</h1>
+                                    <h1 class="mb-4">Agendamiento De Citas Para Matricula Educativa.</h1>
 
                                 </div>
 
@@ -236,75 +236,77 @@
                                     académico."
                                 </p>
                                 <ul class="list-inline m-0">
-                                  <br>  <li class="py-2"><i class="fa fa-check text-success mr-3"></i>voy a trabajar duro
+                                    <br>
+                                    <li class="py-2"><i class="fa fa-check text-success mr-3"></i>voy a trabajar duro
                                         para ellos</li> <br>
-                                   <br> <li class="py-2"><i class="fa fa-check text-success mr-3"></i>"Aprende hoy, lidera
-                                        mañana."</li><br>
+                                    <br>
+                                    <li class="py-2"><i class="fa fa-check text-success mr-3"></i>"Aprende hoy, lidera
+                                        mañana.</li><br>
                                     <li class="py-2"><i class="fa fa-check text-success mr-3"></i>"Cree en ti mismo.
-                                        Eres más capaz de lo que piensas."</li>
+                                        Eres más capaz de lo que piensas.</li>
                                 </ul>
                             </div>
-                            <div class="col-lg-0817">
-                                <div class="card border-0">
-                                    <div class="card-header bg-secondary text-center p-4">
-                                        <h1 class="text-white m-0">Reservar un asiento</h1>
-                                    </div>
-                                    <div class="card-body rounded-bottom bg-primary p-5">
-                                        <form action="validacion/citas.php" method="POST">
-                                            <div class="form-group">
-                                                <input type="text" name="nombre" class="form-control border-0 p-4"
-                                                    placeholder="Su Nombre" required="required" />
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="email" name="email" class="form-control border-0 p-4"
-                                                    placeholder="Su Email" required="required" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="fecha">Fecha:</label>
-                                                <input type="date" id="fecha" name="fecha" min="<?= date('Y-m-d') ?>"
-                                                    required>
-                                                <br>
-                                                <label for="hora">Hora:</label>
-                                                <input type="time" id="hora" name="hora" required>
-                                            </div>
-                                            <div>
-                                                <button class="btn btn-secondary btn-block border-0 py-3"
-                                                    type="submit">Enviar</button>
-                                            </div>
-                                        </form>
-                                        <script>
-                                            // Obtener la fecha actual
-                                            var fechaActual = new Date().toISOString().split('T')[0];
-                                            document.getElementById("fecha").setAttribute('min', fechaActual);
 
-                                            // Obtener la hora actual
-                                            var horaActual = new Date();
-                                            var hora = horaActual.getHours();
-                                            var minutos = horaActual.getMinutes();
-                                            var horaString = ("0" + hora).slice(-2) + ":" + ("0" + minutos).slice(-2);
+                            <div class="cardm border-0">
+                                <div class="card-header bg-secondary text-center p-4">
+                                    <h1 class="text-white m-0">Reservar un Asiento</h1>
+                                </div>
+                                <div class="card-body rounded-bottom bg-primary p-5">
+                                    <form action="validacion/citas.php" method="POST">
+                                        <div class="form-group">
+                                            <input type="text" name="nombre" class="form-control border-0 p-4"
+                                                placeholder="Su Nombre" required="required" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="email" name="email" class="form-control border-0 p-4"
+                                                placeholder="Su Email" required="required" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="fecha">Fecha:</label>
+                                            <input type="date" id="fecha" name="fecha" min="<?= date('Y-m-d') ?>"
+                                                required>
+                                            <br>
+                                            <label for="hora">Hora:</label>
+                                            <input type="time" id="hora" name="hora" required>
+                                        </div>
+                                        <div>
+                                            <button class="btn btn-secondary btn-block border-0 py-3"
+                                                type="submit">Enviar</button>
+                                        </div>
+                                    </form>
+                                    <script>
+                                        // Obtener la fecha actual
+                                        var fechaActual = new Date().toISOString().split('T')[0];
+                                        document.getElementById("fecha").setAttribute('min', fechaActual);
 
-                                            // Establecer la hora actual como valor predeterminado
-                                            document.getElementById("hora").value = horaString;
+                                        // Obtener la hora actual
+                                        var horaActual = new Date();
+                                        var hora = horaActual.getHours();
+                                        var minutos = horaActual.getMinutes();
+                                        var horaString = ("0" + hora).slice(-2) + ":" + ("0" + minutos).slice(-2);
 
-                                            // Limitar la selección de hora a intervalos de 30 minutos entre 8am y 4pm
-                                            var horaInput = document.getElementById("hora");
-                                            horaInput.addEventListener("change", function () {
-                                                var horaSeleccionada = horaInput.value.split(':');
-                                                var hora = parseInt(horaSeleccionada[0]);
-                                                var minuto = parseInt(horaSeleccionada[1]);
+                                        // Establecer la hora actual como valor predeterminado
+                                        document.getElementById("hora").value = horaString;
 
-                                                if (hora < 8 || hora >= 16 || (hora === 15 && minuto > 30)) {
-                                                    horaInput.setCustomValidity("Seleccione una hora válida entre las 8 am y las 4 pm");
-                                                } else if (minuto % 30 !== 0) {
-                                                    horaInput.setCustomValidity("Seleccione un intervalo de 30 minutos");
-                                                } else {
-                                                    horaInput.setCustomValidity("");
-                                                }
-                                            });
-                                        </script>
-                                    </div>
+                                        // Limitar la selección de hora a intervalos de 30 minutos entre 8am y 4pm
+                                        var horaInput = document.getElementById("hora");
+                                        horaInput.addEventListener("change", function () {
+                                            var horaSeleccionada = horaInput.value.split(':');
+                                            var hora = parseInt(horaSeleccionada[0]);
+                                            var minuto = parseInt(horaSeleccionada[1]);
+
+                                            if (hora < 8 || hora >= 16 || (hora === 15 && minuto > 30)) {
+                                                horaInput.setCustomValidity("Seleccione una hora válida entre las 8 am y las 4 pm");
+                                            } else if (minuto % 30 !== 0) {
+                                                horaInput.setCustomValidity("Seleccione un intervalo de 30 minutos");
+                                            } else {
+                                                horaInput.setCustomValidity("");
+                                            }
+                                        });
+                                    </script>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
