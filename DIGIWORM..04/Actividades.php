@@ -12,6 +12,7 @@ if(isset($_SESSION['Idusuario'])) {
     $objUsuarios = new Usuario($objConexion);
     // Obtiene el nombre del usuario basado en su ID
     $nombre_usuario = $objUsuarios->obtenerNombreUsuario($_SESSION['Idusuario']);
+    $Curso_estudiante =$objUsuarios->obtenerNombreCurso( $_SESSION['Idusuario'] ); 
     // Obtiene la ruta de la imagen de perfil del usuario
     $ruta_imagen = $objUsuarios->obtenerRutaImagenUsuario($_SESSION['Idusuario']);
     $rol_usuario = $objUsuarios->obtenerRolUsuario($_SESSION['Idusuario']);

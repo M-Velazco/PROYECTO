@@ -458,14 +458,43 @@ endif;
                 </h1>
             </div>
             <div class="row">
+
+            <?php 
+            $urlD = 'http://localhost/PROYECTO/DIGIWORM..04/Apis/DocentesApis.php';
+
+            $curl = curl_init( $urlD );
+
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+            $response = curl_exec($curl);
+            if ($response === false) {
+                die("Error en la solicitud: " . curl_error($curl));
+            }
+            
+            // Decodificar la respuesta JSON
+            $docentes = json_decode($response, true);
+            
+            // Verificar si se recibieron opiniones
+            if (empty($docentes)) {
+                echo "No se encontraron opiniones.";
+            } else {
+                // Iterar sobre las opiniones y mostrarlas en el HTML
+                foreach ($docentes as $docente) {
+            ?>
                 <div class="col-md-6 col-lg-3 text-center team mb-5">
                     <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
                         <img class="img-fluid w-100" src="img/team-1.jpg" alt="" >
-                       
+                    
                     </div>
-                    <h4>Julia Smith</h4>
+                    <h4><?php echo $docente ['Nombres']; ?></h4>
                     <i>Docente de Musica</i>
                 </div>
+            <?php
+                }
+                }
+                curl_close($curl);
+            ?>
+
                 <div class="col-md-6 col-lg-3 text-center team mb-5">
                     <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
                         <img class="img-fluid w-100" src="img/team-2.jpg" alt="" >
