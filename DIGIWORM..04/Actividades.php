@@ -224,7 +224,7 @@ endif;
 // Verifica si el usuario tiene el rol de docente para mostrar el botón de agregar
 if ($rol_usuario == 'administrador'):
 ?>
-                            <a href="" class="btn btn-danger">Eliminar</a>
+<a href="" class="btn btn-danger">Eliminar</a>
                             <?php
 endif;
 ?>

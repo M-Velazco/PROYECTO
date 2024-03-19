@@ -388,6 +388,26 @@ public function obtenerNombreUsuario($Idusuarios) {
             return "Usuario no encontrado";
         }
     }
+public function obtenerCurso($Idusuarios) {
+        // Preparar la consulta SQL
+        $consulta = $this->conexion->prepare("SELECT Curso FROM estudiante WHERE idEstudiante = ?");
+        
+        // Vincular parámetros y ejecutar la consulta
+        $consulta->bind_param("i", $Idusuarios);
+        $consulta->execute();
+
+        // Obtener el resultado de la consulta
+        $resultado = $consulta->get_result();
+        
+        // Verificar si se encontraron resultados
+        if ($resultado->num_rows > 0) {
+            // Obtener el nombre del primer usuario (asumiendo que el ID es único)
+            $fila = $resultado->fetch_assoc();
+            return $fila['Curso'];
+        } else {
+            return "Usuario no encontrado";
+        }
+    }
 
 	public function modificarUsuario($Idusuarios)
 	{	

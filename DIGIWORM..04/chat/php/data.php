@@ -3,7 +3,7 @@ while ($row = mysqli_fetch_assoc($query)) {
     $sql2 = "SELECT * FROM mensajes WHERE (Mensaje_entrante = {$row['Idusuarios']}
                 OR Mensaje_saliente = {$row['Idusuarios']}) AND (Mensaje_saliente = {$outgoing_id} 
                 OR Mensaje_entrante = {$outgoing_id}) ORDER BY Idmensaje DESC LIMIT 1";
-    $query2 = mysqli_query($conn, $sql2);
+    $query2 = mysqli_query($Conexion, $sql2);
     $row2 = mysqli_fetch_assoc($query2);
     (mysqli_num_rows($query2) > 0) ? $result = $row2['Mensaje'] : $result = "No hay mensajes disponibles";
     (strlen($result) > 28) ? $Mensaje =  substr($result, 0, 28) . '...' : $Mensaje = $result;

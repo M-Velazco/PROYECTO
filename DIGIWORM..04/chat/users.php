@@ -1,8 +1,32 @@
+
 <?php
+// Inicia la sesión
 session_start();
-include_once "php/config.php";
-if (!isset($_SESSION['Idusuarios'])) {
-  header("location: login.php");
+
+// Verifica si la variable de sesión 'Idusuario' está establecida para determinar si el usuario está conectado
+if(isset($_SESSION['Idusuario'])) {
+  
+  $usuario_conectado = true;
+
+    // Crea una instancia de la clase Usuario y conecta a la base de datos
+    require_once "../modelo/USUARIO.php";
+    require_once "../modelo/conexion.php";
+    $objConexion = Conectarse();
+    $objUsuarios = new Usuario($objConexion);
+
+    // Obtiene el nombre del usuario basado en su ID
+    $nombre_usuario = $objUsuarios->obtenerNombreUsuario($_SESSION['Idusuario']);
+    $Curso_estudiante =$objUsuarios->obtenerCurso( $_SESSION['Idusuario'] ); 
+
+    // Obtiene la ruta de la imagen de perfil del usuario
+    $ruta_imagen = $objUsuarios->obtenerRutaImagenUsuario($_SESSION['Idusuario']);
+    $rol_usuario = $objUsuarios->obtenerRolUsuario($_SESSION['Idusuario']);
+
+
+    
+} else {
+    $usuario_conectado = false;
+    header( 'Location: form.php?error=nologeado' );
 }
 ?>
 <?php include_once "header.php"; ?>
@@ -13,7 +37,7 @@ if (!isset($_SESSION['Idusuarios'])) {
       <header>
         <div class="content">
           <?php
-          $sql = mysqli_query($conn, "SELECT * FROM usuarios WHERE Idusuarios = {$_SESSION['Idusuarios']}");
+          $sql = mysqli_query($objConexion, "SELECT * FROM usuarios WHERE Idusuarios = {$_SESSION['Idusuario']}");
           if (mysqli_num_rows($sql) > 0) {
             $row = mysqli_fetch_assoc($sql);
           }
