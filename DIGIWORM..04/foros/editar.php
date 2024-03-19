@@ -6,71 +6,50 @@ session_start();
 if (isset($_SESSION['Idusuario'])) {
     // Verifica si se ha enviado el formulario
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Obtener los datos del formulario
-        $titulo = isset($_POST["titulo"]) ? htmlspecialchars($_POST["titulo"]) : '';
-        $respuesta = htmlspecialchars($_POST["respuesta"]);
-        $id_usuario = $_SESSION['Idusuario'];
-
-        // Guardar la respuesta en la base de datos
-        // Reemplaza 'tu_conexion' con tu conexión a la base de datos
-        $conn = new mysqli('localhost', 'root', 'sena', 'digiworm_04');
-        if ($conn->connect_error) {
-            die("Error de conexión: " . $conn->connect_error);
-        }
-
-        // Escapar los valores para prevenir inyección SQL
-        $titulo = $conn->real_escape_string($titulo);
-        $id_usuario = $conn->real_escape_string($id_usuario);
-        $respuesta = $conn->real_escape_string($respuesta);
-
-        // Actualizar la respuesta en la base de datos
-        $sql = "UPDATE foros SET respuesta = '$respuesta' WHERE titulo = '$titulo'";
-        if ($conn->query($sql) === TRUE) {
-            echo "Respuesta actualizada correctamente.<br>";
-        } else {
-            echo "Error al actualizar la respuesta: " . $conn->error;
-        }
-
-        $conn->close();
+        // Aquí puedes manejar la actualización de los datos en la base de datos
     } else {
-        // Obtener el título del foro a editar
-        $titulo = isset($_GET['titulo']) ? htmlspecialchars($_GET['titulo']) : '';
-        // Obtener la respuesta actual del foro
-        $respuesta = '';
+        // Obtener el ID del foro a editar
+        $idForos = isset($_GET['idForos']) ? htmlspecialchars($_GET['idForos']) : '';
+        
+        // Conectarse a la base de datos y obtener los datos del foro
         $conn = new mysqli('localhost', 'root', 'sena', 'digiworm_04');
         if ($conn->connect_error) {
             die("Error de conexión: " . $conn->connect_error);
         }
-        $sql = "SELECT respuesta FROM foros WHERE titulo = '$titulo'";
+        $sql = "SELECT * FROM foros WHERE idForos = '$idForos'";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
-            $respuesta = $row['respuesta'];
+            $titulo = $row['Titulo'];
+            $descripcion = $row['Contenido'];
+            $fecha_creacion = $row['Fecha_Hora'];
+            // Puedes añadir más campos según tu base de datos
+        } else {
+            echo "No se encontró el foro especificado.";
+            exit();
         }
         $conn->close();
     }
-} else {
-    // Si el usuario no está conectado, redirige a la página de inicio de sesión
-    header('Location: form.php?error=nologeado');
-    exit();
-}
-?>
+    ?>
+
+
 
 <!DOCTYPE html>
 <html>
 <head>
     <title>Editar Foro</title>
     <style>
-      /* Estilos CSS */
-      body {
-    background-color: #73cdff; /* Color de fondo verde pastel */
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-image: url('../img/coolegio.jpg');
-    background-size: cover; 
-    background-repeat: no-repeat; 
-}
+        /* Estilos CSS */
+        body {
+            background-color: #73cdff; /* Color de fondo verde pastel */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('../img/coolegio.jpg');
+            background-size: cover; 
+            background-repeat: no-repeat; 
+        }
+
         form {
             background-color: #fff; /* Fondo blanco */
             padding: 20px;
@@ -102,32 +81,55 @@ if (isset($_SESSION['Idusuario'])) {
             background-color: #45a049; /* Cambio de color al pasar el ratón */
         }
         .boton {
-    background-color: #4caf50;
-    /* Color de fondo verde */
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    position: absolute;
-    top: 20px;
-    left: 20px;
-}
+            background-color: #4caf50;
+            /* Color de fondo verde */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
 
-.boton:hover {
-    background-color: #45a049;
-    /* Cambio de color al pasar el ratón */
-}
+        .boton:hover {
+            background-color: #45a049;
+            /* Cambio de color al pasar el ratón */
+        }
     </style>
 </head>
 <body>
-<a href="javascript:history.go(-3);" class="boton">Salir</a>
+<a href="javascript:history.go(-2);" class="boton">Salir</a>
     <h2 style="text-align: center;">Editar Foro</h2>
-    <form action="editar.php" method="post">
-        Título del foro: <input type="text" name="titulo" value="<?php echo $titulo; ?>" readonly><br><br>
-        Respuesta: <textarea name="respuesta" required><?php echo $respuesta; ?></textarea><br><br>
-        <input type="submit" value="Guardar Cambios">
+    <form action="update.php" method="post" enctype="multipart/form-data" onsubmit="return validarFecha()">
+        <label for="Titulo">Título:</label>
+        <input type="text" id="Titulo" name="Titulo" value="<?php echo $titulo; ?>" required><br><br>
+        <label for="Contenido">Contenido:</label>
+        <textarea id="Contenido" name="Contenido" required><?php echo $descripcion; ?></textarea><br><br>
+        <label for="fecha_creacion">Fecha y hora de creación:</label>
+        <input type="datetime-local" id="fecha_creacion" name="fecha_creacion" value="<?php echo $fecha_creacion; ?>" required><br><br>
+        <!-- Puedes añadir más campos según tu base de datos -->
+        <input type="submit" name="editar_foro" value="Guardar Cambios">
     </form>
+
+    <script>
+        function validarFecha() {
+            var fecha = new Date(document.getElementById("fecha_creacion").value);
+            var fechaActual = new Date();
+            if (fecha < fechaActual) {
+                alert("La fecha y hora de creación no puede ser anterior al día de hoy.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+    <?php } else {
+    // Si el usuario no está conectado, redirige a la página de inicio de sesión
+    header('Location: form.php?error=nologeado');
+    exit();
+}
+?>
 </body>
 </html>
