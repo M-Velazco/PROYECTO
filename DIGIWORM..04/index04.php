@@ -565,7 +565,7 @@ endif;
     <!-- Team End -->
 
 
-    <!-- Testimonial Start -->
+    <!-- opinion api Start -->
     <div class="container-fluid py-5">
         <div class="container p-0">
             <div class="text-center pb-2">
@@ -574,49 +574,58 @@ endif;
             </div>
             <div class="owl-carousel testimonial-carousel">
     <?php 
-    $conexion = new mysqli("localhost", "root", "sena", "digiworm_04");
+    
+    $url = 'http://localhost/PROYECTO/DIGIWORM..04/Apis/OpinionApi.php';
 
-    // Verificar si hay errores de conexión
-    if ($conexion->connect_error) {
-        die("Error de conexión: " . $conexion->connect_error);
-    }
+// Inicializar la solicitud cURL
+$curl = curl_init($url);
 
-    // Ejecutar la consulta SQL
-    $consulta = $conexion->query("SELECT Opinion, Nombres_Apellidos FROM opiniones");
+// Establecer opciones de solicitud cURL
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
-    // Verificar si la consulta se ejecutó correctamente
-    if (!$consulta) {
-        die("Error en la consulta SQL: " . $conexion->error);
-    }
+// Ejecutar la solicitud cURL
+$response = curl_exec($curl);
 
-    // Inicio del bucle para repetir el bloque
-    while ($fila = $consulta->fetch_assoc()) {
+// Verificar si hay errores
+if ($response === false) {
+    die("Error en la solicitud: " . curl_error($curl));
+}
+
+// Decodificar la respuesta JSON
+$opiniones = json_decode($response, true);
+
+// Verificar si se recibieron opiniones
+if (empty($opiniones)) {
+    echo "No se encontraron opiniones.";
+} else {
+    // Iterar sobre las opiniones y mostrarlas en el HTML
+    foreach ($opiniones as $opinion) {
     ?>
     <div class="testimonial-item px-3">
         <div class="bg-light shadow-sm rounded mb-4 p-4">
             <h3 class="fas fa-quote-left text-primary mr-3"></h3>
-            <?php echo $fila['Opinion']; ?>
+            <?php echo $opinion['Opinion']; ?>
         </div>
         <div class="d-flex align-items-center">
             <img class="rounded-circle" src="img/profp.png" style="width: 70px; height: 70px;" alt="Image">
             <div class="pl-3">
-                <h5><?php echo $fila['Nombres_Apellidos']; ?></h5>
+                <h5><?php echo $opinion['Nombres_Apellidos']; ?></h5>
                 <i>Padre de Familia</i>
             </div>
         </div>
     </div>
     <?php 
     } // Fin del bucle
+}
+curl_close($curl);
 
-    // Cerrar la conexión
-    $conexion->close();
-    ?>
+?>
 </div>
 
         </div>
     </div>
     <!-- Testimonial End -->
-
+ 
 
     <!-- Blog Start -->
     <div class="container-fluid pt-5">
