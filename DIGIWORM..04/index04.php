@@ -497,7 +497,7 @@ endif;
 
                 <div class="col-md-6 col-lg-3 text-center team mb-5">
                     <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
-                        <img class="img-fluid w-100" src="img/team-2.jpg" alt="" >
+                        <img class="img-fluid w-100" src="img/testimonial-3.jpg" alt="" >
                        
                     </div>
                     <h4>Jhon Doe</h4>

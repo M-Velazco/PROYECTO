@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Configurar el contenido del correo
             $mail->isHTML(true);
-            $mail->Subject = 'Confirmación de cita';
+            $mail->Subject = 'Agendamiento Cita Matricula';
             $mail->Body    = "Estimado $nombre,<br><br>Su cita para el día $fecha a las $hora ha sido confirmada.<br><br>Gracias.";
 
             // Enviar el correo

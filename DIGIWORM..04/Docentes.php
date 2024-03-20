@@ -217,17 +217,24 @@ endif;
                 <h1 class="mb-4">Con Certificaciones</h1>
             </div>
             <div class="row">
+     
+
+<div class="col-md-6 col-lg-3 text-center team mb-5">
+    <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
+        <!-- Agregar eventos para mostrar y ocultar los datos personales -->
+        <img class="img-fluid w-100" src="img/team-1.jpg" alt="" onmouseover="mostrarDatosPersonales()" onmouseout="ocultarDatosPersonales()">
+    </div>
+    <h4>Julia Smith</h4>
+    <i>Ingles</i>
+</div>
+
+
+
+<!-- Aquí se mostrarán los datos personales -->
+<div id="datos-personales"></div>
                 <div class="col-md-6 col-lg-3 text-center team mb-5">
                     <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
-                        <img class="img-fluid w-100" src="img/team-1.jpg" alt="" >
-                        
-                    </div>
-                    <h4>Julia Smith</h4>
-                    <i>Ingles</i>
-                </div>
-                <div class="col-md-6 col-lg-3 text-center team mb-5">
-                    <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
-                        <img class="img-fluid w-100" src="img/team-2.jpg" alt="" >
+                        <img class="img-fluid w-100" src="img/testimonial-3.jpg" alt="" >
                         
                     </div>
                     <h4>Jhon Doe</h4>
@@ -259,7 +266,7 @@ endif;
                 </div>
                 <div class="col-md-6 col-lg-3 text-center team mb-5">
                     <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
-                        <img class="img-fluid w-100" src="img/team-3.jpg" alt="" >
+                        <img class="img-fluid w-100" src="img/testimonial-1" alt="" >
                         
                     </div>
                     <h4>Jhon Doe</h4>
@@ -267,7 +274,7 @@ endif;
                 </div>
                 <div class="col-md-6 col-lg-3 text-center team mb-5">
                     <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
-                        <img class="img-fluid w-100" src="img/cara2.jpg" alt="" >
+                        <img class="img-fluid w-100" src="img/testimonial-2.jpg" alt="" >
                        
                     </div>
                     <h4>Mollie Ross</h4>
@@ -275,7 +282,7 @@ endif;
                 </div>
                 <div class="col-md-6 col-lg-3 text-center team mb-5">
                     <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
-                        <img class="img-fluid w-100" src="img/cara.jpg" alt="" >
+                        <img class="img-fluid w-100" src="img/user.jpg" alt="" >
                       
                     </div>
                     <h4>Donald John</h4>
@@ -284,11 +291,19 @@ endif;
 
                 <div class="col-md-6 col-lg-3 text-center team mb-5">
                     <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
-                        <img class="img-fluid w-100" src="img/Aurelio.jpg" alt="" >
+                        <img class="img-fluid w-100" src="img/oip.jpg" alt="" >
                       
                     </div>
                     <h4>Donald John</h4>
                     <i>Musica</i>
+                </div>
+                <div class="col-md-6 col-lg-3 text-center team mb-5">
+                    <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
+                        <img class="img-fluid w-100" src="img/avatar.jpg" alt="" >
+                        
+                    </div>
+                    <h4>Jhon Doe</h4>
+                    <i>Religion</i>
                 </div>
             </div>
         </div>
