@@ -50,6 +50,7 @@ if(isset($_SESSION['Idusuario'])) {
 
             <label for="cantidad_materias">Cantidad de Materias:</label>
             <select id="cantidad_materias" name="cantidad_materias" required>
+            <option value=""></option>
                 <?php for ($i = 1; $i <= 13; $i++) { ?>
                     <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
                 <?php } ?>

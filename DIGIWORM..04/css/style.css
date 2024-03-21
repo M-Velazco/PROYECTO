@@ -446,8 +446,8 @@ h6, .h6 {
 }
 
 .display-3 {
-  font-size: 4.5rem;
-  font-weight: 300;
+  font-size: 3.5rem;
+  font-weight: 200;
   line-height: 1.2;
 }
 
@@ -9510,7 +9510,7 @@ button.bg-dark:focus {
 }
 
 .font-weight-bold {
-  font-weight: 700 !important;
+  font-weight: 300 !important;
 }
 
 .font-weight-bolder {
@@ -9523,7 +9523,9 @@ button.bg-dark:focus {
 
 .text-white {
   color: #fff !important;
+  
 }
+
 
 .text-primary {
   color: #13e926 !important;
