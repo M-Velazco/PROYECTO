@@ -1,12 +1,12 @@
 <?php
 // Inicia la sesión
-session_start();
+
 // Verifica si la variable de sesión 'Idusuario' está establecida para determinar si el usuario está conectado
 if(isset($_SESSION['Idusuario'])) {
     $usuario_conectado = true;
     // Crea una instancia de la clase Usuario y conecta a la base de datos
-    require_once "../modelo/USUARIO.php";
-    require_once "../modelo/conexion.php";
+    require_once "modelo/USUARIO.php";
+    require_once "modelo/conexion.php";
     $objConexion = Conectarse();
     $objUsuarios = new Usuario($objConexion);
     // Obtiene el nombre del usuario basado en su ID
@@ -26,7 +26,7 @@ if(isset($_SESSION['Idusuario'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Estudiante</title>
-    <link rel="stylesheet" href="../css/Boletins.css">
+    <link rel="stylesheet" href="css/Boletins.css">
 </head>
 <body>
     <div class="container">
@@ -50,6 +50,7 @@ if(isset($_SESSION['Idusuario'])) {
 
             <label for="cantidad_materias">Cantidad de Materias:</label>
             <select id="cantidad_materias" name="cantidad_materias" required>
+            <option value=""></option>
                 <?php for ($i = 1; $i <= 13; $i++) { ?>
                     <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
                 <?php } ?>

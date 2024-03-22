@@ -300,7 +300,7 @@ endif;
                     <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"
                        ></a>
                     <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"
-                        style="width: 38px; height: 38px;" href="https://www.facebook.com/ColegiopauloVI/"><i class="fab fa-facebook-f"></i></a>
+                        style="width: 38px; height: 38px;" href="https://www.facebook.com/profile.php?id=61557564631844&mibextid=ZbWKwL"><i class="fab fa-facebook-f"></i></a>
                     <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"
                        ></a>
                     <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"

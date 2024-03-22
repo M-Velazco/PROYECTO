@@ -168,7 +168,8 @@ if ($rol_usuario == 'Coordinador'):
                     <a href="Actividades.php" class="dropdown-item">Actividades</a>
                     <a href="Publicaciones.php" class="dropdown-item">Publicaciones</a>
                     <a href="Visual_padres" class="dropdown-item">Padres de Familia</a>
-                    <a href="Boletines/FormB.php" class="dropdown-item">Boletines</a>
+                    <a href="boletines.php" class="dropdown-item">Boletines</a>
+
                 </div>';
                 elseif($rol_usuario=='Padre_familia') :
                     echo '
@@ -245,7 +246,7 @@ endif;
         <div class="row align-items-center px-3">
             <div class="col-lg-6 text-center text-lg-left">
                 <h4 class="text-white mb-4 mt-5 mt-lg-0">Gestion Academica</h4>
-                <h1 class="display-3 font-weight-bold text-white">nuevo enfoque para la educación de los niños</h1>
+               <br> <h1 class="display-3 font-weight-bold text-white">nuevo enfoque para la educación de los niños</h1><br>
                 <p class="text-white mb-4">La educación es el faro que ilumina el camino hacia el progreso y la realización personal. Es el arte de cultivar mentes y corazones, de sembrar semillas de conocimiento y fomentar el crecimiento intelectual y emocional en cada individuo. En el aula, se forja el futuro, se moldean los sueños y se construyen las bases para un mundo mejor.
 
                 </p>
@@ -657,8 +658,8 @@ curl_close($curl);
                 <div class="d-flex justify-content-start mt-4">
                     <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"a>
                     <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"
-                        style="width: 38px; height: 38px;" href="https://www.facebook.com/ColegiopauloVI/"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"
+                        style="width: 38px; height: 38px;" href="https://www.facebook.com/profile.php?id=61557564631844&mibextid=ZbWKwL"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0">
                     <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"
                         style="width: 38px; height: 38px;" href="https://www.instagram.com/digiworm.s.a?igsh=am5ubXdjZDVrczg="><i class="fab fa-instagram"></i></a>
                 </div>
