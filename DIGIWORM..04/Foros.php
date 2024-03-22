@@ -231,7 +231,7 @@ endif;
                         <?php if($rol_usuario == 'Docente'): ?>
                         <li class="btn btn-outline-primary m-1">
 
-                            <a href="foros/respuestas.php" class="text-decoration-none text-dark">crear foros</a>
+                            <a href="foros/respuestas.php" class="text-decoration-none text-dark">respuestas foros</a>
                         </li>
                         <?php endif;?>
                     </ul>
