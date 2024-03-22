@@ -6,18 +6,19 @@ session_start();
 if (isset($_SESSION['Idusuario'])) {
     // Verifica si se ha enviado el formulario
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Obtener los datos del formulario
+        // Obtener los datos del formulario, incluyendo el estado del foro
         $idForos = isset($_POST['idForos']) ? htmlspecialchars($_POST['idForos']) : '';
         $titulo = isset($_POST['Titulo']) ? htmlspecialchars($_POST['Titulo']) : '';
         $descripcion = isset($_POST['Contenido']) ? htmlspecialchars($_POST['Contenido']) : '';
         $fecha_creacion = isset($_POST['fecha_creacion']) ? htmlspecialchars($_POST['fecha_creacion']) : '';
+        $estado = isset($_POST['Estado']) ? htmlspecialchars($_POST['Estado']) : '';
 
-        // Conectarse a la base de datos y actualizar los datos del foro
+        // Conectarse a la base de datos y actualizar los datos del foro, incluyendo el estado
         $conn = new mysqli('localhost', 'root', 'sena', 'digiworm_04');
         if ($conn->connect_error) {
             die("Error de conexión: " . $conn->connect_error);
         }
-        $sql = "UPDATE foros SET Titulo = '$titulo', Contenido = '$descripcion', Fecha_Hora = '$fecha_creacion' WHERE idForos = '$idForos'";
+        $sql = "UPDATE foros SET Titulo = '$titulo', Contenido = '$descripcion', Fecha_Hora = '$fecha_creacion', Estado = '$estado' WHERE idForos = '$idForos'";
         if ($conn->query($sql) === TRUE) {
             echo "Foro actualizado correctamente.<br>";
         } else {
@@ -40,7 +41,7 @@ if (isset($_SESSION['Idusuario'])) {
             $titulo = $row['Titulo'];
             $descripcion = $row['Contenido'];
             $fecha_creacion = $row['Fecha_Hora'];
-            // Puedes añadir más campos según tu base de datos
+            $estado = $row['Estado'];
         } else {
             echo "No se encontró el foro especificado.";
             exit();
@@ -78,7 +79,8 @@ if (isset($_SESSION['Idusuario'])) {
             textarea,
             input[type="datetime-local"],
             input[type="file"],
-            input[type="submit"] {
+            input[type="submit"],
+            select {
                 width: 100%;
                 padding: 8px;
                 margin-bottom: 10px;
@@ -127,6 +129,11 @@ if (isset($_SESSION['Idusuario'])) {
             <textarea id="Contenido" name="Contenido" required><?php echo $descripcion; ?></textarea><br><br>
             <label for="fecha_creacion">Fecha y hora de creación:</label>
             <input type="datetime-local" id="fecha_creacion" name="fecha_creacion" value="<?php echo $fecha_creacion; ?>" required><br><br>
+            <label for="Estado">Estado:</label>
+            <select id="Estado" name="Estado" required>
+                <option value="activo" <?php if ($estado == 'activo') echo 'selected'; ?>>Activo</option>
+                <option value="inactivo" <?php if ($estado == 'inactivo') echo 'selected'; ?>>Inactivo</option>
+            </select><br><br>
             <!-- Puedes añadir más campos según tu base de datos -->
             <input type="submit" name="editar_foro" value="Guardar Cambios">
         </form>
@@ -139,8 +146,8 @@ if (isset($_SESSION['Idusuario'])) {
                     alert("La fecha y hora de creación no puede ser anterior al día de hoy.");
                     return false;
                 }
-                return true;
-            }
+                return true
+
         </script>
     <?php } else {
         // Si el usuario no está conectado, redirige a la página de inicio de sesión

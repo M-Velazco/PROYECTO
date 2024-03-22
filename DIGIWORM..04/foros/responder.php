@@ -1,5 +1,5 @@
- <?php
- $titulo = isset($_GET['titulo']) ? htmlspecialchars($_GET['titulo']) : '';
+<?php
+$titulo = isset($_GET['titulo']) ? htmlspecialchars($_GET['titulo']) : '';
 // Inicia la sesión
 session_start();
 
@@ -24,13 +24,27 @@ if (isset($_SESSION['Idusuario'])) {
         $id_usuario = $conn->real_escape_string($id_usuario);
         $respuesta = $conn->real_escape_string($respuesta);
 
-        $sql = "UPDATE foros SET respuesta = CONCAT(IFNULL(respuesta, ''), '$respuesta\n') WHERE titulo = '$titulo'";
-        if ($conn->query($sql) === TRUE) {
-            echo "Respuesta enviada correctamente.<br>";
+        // Obtener el estado del foro
+        $sql_estado = "SELECT Estado FROM foros WHERE Titulo = '$titulo'";
+        $result_estado = $conn->query($sql_estado);
+        if ($result_estado->num_rows > 0) {
+            $row_estado = $result_estado->fetch_assoc();
+            $Estado = $row_estado['Estado'];
+
+            // Si el foro está inactivo, mostrar mensaje y salir
+            if ($Estado == 'inactivo') {
+                $mensaje = "No se puede responder a un foro inactivo.";
+            } else {
+                $sql = "UPDATE foros SET respuesta = CONCAT(IFNULL(respuesta, ''), '$respuesta\n') WHERE titulo = '$titulo'";
+                if ($conn->query($sql) === TRUE) {
+                    $mensaje = "Respuesta enviada correctamente.<br>";
+                } else {
+                    $mensaje = "Error al enviar la respuesta: " . $conn->error;
+                }
+            }
         } else {
-            echo "Error al enviar la respuesta: " . $conn->error;
+            $mensaje = "No se encontró el foro especificado.";
         }
-        
 
         $conn->close();
     }
@@ -121,3 +135,4 @@ if (isset($_SESSION['Idusuario'])) {
     </form>
 </body>
 </html>
+
