@@ -342,17 +342,35 @@ CREATE TABLE IF NOT EXISTS `padre_familia` (
 --
 -- Estructura de tabla para la tabla `publicaciones`
 --
-
 DROP TABLE IF EXISTS `publicaciones`;
 CREATE TABLE IF NOT EXISTS `publicaciones` (
-  `idPublicaciones` int(11) NOT NULL,
-  `Archivo` varchar(45) DEFAULT NULL,
+  `idPublicaciones` int NOT NULL AUTO_INCREMENT,
+  `Archivo` varchar(500) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
   `Descripcion` varchar(45) DEFAULT NULL,
-  `usuario` int(11) DEFAULT NULL,
+  `usuario` int DEFAULT NULL,
   PRIMARY KEY (`idPublicaciones`),
   KEY `usuario_usuarioId` (`usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
 
+--
+-- Volcado de datos para la tabla `publicaciones`
+--
+
+INSERT INTO `publicaciones` (`idPublicaciones`, `Archivo`, `Descripcion`, `usuario`) VALUES
+(2, '../img/testimonial-4.jpg', 'Prueba de insercion en publicaciones2', 1030537206),
+(3, '../img/testimonial-4.jpg', 'Prueba de insercion en publicaciones2', 1030537206),
+(6, 'publicUploads/publicacion_66061fd8289bc.pdf', 'prueba para de,ostracion', 2147483647);
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `publicaciones`
+--
+ALTER TABLE `publicaciones`
+  ADD CONSTRAINT `Usuario` FOREIGN KEY (`usuario`) REFERENCES `usuarios` (`Idusuarios`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+COMMIT;
 -- --------------------------------------------------------
 
 --
