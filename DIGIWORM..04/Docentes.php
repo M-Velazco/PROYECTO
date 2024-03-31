@@ -416,6 +416,35 @@ datosPersonale.style.display = "none";
 }
 </script>
 
+ <!-- Aquí se mostrarán los datos personales -->
+
+ </div>
+
+<div id="DAtos-personaless"></div>
+<div class="col-md-6 col-lg-3 text-center team mb-5">
+<div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
+<img class="img-fluid w-100" src="img/user.jpg" alt="" onclick="DatosPersonaless()">
+</div>
+    <h4>Johan Stiven</h4>
+
+    <div id="DAtosPersonaless" style="display: none;">
+<p>Fecha de nacimiento:06 de abril de 1994</p>
+<p>Correo electrónico: stiven123@gmail.com</p>
+<p>Teléfono: +1534567890</p>
+<p>Estudios: Maestria en Filosofia</p>
+</div>
+
+<script>
+function DatosPersonaless() {
+var datosPersonale = document.getElementById("DAtosPersonaless");
+if (datosPersonale.style.display === "none") {
+datosPersonale.style.display = "block";
+} else {
+datosPersonale.style.display = "none";
+}
+}
+</script>
+
             </div>
         </div>
     </div>
