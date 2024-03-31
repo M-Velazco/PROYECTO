@@ -131,6 +131,7 @@ if ($rol_usuario == 'Coordinador'):
         <div class="dropdown-menu rounded-0 m-0">
              <a href="publicaciones/publicaciones.php" class="dropdown-item">Publicaciones</a>
             <a href="Actividades.php" class="dropdown-item">Actividades</a>
+            <a href="cursos.php" class="dropdown-item">Cursos</a>
         </div>
     </div>';
     elseif($rol_usuario=='Estudiante') :
@@ -162,6 +163,7 @@ if ($rol_usuario == 'Coordinador'):
             <a href="chat/login.php" class="nav-item nav-link">Chat</a>
             <a href="Foros.php" class="nav-item nav-link">Foros</a>
             <a href="Docentes.php" class="nav-item nav-link">Docentes</a>
+            
             <div class="nav-item dropdown">
                 <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
                 <div class="dropdown-menu rounded-0 m-0">
@@ -169,6 +171,7 @@ if ($rol_usuario == 'Coordinador'):
                     <a href="publicaciones/publicaciones.php" class="dropdown-item">Publicaciones</a>
                     <a href="Visual_padres" class="dropdown-item">Estudiantes</a>
                     <a href="boletines.php" class="dropdown-item">Boletines</a>
+                    <a href="cursos.php" class="dropdown-item">Cursos</a>
 
                 </div>';
                 elseif($rol_usuario=='Padre_familia') :
@@ -193,6 +196,8 @@ if ($rol_usuario == 'Coordinador'):
                         <a href="publicaciones/publicaciones.php" class="dropdown-item">Publicaciones</a>
                         <a href="Visual_padres" class="dropdown-item">Estudiantes</a>
                         <a href="Boletines/FormB.php" class="dropdown-item">Boletines</a>
+                        <a href="cursos.php" class="dropdown-item">Cursos</a>
+                        
                     </div>';
         
         else: echo '<a href="index04.php" class="nav-item nav-link active">Home</a>

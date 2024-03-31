@@ -120,7 +120,7 @@ if ($rol_usuario == 'Coordinador'):
                     <a href="publicaciones/publicaciones.php" class="dropdown-item">Publicaciones</a>
                     <a href="Visual_padres" class="dropdown-item">Padres de Familia</a>
                     <a href="boletines.php" class="dropdown-item">Boletines</a>
-                    <a href="cursos.php" class="dropdown-item">Cursos</a>
+                    }   <a href="cursos.php" class="dropdown-item">Cursos</a>
 
                 </div>';
                 elseif($rol_usuario=='Padre_familia') :
@@ -197,168 +197,51 @@ endif;
     <!-- Header Start -->
     <div class="container-fluid bg-primary mb-5">
         <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px">
-            <h3 class="display-3 font-weight-bold text-white">Principal</h3>
+            <h3 class="display-3 font-weight-bold text-white">Cursos</h3>
             <div class="d-inline-flex text-white">
-                <p class="m-0"><a class="text-white" href="index04.php">Home</a></p>
-                <p class="m-0 px-2"></p>
-                
+            <p class="m-0"><a class="text-white" href="index04.php">Home</a></p>
+                <p class="m-0 px-2">/</p>
             </div>
         </div>
     </div>
     <!-- Header End -->
 
 
-    <!-- About Start -->
-    <div class="container-fluid py-5">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-5">
-                    <video class="img-fluid rounded mb-5 mb-lg-0" controls>
-                        <source src="img/video.mp4" type="video/mp4">
-                        Tu navegador no soporta el elemento de video.
-                    </video>
-                </div>
-                
-                <div class="col-lg-7">
-                    <p class="section-title pr-5"><span class="pr-2">APRENDE SOBRE NOSOTROS</span></p>
-                    <h1 class="mb-4">OFRECIENDO EL MEJOR SERVICIO</h1>
-                    <p>No veas los obstáculos como barreras, sino como puentes hacia el mañana. Cada desafío es una oportunidad para crecer y avanzar hacia tus metas.</p>
-                    <div class="row pt-2 pb-4">
-                        <div class="col-6 col-md-4">
-                            <img class="img-fluid rounded" src="img/about-2.jpg" alt="">
-                            
-                        </div>
-                        <div class="col-6 col-md-8">
-                            <ul class="list-inline m-0">
-                                <li class="py-2 border-top border-bottom"><i class="fa fa-check text-primary mr-3"></i>Inpirate</li>
-                                <li class="py-2 border-bottom"><i class="fa fa-check text-primary mr-3"></i>Sueña</li>
-                                <li class="py-2 border-bottom"><i class="fa fa-check text-primary mr-3"></i>Crece</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- About End -->
-
-
-    <!-- Facilities Start -->
-    <div class="container-fluid pt-5">
-        <div class="container pb-3">
-            <div class="row">
-                <div class="col-lg-4 col-md-6 pb-1">
-                    <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px;">
-                        <i class="flaticon-050-fence h1 font-weight-normal text-primary mb-3"></i>
-                        <div class="pl-4">
-                            <h4>Puentes hacia el mañana</h4>
-                            <p class="m-0">No veas los obstáculos como barreras, sino como puentes hacia el mañana. Cada desafío es una oportunidad para crecer y avanzar hacia tus metas.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 pb-1">
-                    <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px;">
-                        <i class="flaticon-022-drum h1 font-weight-normal text-primary mb-3"></i>
-                        <div class="pl-4">
-                            <h4>Cultivando la Mente</h4>
-                            <p class="m-0">Alimenta tu mente con grandes ideas, sueños y conocimientos..
-
-
-                                A veces es necesario que Ia vida nos sacuda con mucha fuerza para darnos cuenta que el tiempo que nos queda no es para malgastarlo.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 pb-1">
-                    <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px;">
-                        <i class="flaticon-030-crayons h1 font-weight-normal text-primary mb-3"></i>
-                        <div class="pl-4">
-                            <h4>Sembrando un Futuro</h4>
-                            <p class="m-0">Cada libro abierto ilumina tu camino hacia oportunidades infinitas. El conocimiento es la semilla, tu esfuerzo la tierra fértil.
-
-                                Creer en ti mismo es el cimiento del éxito.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 pb-1">
-                    <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px;">
-                        <i class="flaticon-017-toy-car h1 font-weight-normal text-primary mb-3"></i>
-                        <div class="pl-4">
-                            <h4>Desarrollo Integral</h4>
-                            <p class="m-0">Ofrecemos un ambiente de desarrollo integral donde cada estudiante encuentra el éxito asegurado en cada paso de su educación.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 pb-1">
-                    <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px;">
-                        <i class="flaticon-025-sandwich h1 font-weight-normal text-primary mb-3"></i>
-                        <div class="pl-4">
-                            <h4>Énfasis en Valores</h4>
-                            <p class="m-0">Nuestro énfasis en valores va más allá del aula, contribuyendo a la formación de ciudadanos íntegros y comprometidos con la sociedad.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 pb-1">
-                    <div class="d-flex bg-light shadow-sm border-top rounded mb-4" style="padding: 30px;">
-                        <i class="flaticon-047-backpack h1 font-weight-normal text-primary mb-3"></i>
-                        <div class="pl-4">
-                            <h4>Entorno e Inclusion</h4>
-                            <p class="m-0">Creamos un entorno de inclusión donde cada estudiante brilla, fomentando un sentido de comunidad y respeto mutuo.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Facilities Start -->
-
-
-    <!-- Team Start -->
-    <div class="container-fluid pt-5">
+    <!-- Gallery Start -->
+    <div class="container-fluid pt-5 pb-3">
         <div class="container">
             <div class="text-center pb-2">
-                <p class="section-title px-5"><span class="px-2">DOCENTES</span></p>
-                <h1 class="mb-4">CONTANDO CON LOS MEJORES</h1>
+                <p class="section-title px-5"><span class="px-2">Crea tu foro</span></p>
+                <h1 class="mb-4">Cursos de la institucion</h1>
             </div>
             <div class="row">
-                <div class="col-md-6 col-lg-3 text-center team mb-5">
-                    <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
-                        <img class="img-fluid w-100" src="img/team-1.jpg" alt="" >
-                        
-                    </div>
-                    <h4>AURELIO R</h4>
-                    <i>Quimicá</i>
+                <div class="col-12 text-center mb-2">
+                    <ul class="list-inline mb-4" id="portfolio-flters">
+                        <li class="btn btn-outline-primary m-1" data-filter=".first"> </li>
+                        <?php if($rol_usuario == 'Docente'): ?>
+                        <li class="btn btn-outline-primary m-1">
+
+                            <a href="foros/crear.php" class="text-decoration-none text-dark">crear foros</a>
+                        </li>
+                        <?php endif;?>
+                        <li class="btn btn-outline-primary m-1">
+                            <a href="foros/ver.php" class="text-decoration-none text-dark">ver foros</a>
+                            
+                        </li>
+                        <?php if($rol_usuario == 'Docente'): ?>
+                        <li class="btn btn-outline-primary m-1">
+
+                            <a href="foros/respuestas.php" class="text-decoration-none text-dark">respuestas foros</a>
+                        </li>
+                        <?php endif;?>
+                    </ul>
                 </div>
-                <div class="col-md-6 col-lg-3 text-center team mb-5">
-                    <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
-                        <img class="img-fluid w-100" src="img/team-2.jpg" alt="" >
-                        
-                    </div>
-                    <h4>RODRIGO GONZALES</h4>
-                    <i>Informatica</i>
-                </div>
-                <div class="col-md-6 col-lg-3 text-center team mb-5">
-                    <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
-                        <img class="img-fluid w-100" src="img/team-3.jpg" alt="" >
-                        
-                    </div>
-                    <h4>JEISON JIMENEZ</h4>
-                    <i>Musica</i>
-                </div>
-                <div class="col-md-6 col-lg-3 text-center team mb-5">
-                    <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
-                        <img class="img-fluid w-100" src="img/team-4.jpg" alt="" >
-                       
-                    </div>
-                    <h4>CARLOS PEREZ</h4>
-                    <i>Coordinador</i>
+           
                 </div>
             </div>
         </div>
     </div>
-    <!-- Team End -->
+    <!-- Gallery End -->
 
 
     <!-- Footer Start -->
@@ -372,11 +255,11 @@ endif;
                 <p>"Confía en tu capacidad para superar los desafíos y alcanzar tus metas. Eres más fuerte y más capaz de lo que imaginas.".</p>
                 <div class="d-flex justify-content-start mt-4">
                     <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"
-                      </a>
+                        ></a>
                     <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"
                         style="width: 38px; height: 38px;" href="https://www.facebook.com/profile.php?id=61557564631844&mibextid=ZbWKwL"><i class="fab fa-facebook-f"></i></a>
                     <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"
-                      </a>
+                        ></a>
                     <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"
                         style="width: 38px; height: 38px;" href="https://www.instagram.com/digiworm.s.a?igsh=am5ubXdjZDVrczg="><i class="fab fa-instagram"></i></a>
                 </div>
@@ -411,12 +294,13 @@ endif;
                     </div>
                 </div>
             </div>
+            
             <div class="col-lg-3 col-md-6 mb-5">
                 <h3 class="text-primary mb-4">Regresar</h3>
                 <div class="d-flex flex-column justify-content-start">
                     <a class="text-white mb-2" href="index.php"><i class="fa fa-angle-right mr-2"></i>Home</a>
                     <a class="text-white mb-2" href="Principal.html"><i class="fa fa-angle-right mr-2"></i>Principal</a>
-                    <a class="text-white mb-2" href="chat"><i class="fa fa-angle-right mr-2"></i>Chat</a>
+                    <a class="text-white mb-2" href="Publicaciones.html"><i class="fa fa-angle-right mr-2"></i>Publicaciones</a>
                     <a class="text-white mb-2" href="Docentes.html"><i class="fa fa-angle-right mr-2"></i>Docentes</a>
                     <a class="text-white mb-2" href="Foros.html"><i class="fa fa-angle-right mr-2"></i>Foros</a>
                     
@@ -427,7 +311,7 @@ endif;
                 <form action="">
                     
                     <div>
-                        <button class="btn btn-primary btn-block border-0 py-3" type="submit">Para ser exitoso, es necesario motivarte a pesar de estar experimentando uno de esos días en los que tirarías la toalla. La vida tiene sus momentos buenos y sus momentos malos, pero hay que seguir ahí, implacable, al pie del cañón intentando seguir luchando por aquello que nos hace felices.</button>
+                        <button class="btn btn-primary btn-block border-0 py-3" type="submit">Muchos niños tienen problemas en la escuela, porque la manera en la que enseñan es incompatible con la manera en la que aprenden.</button>
                     </div>
                 </form>
                 
