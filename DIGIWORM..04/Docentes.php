@@ -220,92 +220,202 @@ endif;
             <div class="row">
      
 
-<div class="col-md-6 col-lg-3 text-center team mb-5">
-    <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
-        <!-- Agregar eventos para mostrar y ocultar los datos personales -->
-        <img class="img-fluid w-100" src="img/team-1.jpg" alt="" onmouseover="mostrarDatosPersonales()" onmouseout="ocultarDatosPersonales()">
+           
+            
+            
+            
+            
+          
+            <div class="col-md-6 col-lg-3 text-center team mb-5">
+            <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
+        <img class="img-fluid w-100" src="img/team-1.jpg" alt="" onclick="mostrarDatosPersonales()">
     </div>
+    
     <h4>Julia Smith</h4>
-    <i>Ingles</i>
+    <div id="datosPersonales" style="display: none;">
+        <p>Fecha de nacimiento: 10 de mayo de 1990</p>
+        <p>Correo electrónico: julia@example.com</p>
+        <p>Teléfono: +1534567890</p>
+        <p>Estudios: Maestria en Ingles</p>
+    </div>
 </div>
+
+<script>
+    function mostrarDatosPersonales() {
+        var datosPersonales = document.getElementById("datosPersonales");
+        if (datosPersonales.style.display === "none") {
+            datosPersonales.style.display = "block";
+        } else {
+            datosPersonales.style.display = "none";
+        }
+    }
+</script>
+
 
 
 
 <!-- Aquí se mostrarán los datos personales -->
 <div id="datos-personales"></div>
                 <div class="col-md-6 col-lg-3 text-center team mb-5">
-                    <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
-                        <img class="img-fluid w-100" src="img/testimonial-3.jpg" alt="" >
-                        
-                    </div>
+                <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
+        <img class="img-fluid w-100" src="img/testimonial-3.jpg" alt="" onclick="MostrarDatosPersonales()">
+    </div>
                     <h4>Jhon Doe</h4>
-                    <i>Religion</i>
-                </div>
-                <div class="col-md-6 col-lg-3 text-center team mb-5">
-                    <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
-                        <img class="img-fluid w-100" src="img/team-3.jpg" alt="" >
-                        
-                    </div>
-                    <h4>Mollie Ross</h4>
-                    <i>Educacion Fisica</i>
-                </div>
-                <div class="col-md-6 col-lg-3 text-center team mb-5">
-                    <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
-                        <img class="img-fluid w-100" src="img/team-4.jpg" alt="" >
-                        
-                    </div>
-                    <h4>Donald John</h4>
-                    <i>Fisica</i>
-                </div>
-                <div class="col-md-6 col-lg-3 text-center team mb-5">
-                    <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
-                        <img class="img-fluid w-100" src="img/team-4.jpg" alt="" >
-                        
-                    </div>
-                    <h4>Julia Smith</h4>
-                    <i>Primera Infancia</i>
-                </div>
-                <div class="col-md-6 col-lg-3 text-center team mb-5">
-                    <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
-                        <img class="img-fluid w-100" src="img/testimonial-1" alt="" >
-                        
-                    </div>
-                    <h4>Jhon Doe</h4>
-                    <i> Quimica</i>
-                </div>
-                <div class="col-md-6 col-lg-3 text-center team mb-5">
-                    <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
-                        <img class="img-fluid w-100" src="img/testimonial-2.jpg" alt="" >
-                       
-                    </div>
-                    <h4>Mollie Ross</h4>
-                    <i>Filosofia</i>
-                </div>
-                <div class="col-md-6 col-lg-3 text-center team mb-5">
-                    <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
-                        <img class="img-fluid w-100" src="img/user.jpg" alt="" >
-                      
-                    </div>
-                    <h4>Donald John</h4>
-                    <i>Calculo</i>
-                </div>
 
+                    <div id="DatosPersonales" style="display: none;">
+        <p>Fecha de nacimiento:24 de mayo de 1965</p>
+        <p>Correo electrónico: Doe@gmail.com</p>
+        <p>Teléfono: +1534567890</p>
+        <p>Estudios: Maestria en religion</p>
+    </div>
+    <script>
+    function MostrarDatosPersonales() {
+        var datosPersonales = document.getElementById("DatosPersonales");
+        if (datosPersonales.style.display === "none") {
+            datosPersonales.style.display = "block";
+        } else {
+            datosPersonales.style.display = "none";
+        }
+    }
+</script>
+
+<!-- Aquí se mostrarán los datos personales -->
+    </div>
+
+                <div id="DAtos-personales"></div>
                 <div class="col-md-6 col-lg-3 text-center team mb-5">
-                    <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
-                        <img class="img-fluid w-100" src="img/oip.jpg" alt="" >
-                      
-                    </div>
-                    <h4>Donald John</h4>
-                    <i>Musica</i>
+                <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
+        <img class="img-fluid w-100" src="img/team-3.jpg" alt="" onclick="MostrarDatosPersonale()">
+    </div>
+                    <h4>Mollie Ross</h4>
+
+                    <div id="DAtosPersonales" style="display: none;">
+        <p>Fecha de nacimiento:18 de mayo de 1997</p>
+        <p>Correo electrónico: mollieR@gmail.com</p>
+        <p>Teléfono: +1534567890</p>
+        <p>Estudios: Maestria en Educacion Fisica</p>
+    </div>
+    <script>
+    function MostrarDatosPersonale() {
+        var datosPersonale = document.getElementById("DAtosPersonales");
+        if (datosPersonale.style.display === "none") {
+            datosPersonale.style.display = "block";
+        } else {
+            datosPersonale.style.display = "none";
+        }
+    }
+</script>
+
+<!-- Aquí se mostrarán los datos personales -->
+
+</div>
+
+<div id="DAtos-personalecc"></div>
+<div class="col-md-6 col-lg-3 text-center team mb-5">
+<div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
+<img class="img-fluid w-100" src="img/oip.jpg" alt="" onclick="DatosPersonalecc()">
+</div>
+    <h4>Magdy Velazco</h4>
+
+    <div id="DAtosPersonalecc" style="display: none;">
+<p>Fecha de nacimiento:17 de octubre de 1997</p>
+<p>Correo electrónico: velazco17@gmail.com</p>
+<p>Teléfono: +1534567890</p>
+<p>Estudios: Maestria en Educacion Fisica</p>
+</div>
+
+<script>
+function DatosPersonalecc() {
+var datosPersonale = document.getElementById("DAtosPersonalecc");
+if (datosPersonale.style.display === "none") {
+datosPersonale.style.display = "block";
+} else {
+datosPersonale.style.display = "none";
+}
+}
+</script>
+
+<!-- Aquí se mostrarán los datos personales -->
+
                 </div>
+                <div id="personales"></div>
                 <div class="col-md-6 col-lg-3 text-center team mb-5">
-                    <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
-                        <img class="img-fluid w-100" src="img/avatar.jpg" alt="" >
+                <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
+        <img class="img-fluid w-100" src="img/team-4.jpg" alt="" onclick="DatosPersonales()">
                         
                     </div>
-                    <h4>Jhon Doe</h4>
-                    <i>Religion</i>
-                </div>
+                    <h4>Andres Felipe</h4>
+                    <div id="Personales" style="display: none;">
+        <p>Fecha de nacimiento:30 de febrero de 1970</p>
+        <p>Correo electrónico: pipe@gmail.com</p>
+        <p>Teléfono: +1534567890</p>
+        <p>Estudios: Maestria en  primera infancia</p>
+    </div>
+    <script>
+    function DatosPersonales() {
+        var datosPersonale = document.getElementById("Personales");
+        if (datosPersonale.style.display === "none") {
+            datosPersonale.style.display = "block";
+        } else {
+            datosPersonale.style.display = "none";
+        }
+    }
+</script>
+
+               <!-- Aquí se mostrarán los datos personales -->
+               </div>
+                <div id="xdpersonales"></div>
+                <div class="col-md-6 col-lg-3 text-center team mb-5">
+                <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
+        <img class="img-fluid w-100" src="img/testimonial-2.jpg" alt="" onclick="xdPersonales()">
+                        
+                    </div>
+                    <h4>Maria Alejandra</h4>
+                    <div id="xdPersonales" style="display: none;">
+        <p>Fecha de nacimiento:30 de febrero de 1970</p>
+        <p>Correo electrónico: Aleja00@gmail.com</p>
+        <p>Teléfono: +1534567890</p>
+        <p>Estudios: Maestria en  primera Ciencias Naturales</p>
+    </div>
+    <script>
+    function xdPersonales() {
+        var datosPersonale = document.getElementById("xdPersonales");
+        if (datosPersonale.style.display === "none") {
+            datosPersonale.style.display = "block";
+        } else {
+            datosPersonale.style.display = "none";
+        }
+    }
+</script>
+
+              <!-- Aquí se mostrarán los datos personales -->
+              </div>
+
+<div id="DAtos-personalec"></div>
+<div class="col-md-6 col-lg-3 text-center team mb-5">
+<div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
+<img class="img-fluid w-100" src="img/avatar.jpg" alt="" onclick="DatosPersonalec()">
+</div>
+    <h4>Johan Santiago</h4>
+
+    <div id="DAtosPersonalec" style="display: none;">
+<p>Fecha de nacimiento:28 de marzo de 1973</p>
+<p>Correo electrónico: villanueva18@gmail.com</p>
+<p>Teléfono: +1534567890</p>
+<p>Estudios: Maestria en Matematicas</p>
+</div>
+
+<script>
+function DatosPersonalec() {
+var datosPersonale = document.getElementById("DAtosPersonalec");
+if (datosPersonale.style.display === "none") {
+datosPersonale.style.display = "block";
+} else {
+datosPersonale.style.display = "none";
+}
+}
+</script>
+
             </div>
         </div>
     </div>
