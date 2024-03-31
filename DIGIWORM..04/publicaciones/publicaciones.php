@@ -34,7 +34,12 @@ if(isset($_SESSION['Idusuario'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+<style>
+::-webkit-scrollbar{
 
+};
+
+</style>
 <head>
     <meta charset="utf-8">
     <title>DIGIWORM</title>
@@ -185,7 +190,7 @@ endif;
                 
                 <br>
                 
-                <a href="modelo/CerrarSession.php" style="">Cerrar sesion</a>
+                <a href="../modelo/CerrarSession.php" style="">Cerrar sesion</a>
             </p>
             
         </div>
@@ -218,7 +223,13 @@ endif;
                 <div class="d-flex flex-column text-left mb-3">
                     <p class="section-title pr-5"><span class="pr-2">Nosotros</span></p>
                     <h1 class="mb-3">Aqui te podras tener Informado de Nosotros</h1>
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarP"> Agregar </button>
+                <?php if ($rol_usuario == "Coordinador" || $rol_usuario == "Docente"): ?>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarP">Agregar</button>
+                    <?php elseif($rol_usuario == "administrador"): ?>
+                        <button type="button" class="btn btn-success" data-toggle="modal" >Agregar</button>
+                <?php endif; ?>
+
+
                     <div class="d-flex">
                        
                     </div>
@@ -248,11 +259,11 @@ if ($result->num_rows > 0) {
         $archivo = $row["Archivo"];
         $extension = pathinfo($archivo, PATHINFO_EXTENSION);
         if ($extension == 'pdf') {
-            echo '<embed src="' . $archivo . '" type="application/pdf" width="100%" height="500px">';
+            echo '<embed src="' . $archivo . '" type="application/pdf" style="width: 100%; height: 500px; border-radius: 10px;">';
         } elseif ($extension == 'docx' || $extension == 'doc') {
-            echo '<embed src="https://view.officeapps.live.com/op/embed.aspx?src=' . $archivo . '" width="100%" height="500px">';
+            echo '<iframe src="https://view.officeapps.live.com/op/embed.aspx?src=' . $archivo . '" width="100%" height="500px" style="border-radius: 10px;"></iframe>';
         } else {
-            echo '<img class="img-fluid rounded" style="max-width: 100%; height: auto;" src="' . $archivo . '" alt="Image">';
+            echo '<img class="img-fluid rounded" style="max-width: 500px; max-height: 400px; border-radius: 10px;" src="' . $archivo . '" alt="Image">';
         }
         
        
