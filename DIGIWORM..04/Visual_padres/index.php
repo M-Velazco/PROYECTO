@@ -38,8 +38,8 @@
   <h3>  <a href="#" onclick="history.go(-1);" class="principal-link">Principal</a> <h3>
 </div>
 
-        <h1>Bienvenido</h1>
-        <p> <h2>Información importante para padres de familia<h2></p>
+        <h1>Bienvenido Padre de Familia</h1>
+        <p> <h2>Consulte aqui los datos personales de su hij@<h2></p>
         
     </header>
     
@@ -48,7 +48,7 @@
         <div class="search-bar">
             <form id="searchForm" method="post" action="index.php" onsubmit="return validarFormulario()">
                 <div class="search-container">
-                    <input type="text" name="idEstudiante" id="idEstudiante" placeholder="Buscar por ID" oninput="validarInput(this)" required>
+                    <input type="text" name="idEstudiante" id="idEstudiante" placeholder="Ingrese Numero de Identificacion del estudiante" oninput="validarInput(this)" required>
                     <i class="fas fa-search" onclick="realizarBusqueda();"></i>
                 </div>
             </form>
