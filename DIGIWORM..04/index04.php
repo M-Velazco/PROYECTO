@@ -489,11 +489,11 @@ endif;
             ?>
                 <div class="col-md-6 col-lg-3 text-center team mb-5">
                     <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
-                        <img class="img-fluid w-100" src="img/team-1.jpg" alt="" >
+                        <img class="img-fluid w-100" src="<?php echo $docente[ 'img']  ?>" alt="" >
                     
                     </div>
                     <h4><?php echo $docente ['Nombres']; ?></h4>
-                    <i>Docente de Musica</i>
+                    <i>Docente de <?php echo $docente['nombre_materia'] ?></i>
                 </div>
             <?php
                 }
