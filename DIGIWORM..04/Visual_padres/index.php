@@ -48,7 +48,7 @@
         <div class="search-bar">
             <form id="searchForm" method="post" action="index.php" onsubmit="return validarFormulario()">
                 <div class="search-container">
-                    <input type="text" name="idEstudiante" id="idEstudiante" placeholder="Ingrese Numero de Identificacion del estudiante" oninput="validarInput(this)" required>
+                    <input type="text" name="idEstudiante" id="idEstudiante" placeholder="Ingrese Numero de Identificacion" oninput="validarInput(this)" required>
                     <i class="fas fa-search" onclick="realizarBusqueda();"></i>
                 </div>
             </form>

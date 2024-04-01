@@ -211,31 +211,54 @@ endif;
     <div class="container-fluid pt-5 pb-3">
         <div class="container">
             <div class="text-center pb-2">
-                <p class="section-title px-5"><span class="px-2">Crea tu foro</span></p>
-                <h1 class="mb-4">Cursos de la institucion</h1>
-            </div>
-            <div class="row">
-                <div class="col-12 text-center mb-2">
-                    <ul class="list-inline mb-4" id="portfolio-flters">
-                        <li class="btn btn-outline-primary m-1" data-filter=".first"> </li>
-                        <?php if($rol_usuario == 'Docente'): ?>
-                        <li class="btn btn-outline-primary m-1">
+        <p> <h2>Consulte aqui los Cursos  de la institucion<h2></p>
+    </div>
+           
+<head>
 
-                            <a href="foros/crear.php" class="text-decoration-none text-dark">crear foros</a>
-                        </li>
-                        <?php endif;?>
-                        <li class="btn btn-outline-primary m-1">
-                            <a href="foros/ver.php" class="text-decoration-none text-dark">ver foros</a>
-                            
-                        </li>
-                        <?php if($rol_usuario == 'Docente'): ?>
-                        <li class="btn btn-outline-primary m-1">
-
-                            <a href="foros/respuestas.php" class="text-decoration-none text-dark">respuestas foros</a>
-                        </li>
-                        <?php endif;?>
-                    </ul>
+<div class="jumbotron jumbotron-fluid page-header position-relative overlay-bottom" style="margin-bottom: 90px;">
+    <div class="mx-auto mb-5" style="width: 100%; max-width: 600px;">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <!-- Botón desplegable para Jornada -->
+                <div class="dropdown">
+                <button class="btn btn-outline-light bg-white text-body px-4 dropdown-toggle btn-lg" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 1.8rem;">Jornada</button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Mañana</a>
+                        <a class="dropdown-item" href="#">Tarde</a>
+                    </div>
                 </div>
+            </div>
+            <div class="input-group-prepend">
+                <!-- Botón desplegable para Grado -->
+                <div class="dropdown">
+                <div class="dropdown">
+    <button class="btn btn-outline-light bg-white text-body px-4 dropdown-toggle btn-lg" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 1.8rem;">Grado</button>
+    <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">601</a>
+        <a class="dropdown-item" href="#">602</a>
+        <a class="dropdown-item" href="#">603</a>
+        <a class="dropdown-item" href="#">603</a>
+        <a class="dropdown-item" href="#">604</a>
+        <a class="dropdown-item" href="#">1101</a>
+        <a class="dropdown-item" href="#">1102</a>
+        <a class="dropdown-item" href="#">1103</a>
+    </div>
+</div>
+
+</div>
+
+            </div>
+            <!-- Campo de entrada para el docente -->
+            <input type="text" class="form-control border-light" style="padding: 30px 25px;" placeholder="Docente">
+            <div class="input-group-append">
+                <button class="btn btn-secondary px-4 px-lg-5">Enviar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</html>
            
                 </div>
             </div>
