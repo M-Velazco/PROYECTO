@@ -15,9 +15,18 @@ $consulta = $Conexion->query("SELECT docente.Curso, docente.Nombres, docente.Ape
 FROM docente 
 INNER JOIN curso ON docente.Curso = curso.idCurso
 
-"); //realizar prueba sql y corregir
+"); //realizar prueba sql y corregir 
+/* 
+Prueba funcional en bd
 
+SELECT docente.Curso, docente.Nombres, docente.Apellidos, curso.Nombre_curso AS nombre_materia
+FROM docente 
+INNER JOIN curso ON docente.Curso = curso.idCurso;
 
+SELECT estudiante.Curso, estudiante.Nombres, estudiante.Apellidos, curso.Nombre_curso AS Nombre_curso
+FROM estudiante 
+INNER JOIN curso ON estudiante.Curso = curso.idCurso;
+ */
 // Verificar si se encontraron resultados
 if ($consulta->num_rows > 0) {
     // Array para almacenar las opiniones
