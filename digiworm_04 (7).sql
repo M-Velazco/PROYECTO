@@ -361,17 +361,7 @@ INSERT INTO `publicaciones` (`idPublicaciones`, `Archivo`, `Descripcion`, `usuar
 (3, '../img/testimonial-4.jpg', 'Prueba de insercion en publicaciones2', 1030537206),
 (6, 'publicUploads/publicacion_66061fd8289bc.pdf', 'prueba para de,ostracion', 2147483647);
 
---
--- Restricciones para tablas volcadas
---
 
---
--- Filtros para la tabla `publicaciones`
---
-ALTER TABLE `publicaciones`
-  ADD CONSTRAINT `Usuario` FOREIGN KEY (`usuario`) REFERENCES `usuarios` (`Idusuarios`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-COMMIT;
--- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `reset_password_tokens`
@@ -430,6 +420,14 @@ INSERT INTO `usuarios` (`Idusuarios`, `Nombres`, `Apellidos`, `Email`, `Telefono
 -- Restricciones para tablas volcadas
 --
 
+
+--
+-- Filtros para la tabla `publicaciones`
+--
+ALTER TABLE `publicaciones`
+  ADD CONSTRAINT `Usuario` FOREIGN KEY (`usuario`) REFERENCES `usuarios` (`Idusuarios`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+COMMIT;
+-- --------------------------------------------------------
 --
 -- Filtros para la tabla `actividades`
 --
