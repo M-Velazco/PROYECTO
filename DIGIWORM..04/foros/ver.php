@@ -15,6 +15,7 @@ if (isset($_SESSION['Idusuario'])) {
 
     // Obtiene el nombre del usuario basado en su ID
     $nombre_usuario = $objUsuarios->obtenerNombreUsuario($_SESSION['Idusuario']);
+    $rol_usuario = $objUsuarios->obtenerRolUsuario($_SESSION['Idusuario']);
 } else {
     $usuario_conectado = false;
     header('Location: form.php?error=nologeado');
@@ -104,8 +105,17 @@ if (isset($_SESSION['Idusuario'])) {
             <p><strong>Creado por:</strong>
                 <?php echo $Nombres_FU; ?>
             </p>
+            <?php if($rol_usuario == "Docente"): ?>
             <a href="responder.php?titulo=<?php echo urlencode($fila['Titulo']); ?>" class="boton">Responder Foro</a>
             <a href="editar.php?idForos=<?php echo $fila['idForos']; ?>" class="boton">Editar Foro</a>
+            <?php elseif($rol_usuario == "Estudiante"): ?>
+                <a href="responder.php?titulo=<?php echo urlencode($fila['Titulo']); ?>" class="boton">Responder Foro</a>
+                <?php elseif($rol_usuario == "administrador"): ?>
+                    <a href="" class="boton">Responder Foro</a>
+            <a href="" class="boton">Editar Foro</a>
+            <?php else: ?>
+
+                <?php endif; ?>
 
             <?php
         }
