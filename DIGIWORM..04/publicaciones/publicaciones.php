@@ -180,7 +180,7 @@ endif;
         <div class="DatosU">
             <p class="nav-item nav-link">
             <?php if ($ruta_imagen): ?>
-                    <img src="<?php echo $ruta_imagen; ?>" style="width: 40px; height: 40px; border-radius: 50%;">
+                    <img src="../<?php echo $ruta_imagen; ?>" style="width: 40px; height: 40px; border-radius: 50%;">
                 <?php else: ?>
                     <span>No hay </span>
                 <?php endif; ?>
