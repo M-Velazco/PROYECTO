@@ -165,15 +165,17 @@ INSERT INTO `curso` (`idCurso`, `Nombre_curso`, `Estado`) VALUES
 -- Estructura de tabla para la tabla `docente`
 --
 
+
 DROP TABLE IF EXISTS `docente`;
 CREATE TABLE IF NOT EXISTS `docente` (
-  `idDocente` int(11) NOT NULL,
+  `idDocente` int NOT NULL,
   `Nombres` varchar(45) DEFAULT NULL,
   `Apellidos` varchar(45) DEFAULT NULL,
   `Email` varchar(45) DEFAULT NULL,
   `Pasword` varchar(45) DEFAULT NULL,
-  `Curso` int(11) DEFAULT NULL,
-  `Materia` int(11) DEFAULT NULL,
+  `Curso` int DEFAULT NULL,
+  `Materia` int DEFAULT NULL,
+  `Jornada` enum('Mañana','Tarde') NOT NULL,
   PRIMARY KEY (`idDocente`) USING BTREE,
   KEY `Materia_idMateria` (`Materia`),
   KEY `Curso_idCurso` (`Curso`),
@@ -187,10 +189,11 @@ CREATE TABLE IF NOT EXISTS `docente` (
 -- Volcado de datos para la tabla `docente`
 --
 
-INSERT INTO `docente` (`idDocente`, `Nombres`, `Apellidos`, `Email`, `Pasword`, `Curso`, `Materia`) VALUES
-(142223657, 'Didier', 'Orozco', 'Orozco09@gmail.com', '598d8591e55346928b3a3a0a01da9ee5', 1, NULL),
-(1054115102, 'Vilma ', 'Barrios Gomez', 'EldiabloAndante@gmail.com', '93d7abad7bbf270154ff3270fe46f4d3', 1, NULL),
-(1101343174, 'juan david', 'julio rodriguez', 'draxjulio13@gmail.com', 'dfdc20cbab482c8d159f42d3250d1f7c', 1, 2);
+INSERT INTO `docente` (`idDocente`, `Nombres`, `Apellidos`, `Email`, `Pasword`, `Curso`, `Materia`, `Jornada`) VALUES
+(142223657, 'Didier', 'Orozco', 'Orozco09@gmail.com', '598d8591e55346928b3a3a0a01da9ee5', 1, 3, 'Mañana'),
+(1054115102, 'Vilma ', 'Barrios Gomez', 'EldiabloAndante@gmail.com', '93d7abad7bbf270154ff3270fe46f4d3', 1, NULL, 'Mañana'),
+(1101343174, 'juan david', 'julio rodriguez', 'draxjulio13@gmail.com', 'dfdc20cbab482c8d159f42d3250d1f7c', 1, 2, 'Mañana');
+COMMIT;
 
 -- --------------------------------------------------------
 
