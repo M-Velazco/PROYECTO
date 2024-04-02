@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once('../../tcpdf/tcpdf.php');
 require_once "../../modelo/conexion.php";
 
@@ -84,6 +85,40 @@ $pdf->writeHTML($html, true, false, true, false, '');
 // Nombre del archivo PDF generado
 $nombre_archivo = 'boletin_' . $id_estudiante . '.pdf';
 
-// Generar el PDF y enviar al navegador para su descarga
+// Ruta del directorio para guardar el archivo PDF en el servidor
+$ruta_directorio = 'Boletines/Validacion/boletines_estudiantes/';
+
+// Verificar si el directorio existe, si no, crearlo
+if (!file_exists($ruta_directorio)) {
+    mkdir($ruta_directorio, 0777, true);
+}
+
+// Ruta del archivo PDF en el servidor
+$ruta_pdf = __DIR__ . '/Boletines/Validacion/boletines_estudiantes/' . $nombre_archivo;
+
+
+// Guardar el archivo PDF en el servidor
+$pdf->Output($ruta_pdf, 'F');
 $pdf->Output($nombre_archivo, 'D');
-?>
+
+$conexion = Conectarse();
+if ($conexion->connect_error) {
+    die("Error de conexión: " . $conexion->connect_error);
+}
+
+// Obtener el ID del docente desde la sesión (suponiendo que esté almacenado en una variable de sesión llamada $_SESSION['id_docente'])
+$id_docente = $_SESSION['Idusuario'];
+
+// Consulta para insertar los datos en la tabla de boletines
+$insert_query = "INSERT INTO boletines (idEstudiante, idDocente, direccionArchivo) VALUES ('$id_estudiante', '$id_docente', '$ruta_pdf')";
+
+if ($conexion->query($insert_query) === TRUE) {
+    echo "Datos insertados correctamente en la tabla de boletines";
+} else {
+    echo "Error al insertar datos en la tabla de boletines: " . $conexion->error;
+}
+
+$conexion->close();
+
+// Generar el PDF y enviar al navegador para su descarga
+
