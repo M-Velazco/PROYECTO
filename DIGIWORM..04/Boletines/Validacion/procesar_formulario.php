@@ -109,7 +109,7 @@ while (file_exists($ruta_pdf)) {
 
 // Guardar el archivo PDF en el servidor
 $pdf->Output($ruta_pdf, 'F');
-
+$pdf->Output($ruta_pdf, 'D');
 
 $conexion = Conectarse();
 if ($conexion->connect_error) {
@@ -124,7 +124,9 @@ $insert_query = "INSERT INTO boletines (idEstudiante, idDocente, direccionArchiv
 
 if ($conexion->query($insert_query) === TRUE) {
     
-    header('Location:../../boletines.php');
+    header('Location: ' . $_SERVER['PHP_SELF']);
+    
+    
 } else {
     echo "Error al insertar datos en la tabla de boletines: " . $conexion->error;
 }
