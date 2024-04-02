@@ -46,7 +46,7 @@ require_once "../modelo/conexion.php";
   <label for="curso">Curso:</label>
   
   <select name="curso" id="curso" required>
-  <option value=""></option>
+  
   <?php
       // Conexión a la base de datos
       $conn = Conectarse();
@@ -76,7 +76,7 @@ require_once "../modelo/conexion.php";
   
   <label for="materia">Materia:</label>
   <select name="materia" id="materia" required>
-    <option value=""></option>
+    
   <?php
       // Conexión a la base de datos
       $conn = Conectarse();
