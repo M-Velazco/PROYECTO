@@ -486,7 +486,7 @@ endif;
             
             // Verificar si se recibieron opiniones
             if (empty($docentes)) {
-                echo "No se encontraron opiniones.";
+                
             } else {
                 // Iterar sobre las opiniones y mostrarlas en el HTML
                 foreach ($docentes as $docente) {
@@ -515,6 +515,14 @@ endif;
                 </div>
                 <div class="col-md-6 col-lg-3 text-center team mb-5">
                     <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
+                        <img class="img-fluid w-100" src="img/avatar.jpg" alt="" >
+                       
+                    </div>
+                    <h4>Johan stiven</h4>
+                    <i>Docente de filosofia</i>
+                </div>
+                <div class="col-md-6 col-lg-3 text-center team mb-5">
+                    <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
                         <img class="img-fluid w-100" src="img/team-3.jpg" alt="" >
                         
                     </div>
@@ -529,6 +537,7 @@ endif;
                     <h4>Donald John</h4>
                     <i>Docente de Musica</i>
                 </div>
+                
             </div>
         </div>
     </div>
