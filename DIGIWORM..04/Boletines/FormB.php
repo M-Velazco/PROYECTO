@@ -81,7 +81,7 @@ if(isset($_SESSION['Idusuario'])) {
             <?php if($rol_usuario == 'Docente'): ?>
             <input type="submit" value="Enviar">
             <?php endif; ?>
-            <input type="button" value="Volver" onclick="window.location.href='../index04.php'">
+            <input type="button" value="Volver" onclick="window.location.href='index04.php'">
         </form>
     </div>
     <script>
@@ -174,9 +174,9 @@ if(isset($_SESSION['Idusuario'])) {
                 inputNota.type = 'number';
                 inputNota.name = 'nota' + i;
                 inputNota.placeholder = 'Nota Materia ' + i;
-                inputNota.step = '0.01';
-                inputNota.min = '0';
-                inputNota.max = '10';
+                inputNota.step = '1.00';
+                inputNota.min = '1';
+                inputNota.max = '100';
                 inputNota.required = true;
                 divMateria.appendChild(inputNota);
 
