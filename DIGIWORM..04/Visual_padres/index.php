@@ -14,7 +14,8 @@
             margin-top: 20px;
         }
 
-        table.student-table th, table.student-table td {
+        table.student-table th,
+        table.student-table td {
             border: 1px solid #ddd;
             padding: 8px;
             text-align: left;
@@ -27,22 +28,36 @@
         .content {
             margin-top: 20px;
         }
+
+        #modifyButton {
+            text-align: left;
+            margin-top: 20px;
+            display: none;
+        }
+
+        #modifyButton button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 
 <body>
 
     <header>
-    <div class="logo">
-    <img src="imagenes\LOGO.png" alt="Logo">
-  <h3>  <a href="#" onclick="history.go(-1);" class="principal-link">Principal</a> <h3>
-</div>
+        <div class="logo">
+            <img src="imagenes\LOGO.png" alt="Logo">
+            <h3><a href="#" onclick="history.go(-1);" class="principal-link">Principal</a> <h3>
+        </div>
 
         <h1>Bienvenido Padre de Familia</h1>
         <p> <h2>Consulte aqui los datos personales de su hij@<h2></p>
-        
     </header>
-    
+
 
     <div class="navbar">
         <div class="search-bar">
@@ -74,7 +89,7 @@
 
             // Verifica si se encontraron resultados en la tabla 'estudiante'
             if ($resultEstudiante->num_rows > 0) {
-                echo "<h2 style='margin-left: 20px;'>Información del Estudiante</h2>";                
+                echo "<h2 style='margin-left: 20px;'>Información del Estudiante</h2>";
                 echo "<table class='student-table'>";
 
                 // Muestra la información del estudiante
@@ -98,6 +113,11 @@
                 }
 
                 echo "</table>";
+
+                // Mostrar el botón de modificar
+                echo "<div id='modifyButton'>";
+                echo "<button onclick='modificarEstudiante($idEstudiante)'>Modificar</button>";
+                echo "</div>";
             } else {
                 echo "<p style='margin: 0 auto; text-align: center; width: 50%;'>No se encontró ningún estudiante con ese ID.</p>";
             }
@@ -114,22 +134,33 @@
         }
 
         function realizarBusqueda() {
-    var idEstudiante = document.getElementById('idEstudiante').value;
+            var idEstudiante = document.getElementById('idEstudiante').value;
 
-    if (idEstudiante.trim() === "") {
-        alert("Por favor, ingrese un ID de estudiante válido.");
-        return false;
-    }
+            if (idEstudiante.trim() === "") {
+                alert("Por favor, ingrese un ID de estudiante válido.");
+                return false;
+            }
 
-    if (!/^\d+$/.test(idEstudiante)) {
-        alert("El ID de estudiante debe contener solo números.");
-        return false;
-    }
+            if (!/^\d+$/.test(idEstudiante)) {
+                alert("El ID de estudiante debe contener solo números.");
+                return false;
+            }
 
-    document.getElementById('searchForm').submit();
-}
+            document.getElementById('searchForm').submit();
+        }
 
+        function modificarEstudiante(idEstudiante) {
+            // Redirigir a la página de modificación con el ID del estudiante
+            window.location.href = "modificar.php?id=" + idEstudiante;
+        }
+        
+        // Función para mostrar el botón de modificar cuando se encuentra la información del estudiante
+        window.onload = function() {
+            var modifyButton = document.getElementById('modifyButton');
+            if (modifyButton) {
+                modifyButton.style.display = 'block';
+            }
+        };
     </script>
 
 </body>
-
