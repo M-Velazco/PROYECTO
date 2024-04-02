@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['Idusuario']) && !empt
                 header("Location: ../index04.php");// casos foros, actividades/no_publicar, chats, publicaciones/no_publicar
                 exit();
             case 'Coordinador':
-                header("Location: ../Actividades.php");//casos foros, actividades/no_publicar,publicaciones
+                header("Location: ../index04.php");//casos foros, actividades/no_publicar,publicaciones
                 exit();
             default:
                 // En caso de un rol desconocido, redirige a algún lugar predeterminado
