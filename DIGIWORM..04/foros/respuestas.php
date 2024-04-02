@@ -94,6 +94,7 @@ if (isset($_SESSION['Idusuario'])) {
         die("Error de conexión: " . $conexion->connect_error);
     }
     $consultaForos = $conexion->query("SELECT * FROM foros");
+    
 
     // Mostrar los foros y sus respuestas
     while ($filaForo = $consultaForos->fetch_assoc()) {
@@ -104,6 +105,7 @@ if (isset($_SESSION['Idusuario'])) {
         <p><strong>Fecha de creación:</strong>
             <?php echo $filaForo['Fecha_Hora']; ?>
         </p>
+        
        
 
         <?php
