@@ -37,7 +37,7 @@ if(isset($_SESSION['Idusuario'])) {
     <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="img/LOGO.png" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -215,7 +215,7 @@ endif;
     <div class="container-fluid pt-5 pb-3">
         <div class="container">
             <div class="text-center pb-2">
-                <p class="section-title px-5"><span class="px-2">Crea tu foro</span></p>
+                <p class="section-title px-5"><span class="px-2">Bienvenido a los Foros educativos</span></p>
                 <h1 class="mb-4">Foros Escolares</h1>
             </div>
             <div class="row">
