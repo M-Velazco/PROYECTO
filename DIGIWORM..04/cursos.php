@@ -38,7 +38,7 @@ if(isset($_SESSION['Idusuario'])) {
     <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="img/LOGO.png" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -253,11 +253,6 @@ endif;
 </div>
 
 </div>
-
-            </div>
-            <!-- Campo de entrada para el docente -->
-            <input type="text" class="form-control border-light" style="padding: 30px 25px;" placeholder="Docente">
-            <div class="input-group-append">
                 <button class="btn btn-secondary px-4 px-lg-5">Enviar</button>
             </div>
         </div>
