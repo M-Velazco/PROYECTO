@@ -101,11 +101,14 @@ if (isset($_SESSION['Idusuario'])) {
         ?>
         <h2>
             <?php echo $filaForo['Titulo']; ?>
+            
         </h2>
         <p><strong>Fecha de creación:</strong>
             <?php echo $filaForo['Fecha_Hora']; ?>
         </p>
-        
+        <p><strong>Contenido:</strong> <?php echo $filaForo['Contenido']; ?></p>
+            
+     
        
 
         <?php
