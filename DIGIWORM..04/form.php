@@ -55,23 +55,24 @@
                 <h2 class="title">Registrarse</h2>
                 <div class="input-field">
                     <i class="fa-solid fa-id-card"></i>
-                    <input type="int" id="Idusuario" name="Idusuario" placeholder="Numero Identificacion" required />
+                    <input type="number" id="Idusuario" name="Idusuario" placeholder="Numero Identificacion" required  />
                 </div>
                 <div class="input-field">
                     <i class="fas fa-user"></i>
-                    <input type="text" id="Nombres" name="Nombres" placeholder="Nombres " required />
+                    <input type="text" id="Nombres" name="Nombres" placeholder="Nombres " required oninput="this.value = this.value.replace(/[0-9]/g, '');"/>
                 </div>
                 <div class="input-field">
                     <i class="fas fa-user"></i>
-                    <input type="text" id="Apellidos" name="Apellidos" placeholder="Apellidos " required />
+                    <input type="text" id="Apellidos" name="Apellidos" placeholder="Apellidos " required oninput="this.value = this.value.replace(/[0-9]/g, '');"/>
                 </div>
                 <div class="input-field">
                     <i class="fas fa-envelope"></i>
-                    <input type="email" id="Email" name="Email"placeholder="Correo electronico" required />
+                    <input type="email" id="Email" name="Email"placeholder="Correo electronico" required pattern="[a-zA-Z0-9._%+-]+@(gmail\.com|outlook\.com|hotmail\.com)" />
+                    
                 </div>
                 <div class="input-field">
                     <i class="fas fa-phone"></i>
-                    <input type="tel" name="Telefono" id="Telefono" placeholder="Telefono" required />
+                    <input type="number" name="Telefono" id="Telefono" placeholder="Telefono" required />
                 </div>
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
