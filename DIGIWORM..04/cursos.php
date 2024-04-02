@@ -222,7 +222,7 @@ endif;
            
 <head>
 
-<div class="jumbotron jumbotron-fluid page-header position-relative overlay-bottom" style="margin-bottom: 90px;">
+
     <div class="mx-auto mb-5" style="width: 100%; max-width: 600px;">
         <div class="input-group">
             <div class="input-group-prepend">
