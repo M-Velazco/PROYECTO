@@ -86,7 +86,7 @@ $pdf->writeHTML($html, true, false, true, false, '');
 $nombre_archivo = 'boletin_' . $id_estudiante . '.pdf';
 
 // Ruta del directorio para guardar el archivo PDF en el servidor
-$ruta_directorio = 'Boletines/Validacion/boletines_estudiantes/';
+$ruta_directorio = '/boletines_estudiantes/';
 
 // Verificar si el directorio existe, si no, crearlo
 if (!file_exists($ruta_directorio)) {
@@ -94,8 +94,17 @@ if (!file_exists($ruta_directorio)) {
 }
 
 // Ruta del archivo PDF en el servidor
-$ruta_pdf = __DIR__ . '/Boletines/Validacion/boletines_estudiantes/' . $nombre_archivo;
+// Ruta del archivo PDF en el servidor
+$ruta_pdf = __DIR__ . '/boletines_estudiantes/' . $nombre_archivo;
 
+// Verificar si el archivo ya existe en el directorio
+$contador = 1;
+while (file_exists($ruta_pdf)) {
+    // Si el archivo ya existe, agregar un número al nombre del archivo
+    $nombre_archivo = 'boletin_' . $id_estudiante . '_' . $contador . '.pdf';
+    $ruta_pdf = __DIR__ . '/boletines_estudiantes/' . $nombre_archivo;
+    $contador++;
+}
 
 // Guardar el archivo PDF en el servidor
 $pdf->Output($ruta_pdf, 'F');
