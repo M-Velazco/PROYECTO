@@ -191,6 +191,7 @@ if ($rol_usuario == 'Coordinador'):
                     echo '
                     <a href="index04.php" class="nav-item nav-link active">Home</a>
                     <a href="Foros.php" class="nav-item nav-link">Foros</a>
+                    <a href="Docentes.php" class="nav-item nav-link">Docentes</a>
                     
                     <div class="nav-item dropdown">
                     <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>

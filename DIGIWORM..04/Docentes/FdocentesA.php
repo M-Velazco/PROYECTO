@@ -5,7 +5,7 @@ require_once "../modelo/conexion.php";
 
 <form action="procesar_actualizacion.php" method="POST">
   <label for="id_docente">Seleccionar docente:</label>
-  <select name="id_docente" id="id_docente" onchange="mostrarDatosDocente(this.value)">
+  <select name="id_docente" id="id_docente" onchange="mostrarDatosDocente(this.value)" required>
   <option value=""></option>
     <?php
       // Conexión a la base de datos
@@ -45,7 +45,7 @@ require_once "../modelo/conexion.php";
   
   <label for="curso">Curso:</label>
   
-  <select name="curso" id="curso">
+  <select name="curso" id="curso" required>
   <option value=""></option>
   <?php
       // Conexión a la base de datos
@@ -75,7 +75,7 @@ require_once "../modelo/conexion.php";
   </select><br><br>
   
   <label for="materia">Materia:</label>
-  <select name="materia" id="materia">
+  <select name="materia" id="materia" required>
     <option value=""></option>
   <?php
       // Conexión a la base de datos
@@ -106,7 +106,7 @@ require_once "../modelo/conexion.php";
   
   
   <label for="jornada">Jornada:</label>
-  <select name="jornada" id="jornada" >
+  <select name="jornada" id="jornada" required>
   <option value=""></option>
     <option value="Mañana">Mañana</option>
     <option value="Tarde">Tarde</option>
