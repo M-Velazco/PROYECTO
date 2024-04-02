@@ -31,7 +31,7 @@ if (isset($_SESSION['Idusuario'])) {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-image: url('../img/coolegio.jpg');
+            background-image: url('../img/datos.jpg');
         }
 
         h1 {
@@ -94,16 +94,21 @@ if (isset($_SESSION['Idusuario'])) {
         die("Error de conexión: " . $conexion->connect_error);
     }
     $consultaForos = $conexion->query("SELECT * FROM foros");
+    
 
     // Mostrar los foros y sus respuestas
     while ($filaForo = $consultaForos->fetch_assoc()) {
         ?>
         <h2>
             <?php echo $filaForo['Titulo']; ?>
+            
         </h2>
         <p><strong>Fecha de creación:</strong>
             <?php echo $filaForo['Fecha_Hora']; ?>
         </p>
+        <p><strong>Contenido:</strong> <?php echo $filaForo['Contenido']; ?></p>
+            
+     
        
 
         <?php

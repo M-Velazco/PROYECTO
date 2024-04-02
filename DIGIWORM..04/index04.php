@@ -130,15 +130,13 @@ if ($rol_usuario == 'Coordinador'):
         <a href="Docentes.php" class="nav-item nav-link">Docentes</a>
         
         <div class="nav-item dropdown">
-            <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
-            <div class="dropdown-menu rounded-0 m-0">
-                <a href="Actividades.php" class="dropdown-item">Actividades</a>
-                <a href="publicaciones/publicaciones.php" class="dropdown-item">Publicaciones</a>
-                <a href="Visual_padres" class="dropdown-item">Estudiantes</a>
-                <a href="boletines.php" class="dropdown-item">Boletines</a>
-                <a href="cursos.php" class="dropdown-item">Cursos</a>
-
-            </div>';
+        <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
+        <div class="dropdown-menu rounded-0 m-0">
+             <a href="publicaciones/publicaciones.php" class="dropdown-item">Publicaciones</a>
+            <a href="Actividades.php" class="dropdown-item">Actividades</a>
+            <a href="cursos.php" class="dropdown-item">Cursos</a>
+        </div>
+    </div>';
     elseif($rol_usuario=='Estudiante') :
         if ($Curso_estudiante && intval($Curso_estudiante) < 601) {
             echo '<a href="index04.php" class="nav-item nav-link active">Home</a>
@@ -193,6 +191,7 @@ if ($rol_usuario == 'Coordinador'):
                     echo '
                     <a href="index04.php" class="nav-item nav-link active">Home</a>
                     <a href="Foros.php" class="nav-item nav-link">Foros</a>
+                    <a href="Docentes.php" class="nav-item nav-link">Docentes</a>
                     
                     <div class="nav-item dropdown">
                     <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
@@ -487,7 +486,7 @@ endif;
             
             // Verificar si se recibieron opiniones
             if (empty($docentes)) {
-                echo "No se encontraron opiniones.";
+                
             } else {
                 // Iterar sobre las opiniones y mostrarlas en el HTML
                 foreach ($docentes as $docente) {
@@ -516,6 +515,14 @@ endif;
                 </div>
                 <div class="col-md-6 col-lg-3 text-center team mb-5">
                     <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
+                        <img class="img-fluid w-100" src="img/avatar.jpg" alt="" >
+                       
+                    </div>
+                    <h4>Johan stiven</h4>
+                    <i>Docente de filosofia</i>
+                </div>
+                <div class="col-md-6 col-lg-3 text-center team mb-5">
+                    <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
                         <img class="img-fluid w-100" src="img/team-3.jpg" alt="" >
                         
                     </div>
@@ -530,6 +537,7 @@ endif;
                     <h4>Donald John</h4>
                     <i>Docente de Musica</i>
                 </div>
+                
             </div>
         </div>
     </div>
