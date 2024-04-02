@@ -277,6 +277,26 @@ INSERT INTO `materias` (`idMaterias`, `Nombre_Materia`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `boletines`
+--
+
+DROP TABLE IF EXISTS `boletines`;
+CREATE TABLE IF NOT EXISTS `boletines` (
+  `idBoletin` int NOT NULL AUTO_INCREMENT,
+  `idEstudiante` int NOT NULL,
+  `idDocente` int NOT NULL,
+  `direccionArchivo` varchar(255) NOT NULL,
+  `fechaCreacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`idBoletin`),
+  KEY `idEstudiante` (`idEstudiante`),
+  KEY `idDocente` (`idDocente`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 ;
+
+--
+-- Volcado de datos para la tabla `boletines`
+--
+ 
+--
 -- Estructura de tabla para la tabla `mensajes`
 --
 
