@@ -221,7 +221,8 @@ endif;
                 <h1 class="mb-4">Con Certificaciones</h1>
             </div>
             <a href="Docentes/FdocentesA.php" >
-            <input value ="Datos a Modificar"  class="btn solid" />
+            
+<button class="button-85" role="button">Modificar Datos</button>
                 </a>
             <div class="row">
      
