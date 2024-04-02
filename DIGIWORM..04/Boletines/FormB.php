@@ -45,7 +45,7 @@ if(isset($_SESSION['Idusuario'])) {
                 $result_cursos = $conn->query($sql_cursos);
                 // Generar opciones del select con los cursos
                 while ($row_curso = $result_cursos->fetch_assoc()) {
-                    echo "<option value='" . $row_curso['idCurso'] . "'>" . $row_curso['Nombre_curso'] . "</option>";
+                    echo "<option value='" . $row_curso['idCurso'] . "'>" . $row_curso['Nombre_curso'] ." -- ". $row_curso['Jornada'] . "</option>";
                 }
                 ?>
             </select><br><br>
