@@ -232,24 +232,26 @@ INSERT INTO `estudiante` (`idEstudiante`, `Nombres`, `Apellidos`, `Email`, `Pasw
 
 DROP TABLE IF EXISTS `foros`;
 CREATE TABLE IF NOT EXISTS `foros` (
-  `idForos` int(11) NOT NULL AUTO_INCREMENT,
+  `idForos` int NOT NULL AUTO_INCREMENT,
   `Titulo` varchar(60) DEFAULT NULL,
   `Contenido` varchar(700) DEFAULT NULL,
   `Fecha_Hora` datetime NOT NULL,
   `archivo` varchar(500) NOT NULL,
-  `idusuario` int(11) DEFAULT NULL,
+  `idusuario` int DEFAULT NULL,
   `respuesta` varchar(500) DEFAULT NULL,
+  `Estado` varchar(500) NOT NULL,
   PRIMARY KEY (`idForos`),
   KEY `idUsuarios` (`idusuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `foros`
 --
 
-INSERT INTO `foros` (`idForos`, `Titulo`, `Contenido`, `Fecha_Hora`, `archivo`, `idusuario`, `respuesta`) VALUES
-(14, 'Prueba', 'Esta es una prueba de funcionalidad', '2024-03-07 19:44:00', 'archivos/Frima.png', 1081394327, 'xd\n'),
-(15, 'Prueba dos', 'Validacion de funcionamiento', '2024-03-07 19:58:00', 'archivos/OIP (1).jpg', 1030537206, NULL);
+INSERT INTO `foros` (`idForos`, `Titulo`, `Contenido`, `Fecha_Hora`, `archivo`, `idusuario`, `respuesta`, `Estado`) VALUES
+(14, 'Prueba', 'Esta es una prueba de funcionalidad', '2024-03-07 19:44:00', 'archivos/Frima.png', 1081394327, 'xd\nhola\n', 'inactivo'),
+(15, 'Prueba dos', 'Validacion de funcionamiento', '2024-03-07 19:58:00', 'archivos/OIP (1).jpg', 1030537206, 'messi\nmessi\naeiou\nhola\naa\n', 'inactivo'),
+(16, 'futbol', 'messi', '2024-03-23 19:10:00', 'archivos/avatar.jpg', 1000162100, 'eee\nww\nww\n', 'activo');
 
 -- --------------------------------------------------------
 
