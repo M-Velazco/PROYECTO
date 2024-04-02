@@ -220,6 +220,9 @@ endif;
                 <p class="section-title px-5"><span class="px-2">Docentes</span></p>
                 <h1 class="mb-4">Con Certificaciones</h1>
             </div>
+            <a href="Docentes/FdocentesA.php" >
+            <input value ="Datos a Modificar"  class="btn solid" />
+                </a>
             <div class="row">
      
 

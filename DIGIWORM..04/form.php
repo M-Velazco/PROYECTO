@@ -21,7 +21,7 @@
 
                 <div class="input-field">
                     <i class="fas fa-envelope"></i>
-                    <input type="number" id="Idusuario" name="Idusuario" placeholder="Numero de Identificacion" />
+                    <input type="int" id="Idusuario" name="Idusuario" placeholder="Numero de Identificacion" />
                 </div>
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
@@ -245,20 +245,20 @@
             radioButton.addEventListener('change', function() {
                 // Mostrar u ocultar campos según el rol seleccionado
                 if (this.value === 'Docente') {
-                    cursoField.style.display = 'block';
-                    materiaField.style.display = 'block';
-                    estadoField.style.display = 'block'; // Mostrar el campo de estado
+                    cursoField.style.display = 'none';
+                    materiaField.style.display = 'none';
+                    estadoField.style.display = 'none'; // Mostrar el campo de estado
                     jornadaField.style.display = 'none'; // Ocultar el campo de jornada
                 } else if (this.value === 'Estudiante') {
-                    cursoField.style.display = 'block'; // Mostrar el campo de curso
+                    cursoField.style.display = 'none'; // Mostrar el campo de curso
                     materiaField.style.display = 'none'; // Ocultar el campo de materia
-                    estadoField.style.display = 'block'; // Ocultar el campo de estado
+                    estadoField.style.display = 'none'; // Ocultar el campo de estado
                     jornadaField.style.display = 'none'; // Ocultar el campo de jornada
                 } else if (this.value === 'Coordinador') {
                     cursoField.style.display = 'none';
                     materiaField.style.display = 'none';
-                    estadoField.style.display = 'block'; // Mostrar el campo de estado
-                    jornadaField.style.display = 'block'; // Mostrar el campo de jornada
+                    estadoField.style.display = 'none'; // Mostrar el campo de estado
+                    jornadaField.style.display = 'none'; // Mostrar el campo de jornada
                 } else {
                     cursoField.style.display = 'none';
                     materiaField.style.display = 'none';

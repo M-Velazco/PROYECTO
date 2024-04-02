@@ -6,9 +6,12 @@ require "../modelo/conexion.php";
 if(isset($_POST['Materia'], $_POST['Pasword'], $_POST['Idusuario'], $_POST['Nombres'], $_POST['Apellidos'], $_POST['Email'], $_POST['Telefono'], $_POST['Rol'], $_POST['Estado'], $_POST['Curso'], $_POST['Jornada'])) {
 
     // Recoger datos del formulario
-    $materia = $_POST['Materia'];
+    $materia = 0;
     $contrasena = $_POST['Pasword'];
     $paswordmd5 = md5($contrasena);
+    $Estado = "Activo";
+    $curso = 0;
+    $Jornada = "";
    
 
     // Verificar si se subió una imagen
@@ -47,16 +50,17 @@ if(isset($_POST['Materia'], $_POST['Pasword'], $_POST['Idusuario'], $_POST['Nomb
         $paswordmd5,
         $img,
         $_POST['Rol'],
-        $_POST['Estado'],
-        $_POST['Curso'],
+        $Estado,
+        $curso,
         $materia,
-        $_POST['Jornada']
+        $Jornada
     );
 
     // Llamar al método para agregar el usuario
     $resultado = $objUsuario->agregarUsuario();
 
     if ($resultado) {
+        
         header("Location: " . $_SERVER['HTTP_REFERER']); // Redireccionar si se agregó correctamente
     } else {
         echo "No se ha registrado correctamente"; // Mostrar mensaje de error si falla
