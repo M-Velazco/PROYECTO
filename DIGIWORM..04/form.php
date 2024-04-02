@@ -21,7 +21,8 @@
 
                 <div class="input-field">
                     <i class="fas fa-envelope"></i>
-                    <input type="int" id="Idusuario" name="Idusuario" placeholder="Numero de Identificacion" />
+                    <input type="number" id="Idusuario" name="Idusuario" placeholder="Número Identificación" required oninput="limitarNumero(this, 10)" />
+
                 </div>
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
@@ -55,7 +56,8 @@
                 <h2 class="title">Registrarse</h2>
                 <div class="input-field">
                     <i class="fa-solid fa-id-card"></i>
-                    <input type="number" id="Idusuario" name="Idusuario" placeholder="Numero Identificacion" required  />
+                    <input type="number" id="Idusuario" name="Idusuario" placeholder="Número Identificación" required oninput="limitarNumero(this, 10)" />
+
                 </div>
                 <div class="input-field">
                     <i class="fas fa-user"></i>
@@ -72,7 +74,7 @@
                 </div>
                 <div class="input-field">
                     <i class="fas fa-phone"></i>
-                    <input type="number" name="Telefono" id="Telefono" placeholder="Telefono" required />
+                    <input type="number" name="Telefono" id="Telefono" placeholder="Telefono" required  oninput="limitarNumero(this, 10)" pattern="\d{1,10}"/>
                 </div>
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
@@ -83,7 +85,14 @@
                     <input type="file" id="img" name="img" placeholder="img" required />
                 </div>
                 
-    
+                <script>
+function limitarNumero(input, maxLength) {
+    if (input.value.length > maxLength) {
+        input.value = input.value.slice(0, maxLength); // Limita el valor a los primeros maxLength caracteres
+    }
+}
+</script>
+
 
                 <style>
                        /* Ocultar el input de tipo file */
@@ -226,7 +235,7 @@
 
 
                 <div>
-                    <input type="checkbox"/><a href="#" class="href"> <span class="rules-text">"Acepto los términos de servicio"</a></span> 
+                    <input type="checkbox"required/><a href="#" class="href"> <span class="rules-text">"Acepto los términos de servicio"</a></span> 
                 </div>
 
                 <input type="submit" class="btn" value="Registro completo"/>
