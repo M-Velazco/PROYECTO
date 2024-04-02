@@ -94,6 +94,7 @@ if (!file_exists($ruta_directorio)) {
 }
 
 // Ruta del archivo PDF en el servidor
+$router = '/boletines_estudiantes/' . $nombre_archivo;
 // Ruta del archivo PDF en el servidor
 $ruta_pdf = __DIR__ . '/boletines_estudiantes/' . $nombre_archivo;
 
