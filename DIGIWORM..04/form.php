@@ -21,7 +21,7 @@
 
                 <div class="input-field">
                     <i class="fas fa-envelope"></i>
-                    <input type="int" id="Idusuario" name="Idusuario" placeholder="Numero de Identificacion" />
+                    <input type="number" id="Idusuario" name="Idusuario" placeholder="Numero de Identificacion" />
                 </div>
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
