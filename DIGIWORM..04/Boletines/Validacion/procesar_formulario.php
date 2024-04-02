@@ -124,6 +124,7 @@ $insert_query = "INSERT INTO boletines (idEstudiante, idDocente, direccionArchiv
 
 if ($conexion->query($insert_query) === TRUE) {
     echo "Datos insertados correctamente en la tabla de boletines";
+    header('Location:');
 } else {
     echo "Error al insertar datos en la tabla de boletines: " . $conexion->error;
 }
