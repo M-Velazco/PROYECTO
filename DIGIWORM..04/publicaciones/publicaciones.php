@@ -90,7 +90,7 @@ if ($rol_usuario == 'Coordinador'):
     <div class="nav-item dropdown">
         <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
         <div class="dropdown-menu rounded-0 m-0">
-             <a href="publicaciones.php" class="dropdown-item">Publicaciones</a>
+             
             <a href="../Actividades.php" class="dropdown-item">Actividades</a>
         </div>
     </div>';
@@ -101,7 +101,7 @@ if ($rol_usuario == 'Coordinador'):
                   <div class="nav-item dropdown">
                       <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
                       <div class="dropdown-menu rounded-0 m-0">
-                           <a href="publicaciones.php" class="dropdown-item">Publicaciones</a>
+                           
                           <a href="../Actividades.php" class="dropdown-item">Actividades</a>
                       </div>
                   </div>';
@@ -112,7 +112,7 @@ if ($rol_usuario == 'Coordinador'):
                   <div class="nav-item dropdown">
                       <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
                       <div class="dropdown-menu rounded-0 m-0">
-                           <a href="publicaciones.php" class="dropdown-item">Publicaciones</a>
+                           
                           <a href="../Actividades.php" class="dropdown-item">Actividades</a>
                       </div>
                   </div>';
@@ -127,7 +127,7 @@ if ($rol_usuario == 'Coordinador'):
                 <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
                 <div class="dropdown-menu rounded-0 m-0">
                     <a href="../Actividades.php" class="dropdown-item">Actividades</a>
-                    <a href="../publicaciones/publicaciones.php" class="dropdown-item">Publicaciones</a>
+                    
                     <a href="../Visual_padres" class="dropdown-item">Padres de Familia</a>
                     <a href="../boletines.php" class="dropdown-item">Boletines</a>
 
