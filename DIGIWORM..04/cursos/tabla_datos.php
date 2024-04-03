@@ -11,7 +11,6 @@
     <header>
         <div class="logo">
             <img src="../img/LOGO.png" alt="Logo">
-            <h3><a href="../cursos.php" onclick="history.go(-1);" class="principal-link">Principal</a> <h3>
         </div>
       <br>  <p> <h2>Lista de estudiantes<h2></p>
       <style>
