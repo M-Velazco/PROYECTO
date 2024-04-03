@@ -35,12 +35,12 @@
         <tbody>
             <?php  while ($row = $result->fetch_assoc()) {
             echo'<tr>';
-                echo'<td>3219703694</td>';
-                echo'<td>Raul</td>';
-                echo'<td>Muñoz</td>';
-                echo'<td>Muñozraul@gmail.com</td>';
-                echo'<td>Activo</td>';
-                echo'<td>Activo</td>';
+                echo'<td>'.$row['idEstudiante'].'</td>';
+                echo'<td>'.$row['Nombres'].'</td>';
+                echo'<td>'.$row['Apellidos'].'</td>';
+                echo'<td>'.$row['Email'].'</td>';
+                echo'<td>'.$row['Curso'].'</td>';
+                echo'<td>'.$row['Estado'].'</td>';
             echo'</tr>';
              }  ?>
 
