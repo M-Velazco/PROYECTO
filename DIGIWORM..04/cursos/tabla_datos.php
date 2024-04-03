@@ -31,6 +31,7 @@
                 <th>Apellidos</th>
                 <th>Email</th>
                 <th>Activo</th>
+                <th>Curso</th>
             </tr>
         </thead>
         <tbody>

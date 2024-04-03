@@ -4,7 +4,7 @@
     border: 1px solid #ddd;
     background-image: url('../img/datos.jpg');
     background-size: cover;
-    border-radius: 15px; /* Ajusta el valor según el nivel de redondez que desees */
+    border-radius: 20px; /* Ajusta el valor según el nivel de redondez que desees */
 }
 
 .styled-table th, 
