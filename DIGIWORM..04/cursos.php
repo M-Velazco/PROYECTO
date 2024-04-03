@@ -14,14 +14,14 @@ if(isset($_SESSION['Idusuario'])) {
 
     // Obtiene el nombre del usuario basado en su ID
     $nombre_usuario = $objUsuarios->obtenerNombreUsuario($_SESSION['Idusuario']);
-    $Curso_estudiante =$objUsuarios->obtenerNombreCurso( $_SESSION['Idusuario'] ); 
+    $Curso_estudiante =$objUsuarios->obtenerNombreCurso( $_SESSION['Idusuario'] );
     // Obtiene la ruta de la imagen de perfil del usuario
     $ruta_imagen = $objUsuarios->obtenerRutaImagenUsuario($_SESSION['Idusuario']);
     $rol_usuario = $objUsuarios->obtenerRolUsuario($_SESSION['Idusuario']);
-    
 
 
-    
+
+
 } else {
     $usuario_conectado = false;
     header( 'Location: form.php?error=nologeado' );
@@ -63,29 +63,29 @@ if(isset($_SESSION['Idusuario'])) {
     <div class="container-fluid bg-light position-relative shadow">
         <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0 px-lg-5">
             <a href="" class="navbar-brand font-weight-bold text-secondary" style="font-size: 50px;">
-                
+
             <span class="text-primary">DIGIWORM</span>
-                
+
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
     <div class="navbar-nav font-weight-bold mx-auto py-0">
-    <?php 
+    <?php
 if ($rol_usuario == 'Coordinador'):
     echo '<a href="index04.php" class="nav-item nav-link active">Home</a>
     <a href="Principal.php" class="nav-item nav-link">Principal</a>
         <a href="chat/login.php" class="nav-item nav-link">Chat</a>
         <a href="Foros.php" class="nav-item nav-link">Foros</a>
         <a href="Docentes.php" class="nav-item nav-link">Docentes</a>
-        
+
         <div class="nav-item dropdown">
         <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
         <div class="dropdown-menu rounded-0 m-0">
              <a href="publicaciones/publicaciones.php" class="dropdown-item">Publicaciones</a>
             <a href="Actividades.php" class="dropdown-item">Actividades</a>
-            
+
         </div>
     </div>';
     elseif($rol_usuario=='Estudiante') :
@@ -117,7 +117,7 @@ if ($rol_usuario == 'Coordinador'):
             <a href="chat/login.php" class="nav-item nav-link">Chat</a>
             <a href="Foros.php" class="nav-item nav-link">Foros</a>
             <a href="Docentes.php" class="nav-item nav-link">Docentes</a>
-            
+
             <div class="nav-item dropdown">
                 <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
                 <div class="dropdown-menu rounded-0 m-0">
@@ -125,14 +125,14 @@ if ($rol_usuario == 'Coordinador'):
                     <a href="publicaciones/publicaciones.php" class="dropdown-item">Publicaciones</a>
                     <a href="Visual_padres" class="dropdown-item">Estudiantes</a>
                     <a href="boletines.php" class="dropdown-item">Boletines</a>
-                    
+
 
                 </div>';
                 elseif($rol_usuario=='Padre_familia') :
                     echo '
                     <a href="index04.php" class="nav-item nav-link active">Home</a>
-                    
-                    
+
+
                     <div class="nav-item dropdown">
                 <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
                 <div class="dropdown-menu rounded-0 m-0">
@@ -142,7 +142,7 @@ if ($rol_usuario == 'Coordinador'):
                     echo '
                     <a href="index04.php" class="nav-item nav-link active">Home</a>
                     <a href="Foros.php" class="nav-item nav-link">Foros</a>
-                    
+
                     <div class="nav-item dropdown">
                     <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
                     <div class="dropdown-menu rounded-0 m-0">
@@ -150,10 +150,10 @@ if ($rol_usuario == 'Coordinador'):
                         <a href="publicaciones/publicaciones.php" class="dropdown-item">Publicaciones</a>
                         <a href="Visual_padres" class="dropdown-item">Estudiantes</a>
                         <a href="boletines.php" class="dropdown-item">Boletines</a>
-                        
-                        
+
+
                     </div>';
-        
+
         else: echo '<a href="index04.php" class="nav-item nav-link active">Home</a>
         <a href="Principal.php" class="nav-item nav-link">Principal</a>
             <a href="chat/login.php" class="nav-item nav-link">Chat</a>
@@ -170,9 +170,9 @@ if ($rol_usuario == 'Coordinador'):
 endif;
 ?>
 
-       
+
             </div>
-        
+
     </div>
     <div class="navbar-nav font-weight-bold mx-auto py-0">
         <div class="DatosU">
@@ -184,13 +184,13 @@ endif;
                 <?php endif; ?>
                 <a href="Datos.php">
                 <?php echo $nombre_usuario."-". $rol_usuario." "; ?>.</a>
-                
-                
+
+
                 <br>
-                
+
                 <a href="modelo/CerrarSession.php" style="">Cerrar sesion</a>
             </p>
-            
+
         </div>
     </div>
 </div>
@@ -219,7 +219,6 @@ endif;
             <div class="text-center pb-2">
         <p> <h2>Consulte aqui los Cursos  de la institucion<h2></p>
     </div>
-           
 <head>
 
 
@@ -227,42 +226,52 @@ endif;
         <div class="input-group">
             <div class="input-group-prepend">
                 <!-- Botón desplegable para Jornada -->
+                <form action="cursos/script.php" method="post">
                 <div class="dropdown">
-                <button class="btn btn-outline-light bg-white text-body px-4 dropdown-toggle btn-lg" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 1.8rem;">Jornada</button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Mañana</a>
-                        <a class="dropdown-item" href="#">Tarde</a>
-                    </div>
+
+                    <select class="btn btn-outline-light bg-white text-body px-4 dropdown-toggle btn-lg" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 1.8rem;">Jornada
+                        <option value="">Jornada</option>
+                        <?php
+                        $conn = Conectarse();
+                        $sql ="SELECT * FROM curso ";
+                        $result = $conn->query($sql);
+                        while($row=$result->fetch_assoc()){
+                        echo'<option class="dropdown-item" value="'.$row['Jornada'].'" >'.$row['Jornada'].'</option>';
+                        } ?>
+                    </select>
                 </div>
             </div>
             <div class="input-group-prepend">
                 <!-- Botón desplegable para Grado -->
                 <div class="dropdown">
                 <div class="dropdown">
-    <button class="btn btn-outline-light bg-white text-body px-4 dropdown-toggle btn-lg" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 1.8rem;">Grado</button>
-    <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">601</a>
-        <a class="dropdown-item" href="#">602</a>
-        <a class="dropdown-item" href="#">603</a>
-        <a class="dropdown-item" href="#">603</a>
-        <a class="dropdown-item" href="#">604</a>
-        <a class="dropdown-item" href="#">1101</a>
-        <a class="dropdown-item" href="#">1102</a>
-        <a class="dropdown-item" href="#">1103</a>
-    </div>
+            <select class="btn btn-outline-light bg-white text-body px-4 dropdown-toggle btn-lg" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 1.8rem;">Grado
+            <option value="">Curso</option>
+            <?php
+            $conn = Conectarse();
+            $sql ="SELECT * FROM curso ";
+            $result = $conn->query($sql);
+            while($row=$result->fetch_assoc()){
+                echo'<option class="dropdown-item" value="'.$row['idCurso'].'" >'.$row['Nombre_curso'].'</option>';
+                } ?>
 
-    
+
+            </select>
 </div>
 
 </div>
-                <button class="btn btn-secondary px-4 px-lg-5">Enviar</button>
+
+                <button type="submit" class="btn btn-secondary px-4 px-lg-5">Enviar</button>
+                </div>
             </div>
         </div>
+        </form>
     </div>
+<div class="Result">
+    <?php include "cursos/script.php" ?>
 </div>
-
 </html>
-           
+
                 </div>
             </div>
         </div>
@@ -275,7 +284,7 @@ endif;
         <div class="row pt-5">
             <div class="col-lg-3 col-md-6 mb-5">
                 <a href="" class="navbar-brand font-weight-bold text-primary m-0 mb-4 p-0" style="font-size: 40px; line-height: 40px;">
-                    
+
                     <span class="text-white">DIGIWORM</span>
                 </a>
                 <p>"Confía en tu capacidad para superar los desafíos y alcanzar tus metas. Eres más fuerte y más capaz de lo que imaginas.".</p>
@@ -320,7 +329,7 @@ endif;
                     </div>
                 </div>
             </div>
-            
+
             <div class="col-lg-3 col-md-6 mb-5">
                 <h3 class="text-primary mb-4">Regresar</h3>
                 <div class="d-flex flex-column justify-content-start">
@@ -329,24 +338,24 @@ endif;
                     <a class="text-white mb-2" href="Publicaciones.html"><i class="fa fa-angle-right mr-2"></i>Publicaciones</a>
                     <a class="text-white mb-2" href="Docentes.html"><i class="fa fa-angle-right mr-2"></i>Docentes</a>
                     <a class="text-white mb-2" href="Foros.html"><i class="fa fa-angle-right mr-2"></i>Foros</a>
-                    
+
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
                 <h3 class="text-primary mb-4">BLOG RECIENTE</h3>
                 <form action="">
-                    
+
                     <div>
                         <button class="btn btn-primary btn-block border-0 py-3" type="submit">Muchos niños tienen problemas en la escuela, porque la manera en la que enseñan es incompatible con la manera en la que aprenden.</button>
                     </div>
                 </form>
-                
+
             </div>
         </div>
         <div class="container-fluid pt-5" style="border-top: 1px solid rgba(23, 162, 184, .2);;">
             <p class="m-0 text-center text-white">
                 &copy; <a class="text-primary font-weight-bold" href="https://redacademica.edu.co/terminos-y-condiciones">Terminos y Condiciones</a>  -----
-                
+
                 <a class="text-primary font-weight-bold" href="https://www.educacionbogota.edu.co/portal_institucional/transparencia-politicas-lineamientos-manuales-sectoriales-institucionales">Politicas de Privacidad</a>
             </p>
         </div>

@@ -105,7 +105,7 @@ while (file_exists($ruta_pdf)) {
     $nombre_archivo = 'boletin_' . $id_estudiante . '_' . $contador . '.pdf';
     $ruta_pdf = __DIR__ . '/boletines_estudiantes/' . $nombre_archivo;
     $contador++;
-}
+} 
 
 // Guardar el archivo PDF en el servidor
 $pdf->Output($ruta_pdf, 'F');
