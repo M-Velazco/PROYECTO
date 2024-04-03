@@ -144,20 +144,25 @@ INSERT INTO `coordinador` (`idCoordinador`, `Nombres`, `Apellidos`, `Email`, `Pa
 -- Estructura de tabla para la tabla `curso`
 --
 
+
 DROP TABLE IF EXISTS `curso`;
 CREATE TABLE IF NOT EXISTS `curso` (
-  `idCurso` int(11) NOT NULL AUTO_INCREMENT,
-  `Nombre_curso` int(45) DEFAULT NULL,
+  `idCurso` int NOT NULL AUTO_INCREMENT,
+  `Nombre_curso` int DEFAULT NULL,
   `Estado` enum('Activo','Inactivo') DEFAULT NULL,
-  PRIMARY KEY (`idCurso`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `Jornada` enum('Mañana','Tarde') NOT NULL,
+  PRIMARY KEY (`idCurso`),
+  KEY `Jornada` (`Jornada`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `curso`
 --
 
-INSERT INTO `curso` (`idCurso`, `Nombre_curso`, `Estado`) VALUES
-(1, '1103', 'Activo');
+INSERT INTO `curso` (`idCurso`, `Nombre_curso`, `Estado`, `Jornada`) VALUES
+(1, 1103, 'Activo', 'Mañana'),
+(2, 1102, 'Activo', 'Tarde');
+COMMIT;
 
 -- --------------------------------------------------------
 
