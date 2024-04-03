@@ -13,9 +13,14 @@
             <img src="../img/LOGO.png" alt="Logo">
             <h3><a href="../cursos.php" onclick="history.go(-1);" class="principal-link">Principal</a> <h3>
         </div>
-        <p> <h2>Lista de estudiantes<h2></p>
+      <br>  <p> <h2>Lista de estudiantes<h2></p>
+      <style>
+        p, h2 {
+            text-align: center;
+        }
+    </style>
     </header>
-    
+
 <body>
 
     <table class="styled-table">
