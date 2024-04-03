@@ -125,7 +125,7 @@ if (isset($_SESSION['Idusuario'])) {
                     $nombreUsuarioRespuesta = $consultaUsuario->fetch_assoc()['Nombres'];
                 }
                 ?>
-                <h3>Respuesta de <?php echo $nombreUsuarioRespuesta ?>:</h3>
+                <h3>Respuestas<?php echo $nombreUsuarioRespuesta ?>:</h3>
                 <p class="respuesta"><?php echo $filaRespuesta['respuesta']; ?></p>
                 
                     
