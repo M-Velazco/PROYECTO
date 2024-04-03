@@ -217,7 +217,13 @@ endif;
 
     <?php
 include_once "Boletines/FormB.php"            
-            ?>
+    ?>
+            
+    <?php
+include_once "Boletines/ListBoletines.php"            
+    ?>
+
+    
    
 
 

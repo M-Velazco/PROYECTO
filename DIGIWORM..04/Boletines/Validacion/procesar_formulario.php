@@ -94,7 +94,7 @@ if (!file_exists($ruta_directorio)) {
 }
 
 // Ruta del archivo PDF en el servidor
-$router = '/boletines_estudiantes/' . $nombre_archivo;
+$router = 'Boletines/Validacion/boletines_estudiantes/' . $nombre_archivo;
 // Ruta del archivo PDF en el servidor
 $ruta_pdf = __DIR__ . '/boletines_estudiantes/' . $nombre_archivo;
 
@@ -109,7 +109,7 @@ while (file_exists($ruta_pdf)) {
 
 // Guardar el archivo PDF en el servidor
 $pdf->Output($ruta_pdf, 'F');
-$pdf->Output($nombre_archivo, 'D');
+$pdf->Output($ruta_pdf, 'D');
 
 $conexion = Conectarse();
 if ($conexion->connect_error) {
@@ -120,10 +120,13 @@ if ($conexion->connect_error) {
 $id_docente = $_SESSION['Idusuario'];
 
 // Consulta para insertar los datos en la tabla de boletines
-$insert_query = "INSERT INTO boletines (idEstudiante, idDocente, direccionArchivo) VALUES ('$id_estudiante', '$id_docente', '$ruta_pdf')";
+$insert_query = "INSERT INTO boletines (idEstudiante, idDocente, direccionArchivo) VALUES ('$id_estudiante', '$id_docente', '$nombre_archivo')";
 
 if ($conexion->query($insert_query) === TRUE) {
-    echo "Datos insertados correctamente en la tabla de boletines";
+    
+    header('Location: ' . $_SERVER['PHP_SELF']);
+    
+    
 } else {
     echo "Error al insertar datos en la tabla de boletines: " . $conexion->error;
 }
