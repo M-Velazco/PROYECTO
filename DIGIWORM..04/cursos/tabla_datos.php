@@ -28,8 +28,8 @@
                 <th>Nombres</th>
                 <th>Apellidos</th>
                 <th>Email</th>
-                <th>Activo</th>
                 <th>Curso</th>
+                <th>Activo</th>
             </tr>
         </thead>
         <tbody>
