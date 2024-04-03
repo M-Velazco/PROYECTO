@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digiworm - Cursos</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="cursos/style.css">
 </head>
 
 
@@ -35,27 +35,17 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>3219703694</td>
-                <td>Raul</td>
-                <td>Muñoz</td>
-                <td>Muñozraul@gmail.com</td>
-                <td>Activo</td>
-            </tr>
-            <tr>
-                <td>1456327892</td>
-                <td>Carlos</td>
-                <td>Perez</td>
-                <td>carlos00@gmail.com</td>
-                <td>Activo</td>
-            </tr>
-            <tr>
-                <td>4713596143</td>
-                <td>Pablo</td>
-                <td>Ruiz</td>
-                <td>pabloca@gmail.com</td>
-                <td>Inactivo</td>
-            </tr>
+            <?php  while ($row = $result->fetch_assoc()) {
+            echo'<tr>'
+                echo'<td>3219703694</td>'
+                echo'<td>Raul</td>'
+                echo'<td>Muñoz</td>'
+                echo'<td>Muñozraul@gmail.com</td>'
+                echo'<td>Activo</td>'
+                echo'<td>Activo</td>'
+            echo'</tr>'
+             }  ?>
+
         </tbody>
     </table>
 

@@ -226,33 +226,24 @@ endif;
         <div class="input-group">
             <div class="input-group-prepend">
                 <!-- Botón desplegable para Jornada -->
-                <form action="cursos/script.php" method="post">
+                <form  method="post">
                 <div class="dropdown">
 
-                    <select class="btn btn-outline-light bg-white text-body px-4 dropdown-toggle btn-lg" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 1.8rem;">Jornada
-                        <option value="">Jornada</option>
-                        <?php
-                        $conn = Conectarse();
-                        $sql ="SELECT * FROM curso ";
-                        $result = $conn->query($sql);
-                        while($row=$result->fetch_assoc()){
-                        echo'<option class="dropdown-item" value="'.$row['Jornada'].'" >'.$row['Jornada'].'</option>';
-                        } ?>
-                    </select>
+
                 </div>
             </div>
             <div class="input-group-prepend">
                 <!-- Botón desplegable para Grado -->
                 <div class="dropdown">
                 <div class="dropdown">
-            <select class="btn btn-outline-light bg-white text-body px-4 dropdown-toggle btn-lg" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 1.8rem;">Grado
+            <select class="btn btn-outline-light bg-white text-body px-4 dropdown-toggle btn-lg"name="grado" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 1.8rem;">Grado
             <option value="">Curso</option>
             <?php
             $conn = Conectarse();
             $sql ="SELECT * FROM curso ";
             $result = $conn->query($sql);
             while($row=$result->fetch_assoc()){
-                echo'<option class="dropdown-item" value="'.$row['idCurso'].'" >'.$row['Nombre_curso'].'</option>';
+                echo'<option class="dropdown-item" value="'.$row['idCurso'].'" >'.$row['Nombre_curso']." - ".$row['Jornada'].'</option>';
                 } ?>
 
 
@@ -268,7 +259,26 @@ endif;
         </form>
     </div>
 <div class="Result">
-    <?php include "cursos/script.php" ?>
+<?php
+// Verifica si se han enviado los datos del formulario
+require_once "modelo/conexion.php";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Obtiene los datos seleccionados del formulario
+
+    $grado = $_POST["grado"];
+
+    // Aquí debes realizar la conexión a tu base de datos y ejecutar la consulta SQL para obtener los resultados que deseas mostrar en el include
+    // Por ejemplo:
+    $conn = Conectarse();
+     $sql = "SELECT * FROM estudiante WHERE  Curso = '$grado'";
+     $result = $conn->query($sql);
+
+    // Una vez que tengas los resultados de la consulta, puedes mostrarlos en el include
+    // Por ejemplo:
+    include "cursos/tabla_datos.php";
+}
+?>
+
 </div>
 </html>
 
