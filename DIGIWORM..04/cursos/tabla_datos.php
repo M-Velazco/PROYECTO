@@ -36,14 +36,14 @@
         </thead>
         <tbody>
             <?php  while ($row = $result->fetch_assoc()) {
-            echo'<tr>'
-                echo'<td>3219703694</td>'
-                echo'<td>Raul</td>'
-                echo'<td>Muñoz</td>'
-                echo'<td>Muñozraul@gmail.com</td>'
-                echo'<td>Activo</td>'
-                echo'<td>Activo</td>'
-            echo'</tr>'
+            echo'<tr>';
+                echo'<td>3219703694</td>';
+                echo'<td>Raul</td>';
+                echo'<td>Muñoz</td>';
+                echo'<td>Muñozraul@gmail.com</td>';
+                echo'<td>Activo</td>';
+                echo'<td>Activo</td>';
+            echo'</tr>';
              }  ?>
 
         </tbody>
