@@ -10,7 +10,6 @@
 
     <header>
         <div class="logo">
-            <img src="../img/LOGO.png" alt="Logo">
         </div>
       <br>  <p> <h2>Lista de estudiantes<h2></p>
       <style>
