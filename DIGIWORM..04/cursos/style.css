@@ -2,6 +2,9 @@
     width: 100%;
     border-collapse: collapse;
     border: 1px solid #ddd;
+    background-image: url('../img/datos.jpg');
+    background-size: cover;
+    border-radius: 15px; /* Ajusta el valor según el nivel de redondez que desees */
 }
 
 .styled-table th, 
@@ -22,4 +25,16 @@
 
 .styled-table tr:hover {
     background-color: #ddd;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 95px; 
+    height: 95px; 
+    border-radius: 50%; 
+    margin-right: 10px;
 }
