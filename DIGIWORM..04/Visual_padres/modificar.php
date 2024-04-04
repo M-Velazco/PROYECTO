@@ -56,18 +56,21 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["email"]) && isset($_POST["idEstudiante"])) {
         $nuevoEmail = $_POST["email"];
         $idEstudiante = $_POST["idEstudiante"];
-
+    
         // Actualiza el email del estudiante en la base de datos
         $sqlActualizarEmail = "UPDATE estudiante SET Email='$nuevoEmail' WHERE idEstudiante=$idEstudiante";
-
+    
         if ($conn->query($sqlActualizarEmail) === TRUE) {
-            echo "<script>alert('Email actualizado correctamente');</script>";
+            echo "<script>alert('Email actualizado correctamente'); window.location.href = '/PROYECTO/DIGIWORM..04/Visual_padres/index.php';</script>";
         } else {
             echo "<p>Error al actualizar el email: " . $conn->error . "</p>";
         }
-
+    
         $conn->close();
     }
+    
+    // Resto del código
+    
 
     // Verificar si se ha enviado un ID de estudiante
     if (isset($_GET["id"])) {
