@@ -14,14 +14,14 @@ if(isset($_SESSION['Idusuario'])) {
 
     // Obtiene el nombre del usuario basado en su ID
     $nombre_usuario = $objUsuarios->obtenerNombreUsuario($_SESSION['Idusuario']);
-    $Curso_estudiante =$objUsuarios->obtenerNombreCurso( $_SESSION['Idusuario'] ); 
+    $Curso_estudiante =$objUsuarios->obtenerNombreCurso( $_SESSION['Idusuario'] );
 
     // Obtiene la ruta de la imagen de perfil del usuario
     $ruta_imagen = $objUsuarios->obtenerRutaImagenUsuario($_SESSION['Idusuario']);
     $rol_usuario = $objUsuarios->obtenerRolUsuario($_SESSION['Idusuario']);
 
 
-    
+
 } else {
     $usuario_conectado = false;
     header( 'Location: form.php?error=nologeado' );
@@ -36,7 +36,7 @@ if(isset($_SESSION['Idusuario'])) {
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
-    <?php 
+    <?php
 if (isset($_GET['succes']) && $_GET['succes'] == 'logeado') {
     echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@10'></script>"; // Incluye SweetAlert desde CDN
 
@@ -46,13 +46,13 @@ if (isset($_GET['succes']) && $_GET['succes'] == 'logeado') {
                     icon: 'success',
                     title: 'Haz iniciado',
                     text: 'Bienvenido/a haz logrado ingresar'
-                    
+
                 });
             });
           </script>";
 }
 ?>
-<?php 
+<?php
 if (isset($_GET['succes']) && $_GET['succes'] == 'citaS') {
     echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@10'></script>"; // Incluye SweetAlert desde CDN
 
@@ -62,13 +62,13 @@ if (isset($_GET['succes']) && $_GET['succes'] == 'citaS') {
                     icon: 'success',
                     title: 'Haz agendado cita',
                     text: 'Por Favor verifica tu correo para confirmacion'
-                    
+
                 });
             });
           </script>";
 }
 ?>
-<?php 
+<?php
 if (isset($_GET['succes']) && $_GET['succes'] == 'Comentado') {
     echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@10'></script>"; // Incluye SweetAlert desde CDN
 
@@ -78,7 +78,7 @@ if (isset($_GET['succes']) && $_GET['succes'] == 'Comentado') {
                     icon: 'success',
                     title: 'Felicidades',
                     text: 'Opinion  enviada correctamente!'
-                    
+
                 });
             });
           </script>";
@@ -112,23 +112,23 @@ if (isset($_GET['succes']) && $_GET['succes'] == 'Comentado') {
     <div class="container-fluid bg-light position-relative shadow">
         <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0 px-lg-5">
             <a href="" class="navbar-brand font-weight-bold text-secondary" style="font-size: 50px;">
-                
+
             <span class="text-primary">DIGIWORM</span>
-                
+
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
     <div class="navbar-nav font-weight-bold mx-auto py-0">
-    <?php 
+    <?php
 if ($rol_usuario == 'Coordinador'):
     echo '<a href="index04.php" class="nav-item nav-link active">Home</a>
     <a href="Principal.php" class="nav-item nav-link">Principal</a>
         <a href="chat/login.php" class="nav-item nav-link">Chat</a>
         <a href="Foros.php" class="nav-item nav-link">Foros</a>
         <a href="Docentes.php" class="nav-item nav-link">Docentes</a>
-        
+
         <div class="nav-item dropdown">
         <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
         <div class="dropdown-menu rounded-0 m-0">
@@ -146,6 +146,7 @@ if ($rol_usuario == 'Coordinador'):
                       <div class="dropdown-menu rounded-0 m-0">
                            <a href="publicaciones/publicaciones.php" class="dropdown-item">Publicaciones</a>
                           <a href="Actividades.php" class="dropdown-item">Actividades</a>
+                          <a href="boletines.php" class="dropdown-item">Boletines</a>
                       </div>
                   </div>';
         } else {
@@ -157,6 +158,7 @@ if ($rol_usuario == 'Coordinador'):
                       <div class="dropdown-menu rounded-0 m-0">
                            <a href="publicaciones/publicaciones.php" class="dropdown-item">Publicaciones</a>
                           <a href="Actividades.php" class="dropdown-item">Actividades</a>
+                          <a href="boletines.php" class="dropdown-item">Boletines</a>
                       </div>
                   </div>';
         }
@@ -166,7 +168,7 @@ if ($rol_usuario == 'Coordinador'):
             <a href="chat/login.php" class="nav-item nav-link">Chat</a>
             <a href="Foros.php" class="nav-item nav-link">Foros</a>
             <a href="Docentes.php" class="nav-item nav-link">Docentes</a>
-            
+
             <div class="nav-item dropdown">
                 <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
                 <div class="dropdown-menu rounded-0 m-0">
@@ -180,8 +182,8 @@ if ($rol_usuario == 'Coordinador'):
                 elseif($rol_usuario=='Padre_familia') :
                     echo '
                     <a href="index04.php" class="nav-item nav-link active">Home</a>
-                    
-                    
+
+
                     <div class="nav-item dropdown">
                 <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
                 <div class="dropdown-menu rounded-0 m-0">
@@ -192,7 +194,7 @@ if ($rol_usuario == 'Coordinador'):
                     <a href="index04.php" class="nav-item nav-link active">Home</a>
                     <a href="Foros.php" class="nav-item nav-link">Foros</a>
                     <a href="Docentes.php" class="nav-item nav-link">Docentes</a>
-                    
+
                     <div class="nav-item dropdown">
                     <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
                     <div class="dropdown-menu rounded-0 m-0">
@@ -201,9 +203,9 @@ if ($rol_usuario == 'Coordinador'):
                         <a href="Visual_padres" class="dropdown-item">Estudiantes</a>
                         <a href="boletines.php" class="dropdown-item">Boletines</a>
                         <a href="../cursos/cursos.php" class="dropdown-item">Cursos</a>
-                        
+
                     </div>';
-        
+
         else: echo '<a href="index04.php" class="nav-item nav-link active">Home</a>
         <a href="Principal.php" class="nav-item nav-link">Principal</a>
             <a href="chat/login.php" class="nav-item nav-link">Chat</a>
@@ -220,9 +222,9 @@ if ($rol_usuario == 'Coordinador'):
 endif;
 ?>
 
-       
+
             </div>
-        
+
     </div>
     <div class="navbar-nav font-weight-bold mx-auto py-0">
         <div class="DatosU">
@@ -234,13 +236,13 @@ endif;
                 <?php endif; ?>
                 <a href="Datos.php">
                 <?php echo $nombre_usuario."-". $rol_usuario." "; ?>.</a>
-                
-                
+
+
                 <br>
-                
+
                 <a href="modelo/CerrarSession.php" style="">Cerrar sesion</a>
             </p>
-            
+
         </div>
     </div>
 </div>
@@ -259,7 +261,7 @@ endif;
                 <p class="text-white mb-4">La educación es el faro que ilumina el camino hacia el progreso y la realización personal. Es el arte de cultivar mentes y corazones, de sembrar semillas de conocimiento y fomentar el crecimiento intelectual y emocional en cada individuo. En el aula, se forja el futuro, se moldean los sueños y se construyen las bases para un mundo mejor.
 
                 </p>
-            
+
             </div>
             <div class="col-lg-6 text-center text-lg-right">
                 <img class="img-fluid mt-5" src="img/header.png" alt="">
@@ -394,9 +396,9 @@ endif;
                                 <div class="col-6 py-1 text-right border-right"><strong>Horarios</strong></div>
                                 <div class="col-6 py-1">06:00 - 12:00</div>
                             </div>
-                            
+
                         </div>
-                        
+
                     </div>
                 </div>
                 <div class="col-lg-4 mb-5">
@@ -420,9 +422,9 @@ endif;
                                 <div class="col-6 py-1 text-right border-right"><strong>Horarios</strong></div>
                                 <div class="col-6 py-1">12:15 - 06:15</div>
                             </div>
-                           
+
                         </div>
-                       
+
                     </div>
                 </div>
                 <div class="col-lg-4 mb-5">
@@ -446,9 +448,9 @@ endif;
                                 <div class="col-6 py-1 text-right border-right"><strong>Horarios</strong></div>
                                 <div class="col-6 py-1">06:00 - 12:00</div>
                             </div>
-                            
+
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -461,7 +463,7 @@ endif;
     <!-- Team Start -->
     <div class="container-fluid pt-5">
         <div class="container">
-            
+
             <div class="text-center pb-2">
                 <p class="section-title px-5"><span class="px-2">Docentes</span></p>
                 <h1 class="mb-4">Conoce a nuestros Docentes
@@ -469,7 +471,7 @@ endif;
             </div>
             <div class="row">
 
-            <?php 
+            <?php
             $urlD = 'http://localhost/PROYECTO/DIGIWORM..04/Apis/DocentesApis.php';
 
             $curl = curl_init( $urlD );
@@ -480,13 +482,13 @@ endif;
             if ($response === false) {
                 die("Error en la solicitud: " . curl_error($curl));
             }
-            
+
             // Decodificar la respuesta JSON
             $docentes = json_decode($response, true);
-            
+
             // Verificar si se recibieron opiniones
             if (empty($docentes)) {
-                
+
             } else {
                 // Iterar sobre las opiniones y mostrarlas en el HTML
                 foreach ($docentes as $docente) {
@@ -494,7 +496,7 @@ endif;
                 <div class="col-md-6 col-lg-3 text-center team mb-5">
                     <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
                         <img class="img-fluid w-100" src="<?php echo $docente[ 'img']  ?>" alt="" >
-                    
+
                     </div>
                     <h4><?php echo $docente ['Nombres']; ?></h4>
                     <i>Docente de <?php echo $docente['nombre_materia'] ?></i>
@@ -508,7 +510,7 @@ endif;
                 <div class="col-md-6 col-lg-3 text-center team mb-5">
                     <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
                         <img class="img-fluid w-100" src="img/testimonial-3.jpg" alt="" >
-                       
+
                     </div>
                     <h4>Jhon Doe</h4>
                     <i>Docente de Lenguaje Catellano</i>
@@ -516,7 +518,7 @@ endif;
                 <div class="col-md-6 col-lg-3 text-center team mb-5">
                     <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
                         <img class="img-fluid w-100" src="img/avatar.jpg" alt="" >
-                       
+
                     </div>
                     <h4>Johan stiven</h4>
                     <i>Docente de filosofia</i>
@@ -524,7 +526,7 @@ endif;
                 <div class="col-md-6 col-lg-3 text-center team mb-5">
                     <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
                         <img class="img-fluid w-100" src="img/team-3.jpg" alt="" >
-                        
+
                     </div>
                     <h4>Mollie Ross</h4>
                     <i>Docente de Danzas</i>
@@ -532,12 +534,12 @@ endif;
                 <div class="col-md-6 col-lg-3 text-center team mb-5">
                     <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
                         <img class="img-fluid w-100" src="img/team-4.jpg" alt="" >
-                       
+
                     </div>
                     <h4>Donald John</h4>
                     <i>Docente de Musica</i>
                 </div>
-                
+
             </div>
         </div>
     </div>
@@ -552,8 +554,8 @@ endif;
                 <h1 class="mb-4">¡Qué dicen los padres!</h1>
             </div>
             <div class="owl-carousel testimonial-carousel">
-    <?php 
-    
+    <?php
+
     $url = 'http://localhost/PROYECTO/DIGIWORM..04/Apis/OpinionApi.php';
 
 // Inicializar la solicitud cURL
@@ -593,7 +595,7 @@ if (empty($opiniones)) {
             </div>
         </div>
     </div>
-    <?php 
+    <?php
     } // Fin del bucle
 }
 curl_close($curl);
@@ -604,7 +606,7 @@ curl_close($curl);
         </div>
     </div>
     <!-- Testimonial End -->
- 
+
 
     <!-- Blog Start -->
     <div class="container-fluid pt-5">
@@ -639,7 +641,7 @@ curl_close($curl);
                                 <small class="mr-3"><i class="fa fa-comments text-primary"></i> 75</small>
                             </div>
                             <p>Espero que este mensaje les encuentre bien. Me dirijo a ustedes para convocarles a una reunión [especificar el propósito de la reunión, por ejemplo: "para discutir los resultados del último trimestre", "para planificar el evento anual.</p>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -654,7 +656,7 @@ curl_close($curl);
                                 <small class="mr-3"><i class="fa fa-comments text-primary"></i> 100</small>
                             </div>
                             <p>La capacitación está diseñada para [explicar los objetivos y beneficios de la capacitación]. Durante la sesión, se abordarán temas como [enumerar los temas principales que se cubrirán] y se proporcionará una oportunidad para discutir y compartir mejores prácticas.</p>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -669,7 +671,7 @@ curl_close($curl);
         <div class="row pt-5">
             <div class="col-lg-3 col-md-6 mb-5">
                 <a href="" class="navbar-brand font-weight-bold text-primary m-0 mb-4 p-0" style="font-size: 40px; line-height: 40px;">
-                    
+
                     <span class="text-white">DIGIWORM</span>
                 </a>
                 <p>"Confía en tu capacidad para superar los desafíos y alcanzar tus metas. Eres más fuerte y más capaz de lo que imaginas.".</p>
@@ -712,7 +714,7 @@ curl_close($curl);
                     </div>
                 </div>
             </div>
-            
+
             <div class="col-lg-3 col-md-6 mb-5">
                 <h3 class="text-primary mb-4">Testimonio</h3>
                 <form action="validacion/opinion.php" method="POST" >
@@ -727,7 +729,7 @@ curl_close($curl);
                         <input type="text" class="form-control border-0 py-4" name="Opinion" id="Opinion" placeholder="Mensaje" required="required" />
                     </div>
                     <div>
-                        
+
                         <input type="submit" value="Ingresar" class="btn btn-primary btn-block border-0 py-3" />
                     </div>
                 </form>
@@ -736,7 +738,7 @@ curl_close($curl);
         <div class="container-fluid pt-5" style="border-top: 1px solid rgba(23, 162, 184, .2);;">
             <p class="m-0 text-center text-white">
                 &copy; <a class="text-primary font-weight-bold" href="https://redacademica.edu.co/terminos-y-condiciones">Terminos y Condiciones</a>  -----
-                
+
                 <a class="text-primary font-weight-bold" href="https://www.educacionbogota.edu.co/portal_institucional/transparencia-politicas-lineamientos-manuales-sectoriales-institucionales">Politicas de Privacidad</a>
             </p>
         </div>
