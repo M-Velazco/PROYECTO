@@ -55,7 +55,7 @@
         </div>
 
         <h1>Bienvenido Padre de Familia</h1>
-        <p> <h2>Consulte aqui los datos personales de su hij@<h2></p>
+        <p> <h2>Consulte aqui los datos personales del Estudiante<h2></p>
     </header>
 
 

@@ -83,7 +83,7 @@ if (isset($_SESSION['Idusuario'])) {
     </style>
 </head>
 <body>
-<a href="javascript:history.go(-1);" class="boton">Salir</a>
+<a href="../foros.php" class="boton">Salir</a>
 <h1>Foros</h1>
 
 <div class="foro">
