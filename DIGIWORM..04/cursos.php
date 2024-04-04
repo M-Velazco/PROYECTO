@@ -273,6 +273,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
      $sql = "SELECT * FROM estudiante WHERE  Curso = '$grado'";
      $result = $conn->query($sql);
 
+    $sqlC = "SELECT * FROM curso WHERE idCurso  = '$grado'";
+    $resultC = $conn->query($sqlC);
     // Una vez que tengas los resultados de la consulta, puedes mostrarlos en el include
     // Por ejemplo:
     include "cursos/tabla_datos.php";
