@@ -26,6 +26,7 @@ if(isset($_SESSION["Idusuario"])) {
 </head>
 
 <body>
+
     <table class="table table-striped table-hover">
         <thead>
             <tr>
@@ -36,7 +37,7 @@ if(isset($_SESSION["Idusuario"])) {
                 <th scope="col">Acción</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="resultadoBusqueda" >
             <?php
             // Verificar si se encontraron boletines
             if(isset($result_boletines) && $result_boletines->num_rows > 0) {
@@ -60,6 +61,7 @@ if(isset($_SESSION["Idusuario"])) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+       
 </body>
 
 </html>

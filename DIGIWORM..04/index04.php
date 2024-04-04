@@ -128,8 +128,8 @@ if ($rol_usuario == 'Coordinador'):
         <a href="chat/login.php" class="nav-item nav-link">Chat</a>
         <a href="Foros.php" class="nav-item nav-link">Foros</a>
         <a href="Docentes.php" class="nav-item nav-link">Docentes</a>
-        
-        
+
+
         <div class="nav-item dropdown">
         <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
         <div class="dropdown-menu rounded-0 m-0">
@@ -148,6 +148,7 @@ if ($rol_usuario == 'Coordinador'):
                       <div class="dropdown-menu rounded-0 m-0">
                            <a href="publicaciones/publicaciones.php" class="dropdown-item">Publicaciones</a>
                           <a href="Actividades.php" class="dropdown-item">Actividades</a>
+                          <a href="boletines.php" class="dropdown-item">Boletines</a>
                       </div>
                   </div>';
         } else {
@@ -465,7 +466,7 @@ endif;
                         Tu navegador no soporta el elemento de video.
                     </video>
                 </div>
-                
+
                 <div class="col-lg-7">
                     <p class="section-title pr-5"><span class="pr-2">APRENDE SOBRE NOSOTROS</span></p>
                     <h1 class="mb-4">OFRECIENDO EL MEJOR SERVICIO</h1>
@@ -473,7 +474,7 @@ endif;
                     <div class="row pt-2 pb-4">
                         <div class="col-6 col-md-4">
                             <img class="img-fluid rounded" src="img/about-2.jpg" alt="">
-                            
+
                         </div>
                         <div class="col-6 col-md-8">
                             <ul class="list-inline m-0">
@@ -483,7 +484,7 @@ endif;
                             </ul>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>

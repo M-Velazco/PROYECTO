@@ -84,7 +84,7 @@ if ($rol_usuario == 'Coordinador'):
         <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
         <div class="dropdown-menu rounded-0 m-0">
              <a href="publicaciones/publicaciones.php" class="dropdown-item">Publicaciones</a>
-            
+
 
         </div>
     </div>';
@@ -97,7 +97,8 @@ if ($rol_usuario == 'Coordinador'):
                       <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
                       <div class="dropdown-menu rounded-0 m-0">
                            <a href="publicaciones/publicaciones.php" class="dropdown-item">Publicaciones</a>
-                          
+                           <a href="boletines.php" class="dropdown-item">Boletines</a>
+
                       </div>
                   </div>';
         } else {
@@ -109,7 +110,7 @@ if ($rol_usuario == 'Coordinador'):
                       <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
                       <div class="dropdown-menu rounded-0 m-0">
                            <a href="publicaciones/publicaciones.php" class="dropdown-item">Publicaciones</a>
-                         
+
                       </div>
                   </div>';
         }
@@ -123,7 +124,7 @@ if ($rol_usuario == 'Coordinador'):
             <div class="nav-item dropdown">
                 <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
                 <div class="dropdown-menu rounded-0 m-0">
-                    
+
                     <a href="publicaciones/publicaciones.php" class="dropdown-item">Publicaciones</a>
                     <a href="Visual_padres" class="dropdown-item">Estudiantes</a>
                     <a href="boletines.php" class="dropdown-item">Boletines</a>
@@ -149,7 +150,7 @@ if ($rol_usuario == 'Coordinador'):
                     <div class="nav-item dropdown">
                     <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
                     <div class="dropdown-menu rounded-0 m-0">
-                        
+
                         <a href="publicaciones/publicaciones.php" class="dropdown-item">Publicaciones</a>
                         <a href="Visual_padres" class="dropdown-item">Estudiantes</a>
                         <a href="boletines.php" class="dropdown-item">Boletines</a>
@@ -165,7 +166,7 @@ if ($rol_usuario == 'Coordinador'):
             <div class="nav-item dropdown">
                 <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
                 <div class="dropdown-menu rounded-0 m-0">
-                    
+
                      <a href="publicaciones/publicaciones.php" class="dropdown-item">Publicaciones</a>
                     <a href="Visual_padres" class="dropdown-item">Datos Estudiantes</a>
                     <a href="Boletines/FormB.php" class="dropdown-item">Boletines</a>
