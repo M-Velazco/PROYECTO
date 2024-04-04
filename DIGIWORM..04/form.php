@@ -56,7 +56,7 @@
                 <h2 class="title">Registrarse</h2>
                 <div class="input-field">
                     <i class="fa-solid fa-id-card"></i>
-                    <input type="number" id="Idusuario" name="Idusuario" placeholder="Número Identificación" required oninput="limitarNumero(this, 5, 10)" />
+                    <input type="number" id="Idusuario" name="Idusuario" placeholder="Número Identificación" required oninput="limitarNumero(this, 10)" onblur="validarLongitudExacta(this)" onfocus="registrarUltimoCampoModificado(this)" />
 
 
                 </div>
@@ -75,7 +75,7 @@
                 </div>
                 <div class="input-field">
                     <i class="fas fa-phone"></i>
-                    <input type="number" name="Telefono" id="Telefono" placeholder="Telefono" required  oninput="limitarNumero(this,10, 10)" pattern="\d{1,10}"/>
+                    <input type="number" name="Telefono" id="Telefono" placeholder="Telefono" required  required oninput="limitarNumero(this, 10)" onblur="validarLongitudExacta(this)" onfocus="registrarUltimoCampoModificado(this)"/>
                 </div>
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
@@ -87,20 +87,37 @@
                 </div>
 
                 <script>
-function limitarNumero(input, minLength, maxLength) {
+// Variable para almacenar el último campo modificado
+let ultimoCampoModificado = null;
+
+// Función para limitar la cantidad de dígitos y validar la longitud exacta al cambiar de campo
+function limitarNumero(input, maxLength) {
     let inputValue = input.value.trim(); // Elimina espacios en blanco al inicio y al final
 
-    if (inputValue.length < minLength) {
-        // Si la longitud es menor que el mínimo, no hagas nada
-        return;
-    } else if (inputValue.length > maxLength) {
-        // Si la longitud es mayor que el máximo, truncar al máximo
-        input.value = inputValue.slice(0, maxLength);
+    if (inputValue.length > maxLength) {
+        input.value = input.value.slice(0, maxLength); // Limita el valor a los primeros maxLength caracteres
     }
 }
 
+// Función para validar la longitud exacta al cambiar de campo
+function validarLongitudExacta(input) {
+    let inputValue = input.value.trim(); // Elimina espacios en blanco al inicio y al final
 
+    if (input.id === "Idusuario" || input.id === "Telefono") {
+        if (inputValue.length !== 10) {
+            alert("El campo " + input.placeholder + " debe tener 10 dígitos.");
+        }
+    }
+}
+
+// Manejador de evento para registrar el último campo modificado
+function registrarUltimoCampoModificado(input) {
+    ultimoCampoModificado = input.id;
+}
 </script>
+
+
+
 
 
                 <style>
