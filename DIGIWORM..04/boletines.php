@@ -221,7 +221,14 @@ endif;
     <?php
     include_once "Boletines/ListBoletines.php";
     ?>
-<?php elseif ($rol_usuario == 'Estudiante' || $rol_usuario == 'administrador'): ?>
+<?php elseif ($rol_usuario == 'Estudiante' ): ?>
+    <?php
+    include_once "Boletines/ListBoletines.php";
+    ?>
+<?php elseif ($rol_usuario == 'administrador'): ?>
+    <?php
+   include_once "Boletines/FormB.php";
+   ?>
     <?php
     include_once "Boletines/ListBoletines.php";
     ?>
