@@ -285,7 +285,7 @@ $Conexion->close();
             <div class="col-lg-4 mt-5 mt-lg-0">
                 <!-- Author Bio -->
                 <div class="d-flex flex-column text-center bg-primary rounded mb-5 py-5 px-4">
-                    <img src="img/user.jpg" class="img-fluid rounded-circle mx-auto mb-3" style="width: 100px;">
+                    <img src="../img/user.jpg" class="img-fluid rounded-circle mx-auto mb-3" style="width: 100px;">
                     <h3 class="text-secondary mb-3">Jose Demetrio Espino</h3>
                     <p class="text-white m-0">Estimado padres de familia, estudiantes y personal educativo, Les invito a participar activamente en las actividades educativas.juntos , podemos hacer de este añ escolar un exito para todos.</p>
                 </div>
@@ -309,14 +309,14 @@ $Conexion->close();
 
                 <!-- Single Image -->
                 <div class="mb-5">
-                    <img src="img/blog-1.jpg" alt="" class="img-fluid rounded">
+                    <img src="../img/blog-1.jpg" alt="" class="img-fluid rounded">
                 </div>
 
                 <!-- Recent Post -->
                 <div class="mb-5">
                     <h2 class="mb-4">Clases</h2>
                     <div class="d-flex align-items-center bg-light shadow-sm rounded overflow-hidden mb-3">
-                        <img class="img-fluid" src="img/post-1.jpg" style="width: 80px; height: 80px;">
+                        <img class="img-fluid" src="../img/post-1.jpg" style="width: 80px; height: 80px;">
                         <div class="pl-3">
                             <h5 class="">Clases de dibujo</h5>
                             <div class="d-flex">
@@ -325,7 +325,7 @@ $Conexion->close();
                         </div>
                     </div>
                     <div class="d-flex align-items-center bg-light shadow-sm rounded overflow-hidden mb-3">
-                        <img class="img-fluid" src="img/post-2.jpg" style="width: 80px; height: 80px;">
+                        <img class="img-fluid" src="../img/post-2.jpg" style="width: 80px; height: 80px;">
                         <div class="pl-3">
                             <h5 class="">Biblioteca</h5>
                             <div class="d-flex">
@@ -334,7 +334,7 @@ $Conexion->close();
                         </div>
                     </div>
                     <div class="d-flex align-items-center bg-light shadow-sm rounded overflow-hidden mb-3">
-                        <img class="img-fluid" src="img/post-3.jpg" style="width: 80px; height: 80px;">
+                        <img class="img-fluid" src="../img/post-3.jpg" style="width: 80px; height: 80px;">
                         <div class="pl-3">
                             <h5 class="">Grupos de lectura</h5>
                             <div class="d-flex">
@@ -346,7 +346,7 @@ $Conexion->close();
 
                 <!-- Single Image -->
                 <div class="mb-5">
-                    <img src="img/blog-2.jpg" alt="" class="img-fluid rounded">
+                    <img src="../img/blog-2.jpg" alt="" class="img-fluid rounded">
                 </div>
 
                 <!-- Tag Cloud -->
@@ -363,7 +363,7 @@ $Conexion->close();
 
                 <!-- Single Image -->
                 <div class="mb-5">
-                    <img src="img/blog-3.jpg" alt="" class="img-fluid rounded">
+                    <img src="../img/blog-3.jpg" alt="" class="img-fluid rounded">
                 </div>
 
                 <!-- Plain Text -->
