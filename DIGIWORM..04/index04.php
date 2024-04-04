@@ -124,33 +124,35 @@ if (isset($_GET['succes']) && $_GET['succes'] == 'Comentado') {
     <?php
 if ($rol_usuario == 'Coordinador'):
     echo '<a href="index04.php" class="nav-item nav-link active">Home</a>
-    <a href="Principal.php" class="nav-item nav-link">Principal</a>
+    <a href="Actividades.php" class="nav-item nav-link">Actividades</a>
         <a href="chat/login.php" class="nav-item nav-link">Chat</a>
         <a href="Foros.php" class="nav-item nav-link">Foros</a>
         <a href="Docentes.php" class="nav-item nav-link">Docentes</a>
-
+        
+        
         <div class="nav-item dropdown">
         <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
         <div class="dropdown-menu rounded-0 m-0">
              <a href="publicaciones/publicaciones.php" class="dropdown-item">Publicaciones</a>
-            <a href="Actividades.php" class="dropdown-item">Actividades</a>
             <a href="cursos.php" class="dropdown-item">Cursos</a>
+            <a href="visual_padres/index.php" class="dropdown-item">Estudiantes</a>
         </div>
     </div>';
     elseif($rol_usuario=='Estudiante') :
         if ($Curso_estudiante && intval($Curso_estudiante) < 601) {
             echo '<a href="index04.php" class="nav-item nav-link active">Home</a>
+            <a href="Actividades.php" class="nav-item nav-link">Actividades</a>
                   <a href="Foros.php" class="nav-item nav-link">Foros</a>
                   <div class="nav-item dropdown">
                       <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
                       <div class="dropdown-menu rounded-0 m-0">
                            <a href="publicaciones/publicaciones.php" class="dropdown-item">Publicaciones</a>
                           <a href="Actividades.php" class="dropdown-item">Actividades</a>
-                          <a href="boletines.php" class="dropdown-item">Boletines</a>
                       </div>
                   </div>';
         } else {
             echo '<a href="index04.php" class="nav-item nav-link active">Home</a>
+            <a href="Actividades.php" class="nav-item nav-link">Actividades</a>
                   <a href="chat/login.php" class="nav-item nav-link">Chat</a>
                   <a href="Foros.php" class="nav-item nav-link">Foros</a>
                   <div class="nav-item dropdown">
@@ -158,13 +160,12 @@ if ($rol_usuario == 'Coordinador'):
                       <div class="dropdown-menu rounded-0 m-0">
                            <a href="publicaciones/publicaciones.php" class="dropdown-item">Publicaciones</a>
                           <a href="Actividades.php" class="dropdown-item">Actividades</a>
-                          <a href="boletines.php" class="dropdown-item">Boletines</a>
                       </div>
                   </div>';
         }
         elseif($rol_usuario=='administrador') :
             echo '<a href="index04.php" class="nav-item nav-link active">Home</a>
-        <a href="Principal.php" class="nav-item nav-link">Principal</a>
+        <a href="Actividades.php" class="nav-item nav-link">Actividades</a>
             <a href="chat/login.php" class="nav-item nav-link">Chat</a>
             <a href="Foros.php" class="nav-item nav-link">Foros</a>
             <a href="Docentes.php" class="nav-item nav-link">Docentes</a>
@@ -172,7 +173,6 @@ if ($rol_usuario == 'Coordinador'):
             <div class="nav-item dropdown">
                 <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
                 <div class="dropdown-menu rounded-0 m-0">
-                    <a href="Actividades.php" class="dropdown-item">Actividades</a>
                     <a href="publicaciones/publicaciones.php" class="dropdown-item">Publicaciones</a>
                     <a href="Visual_padres" class="dropdown-item">Estudiantes</a>
                     <a href="boletines.php" class="dropdown-item">Boletines</a>
@@ -192,13 +192,13 @@ if ($rol_usuario == 'Coordinador'):
                 elseif($rol_usuario=='Docente') :
                     echo '
                     <a href="index04.php" class="nav-item nav-link active">Home</a>
+                    <a href="Actividades.php" class="nav-item nav-link">Actividades</a>
                     <a href="Foros.php" class="nav-item nav-link">Foros</a>
                     <a href="Docentes.php" class="nav-item nav-link">Docentes</a>
 
                     <div class="nav-item dropdown">
                     <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
                     <div class="dropdown-menu rounded-0 m-0">
-                        <a href="Actividades.php" class="dropdown-item">Actividades</a>
                         <a href="publicaciones/publicaciones.php" class="dropdown-item">Publicaciones</a>
                         <a href="Visual_padres" class="dropdown-item">Estudiantes</a>
                         <a href="boletines.php" class="dropdown-item">Boletines</a>
@@ -207,14 +207,13 @@ if ($rol_usuario == 'Coordinador'):
                     </div>';
 
         else: echo '<a href="index04.php" class="nav-item nav-link active">Home</a>
-        <a href="Principal.php" class="nav-item nav-link">Principal</a>
+        <a href="Actividades.php" class="nav-item nav-link">Actividades</a>
             <a href="chat/login.php" class="nav-item nav-link">Chat</a>
             <a href="Foros.php" class="nav-item nav-link">Foros</a>
             <a href="Docentes.php" class="nav-item nav-link">Docentes</a>
             <div class="nav-item dropdown">
                 <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
                 <div class="dropdown-menu rounded-0 m-0">
-                    <a href="Actividades.php" class="dropdown-item">Actividades</a>
                      <a href="publicaciones/publicaciones.php" class="dropdown-item">Publicaciones</a>
                     <a href="Visual_padres" class="dropdown-item">Datos Estudiantes</a>
                     <a href="Boletines/FormB.php" class="dropdown-item">Boletines</a>
@@ -457,6 +456,43 @@ endif;
         </div>
     </div>
     <!-- Class End -->
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5">
+                    <video class="img-fluid rounded mb-5 mb-lg-0" controls>
+                        <source src="img/video.mp4" type="video/mp4">
+                        Tu navegador no soporta el elemento de video.
+                    </video>
+                </div>
+                
+                <div class="col-lg-7">
+                    <p class="section-title pr-5"><span class="pr-2">APRENDE SOBRE NOSOTROS</span></p>
+                    <h1 class="mb-4">OFRECIENDO EL MEJOR SERVICIO</h1>
+                    <p>No veas los obstáculos como barreras, sino como puentes hacia el mañana. Cada desafío es una oportunidad para crecer y avanzar hacia tus metas.</p>
+                    <div class="row pt-2 pb-4">
+                        <div class="col-6 col-md-4">
+                            <img class="img-fluid rounded" src="img/about-2.jpg" alt="">
+                            
+                        </div>
+                        <div class="col-6 col-md-8">
+                            <ul class="list-inline m-0">
+                                <li class="py-2 border-top border-bottom"><i class="fa fa-check text-primary mr-3"></i>Inpirate</li>
+                                <li class="py-2 border-bottom"><i class="fa fa-check text-primary mr-3"></i>Sueña</li>
+                                <li class="py-2 border-bottom"><i class="fa fa-check text-primary mr-3"></i>Crece</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
 </form>
 
 
