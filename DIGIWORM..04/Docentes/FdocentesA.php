@@ -153,7 +153,7 @@ require_once "../modelo/conexion.php";
   <label for="jornada">Jornada:</label>
   <select name="jornada" id="jornada" required>
   <option value=""></option>
-    <option value="Mañana">Mañana</option>
+    <option value="Mañana">Mañana..</option>
     <option value="Tarde">Tarde</option>
   </select><br><br>
   
