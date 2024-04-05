@@ -171,8 +171,17 @@
           alert('Hubo un error al obtener los datos del docente');
         }
       }
+<<<<<<< Updated upstream
     };
     xhr.open('GET', 'obtener_datos_docente.php?id=' + idDocente, true);
     xhr.send();
   }
 </script>
+=======
+    }
+  };
+  xhr.open('GET', 'obtener_datos_docente.php?id=' + idDocente, true);
+  xhr.send();
+}
+</script>
+>>>>>>> Stashed changes
