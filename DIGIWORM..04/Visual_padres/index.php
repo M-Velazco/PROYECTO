@@ -1,3 +1,33 @@
+
+<?php
+// Inicia la sesión
+session_start();
+
+// Verifica si la variable de sesión 'Idusuario' está establecida para determinar si el usuario está conectado
+if(isset($_SESSION['Idusuario'])) {
+    $usuario_conectado = true;
+
+    // Crea una instancia de la clase Usuario y conecta a la base de datos
+    require_once "../modelo/USUARIO.php";
+    require_once "../modelo/conexion.php";
+    $objConexion = Conectarse();
+    $objUsuarios = new Usuario($objConexion);
+
+    // Obtiene el nombre del usuario basado en su ID
+    $nombre_usuario = $objUsuarios->obtenerNombreUsuario($_SESSION['Idusuario']);
+    $Curso_estudiante =$objUsuarios->obtenerNombreCurso( $_SESSION['Idusuario'] );
+
+    // Obtiene la ruta de la imagen de perfil del usuario
+    $ruta_imagen = $objUsuarios->obtenerRutaImagenUsuario($_SESSION['Idusuario']);
+    $rol_usuario = $objUsuarios->obtenerRolUsuario($_SESSION['Idusuario']);
+
+
+
+} else {
+    $usuario_conectado = false;
+    header( 'Location: form.php?error=nologeado' );
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -51,11 +81,11 @@
     <header>
         <div class="logo">
             <img src="imagenes\LOGO.png" alt="Logo">
-            <h3><a href="#" onclick="history.go(-3);" class="principal-link">Principal</a> <h3>
+            <h3><a href="#" onclick="history.go(-3);" class="principal-link">Principal</a></h3>
         </div>
 
         <h1>Bienvenido Padre de Familia</h1>
-        <p> <h2>Consulte aqui los datos personales del Estudiante<h2></p>
+        <p><h2>Consulte aqui los datos personales del Estudiante</h2></p>
     </header>
 
 
@@ -106,18 +136,16 @@
                     $resultUsuarios = $conn->query($sqlUsuarios);
 
                     // Verifica si se encontraron resultados en la tabla 'usuarios'
-                    if ($resultUsuarios->num_rows > 0) {
-                        $rowUsuarios = $resultUsuarios->fetch_assoc();
-                        echo "<tr><td>Rol:</td><td>" . $rowUsuarios["Rol"] . "</td></tr>";
-                    }
+                    
                 }
 
                 echo "</table>";
 
-                // Mostrar el botón de modificar
-                echo "<div id='modifyButton'>";
+                if ($rol_usuario == 'administrador'||$rol_usuario == 'Coordinador' || $rol_usuario =='Docente') {
+                    echo "<div id='modifyButton'>";
                 echo "<button onclick='modificarEstudiante($idEstudiante)'>Modificar</button>";
                 echo "</div>";
+                }else{}
             } else {
                 echo "<p style='margin: 0 auto; text-align: center; width: 50%;'>No se encontró ningún estudiante con ese ID.</p>";
             }
@@ -153,7 +181,7 @@
             // Redirigir a la página de modificación con el ID del estudiante
             window.location.href = "modificar.php?id=" + idEstudiante;
         }
-        
+
         // Función para mostrar el botón de modificar cuando se encuentra la información del estudiante
         window.onload = function() {
             var modifyButton = document.getElementById('modifyButton');
@@ -164,3 +192,5 @@
     </script>
 
 </body>
+
+</html>
