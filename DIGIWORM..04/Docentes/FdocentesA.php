@@ -3,50 +3,57 @@ require_once "../modelo/conexion.php";
 ?>
 
 <style>
-  /* Estilo para el formulario */
-  form {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #d0f0c0; /* Pastel green */
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
+    /* Estilo para el fondo */
+    body {
+      background-image: url('../img/datos.jpg'); /* Ruta a tu imagen de fondo */
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
 
-  /* Estilo para las etiquetas */
-  label {
-    display: block;
-    margin-bottom: 5px;
-    color: #333; /* Color de texto oscuro */
-  }
+    /* Estilo para el formulario */
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: rgba(110, 167, 253, 0.6); /* Pastel green con transparencia */
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
 
-  /* Estilo para los campos de entrada y selección */
-  input[type="text"],
-  input[type="email"],
-  select {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-  }
+    /* Estilo para las etiquetas */
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #333; /* Color de texto oscuro */
+    }
 
-  /* Estilo para el botón */
-  button {
-    padding: 10px 20px;
-    background-color: #4caf50; /* Green */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
+    /* Estilo para los campos de entrada y selección */
+    input[type="text"],
+    input[type="email"],
+    select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
 
-  /* Estilo para el botón cuando se pasa el mouse por encima */
-  button:hover {
-    background-color: #45a049; /* Darker green */
-  }
-</style>
+    /* Estilo para el botón */
+    button {
+      padding: 10px 20px;
+      background-color: #6BAF4C; /* Green */
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* Estilo para el botón cuando se pasa el mouse por encima */
+    button:hover {
+      background-color: #45E21E; /* Darker green */
+    }
+  </style>
 
 <form action="procesar_actualizacion.php" method="POST">
   <label for="id_docente">Seleccionar docente:</label>
