@@ -188,7 +188,7 @@ require_once "../modelo/conexion.php";
   .bottonc-content {
     display: none;
     position: absolute;
-    background-color: #f9f9f9;
+    background-color: #000000;
     min-width: 160px;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     z-index: 1;
@@ -202,7 +202,7 @@ require_once "../modelo/conexion.php";
   }
 
   .bottonc-content a:hover {
-    background-color: #588DFF;
+    background-color: #FFFFFF;
   }
 
   .bottonc:hover .bottonc-content {
@@ -210,7 +210,7 @@ require_once "../modelo/conexion.php";
   }
 
   .bottonc:hover .dropbtn {
-    background-color: #2c6611;
+    background-color: #6CF32E;
   }
 </style>
 </head>
@@ -219,7 +219,38 @@ require_once "../modelo/conexion.php";
 <div class="bottonc">
   <button class="bottonc">Agregar</button>
   <div class="bottonc-content">
-    <a href="#">Descripción</a>
+  <style>
+  /* Estilo para ocultar la caja de respuesta por defecto */
+  .respuesta {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+<a href="#" id="enlace-descripcion">Descripción</a>
+<div class="respuesta" id="caja-respuesta">
+  <input type="text" placeholder="Escribe tu respuesta aquí">
+</div>
+
+<script>
+  // Obtener el enlace de la descripción y la caja de respuesta
+  const enlaceDescripcion = document.getElementById('enlace-descripcion');
+  const cajaRespuesta = document.getElementById('caja-respuesta');
+
+  // Agregar un event listener para el clic en el enlace de descripción
+  enlaceDescripcion.addEventListener('click', function(event) {
+    // Evitar el comportamiento predeterminado del enlace
+    event.preventDefault();
+    
+    // Mostrar u ocultar la caja de respuesta
+    if (cajaRespuesta.style.display === 'none') {
+      cajaRespuesta.style.display = 'block';
+    } else {
+      cajaRespuesta.style.display = 'none';
+    }
+  });
+</script>
     <a href="#">Certificación</a>
   
   </div>

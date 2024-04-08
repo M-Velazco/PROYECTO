@@ -5,14 +5,14 @@
     padding: 20px;
     background-color: #d0f0c0; /* Pastel green */
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
   }
 
   /* Estilo para las etiquetas */
   label {
     display: block;
     margin-bottom: 5px;
-    color: #333; /* Color de texto oscuro */
+    color: #ffffff; /* Color de texto oscuro */
   }
 
   /* Estilo para los campos de entrada y selección */
