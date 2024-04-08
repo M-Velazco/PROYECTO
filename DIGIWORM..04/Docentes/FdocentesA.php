@@ -230,9 +230,14 @@ require_once "../modelo/conexion.php";
 </style>
 </head>
 
+<label for="Descripcion">Descripcion:</label>
+  <input type="text" id="Descripcion" name="Descripcion" readonly><br><br>
+  
+  <label for="Certificacion">Certificacion:</label>
+  <input type="text" id="Certificacion" name="Certificacion" readonly><br><br>
 
 <div class="bottoncx">
-  <select class="bottonc-select">
+  <select name="info" class="bottonc-select">
     <option value="">Agregar</option>
     <option value="descripcion">Descripción</option>
     <option value="certificacion">Certificación</option>
@@ -295,36 +300,23 @@ function mostrarDatosDocente(idDocente) {
 </script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        var SelectButtons = document.querySelectorAll('input[name="Rol"]');
-        var cursoField = document.getElementById('curso_field');
-        var materiaField = document.getElementById('materia_field');
-        var estadoField = document.getElementById('estado');
-        var jornadaField = document.getElementById('jornada_field');
+        var SelectButtons = document.querySelectorAll('select[name="info"]');
+        var cursoField = document.getElementById('Certificacion');
+        var materiaField = document.getElementById('Descripcion');
+        
 
         // Escuchar el cambio en los radios de opción de rol
         SelectButtons.forEach(function(SelectButton) {
             SelectButton.addEventListener('change', function() {
                 // Mostrar u ocultar campos según el rol seleccionado
-                if (this.value === 'Docente') {
-                    cursoField.style.display = 'none';
+                if (this.value === 'Certificacion') {
+                    cursoField.style.display = 'block';
                     materiaField.style.display = 'none';
-                    estadoField.style.display = 'none'; // Mostrar el campo de estado
-                    jornadaField.style.display = 'none'; // Ocultar el campo de jornada
-                } else if (this.value === 'Estudiante') {
+                    
+                } else if (this.value === 'Descripcion') {
                     cursoField.style.display = 'none'; // Mostrar el campo de curso
-                    materiaField.style.display = 'none'; // Ocultar el campo de materia
-                    estadoField.style.display = 'none'; // Ocultar el campo de estado
-                    jornadaField.style.display = 'none'; // Ocultar el campo de jornada
-                } else if (this.value === 'Coordinador') {
-                    cursoField.style.display = 'none';
-                    materiaField.style.display = 'none';
-                    estadoField.style.display = 'none'; // Mostrar el campo de estado
-                    jornadaField.style.display = 'none'; // Mostrar el campo de jornada
-                } else {
-                    cursoField.style.display = 'none';
-                    materiaField.style.display = 'none';
-                    estadoField.style.display = 'block'; // Mostrar el campo de estado
-                    jornadaField.style.display = 'none'; // Ocultar el campo de jornada
+                    materiaField.style.display = 'block'; // Ocultar el campo de materia
+                    
                 }
             });
         });

@@ -75,7 +75,7 @@
                 </div>
                 <div class="input-field">
                     <i class="fas fa-phone"></i>
-                    <input type="number" name="Telefono" id="Telefono" placeholder="Telefono" required  required oninput="limitarNumero(this, 10)" onblur="validarLongitudExacta(this)" onfocus="registrarUltimoCampoModificado(this)"/>
+                    <input type="number" name="Telefono" id="Telefono" placeholder="Telefono" required  required oninput="limitarNumero(this, 10)" onblur="validarLongitudExacta(this)" />
                 </div>
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
