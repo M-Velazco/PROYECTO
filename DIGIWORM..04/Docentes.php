@@ -233,16 +233,42 @@ endif;
             </div>
             <a href="Docentes/FdocentesA.php" >
 
-<button class="button-85" role="button">Modificar Datos</button>
+<br><button class="button-85" role="button">Modificar Datos</button>
                 </a>
+                <style>.button-85 {
+  align-items: center;
+  background-image: linear-gradient(144deg,#40FF50, #4271F3 50%,#00DDEB);
+  border: 0;
+  border-radius: 8px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  display: flex;
+  font-family: Phantomsans, sans-serif;
+  font-size: 20px;
+  justify-content: center;
+  line-height: 1em;
+  max-width: 100%;
+  min-width: 140px;
+  padding: 19px 24px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.button-85:active,
+.button-85:hover {
+  outline: 0;
+}
+</style>
+<br>
+
+
+
             <div class="row">
-
-
-
-
-
-
-
 
             <div class="col-md-6 col-lg-3 text-center team mb-5">
             <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
