@@ -38,7 +38,7 @@
   }
   a {
     padding: 10px 20px;
-    background-color: #DB1212; /* Green */
+    background-color: #4caf50; /* Green */
     color: white;
     border: none;
     border-radius: 5px;
@@ -48,9 +48,9 @@
 
   /* Estilo para el botón cuando se pasa el mouse por encima */
   a:hover {
-    background-color: #A50000; /* Darker green */
+    background-color: #2c6611; /* Darker green */
   }
   button:hover {
-    background-color: #45a049; /* Darker green */
+    background-color: #2c6611; /* Darker green */
   }
 

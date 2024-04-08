@@ -234,8 +234,10 @@ endif;
             <a href="Docentes/FdocentesA.php" >
 
 <br><button class="button-85" role="button">Modificar Datos</button>
+
                 </a>
-                <style>.button-85 {
+
+<style>.button-85 {
   align-items: center;
   background-image: linear-gradient(144deg,#40FF50, #4271F3 50%,#00DDEB);
   border: 0;
@@ -257,16 +259,13 @@ endif;
   touch-action: manipulation;
   white-space: nowrap;
   cursor: pointer;
-}
+  }
 
-.button-85:active,
-.button-85:hover {
-  outline: 0;
-}
-</style>
+    .button-85:active,
+    .button-85:hover {
+  outline: 0;}
+  </style>
 <br>
-
-
 
             <div class="row">
 
