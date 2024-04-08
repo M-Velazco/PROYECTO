@@ -217,12 +217,11 @@ require_once "../modelo/conexion.php";
 <body>
 
 <div class="bottonc">
-  <button class="bottonc">Agregar</button>
-  <div class="bottonc-content">
-  <a href="#">Descripción</a>
-    <a href="#">Certificación</a>
-  
-  </div>
+  <select class="bottonc-select">
+    <option value="">Agregar</option>
+    <option value="descripcion">Descripción</option>
+    <option value="certificacion">Certificación</option>
+  </select>
 </div>
 
 </body>
