@@ -194,6 +194,21 @@ require_once "../modelo/conexion.php";
     z-index: 1;
   }
 
+  .bottonc-select {
+    color: blue; /* Cambiar el color del texto */
+    background-color: #6BAF4C; /* Cambiar el color de fondo */
+    border: none; /* Cambiar el borde */
+    padding: 5px; /* Añadir relleno */
+    border-radius: 5px; /* Añadir bordes redondeados */
+  }
+  .bottonc-select:hover {
+    color: blue; /* Cambiar el color del texto */
+    background-color: #6CF32E; /* Cambiar el color de fondo */
+    border: none; /* Cambiar el borde */
+    padding: 5px; /* Añadir relleno */
+    border-radius: 5px; /* Añadir bordes redondeados */
+  }
+
   .bottonc-content a {
     color: black;
     padding: 12px 16px;
@@ -254,6 +269,43 @@ function mostrarDatosDocente(idDocente) {
   xhr.open('GET', 'obtener_datos_docente.php?id=' + idDocente, true);
   xhr.send();
 }
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var SelectButtons = document.querySelectorAll('input[name="Rol"]');
+        var cursoField = document.getElementById('curso_field');
+        var materiaField = document.getElementById('materia_field');
+        var estadoField = document.getElementById('estado');
+        var jornadaField = document.getElementById('jornada_field');
+
+        // Escuchar el cambio en los radios de opción de rol
+        SelectButtons.forEach(function(SelectButton) {
+            SelectButton.addEventListener('change', function() {
+                // Mostrar u ocultar campos según el rol seleccionado
+                if (this.value === 'Docente') {
+                    cursoField.style.display = 'none';
+                    materiaField.style.display = 'none';
+                    estadoField.style.display = 'none'; // Mostrar el campo de estado
+                    jornadaField.style.display = 'none'; // Ocultar el campo de jornada
+                } else if (this.value === 'Estudiante') {
+                    cursoField.style.display = 'none'; // Mostrar el campo de curso
+                    materiaField.style.display = 'none'; // Ocultar el campo de materia
+                    estadoField.style.display = 'none'; // Ocultar el campo de estado
+                    jornadaField.style.display = 'none'; // Ocultar el campo de jornada
+                } else if (this.value === 'Coordinador') {
+                    cursoField.style.display = 'none';
+                    materiaField.style.display = 'none';
+                    estadoField.style.display = 'none'; // Mostrar el campo de estado
+                    jornadaField.style.display = 'none'; // Mostrar el campo de jornada
+                } else {
+                    cursoField.style.display = 'none';
+                    materiaField.style.display = 'none';
+                    estadoField.style.display = 'block'; // Mostrar el campo de estado
+                    jornadaField.style.display = 'none'; // Ocultar el campo de jornada
+                }
+            });
+        });
+    });
 </script>
  
 </body>
