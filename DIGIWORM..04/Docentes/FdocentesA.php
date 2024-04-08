@@ -214,17 +214,40 @@ require_once "../modelo/conexion.php";
   }
 </style>
 </head>
-<body>
 
-<div class="bottonc">
+
+<div class="bottoncx">
   <select class="bottonc-select">
     <option value="">Agregar</option>
     <option value="descripcion">Descripción</option>
     <option value="certificacion">Certificación</option>
   </select>
+
+  
+    <style>
+  .bottoncx {
+    display: inline-block;
+    position: relative;
+  }
+
+  .bottoncx-select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .bottoncx-select:focus {
+    outline: none;
+  }
+
+  .bottoncx-select option {
+    padding: 10px;
+  }
+  </style>
 </div>
 
-</body>
+
   
   <a class="Button" href="../Docentes.php">Volver</a>
   <br>
