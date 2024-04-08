@@ -195,14 +195,14 @@ require_once "../modelo/conexion.php";
   }
 
   .bottonc-select {
-    color: blue; /* Cambiar el color del texto */
+    color: white; /* Cambiar el color del texto */
     background-color: #6BAF4C; /* Cambiar el color de fondo */
     border: none; /* Cambiar el borde */
     padding: 5px; /* Añadir relleno */
     border-radius: 5px; /* Añadir bordes redondeados */
   }
   .bottonc-select:hover {
-    color: blue; /* Cambiar el color del texto */
+    color: white; /* Cambiar el color del texto */
     background-color: #6CF32E; /* Cambiar el color de fondo */
     border: none; /* Cambiar el borde */
     padding: 5px; /* Añadir relleno */
