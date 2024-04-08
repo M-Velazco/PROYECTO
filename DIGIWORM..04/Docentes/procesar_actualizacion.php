@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "UPDATE docente SET Nombres='$nombres', Apellidos='$apellidos', Email='$email', Curso=$curso, Materia=$materia, Jornada='$jornada' WHERE idDocente=$id_docente";
 
     if ($conn->query($sql) === TRUE) {
-        echo "Los datos del docente se actualizaron correctamente";
+        header('Location: ../Docentes.php');
     } else {
         echo "Error al actualizar los datos del docente: " . $conn->error;
     }

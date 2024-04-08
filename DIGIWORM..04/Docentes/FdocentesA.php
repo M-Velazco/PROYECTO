@@ -1,9 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<style>
+  /* Estilo para el formulario */
+  form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #d0f0c0; /* Pastel green */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Estilo para las etiquetas */
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333; /* Color de texto oscuro */
+  }
+
+  /* Estilo para los campos de entrada y selección */
+  input[type="text"],
+  input[type="email"],
+  select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+
+  /* Estilo para el botón */
+  button {
+    padding: 10px 20px;
+    background-color: #4caf50; /* Green */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  a {
+    padding: 10px 20px;
+    background-color: #DB1212; /* Green */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  /* Estilo para el botón cuando se pasa el mouse por encima */
+  a:hover {
+    background-color: #A50000; /* Darker green */
+  }
+  button:hover {
+    background-color: #45a049; /* Darker green */
+  }
+</style>
 <?php 
 require_once "../modelo/conexion.php";
 ?>
 
 
 <form action="procesar_actualizacion.php" method="POST">
+
   <label for="id_docente">Seleccionar docente:</label>
   <select name="id_docente" id="id_docente" onchange="mostrarDatosDocente(this.value)" required>
   <option value=""></option>
@@ -113,6 +180,9 @@ require_once "../modelo/conexion.php";
   </select><br><br>
   
   <button type="submit">Actualizar</button>
+  <a class="Button" href="../Docentes.php">Volver</a>
+  <br>
+  
 </form>
 
 <script>
@@ -139,3 +209,6 @@ function mostrarDatosDocente(idDocente) {
   xhr.send();
 }
 </script>
+ 
+</body>
+</html>
