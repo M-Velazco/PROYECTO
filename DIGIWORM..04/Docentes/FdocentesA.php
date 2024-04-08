@@ -178,7 +178,55 @@ require_once "../modelo/conexion.php";
   </select><br><br>
   
   <button type="submit">Actualizar</button>
-  <button class="submit">Agregar</button>
+
+  <style>
+  .bottonc {
+    position: relative;
+    display: inline-block;
+  }
+
+  .bottonc-content {
+    display: none;
+    position: absolute;
+    background-color: #000000;
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+
+  .bottonc-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  .bottonc-content a:hover {
+    background-color: #FFFFFF;
+  }
+
+  .bottonc:hover .bottonc-content {
+    display: block;
+  }
+
+  .bottonc:hover .dropbtn {
+    background-color: #6CF32E;
+  }
+</style>
+</head>
+<body>
+
+<div class="bottonc">
+  <button class="bottonc">Agregar</button>
+  <div class="bottonc-content">
+  <a href="#">Descripción</a>
+    <a href="#">Certificación</a>
+  
+  </div>
+</div>
+
+</body>
+  
   <a class="Button" href="../Docentes.php">Volver</a>
   <br>
   
