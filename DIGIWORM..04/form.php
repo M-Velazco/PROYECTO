@@ -6,10 +6,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
-    
+
     <link rel="stylesheet" href="style04.css" />
     <title>Inicio de sesion</title>
-    
+
 </head>
 
 <body>
@@ -31,7 +31,7 @@
                 </div>
                 <a href="Restablecer_Contraseña.html" class="href" id="forgotPassword">
     Olvidé mi contraseña
-    
+
 </a>
 <script>
     // Obtener el elemento del enlace
@@ -41,13 +41,13 @@
     forgotPasswordLink.addEventListener("click", function(event) {
         // Prevenir el comportamiento predeterminado del enlace
         event.preventDefault();
-        
+
         // Redirigir al usuario a la URL especificada
         window.location.href = "Restablecer_Contraseña.html";
-    }); 
+    });
 </script>
 
-                
+
 
                 <input type="submit" value="Ingresar" class="btn solid" />
 
@@ -56,7 +56,8 @@
                 <h2 class="title">Registrarse</h2>
                 <div class="input-field">
                     <i class="fa-solid fa-id-card"></i>
-                    <input type="number" id="Idusuario" name="Idusuario" placeholder="Número Identificación" required oninput="limitarNumero(this, 10)" />
+                    <input type="number" id="Idusuario" name="Idusuario" placeholder="Número Identificación" required oninput="limitarNumero(this, 10)" onblur="validarLongitudExacta(this)" onfocus="registrarUltimoCampoModificado(this)" />
+
 
                 </div>
                 <div class="input-field">
@@ -70,11 +71,11 @@
                 <div class="input-field">
                     <i class="fas fa-envelope"></i>
                     <input type="email" id="Email" name="Email"placeholder="Correo electronico" required pattern="[a-zA-Z0-9._%+-]+@(gmail\.com|outlook\.com|hotmail\.com)" />
-                    
+
                 </div>
                 <div class="input-field">
                     <i class="fas fa-phone"></i>
-                    <input type="number" name="Telefono" id="Telefono" placeholder="Telefono" required  oninput="limitarNumero(this, 10)" pattern="\d{1,10}"/>
+                    <input type="number" name="Telefono" id="Telefono" placeholder="Telefono" required  required oninput="limitarNumero(this, 10)" onblur="validarLongitudExacta(this)" onfocus="registrarUltimoCampoModificado(this)"/>
                 </div>
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
@@ -84,19 +85,44 @@
                     <i class="fas fa-lock"></i>
                     <input type="file" id="img" name="img" placeholder="img" required />
                 </div>
-                
+
                 <script>
+// Variable para almacenar el último campo modificado
+let ultimoCampoModificado = null;
+
+// Función para limitar la cantidad de dígitos y validar la longitud exacta al cambiar de campo
 function limitarNumero(input, maxLength) {
-    if (input.value.length > maxLength) {
+    let inputValue = input.value.trim(); // Elimina espacios en blanco al inicio y al final
+
+    if (inputValue.length > maxLength) {
         input.value = input.value.slice(0, maxLength); // Limita el valor a los primeros maxLength caracteres
     }
+}
+
+// Función para validar la longitud exacta al cambiar de campo
+function validarLongitudExacta(input) {
+    let inputValue = input.value.trim(); // Elimina espacios en blanco al inicio y al final
+
+    if (input.id === "Idusuario" || input.id === "Telefono") {
+        if (inputValue.length !== 10) {
+            alert("El campo " + input.placeholder + " debe tener 10 dígitos.");
+        }
+    }
+}
+
+// Manejador de evento para registrar el último campo modificado
+function registrarUltimoCampoModificado(input) {
+    ultimoCampoModificado = input.id;
 }
 </script>
 
 
+
+
+
                 <style>
                        /* Ocultar el input de tipo file */
-   
+
     .input-field.custom {
         /* Estilos específicos para el input-field que deseas afectar */
         border: 2px solid transparent;
@@ -190,7 +216,7 @@ function limitarNumero(input, maxLength) {
                         ?>
                     </select>
                 </div>
-                
+
                 <div class="input-field" id="materia_field" style="display:none;">
                     <i class="fas fa-book"></i>
                     <select id="Materia" name="Materia">
@@ -235,7 +261,7 @@ function limitarNumero(input, maxLength) {
 
 
                 <div>
-                    <input type="checkbox"required/><a href="#" class="href"> <span class="rules-text">"Acepto los términos de servicio"</a></span> 
+                    <input type="checkbox"required/><a href="#" class="href"> <span class="rules-text">"Acepto los términos de servicio"</a></span>
                 </div>
 
                 <input type="submit" class="btn" value="Registro completo"/>

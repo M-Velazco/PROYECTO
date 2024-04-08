@@ -131,7 +131,7 @@ if (isset($_SESSION['Idusuario'])) {
     </style>
 </head>
 <body>
-<a href="javascript:history.go(-2);" class="boton">Salir</a>
+<a href="../foros.php" class="boton">Salir</a>
     <h2 style="text-align: center;">Crear Foro</h2>
     <?php if (!empty($mensaje)) : ?>
         <div style="text-align: center; color: <?php echo strpos($mensaje, "Error") !== false ? 'red' : 'green'; ?>;">
@@ -145,8 +145,8 @@ if (isset($_SESSION['Idusuario'])) {
         <textarea id="descripcion" name="descripcion" required></textarea><br><br>
         <label for="fecha_creacion">Fecha y hora de creación:</label>
         <input type="datetime-local" id="fecha_creacion" name="fecha_creacion" required><br><br>
-        <label for="archivos">Archivos adjuntos (opcional):</label>
-        <input type="file" id="archivos" name="archivos[]" multiple><br><br>
+        <label for="archivos">Archivos adjuntos (obligatorio al menos uno):</label>
+        <input type="file" id="archivos" name="archivos[]" multiple required><br><br>
         <input type="submit" value="Crear Foro">
     </form>
 
@@ -156,6 +156,12 @@ if (isset($_SESSION['Idusuario'])) {
             var fechaActual = new Date();
             if (fecha < fechaActual) {
                 alert("La fecha y hora de creación no puede ser anterior al día de hoy.");
+                return false;
+            }
+            // Validar que se haya seleccionado al menos un archivo
+            var archivos = document.getElementById("archivos").files;
+            if (archivos.length === 0) {
+                alert("Debe seleccionar al menos un archivo adjunto.");
                 return false;
             }
             return true;

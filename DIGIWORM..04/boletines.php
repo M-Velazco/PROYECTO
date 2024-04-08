@@ -17,13 +17,13 @@ if(isset($_SESSION['Idusuario'])) {
 
     // Obtiene el nombre del usuario basado en su ID
     $nombre_usuario = $objUsuarios->obtenerNombreUsuario($_SESSION['Idusuario']);
-    $Curso_estudiante =$objUsuarios->obtenerNombreCurso( $_SESSION['Idusuario'] ); 
+    $Curso_estudiante =$objUsuarios->obtenerNombreCurso( $_SESSION['Idusuario'] );
     // Obtiene la ruta de la imagen de perfil del usuario
     $ruta_imagen = $objUsuarios->obtenerRutaImagenUsuario($_SESSION['Idusuario']);
     $rol_usuario = $objUsuarios->obtenerRolUsuario($_SESSION['Idusuario']);
 
 
-    
+
 } else {
     $usuario_conectado = false;
     header( 'Location: form.php?error=nologeado' );
@@ -65,28 +65,28 @@ if(isset($_SESSION['Idusuario'])) {
     <div class="container-fluid bg-light position-relative shadow">
         <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0 px-lg-5">
             <a href="" class="navbar-brand font-weight-bold text-secondary" style="font-size: 50px;">
-                
+
             <span class="text-primary">DIGIWORM</span>
-                
+
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
     <div class="navbar-nav font-weight-bold mx-auto py-0">
-    <?php 
+    <?php
 if ($rol_usuario == 'Coordinador'):
     echo '<a href="index04.php" class="nav-item nav-link active">Home</a>
-    <a href="Principal.php" class="nav-item nav-link">Principal</a>
+    <a href="Actividades.php" class="nav-item nav-link">Actividades</a>
         <a href="chat/login.php" class="nav-item nav-link">Chat</a>
         <a href="Foros.php" class="nav-item nav-link">Foros</a>
         <a href="Docentes.php" class="nav-item nav-link">Docentes</a>
-        
+
         <div class="nav-item dropdown">
         <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
         <div class="dropdown-menu rounded-0 m-0">
              <a href="publicaciones/publicaciones.php" class="dropdown-item">Publicaciones</a>
-            <a href="Actividades.php" class="dropdown-item">Actividades</a>
+            
             <a href="cursos.php" class="dropdown-item">Cursos</a>
         </div>
     </div>';
@@ -94,47 +94,49 @@ if ($rol_usuario == 'Coordinador'):
         if ($Curso_estudiante && intval($Curso_estudiante) < 601) {
             echo '<a href="index04.php" class="nav-item nav-link active">Home</a>
                   <a href="Foros.php" class="nav-item nav-link">Foros</a>
+                  <a href="Actividades.php" class="nav-item nav-link">Actividades</a>
                   <div class="nav-item dropdown">
                       <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
                       <div class="dropdown-menu rounded-0 m-0">
                            <a href="publicaciones/publicaciones.php" class="dropdown-item">Publicaciones</a>
-                          <a href="Actividades.php" class="dropdown-item">Actividades</a>
+                          
                       </div>
                   </div>';
         } else {
             echo '<a href="index04.php" class="nav-item nav-link active">Home</a>
                   <a href="chat/login.php" class="nav-item nav-link">Chat</a>
                   <a href="Foros.php" class="nav-item nav-link">Foros</a>
+                  <a href="Actividades.php" class="nav-item nav-link">Actividades</a>
                   <div class="nav-item dropdown">
                       <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
                       <div class="dropdown-menu rounded-0 m-0">
                            <a href="publicaciones/publicaciones.php" class="dropdown-item">Publicaciones</a>
-                          <a href="Actividades.php" class="dropdown-item">Actividades</a>
+                          
                       </div>
                   </div>';
         }
         elseif($rol_usuario=='administrador') :
             echo '<a href="index04.php" class="nav-item nav-link active">Home</a>
-        <a href="Principal.php" class="nav-item nav-link">Principal</a>
+            <a href="Actividades.php" class="nav-item nav-link">Actividades</a>
             <a href="chat/login.php" class="nav-item nav-link">Chat</a>
             <a href="Foros.php" class="nav-item nav-link">Foros</a>
             <a href="Docentes.php" class="nav-item nav-link">Docentes</a>
-            
+
             <div class="nav-item dropdown">
                 <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
                 <div class="dropdown-menu rounded-0 m-0">
-                    <a href="Actividades.php" class="dropdown-item">Actividades</a>
+                    
                     <a href="publicaciones/publicaciones.php" class="dropdown-item">Publicaciones</a>
                     <a href="Visual_padres" class="dropdown-item">Estudiantes</a>
-                    
+
                     <a href="cursos.php" class="dropdown-item">Cursos</a>
 
                 </div>';
                 elseif($rol_usuario=='Padre_familia') :
                     echo '
                     <a href="index04.php" class="nav-item nav-link active">Home</a>
-                    
-                    
+
+
                     <div class="nav-item dropdown">
                 <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
                 <div class="dropdown-menu rounded-0 m-0">
@@ -144,27 +146,28 @@ if ($rol_usuario == 'Coordinador'):
                     echo '
                     <a href="index04.php" class="nav-item nav-link active">Home</a>
                     <a href="Foros.php" class="nav-item nav-link">Foros</a>
+                    <a href="Actividades.php" class="nav-item nav-link">Actividades</a>
                     
                     <div class="nav-item dropdown">
                     <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
                     <div class="dropdown-menu rounded-0 m-0">
-                        <a href="Actividades.php" class="dropdown-item">Actividades</a>
+                        
                         <a href="publicaciones/publicaciones.php" class="dropdown-item">Publicaciones</a>
                         <a href="Visual_padres" class="dropdown-item">Estudiantes</a>
-                        
+
                         <a href="cursos.php" class="dropdown-item">Cursos</a>
-                        
+
                     </div>';
-        
+
         else: echo '<a href="index04.php" class="nav-item nav-link active">Home</a>
-        <a href="Principal.php" class="nav-item nav-link">Principal</a>
+        <a href="Actividades.php" class="nav-item nav-link">Actividades</a>
             <a href="chat/login.php" class="nav-item nav-link">Chat</a>
             <a href="Foros.php" class="nav-item nav-link">Foros</a>
             <a href="Docentes.php" class="nav-item nav-link">Docentes</a>
             <div class="nav-item dropdown">
                 <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
                 <div class="dropdown-menu rounded-0 m-0">
-                    <a href="Actividades.php" class="dropdown-item">Actividades</a>
+                    
                      <a href="publicaciones/publicaciones.php" class="dropdown-item">Publicaciones</a>
                     <a href="Visual_padres" class="dropdown-item">Datos Estudiantes</a>
                     <a href="Boletines/FormB.php" class="dropdown-item">Boletines</a>
@@ -172,9 +175,9 @@ if ($rol_usuario == 'Coordinador'):
 endif;
 ?>
 
-       
+
             </div>
-        
+
     </div>
     <div class="navbar-nav font-weight-bold mx-auto py-0">
         <div class="DatosU">
@@ -186,13 +189,13 @@ endif;
                 <?php endif; ?>
                 <a href="Datos.php">
                 <?php echo $nombre_usuario."-". $rol_usuario." "; ?>.</a>
-                
-                
+
+
                 <br>
-                
+
                 <a href="modelo/CerrarSession.php" style="">Cerrar sesion</a>
             </p>
-            
+
         </div>
     </div>
 </div>
@@ -210,21 +213,29 @@ endif;
             <p class="m-0"><a class="text-white" href="index04.php">Home</a></p>
                 <p class="m-0 px-2">/</p>
             </div>
-        
+
         </div>
     </div>
-    <!-- Header End -->
-
+    <?php if ($rol_usuario == 'Docente' || $rol_usuario == 'Coordinador'): ?>
     <?php
-include_once "Boletines/FormB.php"            
-    ?>
-            
-    <?php
-include_once "Boletines/ListBoletines.php"            
+    include_once "Boletines/FormB.php";
     ?>
 
-    
-   
+    <?php
+    include_once "Boletines/ListBoletines.php";
+    ?>
+<?php elseif ($rol_usuario == 'Estudiante' ): ?>
+    <?php
+    include_once "Boletines/ListBoletines.php";
+    ?>
+<?php elseif ($rol_usuario == 'administrador'): ?>
+    <?php
+   include_once "Boletines/FormB.php";
+   ?>
+    <?php
+    include_once "Boletines/ListBoletines.php";
+    ?>
+<?php endif; ?>
 
 
     <!-- Footer Start -->
@@ -232,7 +243,7 @@ include_once "Boletines/ListBoletines.php"
         <div class="row pt-5">
             <div class="col-lg-3 col-md-6 mb-5">
                 <a href="" class="navbar-brand font-weight-bold text-primary m-0 mb-4 p-0" style="font-size: 40px; line-height: 40px;">
-                    
+
                     <span class="text-white">DIGIWORM</span>
                 </a>
                 <p>"Confía en tu capacidad para superar los desafíos y alcanzar tus metas. Eres más fuerte y más capaz de lo que imaginas.".</p>
@@ -277,7 +288,7 @@ include_once "Boletines/ListBoletines.php"
                     </div>
                 </div>
             </div>
-            
+
             <div class="col-lg-3 col-md-6 mb-5">
                 <h3 class="text-primary mb-4">Regresar</h3>
                 <div class="d-flex flex-column justify-content-start">
@@ -286,24 +297,24 @@ include_once "Boletines/ListBoletines.php"
                     <a class="text-white mb-2" href="Publicaciones.html"><i class="fa fa-angle-right mr-2"></i>Publicaciones</a>
                     <a class="text-white mb-2" href="Docentes.html"><i class="fa fa-angle-right mr-2"></i>Docentes</a>
                     <a class="text-white mb-2" href="Foros.html"><i class="fa fa-angle-right mr-2"></i>Foros</a>
-                    
+
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
                 <h3 class="text-primary mb-4">BLOG RECIENTE</h3>
                 <form action="">
-                    
+
                     <div>
                         <button class="btn btn-primary btn-block border-0 py-3" type="submit">Muchos niños tienen problemas en la escuela, porque la manera en la que enseñan es incompatible con la manera en la que aprenden.</button>
                     </div>
                 </form>
-                
+
             </div>
         </div>
         <div class="container-fluid pt-5" style="border-top: 1px solid rgba(23, 162, 184, .2);;">
             <p class="m-0 text-center text-white">
                 &copy; <a class="text-primary font-weight-bold" href="https://redacademica.edu.co/terminos-y-condiciones">Terminos y Condiciones</a>  -----
-                
+
                 <a class="text-primary font-weight-bold" href="https://www.educacionbogota.edu.co/portal_institucional/transparencia-politicas-lineamientos-manuales-sectoriales-institucionales">Politicas de Privacidad</a>
             </p>
         </div>

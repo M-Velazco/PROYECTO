@@ -6,11 +6,11 @@ session_start();
 // Verifica si el usuario está conectado
 if(isset($_SESSION['Idusuario'])) {
     $usuario_conectado = true;
-    
+
     // Incluye el archivo de conexión a la base de datos
     require_once "../modelo/conexion.php";
     $objConexion = Conectarse(); // Función para establecer la conexión
-    
+
     if(isset($_POST['registrar'])) {
         // Se ha enviado el formulario
 
@@ -25,9 +25,9 @@ if(isset($_SESSION['Idusuario'])) {
             $ruta_temporal = $_FILES['Archivo']['tmp_name'];
             $tamano_archivo = $_FILES['Archivo']['size'];
 
-            // Verificar si el archivo es un PDF o un documento Word
+            // Verificar si el archivo es un PDF, un documento Word o una imagen
             $extension = pathinfo($nombre_archivo, PATHINFO_EXTENSION);
-            if($extension == 'pdf' || $extension == 'docx' || $extension == 'doc') {
+            if($extension == 'pdf' || $extension == 'docx' || $extension == 'doc' || in_array($extension, ['jpg', 'jpeg', 'png', 'gif'])) {
                 // Generar un nombre único para el archivo
                 $nombre_unico = uniqid('publicacion_') . '.' . $extension;
 
@@ -48,7 +48,7 @@ if(isset($_SESSION['Idusuario'])) {
                     echo "Error al mover el archivo.";
                 }
             } else {
-                echo "Formato de archivo no admitido. Solo se admiten archivos PDF y documentos Word.";
+                echo "Formato de archivo no admitido. Solo se admiten archivos PDF, documentos Word e imágenes.";
             }
         } else {
             echo "Error al cargar el archivo.";

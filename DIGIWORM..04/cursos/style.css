@@ -1,0 +1,40 @@
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    background-image: url('../img/datos.jpg');
+    background-size: cover;
+    border-radius: 20px; /* Ajusta el valor según el nivel de redondez que desees */
+}
+
+.styled-table th, 
+.styled-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.styled-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    text-align: left;
+}
+
+.styled-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.styled-table tr:hover {
+    background-color: #ddd;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 95px; 
+    height: 95px; 
+    border-radius: 50%; 
+    margin-right: 10px;
+}

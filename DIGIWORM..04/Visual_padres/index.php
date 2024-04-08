@@ -51,11 +51,11 @@
     <header>
         <div class="logo">
             <img src="imagenes\LOGO.png" alt="Logo">
-            <h3><a href="#" onclick="history.go(-1);" class="principal-link">Principal</a> <h3>
+            <h3><a href="#" onclick="history.go(-3);" class="principal-link">Principal</a> <h3>
         </div>
 
         <h1>Bienvenido Padre de Familia</h1>
-        <p> <h2>Consulte aqui los datos personales de su hij@<h2></p>
+        <p> <h2>Consulte aqui los datos personales del Estudiante<h2></p>
     </header>
 
 

@@ -77,51 +77,48 @@ if(isset($_SESSION['Idusuario'])) {
     <?php 
 if ($rol_usuario == 'Coordinador'):
     echo '<a href="index04.php" class="nav-item nav-link active">Home</a>
-    <a href="Principal.php" class="nav-item nav-link">Principal</a>
+    <a href="Actividades.php" class="nav-item nav-link">Actividades</a>
     
     <div class="nav-item dropdown">
         <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
         <div class="dropdown-menu rounded-0 m-0">
-            
-            <a href="Actividades.php" class="dropdown-item">Actividades</a>
             <a href="cursos.php" class="dropdown-item">Cursos</a>
         </div>
     </div>';
     elseif($rol_usuario=='Estudiante') :
         if ($Curso_estudiante && intval($Curso_estudiante) < 601) {
             echo '<a href="index04.php" class="nav-item nav-link active">Home</a>
+            <a href="Actividades.php" class="nav-item nav-link">Actividades</a>
                   <a href="Foros.php" class="nav-item nav-link">Foros</a>
                   <div class="nav-item dropdown">
                       <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
                       <div class="dropdown-menu rounded-0 m-0">
                           
-                          <a href="Actividades.php" class="dropdown-item">Actividades</a>
                       </div>
                   </div>';
         } else {
             echo '<a href="index04.php" class="nav-item nav-link active">Home</a>
+            <a href="Actividades.php" class="nav-item nav-link">Actividades</a>
                   <a href="chat/login.php" class="nav-item nav-link">Chat</a>
                   <a href="Foros.php" class="nav-item nav-link">Foros</a>
                   <div class="nav-item dropdown">
                       <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
                       <div class="dropdown-menu rounded-0 m-0">
                           
-                          <a href="Actividades.php" class="dropdown-item">Actividades</a>
                       </div>
                   </div>';
         }
         elseif($rol_usuario=='administrador') :
             echo '<a href="index04.php" class="nav-item nav-link active">Home</a>
-        <a href="Principal.php" class="nav-item nav-link">Principal</a>
+            <a href="Actividades.php" class="nav-item nav-link">Actividades</a>
             <a href="chat/login.php" class="nav-item nav-link">Chat</a>
             <a href="Foros.php" class="nav-item nav-link">Foros</a>
             <a href="Docentes.php" class="nav-item nav-link">Docentes</a>
             <div class="nav-item dropdown">
                 <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
                 <div class="dropdown-menu rounded-0 m-0">
-                    <a href="Actividades.php" class="dropdown-item">Actividades</a>
                     
-                    <a href="Visual_padres" class="dropdown-item">Padres de Familia</a>
+                    <a href="Visual_padres" class="dropdown-item">Estudiantes</a>
                     <a href="Boletines/FormB.php" class="dropdown-item">Boletines</a>
                     <a href="cursos.php" class="dropdown-item">Cursos</a>
                 </div>';
@@ -133,17 +130,17 @@ if ($rol_usuario == 'Coordinador'):
                     <div class="nav-item dropdown">
                 <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
                 <div class="dropdown-menu rounded-0 m-0">
-                    <a href="Visual_padres" class="dropdown-item">Padres de Familia</a>
+                    <a href="Visual_padres" class="dropdown-item">Estudiantes</a>
                 </div>';
                 elseif($rol_usuario=='Docente') :
                     echo '
                     <a href="index04.php" class="nav-item nav-link active">Home</a>
+                    <a href="Actividades.php" class="nav-item nav-link">Actividades</a>
                     <a href="Foros.php" class="nav-item nav-link">Foros</a>
                     
                     <div class="nav-item dropdown">
                     <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
                     <div class="dropdown-menu rounded-0 m-0">
-                        <a href="Actividades.php" class="dropdown-item">Actividades</a>
                         
                         <a href="Visual_padres" class="dropdown-item">Estudiantes</a>
                         <a href="Boletines/FormB.php" class="dropdown-item">Boletines</a>
@@ -151,16 +148,15 @@ if ($rol_usuario == 'Coordinador'):
                     </div>';
         
         else: echo '<a href="index04.php" class="nav-item nav-link active">Home</a>
-        <a href="Principal.php" class="nav-item nav-link">Principal</a>
+        <a href="Actividades.php" class="nav-item nav-link">Actividades</a>
             <a href="chat/login.php" class="nav-item nav-link">Chat</a>
             <a href="Foros.php" class="nav-item nav-link">Foros</a>
             <a href="Docentes.php" class="nav-item nav-link">Docentes</a>
             <div class="nav-item dropdown">
                 <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
                 <div class="dropdown-menu rounded-0 m-0">
-                    <a href="Actividades.php" class="dropdown-item">Actividades</a>
                     
-                    <a href="Visual_padres" class="dropdown-item">Padres de Familia</a>
+                    <a href="Visual_padres" class="dropdown-item">Estudiantes</a>
                     <a href="Boletines/FormB.php" class="dropdown-item">Boletines</a>
                 </div>';
 endif;
