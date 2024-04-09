@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Obtener el nombre y la extensión del archivo
         $nombre_archivo = basename($_FILES["Archivo"]["name"]);
         $archivo_destino = $carpeta_destino . $nombre_archivo;
-        $arcivo_
+        $archivo_Bd = "Docentes/files/".$nombre_archivo;
         // Mover el archivo a la carpeta de destino
         if (move_uploaded_file($_FILES["Archivo"]["tmp_name"], $archivo_destino)) {
             // El archivo se ha movido correctamente, ahora procedemos a la inserción en la base de datos
@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Consulta SQL para actualizar los datos del docente
             $sql = "UPDATE docente SET Nombres=?, Apellidos=?, Email=?, Curso=?, Materia=?, Jornada=?, Certificacion=?, Desc_prof=? WHERE idDocente=?";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("sssiisssi", $nombres, $apellidos, $email, $curso, $materia, $jornada, $archivo_destino, $Descripcion, $id_docente);
+            $stmt->bind_param("sssiisssi", $nombres, $apellidos, $email, $curso, $materia, $jornada, $archivo_Bd, $Descripcion, $id_docente);
 
             if ($stmt->execute()) {
                 header('Location: ../Docentes.php');
