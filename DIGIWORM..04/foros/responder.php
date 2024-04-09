@@ -97,6 +97,7 @@ if (isset($_SESSION['Idusuario'])) {
             color: white;
             cursor: pointer;
             font-size: 16px;
+            margin-top: 10px; /* Espacio adicional arriba del botón */
         }
         input[type="submit"]:hover {
             background-color: #45a049; /* Cambio de color al pasar el ratón */
@@ -110,13 +111,27 @@ if (isset($_SESSION['Idusuario'])) {
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
-            position: absolute;
-            top: 20px;
-            left: 20px;
+            margin-top: 10px; /* Espacio adicional arriba del botón */
+            display: inline-block; /* Para que el botón no ocupe toda la línea */
+            text-decoration: none; /* Quitar subrayado del enlace */
         }
         .boton:hover {
             background-color: #45a049;
             /* Cambio de color al pasar el ratón */
+        }
+        .mensaje {
+            text-align: center;
+            margin-top: 10px; /* Espacio adicional arriba del mensaje */
+            padding: 5px; /* Espacio alrededor del mensaje */
+            border-radius: 4px; /* Bordes redondeados */
+        }
+        .error {
+            background-color: #ffcccc; /* Color de fondo rojo claro */
+            color: #cc0000; /* Color de texto rojo oscuro */
+        }
+        .exito {
+            background-color: #ccffcc; /* Color de fondo verde claro */
+            color: #009900; /* Color de texto verde oscuro */
         }
     </style>
 </head>
@@ -124,7 +139,7 @@ if (isset($_SESSION['Idusuario'])) {
     <a href="javascript:history.go(-3);" class="boton">Salir</a>
     <h2 style="text-align: center;">Responder Foro</h2>
     <?php if (!empty($mensaje)) : ?>
-        <div style="text-align: center; color: <?php echo strpos($mensaje, "Error") !== false ? 'red' : 'green'; ?>;">
+        <div class="mensaje <?php echo strpos($mensaje, "Error") !== false ? 'error' : 'exito'; ?>">
             <?php echo $mensaje; ?>
         </div>
     <?php endif; ?>
@@ -141,6 +156,16 @@ if (isset($_SESSION['Idusuario'])) {
         if ($result_contenido->num_rows > 0) {
             $row_contenido = $result_contenido->fetch_assoc();
             echo '<textarea name="contenido" rows="4" cols="50" readonly>' . $row_contenido['Contenido'] . '</textarea><br><br>';
+
+            // Mostrar enlace de descarga si hay un archivo asociado
+            $sql_archivo = "SELECT Archivo FROM foros WHERE Titulo = '$titulo'";
+            $result_archivo = $conn->query($sql_archivo);
+            if ($result_archivo->num_rows > 0) {
+                $row_archivo = $result_archivo->fetch_assoc();
+                if (!empty($row_archivo['Archivo'])) {
+                    echo '<p><a href="../archivos/' . $row_archivo['Archivo'] . '" class="boton" download>Descargar Archivo</a></p>';
+                }
+            }
         } else {
             echo "No se encontró el foro especificado.";
         }
@@ -151,3 +176,4 @@ if (isset($_SESSION['Idusuario'])) {
     </form>
 </body>
 </html>
+

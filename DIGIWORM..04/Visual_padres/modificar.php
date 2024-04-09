@@ -1,9 +1,39 @@
+<?php
+// Inicia la sesión
+session_start();
+
+// Verifica si la variable de sesión 'Idusuario' está establecida para determinar si el usuario está conectado
+if(isset($_SESSION['Idusuario'])) {
+    $usuario_conectado = true;
+
+    // Crea una instancia de la clase Usuario y conecta a la base de datos
+    require_once "../modelo/USUARIO.php";
+    require_once "../modelo/conexion.php";
+    $objConexion = Conectarse();
+    $objUsuarios = new Usuario($objConexion);
+
+    // Obtiene el nombre del usuario basado en su ID
+    $nombre_usuario = $objUsuarios->obtenerNombreUsuario($_SESSION['Idusuario']);
+    $Curso_estudiante = $objUsuarios->obtenerNombreCurso($_SESSION['Idusuario']);
+
+    // Obtiene la ruta de la imagen de perfil del usuario
+    $ruta_imagen = $objUsuarios->obtenerRutaImagenUsuario($_SESSION['Idusuario']);
+    $rol_usuario = $objUsuarios->obtenerRolUsuario($_SESSION['Idusuario']);
+
+} else {
+    $usuario_conectado = false;
+    header('Location: form.php?error=nologeado');
+    exit; // Termina la ejecución del script después de redirigir
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <style>
         /* Estilos del formulario */
         form {
@@ -21,13 +51,17 @@
         }
 
         input[type="email"],
-        input[type="text"] {
+        input[type="text"],
+        input[type="number"],
+        select {
             width: 100%;
             padding: 10px;
             margin-bottom: 15px;
             border: 1px solid #ccc;
             border-radius: 5px;
             background-color: #fff; /*  color de fondo */
+            
+            
         }
 
         input[readonly] {
@@ -46,6 +80,11 @@
         input[type="submit"]:hover {
             background-color: #0056b3;
         }
+
+        .error {
+            color: red;
+            margin-top: 5px;
+        }
     </style>
 </head>
 
@@ -56,21 +95,32 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["email"]) && isset($_POST["idEstudiante"])) {
         $nuevoEmail = $_POST["email"];
         $idEstudiante = $_POST["idEstudiante"];
-    
-        // Actualiza el email del estudiante en la base de datos
-        $sqlActualizarEmail = "UPDATE estudiante SET Email='$nuevoEmail' WHERE idEstudiante=$idEstudiante";
-    
-        if ($conn->query($sqlActualizarEmail) === TRUE) {
-            echo "<script>alert('Email actualizado correctamente'); window.location.href = '/PROYECTO/DIGIWORM..04/Visual_padres/index.php';</script>";
+        $nuevoCurso = $_POST["curso"];
+        $nuevoEstado = $_POST["estado"];
+
+        // Verificar si los campos de "Curso" y "Estado" están vacíos
+        if (empty($nuevoCurso) || empty($nuevoEstado)) {
+            $error = "Los campos de Curso y Estado son obligatorios.";
         } else {
-            echo "<p>Error al actualizar el email: " . $conn->error . "</p>";
+            // Validar que el campo "Curso" solo contenga cuatro dígitos
+            if (!preg_match('/^\d{3}$/', $nuevoCurso)) {
+                $error = "El campo Curso debe contener exactamente cuatro dígitos.";
+            } else {
+                // Actualiza el email, curso y estado del estudiante en la base de datos
+                $sqlActualizar = "UPDATE estudiante SET Email='$nuevoEmail', Curso='$nuevoCurso', Estado='$nuevoEstado' WHERE idEstudiante=$idEstudiante";
+
+                if ($conn->query($sqlActualizar) === TRUE) {
+                    echo "<script>alert('Información actualizada correctamente'); window.location.href = '/PROYECTO/DIGIWORM..04/Visual_padres/index.php';</script>";
+                } else {
+                    echo "<p>Error al actualizar la información: " . $conn->error . "</p>";
+                }
+            }
         }
-    
+
         $conn->close();
     }
-    
+
     // Resto del código
-    
 
     // Verificar si se ha enviado un ID de estudiante
     if (isset($_GET["id"])) {
@@ -88,21 +138,38 @@
     }
     ?>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-        <label for="id">ID:</label>
-        <input type="text" id="id" name="id" value="<?php echo isset($rowEstudiante['idEstudiante']) ? $rowEstudiante['idEstudiante'] : ''; ?>" readonly>
-        <label for="nombres">Nombres:</label>
-        <input type="text" id="nombres" name="nombres" value="<?php echo isset($rowEstudiante['Nombres']) ? $rowEstudiante['Nombres'] : ''; ?>" readonly>
-        <label for="apellidos">Apellidos:</label>
-        <input type="text" id="apellidos" name="apellidos" value="<?php echo isset($rowEstudiante['Apellidos']) ? $rowEstudiante['Apellidos'] : ''; ?>" readonly>
-        <label for="curso">Curso:</label>
-        <input type="text" id="curso" name="curso" value="<?php echo isset($rowEstudiante['Curso']) ? $rowEstudiante['Curso'] : ''; ?>" readonly>
-        <label for="estado">Estado:</label>
-        <input type="text" id="estado" name="estado" value="<?php echo isset($rowEstudiante['Estado']) ? $rowEstudiante['Estado'] : ''; ?>" readonly>
+    <label for="id">ID:</label>
+    <input type="text" id="id" name="id" value="<?php echo isset($rowEstudiante['idEstudiante']) ? $rowEstudiante['idEstudiante'] : ''; ?>" readonly>
+    <label for="nombres">Nombres:</label>
+    <input type="text" id="nombres" name="nombres" value="<?php echo isset($rowEstudiante['Nombres']) ? $rowEstudiante['Nombres'] : ''; ?>" readonly>
+    <label for="apellidos">Apellidos:</label>
+    <input type="text" id="apellidos" name="apellidos" value="<?php echo isset($rowEstudiante['Apellidos']) ? $rowEstudiante['Apellidos'] : ''; ?>" readonly>
+
+    <?php if ($rol_usuario == 'administrador'): ?>
         <label for="email">Correo Electrónico:</label>
         <input type="email" id="email" name="email" value="<?php echo isset($_POST['email']) ? $_POST['email'] : (isset($rowEstudiante['Email']) ? $rowEstudiante['Email'] : ''); ?>" required>
-        <input type="hidden" name="idEstudiante" value="<?php echo isset($_GET['id']) ? $_GET['id'] : ''; ?>">
-        <input type="submit" value="Guardar Cambios">
-    </form>
+    <?php else: ?>
+        <label for="email">Correo Electrónico:</label>
+        <input type="email" id="email" name="email" value="<?php echo isset($rowEstudiante['Email']) ? $rowEstudiante['Email'] : ''; ?>" readonly>
+    <?php endif; ?>
+
+    <?php if ($rol_usuario == 'administrador' || $rol_usuario == 'Coordinador' || $rol_usuario == 'Docente'): ?>
+        <label for="curso">Curso:</label>
+        <input type="number" id="curso" name="curso" value="<?php echo isset($rowEstudiante['Curso']) ? $rowEstudiante['Curso'] : ''; ?>" required>
+        <label for="estado">Estado:</label>
+        <select id="estado" name="estado" required>
+            <option value="Activo" <?php echo (isset($rowEstudiante['Estado']) && $rowEstudiante['Estado'] == 'Activo') ? 'selected' : ''; ?>>Activo</option>
+            <option value="Inactivo" <?php echo (isset($rowEstudiante['Estado']) && $rowEstudiante['Estado'] == 'Inactivo') ? 'selected' : ''; ?>>Inactivo</option>
+        </select>
+    <?php endif; ?>
+
+    <input type="hidden" name="idEstudiante" value="<?php echo isset($_GET['id']) ? $_GET['id'] : ''; ?>">
+    <input type="submit" value="Guardar Cambios">
+    <?php if(isset($error)): ?>
+        <p class="error"><?php echo $error; ?></p>
+    <?php endif; ?>
+</form>
+
 </body>
 
 </html>

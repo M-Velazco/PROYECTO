@@ -82,47 +82,44 @@ if (isset($_SESSION['Idusuario'])) {
 <body>
 <a href="javascript:history.go(-1);" class="boton">Salir</a>
     <h1>Foros</h1>
-   
-    <div class="foro">
-        <?php
-        // Conexión a la base de datos y consulta de las materias
-        $conexion = new mysqli("localhost", "root", "sena", "digiworm_04");
-        if ($conexion->connect_error) {
-            die("Error de conexión: " . $conexion->connect_error);
-        }
-        $consulta = $conexion->query("SELECT * FROM foros");
-        
-        // Generar las opciones del select
-        while ($fila = $consulta->fetch_assoc()) {
-            $Nombres_FU = $objUsuarios->obtenerNombreUsuario($fila['idusuario']);
-            ?>
-            <h2>
-                <?php echo $fila['Titulo']; ?>
-            </h2>
-            <p><strong>Fecha de creación:</strong>
-                <?php echo $fila['Fecha_Hora']; ?>
-            </p>
-            <p><strong>Creado por:</strong>
-                <?php echo $Nombres_FU; ?>
-            </p>
-            <?php if($rol_usuario == "Docente"): ?>
-            <a href="responder.php?titulo=<?php echo urlencode($fila['Titulo']); ?>" class="boton">Responder Foro</a>
-            <a href="editar.php?idForos=<?php echo $fila['idForos']; ?>" class="boton">Editar Foro</a>
-            <?php elseif($rol_usuario == "Estudiante"): ?>
-                <a href="responder.php?titulo=<?php echo urlencode($fila['Titulo']); ?>" class="boton">Responder Foro</a>
-                <?php elseif($rol_usuario == "administrador"): ?>
-                    <a href="" class="boton">Responder Foro</a>
-            <a href="" class="boton">Editar Foro</a>
-            <?php else: ?>
 
-                <?php endif; ?>
 
-            <?php
-        }
+<div class="foro">
+    <?php
+    // Conexión a la base de datos y consulta de las materias
+    $conexion = new mysqli("localhost", "root", "sena", "digiworm_04");
+    if ($conexion->connect_error) {
+        die("Error de conexión: " . $conexion->connect_error);
+    }
+    $consulta = $conexion->query("SELECT * FROM foros");
 
-        // Cerrar la conexión
-        $conexion->close();
+    // Generar las opciones del select
+    while ($fila = $consulta->fetch_assoc()) {
+        $Nombres_FU = $objUsuarios->obtenerNombreUsuario($fila['idusuario']);
         ?>
-    </div>
+        <h2><?php echo $fila['Titulo']; ?></h2>
+        <p><strong>Contenido:</strong> <?php echo $fila['Contenido']; ?></p>
+        <p><strong>Fecha de creación:</strong> <?php echo $fila['Fecha_Hora']; ?></p>
+        <p><strong>Creado por:</strong> <?php echo $Nombres_FU; ?></p>
+
+        <?php if($rol_usuario == "Docente"): ?>
+        <a href="responder.php?titulo=<?php echo urlencode($fila['Titulo']); ?>" class="boton">Responder Foro</a>
+        <a href="editar.php?idForos=<?php echo $fila['idForos']; ?>" class="boton">Editar Foro</a>
+        <?php elseif($rol_usuario == "Estudiante"): ?>
+            <a href="responder.php?titulo=<?php echo urlencode($fila['Titulo']); ?>" class="boton">Responder Foro</a>
+        <?php elseif($rol_usuario == "administrador"): ?>
+            <a href="" class="boton">Responder Foro</a>
+            <a href="" class="boton">Editar Foro</a>
+        <?php endif; ?>
+        <?php
+    }
+
+    // Cerrar la conexión
+    $conexion->close();
+    ?>
+</div>
+
+
+
 </body>
 </html>

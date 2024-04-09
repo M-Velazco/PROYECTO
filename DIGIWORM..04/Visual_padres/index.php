@@ -81,7 +81,7 @@ if(isset($_SESSION['Idusuario'])) {
     <header>
         <div class="logo">
             <img src="imagenes\LOGO.png" alt="Logo">
-            <h3><a href="#" onclick="history.go(-3);" class="principal-link">Principal</a></h3>
+            <h3><a href="../index04.php"  class="principal-link">Principal</a></h3>
         </div>
 
         <h1>Bienvenido Padre de Familia</h1>
