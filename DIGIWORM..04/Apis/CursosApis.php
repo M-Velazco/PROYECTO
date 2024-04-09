@@ -1,49 +1,53 @@
 <?php
 
+// Establecer encabezado para indicar que el contenido es JSON
+header('Content-Type: application/json');
+
+// Incluir archivo de conexión a la base de datos
 include_once '../modelo/conexion.php';
 
+// Función para manejar errores y enviar respuestas JSON
+function sendResponse($status, $message, $data = null) {
+    http_response_code($status);
+    echo json_encode(array('status' => $status, 'message' => $message, 'data' => $data));
+    exit();
+}
+
 // Crear conexión con la base de datos
-$Conexion = Conectarse(); // Suponiendo que la función Conectarse() está definida en el archivo '../modelo/conexion.php'
+$conexion = Conectarse(); // Suponiendo que la función Conectarse() está definida en el archivo '../modelo/conexion.php'
 
 // Verificar la conexión
-if ($Conexion->connect_error) {
-    die("Conexión fallida: " . $Conexion->connect_error);
+if ($conexion->connect_error) {
+    sendResponse(500, "Conexión fallida: " . $conexion->connect_error);
 }
 
 // Realizar la consulta a la base de datos
-$consulta = $Conexion->query("SELECT docente.Curso, docente.Nombres, docente.Apellidos  , curso.Nombre_curso AS Nombre_curso
+$consulta = $conexion->query("SELECT docente.Curso, docente.Nombres, docente.Apellidos, curso.Nombre_curso AS Nombre_curso
 FROM docente 
-INNER JOIN curso ON docente.Curso = curso.idCurso
+INNER JOIN curso ON docente.Curso = curso.idCurso");
 
-"); //realizar prueba sql y corregir 
-/* 
-Prueba funcional en bd
-
-SELECT docente.Curso, docente.Nombres, docente.Apellidos, curso.Nombre_curso AS nombre_materia
-FROM docente 
-INNER JOIN curso ON docente.Curso = curso.idCurso;
-
-SELECT estudiante.Curso, estudiante.Nombres, estudiante.Apellidos, curso.Nombre_curso AS Nombre_curso
-FROM estudiante 
-INNER JOIN curso ON estudiante.Curso = curso.idCurso;
- */
 // Verificar si se encontraron resultados
-if ($consulta->num_rows > 0) {
-    // Array para almacenar las opiniones
-    $Cursos = array();
+if ($consulta) {
+    // Verificar si se encontraron cursos
+    if ($consulta->num_rows > 0) {
+        // Array para almacenar los datos de los cursos y sus docentes
+        $cursos = array();
 
-    // Iterar sobre los resultados y almacenarlos en el array
-    while ($row = $consulta->fetch_assoc()) {
-        $Cursos[] = $row;
+        // Iterar sobre los resultados y almacenarlos en el array
+        while ($row = $consulta->fetch_assoc()) {
+            $cursos[] = $row;
+        }
+
+        // Devolver los datos de los cursos en formato JSON
+        sendResponse(200, "Éxito", $cursos);
+    } else {
+        sendResponse(404, "No se encontraron cursos.");
     }
-
-    // Devolver las opiniones en formato JSON
-    echo json_encode($Cursos);
 } else {
-    echo "No se encontraron Cursos.";
+    sendResponse(500, "Error al ejecutar la consulta: " . $conexion->error);
 }
 
 // Cerrar la conexión con la base de datos
-$Conexion->close();
+$conexion->close();
 
 ?>
