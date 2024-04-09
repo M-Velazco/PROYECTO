@@ -1,0 +1,65 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "The API for digiworm",
+    "version": "1.0.0",
+    "title": "Cursos"
+  },
+  "host": "virtserver.swaggerhub.com",
+  "basePath": "/VILLABILONS/Cursos/1.0.0",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/cursos": {
+      "get": {
+        "tags": [
+          "Curso"
+        ],
+        "summary": "Retrieve all registered courses with associated teachers",
+        "operationId": "getCourses",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Course"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Course": {
+      "type": "object",
+      "properties": {
+        "Curso": {
+          "type": "string",
+          "description": "ID of the course"
+        },
+        "Nombres": {
+          "type": "string",
+          "description": "Teacher's first name"
+        },
+        "Apellidos": {
+          "type": "string",
+          "description": "Teacher's last name"
+        },
+        "Nombre_curso": {
+          "type": "string",
+          "description": "Name of the course"
+        }
+      }
+    }
+  }
+}
