@@ -288,6 +288,7 @@ if ($consulta) {
                 <p>Correo electrónico: <?php echo $fila['Email']; ?></p>
                 <p>Teléfono: <?php echo $fila['Telefono']; ?></p>
                 <p>Estudios: <?php echo $fila['Desc_prof']; ?></p>
+                <p> <?php echo '<embed src="Docentes/' . $fila['Certificacion'] . '" type="application/pdf" style="width: 100%; height: 500px; border-radius: 10px;">'; ?></p>
             </div>
 
             <script>

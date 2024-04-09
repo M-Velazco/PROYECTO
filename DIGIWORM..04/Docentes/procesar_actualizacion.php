@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Obtener el nombre y la extensión del archivo
         $nombre_archivo = basename($_FILES["Archivo"]["name"]);
         $archivo_destino = $carpeta_destino . $nombre_archivo;
-
+        $arcivo_
         // Mover el archivo a la carpeta de destino
         if (move_uploaded_file($_FILES["Archivo"]["tmp_name"], $archivo_destino)) {
             // El archivo se ha movido correctamente, ahora procedemos a la inserción en la base de datos
