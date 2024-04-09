@@ -261,7 +261,7 @@ endif;
 <style>
    .button-64 {
   align-items: center;
-  background-image: linear-gradient(144deg,#046d2a, #072bad 50%,#1c10d7);
+  background-image: linear-gradient(144deg,#046d2a, #072bad 50%,#5fff6c);
   border: 0;
   border-radius: 8px;
   box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
