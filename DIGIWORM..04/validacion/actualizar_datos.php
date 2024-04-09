@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if(isset($_FILES['img']) && $_FILES['img']['error'] === UPLOAD_ERR_OK) {
         // Directorio donde se guardará la imagen (ajusta esto según tu estructura de carpetas)
         $directorio_destino = "../img/";
-        
+
         // Generar un nombre único para la imagen
         $nombre_archivo = uniqid('img_') . '_' . $_FILES['img']['name'];
 
@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Redirigir a Datos.php y mostrar Sweet Alert
         echo "<script>
                 window.location.href = '../Datos.php?success=actualizado';
-                
+
               </script>";
     } else {
         // Mostrar mensaje de error

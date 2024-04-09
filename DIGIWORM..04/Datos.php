@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/Datos.css" />
 </head>
 <body>
-<?php 
+<?php
 if (isset($_GET['success']) && $_GET['success'] == 'actualizado') {
     echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@10'></script>"; // Incluye SweetAlert desde CDN
 
@@ -75,8 +75,8 @@ if ($resultado->num_rows > 0) {
     $estado = $fila['Estado'];
 
     // Mostrar los datos del usuario en un formulario
-   
-    
+
+
     echo "<h1 style='color:#CF1D0F ; text-align: center;  font-style: oblique;'>PERFIL</h1>";
     ?>
 

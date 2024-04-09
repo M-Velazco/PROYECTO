@@ -15,13 +15,13 @@ class Usuario
 	Private $Materia;
 	Private $Jornada;
 	private $conexion;
-	
-	
+
+
 
 	//Constructor
 	public function Usuario()
 	{
-		
+
 	}
 
 	public function getIdusuario()
@@ -78,10 +78,10 @@ class Usuario
 		return $this->Jornada;
 	}
 
-	
+
 
 	/**
-	 * 
+	 *
 	 *
 	 */
 	public function setIdusuario($newVal)
@@ -90,7 +90,7 @@ class Usuario
 	}
 
 	/**
-	 * 
+	 *
 	 *
 	 */
 	public function setNombres($newVal)
@@ -98,7 +98,7 @@ class Usuario
 		$this->Nombres = $newVal;
 	}
 	/**
-	 * 
+	 *
 	 *
 	 */
 	public function setApellidos($newVal)
@@ -107,8 +107,8 @@ class Usuario
 	}
 
 	/**
-	 * 
-	 * 
+	 *
+	 *
 	 */
 	public function setCorreo($newVal)
 	{
@@ -116,8 +116,8 @@ class Usuario
 	}
 
 	/**
-	 * 
-	 * 
+	 *
+	 *
 	 */
 	public function setTelefono($newVal)
 	{
@@ -125,16 +125,16 @@ class Usuario
 	}
 
 	/**
-	 * 
-	 * 
+	 *
+	 *
 	 */
 	public function setPasword($newVal)
 	{
 		$this->Pasword = $newVal;
 	}
 	/**
-	 * 
-	 * 
+	 *
+	 *
 	 */
 	public function setimg($newVal)
 	{
@@ -142,16 +142,16 @@ class Usuario
 	}
 
 	/**
-	 * 
-	 * 
+	 *
+	 *
 	 */
 	public function setRol($newVal)
 	{
 		$this->Rol = $newVal;
 	}
 	/**
-	 * 
-	 * 
+	 *
+	 *
 	 */
 	public function setEstado($newVal)
 	{
@@ -170,7 +170,7 @@ class Usuario
 		$this->Jornada = $newVal;
 	}
 
-	
+
 	public function __construct()
     {
         // Inicializar la conexión desde el archivo de conexión
@@ -192,12 +192,12 @@ class Usuario
 		$this->Curso=$Curso;
 		$this->Materia=$Materia;
 		$this->Jornada=$Jornada;
-		
+
 	}
 	public function agregarUsuario()
 {
     // Preparar la consulta para insertar en la tabla 'usuarios'
-    $sqlUsuarios = "INSERT INTO usuarios (Idusuarios, Nombres, Apellidos, Email, Telefono, Pasword, img, Rol, Estado) 
+    $sqlUsuarios = "INSERT INTO usuarios (Idusuarios, Nombres, Apellidos, Email, Telefono, Pasword, img, Rol, Estado)
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     // Ejecutar la consulta para insertar en la tabla 'usuarios'
@@ -268,7 +268,7 @@ class Usuario
 private function insertarDocente()
 {
     // Preparar e insertar en la tabla 'docente'
-    $sqlDocente = "INSERT INTO docente (idDocente, Nombres, Apellidos, Email, Pasword, Curso, Materia) 
+    $sqlDocente = "INSERT INTO docente (idDocente, Nombres, Apellidos, Email, Pasword, Curso, Materia)
                    VALUES (?, ?, ?, ?, ?, ?, ?)";
     $stmtDocente = $this->conexion->prepare($sqlDocente);
     $stmtDocente->bind_param("isssssi", $this->Idusuarios, $this->Nombres, $this->Apellidos, $this->Email, $this->Pasword, $this->Curso, $this->Materia);
@@ -281,7 +281,7 @@ private function insertarDocente()
 private function insertarEstudiante()
 {
     // Preparar e insertar en la tabla 'estudiante'
-    $sqlEstudiante = "INSERT INTO estudiante (idEstudiante, Nombres, Apellidos, Email, Pasword, Curso, Estado) 
+    $sqlEstudiante = "INSERT INTO estudiante (idEstudiante, Nombres, Apellidos, Email, Pasword, Curso, Estado)
                       VALUES (?, ?, ?, ?, ?, ?, ?)";
     $stmtEstudiante = $this->conexion->prepare($sqlEstudiante);
     $stmtEstudiante->bind_param("issssis", $this->Idusuarios, $this->Nombres, $this->Apellidos, $this->Email, $this->Pasword, $this->Curso, $this->Estado);
@@ -297,7 +297,7 @@ private function insertarCoordinador()
     $jornada = $_POST['Jornada'];
 
     // Preparar e insertar en la tabla 'coordinador'
-    $sqlCoordinador = "INSERT INTO coordinador (idCoordinador, Nombres, Apellidos, Email, Pasword, Jornada) 
+    $sqlCoordinador = "INSERT INTO coordinador (idCoordinador, Nombres, Apellidos, Email, Pasword, Jornada)
                        VALUES (?, ?, ?, ?, ?, ?)";
     $stmtCoordinador = $this->conexion->prepare($sqlCoordinador);
     $stmtCoordinador->bind_param("isssss", $this->Idusuarios, $this->Nombres, $this->Apellidos, $this->Email, $this->Pasword, $jornada);
@@ -313,7 +313,7 @@ private function insertarPadre_F()
     $estado = $_POST['Estado'];
 
     // Preparar e insertar en la tabla 'coordinador'
-    $sqlPadre_F = "INSERT INTO padre_familia (idPadre_Familia, Estado_representante, Estado	) 
+    $sqlPadre_F = "INSERT INTO padre_familia (idPadre_Familia, Estado_representante, Estado	)
                        VALUES (?, ?, ?)";
     $stmtPadre_F = $this->conexion->prepare($sqlPadre_F);
     $stmtPadre_F->bind_param("iss", $this->Idusuarios, $this->Estado, $this->Estado);
@@ -360,10 +360,10 @@ function obtenerRutaImagenUsuario($Idusuario) {
     $consulta->bind_param("i", $Idusuario);
     $consulta->execute();
     $consulta->bind_result($imagen);
-    
+
     // Obtiene el resultado
     $consulta->fetch();
-    
+
     // Devuelve la ruta de la imagen
     return $imagen;
 }
@@ -371,14 +371,14 @@ function obtenerRutaImagenUsuario($Idusuario) {
 public function obtenerNombreUsuario($Idusuarios) {
         // Preparar la consulta SQL
         $consulta = $this->conexion->prepare("SELECT Nombres, Apellidos FROM usuarios WHERE Idusuarios = ?");
-        
+
         // Vincular parámetros y ejecutar la consulta
         $consulta->bind_param("i", $Idusuarios);
         $consulta->execute();
 
         // Obtener el resultado de la consulta
         $resultado = $consulta->get_result();
-        
+
         // Verificar si se encontraron resultados
         if ($resultado->num_rows > 0) {
             // Obtener el nombre del primer usuario (asumiendo que el ID es único)
@@ -394,18 +394,18 @@ public function obtenerNombreUsuario($Idusuarios) {
 		$consulta->bind_param("i", $idEstudiante);
 		$consulta->execute();
 		$resultado = $consulta->get_result();
-	
+
 		if ($resultado->num_rows > 0) {
 			// Obtener el ID del curso
 			$fila = $resultado->fetch_assoc();
 			$idCurso = $fila['Curso'];
-	
+
 			// Preparar la consulta SQL para obtener el nombre del curso usando el ID obtenido anteriormente
 			$consulta = $this->conexion->prepare("SELECT Nombre_curso FROM curso WHERE idCurso = ?");
 			$consulta->bind_param("i", $idCurso);
 			$consulta->execute();
 			$resultado = $consulta->get_result();
-	
+
 			if ($resultado->num_rows > 0) {
 				// Retornar el nombre del curso
 				$fila = $resultado->fetch_assoc();
@@ -417,22 +417,22 @@ public function obtenerNombreUsuario($Idusuarios) {
 			return "Estudiante no encontrado";
 		}
 	}
-	
+
 	public function modificarUsuario($Idusuarios)
-	{	
+	{
 		$this->Conexion=Conectarse();
 		$sql="update  set Idusuarios =$this->Idusuarios','$this->Nombres','$this->Apellidos','$this->Email','$this->Telefono','$this->Pasword',$this->img','$this->Rol','$this->Estado' where Idusuarios = '$this->Idusuarios";
 		$resultado=$this->Conexion->query($sql);
 		$this->Conexion->close();
-		return $resultado;	
+		return $resultado;
 		}
 		public function actualizarDatosUsuario($idUsuario, $nombres, $apellidos, $email, $telefono, $password, $img, $rol, $estado, $status, $Conexion) {
 			// Encriptar la contraseña antes de almacenarla en la base de datos (puedes usar la función password_hash)
 			$hashedPassword = md5($password);
-	
+
 			// Construir la consulta SQL para actualizar los datos del usuario
-			$sql = "UPDATE usuarios SET Nombres='$nombres', Apellidos='$apellidos', Email='$email', Telefono='$telefono', Pasword='$hashedPassword', img='$img', Rol='$rol', Estado='$estado', status='$status' WHERE Idusuarios=$idUsuario";
-	
+			$sql = "UPDATE usuarios SET Nombres='$nombres', Apellidos='$apellidos', Email='$email', Telefono='$telefono', Pasword='$password', img='$img', Rol='$rol', Estado='$estado', status='$status' WHERE Idusuarios=$idUsuario";
+
 			// Ejecutar la consulta y verificar si la actualización fue exitosa
 			if ($Conexion->query($sql) === TRUE) {
 				return true; // La actualización fue exitosa
@@ -440,17 +440,17 @@ public function obtenerNombreUsuario($Idusuarios) {
 				return false; // Hubo un error al ejecutar la consulta
 			}
 		}
-	
-	 
+
+
 		// Nota: Recuerda encriptar la contraseña antes de almacenarla en la base de datos
-		
+
 	public function eliminarUsuario($Idusuarios)
-	{	
+	{
 		$this->Conexion=Conectarse();
 		$sql="delete from usuarios where Idusuarios = '$this->Idusuarios";
 		$resultado=$this->Conexion->query($sql);
 		$this->Conexion->close();
-		return $resultado;	
+		return $resultado;
 		}
 
 
@@ -460,32 +460,32 @@ public function obtenerNombreUsuario($Idusuarios) {
 		$sql="select * from usuarios";
 		$resultado=$this->Conexion->query($sql);
 		$this->Conexion->close();
-		return $resultado;	
+		return $resultado;
 	}
-	
+
 	public function consultarUsuarioContraseña($Idusuarios, $Paswordmd5)
 {
     $this->Conexion = Conectarse();
-    
+
     // Preparar la consulta con parámetros
     $sql = "SELECT * FROM usuarios WHERE Idusuarios = ? AND Pasword = ?";
     $stmt = $this->Conexion->prepare($sql);
-    
+
     // Verificar si la preparación de la consulta tuvo éxito
     if ($stmt === false) {
         // Manejar el error de preparación de la consulta
         die('Error en la preparación de la consulta: ' . $this->Conexion->error);
     }
-    
+
     // Vincular parámetros con sus tipos de datos
     $stmt->bind_param("is", $Idusuarios, $Paswordmd5); // "i" para integer, "s" para string
-    
+
     // Ejecutar la consulta
     $stmt->execute();
-    
+
     // Obtener el resultado
     $resultado = $stmt->get_result();
-    
+
     // Verificar si se encontró un usuario con las credenciales proporcionadas
     if ($resultado->num_rows > 0) {
         // Usuario autenticado correctamente
@@ -494,18 +494,18 @@ public function obtenerNombreUsuario($Idusuarios) {
         // Usuario no autenticado
         return false;
     }
-    
+
     // Cerrar el statement
-    
+
     // No cerrar la conexión aquí si quieres seguir usándola fuera de esta función
 }
 
-	
-	
+
+
 	}
-	
-	
-	
-	
-	
+
+
+
+
+
 ?>

@@ -12,13 +12,13 @@ if(isset($_POST['Materia'], $_POST['Pasword'], $_POST['Idusuario'], $_POST['Nomb
     $Estado = "Activo";
     $curso = 0;
     $Jornada = "";
-   
+
 
     // Verificar si se subió una imagen
     if(isset($_FILES['img']) && $_FILES['img']['error'] === UPLOAD_ERR_OK) {
         // Directorio donde se guardará la imagen (ajusta esto según tu estructura de carpetas)
         $directorio_destino = "../img/";
-        
+
         // Generar un nombre único para la imagen
         $nombre_archivo = uniqid('img_') . '_' . $_FILES['img']['name'];
 
@@ -60,7 +60,7 @@ if(isset($_POST['Materia'], $_POST['Pasword'], $_POST['Idusuario'], $_POST['Nomb
     $resultado = $objUsuario->agregarUsuario();
 
     if ($resultado) {
-        
+
         header("Location: " . $_SERVER['HTTP_REFERER']); // Redireccionar si se agregó correctamente
     } else {
         echo "No se ha registrado correctamente"; // Mostrar mensaje de error si falla

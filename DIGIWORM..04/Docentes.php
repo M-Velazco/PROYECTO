@@ -61,6 +61,34 @@ if(isset($_SESSION['Idusuario'])) {
     <link href="css/style.css" rel="stylesheet">
 </head>
 
+<style>.button-85 {
+  align-items: center;
+  background-image: linear-gradient(144deg,#40FF50, #4271F3 50%,#00DDEB);
+  border: 0;
+  border-radius: 8px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  display: flex;
+  font-family: Phantomsans, sans-serif;
+  font-size: 20px;
+  justify-content: center;
+  line-height: 1em;
+  max-width: 100%;
+  min-width: 140px;
+  padding: 19px 24px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+  }
+
+    .button-85:active,
+    .button-85:hover {
+  outline: 0;}
+  </style>
 <body>
     <!-- Navbar Start -->
     <div class="container-fluid bg-light position-relative shadow">
@@ -237,258 +265,50 @@ endif;
 
                 </a>
 
-<style>.button-85 {
-  align-items: center;
-  background-image: linear-gradient(144deg,#40FF50, #4271F3 50%,#00DDEB);
-  border: 0;
-  border-radius: 8px;
-  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
-  box-sizing: border-box;
-  color: #FFFFFF;
-  display: flex;
-  font-family: Phantomsans, sans-serif;
-  font-size: 20px;
-  justify-content: center;
-  line-height: 1em;
-  max-width: 100%;
-  min-width: 140px;
-  padding: 19px 24px;
-  text-decoration: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  white-space: nowrap;
-  cursor: pointer;
-  }
-
-    .button-85:active,
-    .button-85:hover {
-  outline: 0;}
-  </style>
 <br>
-
             <div class="row">
+            <?php
+$conexion = new mysqli("localhost", "root", "sena", "digiworm_04");
+if ($conexion->connect_error) {
+    die("Error de conexión: " . $conexion->connect_error);
+}
 
-            <div class="col-md-6 col-lg-3 text-center team mb-5">
+$consulta = $conexion->query("SELECT d.*, u.Telefono,u.img, u.Idusuarios FROM Docente d JOIN usuarios u ON d.idDocente = u.Idusuarios");
+
+if ($consulta) {
+    while ($fila = $consulta->fetch_assoc()) {
+?>
+        <div class="col-md-6 col-lg-3 text-center team mb-5">
             <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
-        <img class="img-fluid w-100" src="img/team-1.jpg" alt="" onclick="mostrarDatosPersonales()">
-    </div>
-
-    <h4>Julia Smith</h4>
-    <div id="datosPersonales" style="display: none;">
-        <p>Fecha de nacimiento: 10 de mayo de 1990</p>
-        <p>Correo electrónico: julia@example.com</p>
-        <p>Teléfono: +1534567890</p>
-        <p>Estudios: Maestria en Ingles</p>
-    </div>
-</div>
-
-<script>
-    function mostrarDatosPersonales() {
-        var datosPersonales = document.getElementById("datosPersonales");
-        if (datosPersonales.style.display === "none") {
-            datosPersonales.style.display = "block";
-        } else {
-            datosPersonales.style.display = "none";
-        }
-    }
-</script>
-
-
-
-
-<!-- Aquí se mostrarán los datos personales -->
-<div id="datos-personales"></div>
-                <div class="col-md-6 col-lg-3 text-center team mb-5">
-                <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
-        <img class="img-fluid w-100" src="img/testimonial-3.jpg" alt="" onclick="MostrarDatosPersonales()">
-    </div>
-                    <h4>Jhon Doe</h4>
-
-                    <div id="DatosPersonales" style="display: none;">
-        <p>Fecha de nacimiento:24 de mayo de 1965</p>
-        <p>Correo electrónico: Doe@gmail.com</p>
-        <p>Teléfono: +1534567890</p>
-        <p>Estudios: Maestria en religion</p>
-    </div>
-    <script>
-    function MostrarDatosPersonales() {
-        var datosPersonales = document.getElementById("DatosPersonales");
-        if (datosPersonales.style.display === "none") {
-            datosPersonales.style.display = "block";
-        } else {
-            datosPersonales.style.display = "none";
-        }
-    }
-</script>
-
-<!-- Aquí se mostrarán los datos personales -->
-    </div>
-
-                <div id="DAtos-personales"></div>
-                <div class="col-md-6 col-lg-3 text-center team mb-5">
-                <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
-        <img class="img-fluid w-100" src="img/team-3.jpg" alt="" onclick="MostrarDatosPersonale()">
-    </div>
-                    <h4>Mollie Ross</h4>
-
-                    <div id="DAtosPersonales" style="display: none;">
-        <p>Fecha de nacimiento:18 de mayo de 1997</p>
-        <p>Correo electrónico: mollieR@gmail.com</p>
-        <p>Teléfono: +1534567890</p>
-        <p>Estudios: Maestria en Educacion Fisica</p>
-    </div>
-    <script>
-    function MostrarDatosPersonale() {
-        var datosPersonale = document.getElementById("DAtosPersonales");
-        if (datosPersonale.style.display === "none") {
-            datosPersonale.style.display = "block";
-        } else {
-            datosPersonale.style.display = "none";
-        }
-    }
-</script>
-
-<!-- Aquí se mostrarán los datos personales -->
-
-</div>
-
-<div id="DAtos-personalecc"></div>
-<div class="col-md-6 col-lg-3 text-center team mb-5">
-<div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
-<img class="img-fluid w-100" src="img/oip.jpg" alt="" onclick="DatosPersonalecc()">
-</div>
-    <h4>Magdy Velazco</h4>
-
-    <div id="DAtosPersonalecc" style="display: none;">
-<p>Fecha de nacimiento:17 de octubre de 1997</p>
-<p>Correo electrónico: velazco17@gmail.com</p>
-<p>Teléfono: +1534567890</p>
-<p>Estudios: Maestria en Educacion Fisica</p>
-</div>
-
-<script>
-function DatosPersonalecc() {
-var datosPersonale = document.getElementById("DAtosPersonalecc");
-if (datosPersonale.style.display === "none") {
-datosPersonale.style.display = "block";
-} else {
-datosPersonale.style.display = "none";
-}
-}
-</script>
-
-<!-- Aquí se mostrarán los datos personales -->
-
-                </div>
-                <div id="personales"></div>
-                <div class="col-md-6 col-lg-3 text-center team mb-5">
-                <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
-        <img class="img-fluid w-100" src="img/team-4.jpg" alt="" onclick="DatosPersonales()">
-
-                    </div>
-                    <h4>Andres Felipe</h4>
-                    <div id="Personales" style="display: none;">
-        <p>Fecha de nacimiento:30 de febrero de 1970</p>
-        <p>Correo electrónico: pipe@gmail.com</p>
-        <p>Teléfono: +1534567890</p>
-        <p>Estudios: Maestria en  primera infancia</p>
-    </div>
-    <script>
-    function DatosPersonales() {
-        var datosPersonale = document.getElementById("Personales");
-        if (datosPersonale.style.display === "none") {
-            datosPersonale.style.display = "block";
-        } else {
-            datosPersonale.style.display = "none";
-        }
-    }
-</script>
-
-               <!-- Aquí se mostrarán los datos personales -->
-               </div>
-                <div id="xdpersonales"></div>
-                <div class="col-md-6 col-lg-3 text-center team mb-5">
-                <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
-        <img class="img-fluid w-100" src="img/testimonial-2.jpg" alt="" onclick="xdPersonales()">
-
-                    </div>
-                    <h4>Maria Alejandra</h4>
-                    <div id="xdPersonales" style="display: none;">
-        <p>Fecha de nacimiento:30 de febrero de 1970</p>
-        <p>Correo electrónico: Aleja00@gmail.com</p>
-        <p>Teléfono: +1534567890</p>
-        <p>Estudios: Maestria en  primera Ciencias Naturales</p>
-    </div>
-    <script>
-    function xdPersonales() {
-        var datosPersonale = document.getElementById("xdPersonales");
-        if (datosPersonale.style.display === "none") {
-            datosPersonale.style.display = "block";
-        } else {
-            datosPersonale.style.display = "none";
-        }
-    }
-</script>
-
-              <!-- Aquí se mostrarán los datos personales -->
-              </div>
-
-<div id="DAtos-personalec"></div>
-<div class="col-md-6 col-lg-3 text-center team mb-5">
-<div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
-<img class="img-fluid w-100" src="img/avatar.jpg" alt="" onclick="DatosPersonalec()">
-</div>
-    <h4>Johan Santiago</h4>
-
-    <div id="DAtosPersonalec" style="display: none;">
-<p>Fecha de nacimiento:28 de marzo de 1973</p>
-<p>Correo electrónico: villanueva18@gmail.com</p>
-<p>Teléfono: +1534567890</p>
-<p>Estudios: Maestria en Matematicas</p>
-</div>
-
-<script>
-function DatosPersonalec() {
-var datosPersonale = document.getElementById("DAtosPersonalec");
-if (datosPersonale.style.display === "none") {
-datosPersonale.style.display = "block";
-} else {
-datosPersonale.style.display = "none";
-}
-}
-</script>
-
- <!-- Aquí se mostrarán los datos personales -->
-
- </div>
-
-<div id="DAtos-personaless"></div>
-<div class="col-md-6 col-lg-3 text-center team mb-5">
-<div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
-<img class="img-fluid w-100" src="img/user.jpg" alt="" onclick="DatosPersonaless()">
-</div>
-    <h4>Johan Stiven</h4>
-
-    <div id="DAtosPersonaless" style="display: none;">
-<p>Fecha de nacimiento:06 de abril de 1994</p>
-<p>Correo electrónico: stiven123@gmail.com</p>
-<p>Teléfono: +1534567890</p>
-<p>Estudios: Maestria en Filosofia</p>
-</div>
-
-<script>
-function DatosPersonaless() {
-var datosPersonale = document.getElementById("DAtosPersonaless");
-if (datosPersonale.style.display === "none") {
-datosPersonale.style.display = "block";
-} else {
-datosPersonale.style.display = "none";
-}
-}
-</script>
-
+                <img class="img-fluid w-100" src="<?php echo $fila['img']; ?>" alt="" onclick="mostrarDatosPersonales(<?php echo $fila['Idusuarios']; ?>)">
             </div>
+            <h4><?php echo $fila['Nombres'] . ' ' . $fila['Apellidos']; ?></h4>
+
+            <div id="DatosPersonales_<?php echo $fila['Idusuarios']; ?>" style="display: none;">
+                <p>Correo electrónico: <?php echo $fila['Email']; ?></p>
+                <p>Teléfono: <?php echo $fila['Telefono']; ?></p>
+                <p>Estudios: <?php echo $fila['Desc_prof']; ?></p>
+            </div>
+
+            <script>
+                function mostrarDatosPersonales(Idusuarios) {
+                    var datosPersonales = document.getElementById("DatosPersonales_" + Idusuarios);
+                    if (datosPersonales.style.display === "none") {
+                        datosPersonales.style.display = "block";
+                    } else {
+                        datosPersonales.style.display = "none";
+                    }
+                }
+            </script>
+        </div>
+<?php
+    }
+} else {
+    echo "Error en la consulta: " . $conexion->error;
+}
+?>
+
+
         </div>
     </div>
     <!-- Team End -->
