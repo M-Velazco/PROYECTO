@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DIGIWORM</title>
-  
+
   <link href="../img/LOGO.png" rel="icon">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<?php 
+<?php
 require_once "../modelo/conexion.php";
 ?>
 
@@ -67,7 +67,7 @@ require_once "../modelo/conexion.php";
     }
   </style>
 
-<form action="procesar_actualizacion.php" method="POST">
+<form action="procesar_actualizacion.php" method="POST" enctype="multipart/form-data">
 
   <label for="id_docente">Seleccionar docente:</label>
   <select name="id_docente" id="id_docente" onchange="mostrarDatosDocente(this.value)" required>
@@ -76,7 +76,7 @@ require_once "../modelo/conexion.php";
       // Conexión a la base de datos
       $conn = Conectarse();
       // Crear conexión
-      
+
 
       // Verificar conexión
       if ($conn->connect_error) {
@@ -98,25 +98,25 @@ require_once "../modelo/conexion.php";
       $conn->close();
     ?>
   </select><br><br>
-  
+
   <label for="nombres">Nombres:</label>
   <input type="text" id="nombres" name="nombres" readonly><br><br>
-  
+
   <label for="apellidos">Apellidos:</label>
   <input type="text" id="apellidos" name="apellidos" readonly><br><br>
-  
+
   <label for="email">Email:</label>
   <input type="email" id="email" name="email" readonly><br><br>
-  
+
   <label for="curso">Curso:</label>
-  
+
   <select name="curso" id="curso" required>
-  
+
   <?php
       // Conexión a la base de datos
       $conn = Conectarse();
       // Crear conexión
-      
+
 
       // Verificar conexión
       if ($conn->connect_error) {
@@ -138,15 +138,15 @@ require_once "../modelo/conexion.php";
       $conn->close();
     ?>
   </select><br><br>
-  
+
   <label for="materia">Materia:</label>
   <select name="materia" id="materia" required>
-    
+
   <?php
       // Conexión a la base de datos
       $conn = Conectarse();
       // Crear conexión
-      
+
 
       // Verificar conexión
       if ($conn->connect_error) {
@@ -168,17 +168,31 @@ require_once "../modelo/conexion.php";
       $conn->close();
     ?>
   </select> <br><br>
-  
-  
+
+
   <label for="jornada">Jornada:</label>
   <select name="jornada" id="jornada" required>
   <option value=""></option>
     <option value="Mañana">Mañana..</option>
     <option value="Tarde">Tarde</option>
-  </select><br><br>
-  
+  </select><br>
+  <input type="text" id="Descripcion" name="Descripcion" placeholder="Ingrese Descripcion de su perfil profesional" oninput="autoSize(this)">
+
+
+
+<input type="file" id="Certificacion" name="Archivo" style="display: none;" title="ingrese Sus certificados"><br>
   <button type="submit">Actualizar</button>
 
+
+
+<div class="bottoncx">
+    <select name="info" class="bottonc-select">
+      <option value="">Agregar</option>
+      <option value="Descripcion">Descripción</option>
+      <option value="Certificacion">Certificación</option>
+      <option value="CertDesc">Certificacion y descripcion</option>
+    </select>
+  </div>
   <style>
   .bottonc {
     position: relative;
@@ -230,20 +244,9 @@ require_once "../modelo/conexion.php";
 </style>
 </head>
 
-<label for="Descripcion">Descripcion:</label>
-  <input type="text" id="Descripcion" name="Descripcion" readonly><br><br>
-  
-  <label for="Certificacion">Certificacion:</label>
-  <input type="text" id="Certificacion" name="Certificacion" readonly><br><br>
 
-<div class="bottoncx">
-  <select name="info" class="bottonc-select">
-    <option value="">Agregar</option>
-    <option value="descripcion">Descripción</option>
-    <option value="certificacion">Certificación</option>
-  </select>
 
-  
+
     <style>
   .bottoncx {
     display: inline-block;
@@ -265,16 +268,16 @@ require_once "../modelo/conexion.php";
     padding: 10px;
   }
   </style>
-</div>
 
 
-  
+
   <a class="Button" href="../Docentes.php">Volver</a>
   <br>
-  
+
 </form>
 
 <script>
+  
 function mostrarDatosDocente(idDocente) {
   // Realizar una solicitud AJAX para obtener los datos del docente
   var xhr = new XMLHttpRequest();
@@ -289,6 +292,8 @@ function mostrarDatosDocente(idDocente) {
         document.getElementById('curso').value = docente.Curso;
         document.getElementById('materia').value = docente.Materia;
         document.getElementById('jornada').value = docente.Jornada;
+        document.getElementById('Descripcion').value = docente.Desc_prof;
+        document.getElementById('Certificacion').value = docente.Certificacion;
       } else {
         alert('Hubo un error al obtener los datos del docente');
       }
@@ -298,30 +303,35 @@ function mostrarDatosDocente(idDocente) {
   xhr.send();
 }
 </script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var SelectButtons = document.querySelectorAll('select[name="info"]');
-        var cursoField = document.getElementById('Certificacion');
-        var materiaField = document.getElementById('Descripcion');
-        
 
-        // Escuchar el cambio en los radios de opción de rol
-        SelectButtons.forEach(function(SelectButton) {
-            SelectButton.addEventListener('change', function() {
-                // Mostrar u ocultar campos según el rol seleccionado
-                if (this.value === 'Certificacion') {
-                    cursoField.style.display = 'block';
-                    materiaField.style.display = 'none';
-                    
-                } else if (this.value === 'Descripcion') {
-                    cursoField.style.display = 'none'; // Mostrar el campo de curso
-                    materiaField.style.display = 'block'; // Ocultar el campo de materia
-                    
-                }
-            });
-        });
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var selectButtons = document.querySelectorAll('select[name="info"]');
+    var certificacionField = document.getElementById('Certificacion');
+    var descripcionField = document.getElementById('Descripcion');
+
+    // Escuchar el cambio en el select
+    selectButtons.forEach(function(selectButton) {
+      selectButton.addEventListener('change', function() {
+        // Mostrar u ocultar campos según la selección
+        if (this.value === 'Certificacion') {
+          certificacionField.style.display = 'block';
+          descripcionField.style.display = 'none';
+        } else if (this.value === 'Descripcion') {
+          certificacionField.style.display = 'none';
+          descripcionField.style.display = 'block';
+        }
+        else if (this.value === 'CertDesc') {
+          certificacionField.style.display = 'block';
+          descripcionField.style.display = 'block';
+        } else {
+          certificacionField.style.display = 'none';
+          descripcionField.style.display = 'none';
+        }
+      });
     });
+  });
 </script>
- 
+
 </body>
 </html>
