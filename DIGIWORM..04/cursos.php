@@ -241,7 +241,7 @@ endif;
                 <div class="dropdown">
                 <div class="dropdown">
             <select class="btn btn-outline-light bg-white text-body px-4 dropdown-toggle btn-lg"name="grado" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 1.8rem;">Grado
-            <option value="">Curso</option>
+            <option value="">Grado-Jornada</option>
             <?php
             $conn = Conectarse();
             $sql ="SELECT * FROM curso ";
