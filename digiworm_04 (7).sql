@@ -198,9 +198,9 @@ CREATE TABLE IF NOT EXISTS `docente` (
 --
 
 INSERT INTO `docente` (`idDocente`, `Nombres`, `Apellidos`, `Email`, `Pasword`, `Curso`, `Materia`, `Jornada`, `Certificacion`, `Desc_prof`) VALUES
-(142223657, 'Didier', 'Orozco', 'Orozco09@gmail.com', '598d8591e55346928b3a3a0a01da9ee5', 1, 2, 'Tarde', './files/Paz y Salvo.pdf', 'doctorado en artes y etica ciudadana con ma de 10 años de experiencia en estudios academicos'),
-(1054115102, 'Vilma ', 'Barrios Gomez', 'EldiabloAndante@gmail.com', '93d7abad7bbf270154ff3270fe46f4d3', 1, 2, 'Tarde', './files/814402318257-9315909749-entrada.pdf', 'doctora en artes y etica ciudadana con ma de 10 años de experiencia en estudios academicos'),
-(1101343174, 'juan david', 'julio rodriguez', 'draxjulio13@gmail.com', 'dfdc20cbab482c8d159f42d3250d1f7c', 1, 2, 'Mañana', './files/Paz y Salvo.pdf', '');
+(142223657, 'Didier', 'Orozco', 'Orozco09@gmail.com', '598d8591e55346928b3a3a0a01da9ee5', 1, 2, 'Tarde', 'Docentes/Paz y Salvo.pdf', 'doctorado en artes y etica ciudadana con ma de 10 años de experiencia en estudios academicos'),
+(1054115102, 'Vilma ', 'Barrios Gomez', 'EldiabloAndante@gmail.com', '93d7abad7bbf270154ff3270fe46f4d3', 1, 2, 'Tarde', 'Docentes/814402318257-9315909749-entrada.pdf', 'doctora en artes y etica ciudadana con ma de 10 años de experiencia en estudios academicos'),
+(1101343174, 'juan david', 'julio rodriguez', 'draxjulio13@gmail.com', 'dfdc20cbab482c8d159f42d3250d1f7c', 1, 2, 'Mañana', 'Docentes/files/814402318257-9315909749-entrada.pdf', '');
 COMMIT;
 
 -- --------------------------------------------------------
