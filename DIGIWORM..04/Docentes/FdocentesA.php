@@ -54,7 +54,7 @@ require_once "../modelo/conexion.php";
     /* Estilo para el botón */
     button {
       padding: 10px 20px;
-      background-color: #6BAF4C; /* Green */
+      background-color: #1a5300; /* Green */
       color: white;
       border: none;
       border-radius: 5px;
@@ -210,7 +210,7 @@ require_once "../modelo/conexion.php";
 
   .bottonc-select {
     color: white; /* Cambiar el color del texto */
-    background-color: #6BAF4C; /* Cambiar el color de fondo */
+    background-color: #1a5300; /* Cambiar el color de fondo */
     border: none; /* Cambiar el borde */
     padding: 5px; /* Añadir relleno */
     border-radius: 5px; /* Añadir bordes redondeados */
