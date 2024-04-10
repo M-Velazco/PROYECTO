@@ -125,12 +125,14 @@ if (isset($_SESSION['Idusuario'])) {
                     $nombreUsuarioRespuesta = $consultaUsuario->fetch_assoc()['Nombres'];
                 }
                 ?>
-                <h3>Respuestas<?php echo $nombreUsuarioRespuesta ?>:</h3>
-                <p class="respuesta"><?php echo $filaRespuesta['respuesta']; ?></p>
+                <h3>Respuesta de <?php echo $nombreUsuarioRespuesta ?>:</h3>
+                <p class="respuesta">"<?php echo $filaRespuesta['respuesta']; ?>" - Respondido por: <?php echo $nombreUsuarioRespuesta; ?></p>
 
 
                 </p>
                 <?php
+                // Actualizar el campo respondido_por en la base de datos
+                $conexion->query("UPDATE foros SET respondido_por = '" . $nombreUsuarioRespuesta . "' WHERE idForos = " . $filaForo['idForos']);
             }
         } else {
             echo "No hay respuestas para este foro.";
@@ -147,3 +149,6 @@ if (isset($_SESSION['Idusuario'])) {
 </div>
 </body>
 </html>
+
+
+
