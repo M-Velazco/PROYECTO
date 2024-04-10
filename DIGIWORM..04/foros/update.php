@@ -1,7 +1,7 @@
 <?php
 // Inicia la sesión
 session_start();
-
+include_once "../modelo/conexion.php";
 // Verifica si el usuario está conectado
 if (isset($_SESSION['Idusuario'])) {
     // Verifica si se ha enviado el formulario

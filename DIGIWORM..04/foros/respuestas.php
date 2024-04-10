@@ -89,7 +89,7 @@ if (isset($_SESSION['Idusuario'])) {
 <div class="foro">
     <?php
     // Conexión a la base de datos y consulta de los foros
-    $conexion = Conectarse();
+    $conexion = new mysqli("localhost", "root", "sena", "digiworm_04");
     if ($conexion->connect_error) {
         die("Error de conexión: " . $conexion->connect_error);
     }
@@ -119,7 +119,7 @@ if (isset($_SESSION['Idusuario'])) {
         if ($consultaRespuestas !== false && $consultaRespuestas->num_rows > 0) {
             while ($filaRespuesta = $consultaRespuestas->fetch_assoc()) {
                 // Obtener el nombre del usuario que respondió el foro
-                $consultaUsuario = $conexion->query("SELECT Nombres FROM usuarios WHERE idusuario = " . $filaRespuesta['idusuario']);
+                $consultaUsuario = $conexion->query("SELECT Nombres FROM usuarios WHERE Idusuarios = " . $filaRespuesta['idusuario']);
                 $nombreUsuarioRespuesta = "";
                 if ($consultaUsuario !== false && $consultaUsuario->num_rows > 0) {
                     $nombreUsuarioRespuesta = $consultaUsuario->fetch_assoc()['Nombres'];

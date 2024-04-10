@@ -14,7 +14,7 @@ if (isset($_SESSION['Idusuario'])) {
         $estado = isset($_POST['Estado']) ? htmlspecialchars($_POST['Estado']) : '';
 
         // Conectarse a la base de datos y actualizar los datos del foro, incluyendo el estado
-        $conn = Conectarse()
+        $conn = Conectarse();
         if ($conn->connect_error) {
             die("Error de conexión: " . $conn->connect_error);
         }

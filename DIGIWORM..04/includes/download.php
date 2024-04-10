@@ -6,7 +6,7 @@ if(isset($_GET['idActividades'])) {
     $idActividad = $_GET['idActividades'];
 
     // Conectar a la base de datos
-    $conexion = Conectarse()
+    $conexion = Conectarse();
     if ($conexion->connect_error) {
         die("Error de conexión: " . $conexion->connect_error);
     }

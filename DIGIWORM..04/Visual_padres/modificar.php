@@ -88,7 +88,7 @@ if(isset($_SESSION['Idusuario'])) {
 
 <body>
     <?php
-    
+
     $conn = Conectarse();
     $error = '';
     $cambios_realizados = false; // Variable para rastrear si se realizaron cambios
@@ -102,11 +102,7 @@ if(isset($_SESSION['Idusuario'])) {
         // Verificar si los campos de "Curso" y "Estado" están vacíos
         if (empty($nuevoCurso) || empty($nuevoEstado)) {
             $error = "Curso y Estado son obligatorios.";
-        } else {
-            // Validar que el campo "Curso" solo contenga tres o cuatro dígitos
-            if (!preg_match('/^\d{3,4}$/', $nuevoCurso)) {
-                $error = "Debe tener 3 o 4 dígitos.";
-            } else {
+        }  else {
                 // Verificar si se realizaron cambios en el formulario
                 $sqlEstudiante = "SELECT * FROM estudiante WHERE idEstudiante = $idEstudiante";
                 $resultEstudiante = $conn->query($sqlEstudiante);
@@ -132,7 +128,7 @@ if(isset($_SESSION['Idusuario'])) {
                 }
             }
         }
-    }
+    
 
     // Verificar si se ha enviado un ID de estudiante
     if (isset($_GET["id"])) {

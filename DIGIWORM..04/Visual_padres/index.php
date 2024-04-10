@@ -103,7 +103,7 @@ if(isset($_SESSION['Idusuario'])) {
     <!-- Aquí se mostrará la información del estudiante -->
     <div class="content">
         <?php
-        
+
 
         $conn = Conectarse();
 
@@ -116,30 +116,50 @@ if(isset($_SESSION['Idusuario'])) {
             }
 
             // Realiza la búsqueda en la tabla 'estudiante'
-            $sqlEstudiante = "SELECT * FROM estudiante WHERE idEstudiante = $idEstudiante";
-            $resultEstudiante = $conn->query($sqlEstudiante);
+            // Ejecuta el primer query para obtener la información del estudiante
+$sqlEstudiante = "SELECT * FROM estudiante WHERE idEstudiante = $idEstudiante";
+$resultEstudiante = $conn->query($sqlEstudiante);
 
-            // Verifica si se encontraron resultados en la tabla 'estudiante'
-            if ($resultEstudiante->num_rows > 0) {
-                echo "<h2 style='margin-left: 20px;'>Información del Estudiante</h2>";
-                echo "<table class='student-table'>";
+// Verifica si se encontraron resultados en la tabla 'estudiante'
+if ($resultEstudiante->num_rows > 0) {
+    echo "<h2 style='margin-left: 20px;'>Información del Estudiante</h2>";
+    echo "<table class='student-table'>";
 
-                // Muestra la información del estudiante
-                while ($rowEstudiante = $resultEstudiante->fetch_assoc()) {
-                    echo "<tr><td>ID:</td><td>" . $rowEstudiante["idEstudiante"] . "</td></tr>";
-                    echo "<tr><td>Nombres:</td><td>" . $rowEstudiante["Nombres"] . "</td></tr>";
-                    echo "<tr><td>Apellidos:</td><td>" . $rowEstudiante["Apellidos"] . "</td></tr>";
-                    echo "<tr><td>Email:</td><td>" . $rowEstudiante["Email"] . "</td></tr>";
-                    echo "<tr><td>Curso:</td><td>" . $rowEstudiante["Curso"] . "</td></tr>";
-                    echo "<tr><td>Estado:</td><td>" . $rowEstudiante["Estado"] . "</td></tr>";
+    // Obtiene la fila del primer query (información del estudiante)
+    $rowEstudiante = $resultEstudiante->fetch_assoc();
 
-                    // Obtiene el rol del estudiante desde la tabla 'usuarios'
-                    $sqlUsuarios = "SELECT Rol FROM usuarios WHERE Idusuarios = " . $rowEstudiante["idEstudiante"];
-                    $resultUsuarios = $conn->query($sqlUsuarios);
+    // Muestra la información del estudiante
+    echo "<tr><td>ID:</td><td>" . $rowEstudiante["idEstudiante"] . "</td></tr>";
+    echo "<tr><td>Nombres:</td><td>" . $rowEstudiante["Nombres"] . "</td></tr>";
+    echo "<tr><td>Apellidos:</td><td>" . $rowEstudiante["Apellidos"] . "</td></tr>";
+    echo "<tr><td>Email:</td><td>" . $rowEstudiante["Email"] . "</td></tr>";
 
-                    // Verifica si se encontraron resultados en la tabla 'usuarios'
+    // Ejecuta el segundo query para obtener el nombre del curso del estudiante
+    $sqlCurso = "SELECT curso.Nombre_curso FROM curso INNER JOIN estudiante ON curso.idCurso = estudiante.Curso WHERE idEstudiante = $idEstudiante";
+    $resultCurso = $conn->query($sqlCurso);
 
-                }
+    // Verifica si se encontraron resultados en la tabla 'curso' mediante la consulta JOIN
+    if ($resultCurso->num_rows > 0) {
+        // Obtiene la fila del segundo query (nombre del curso)
+        $rowCurso = $resultCurso->fetch_assoc();
+        echo "<tr><td>Curso:</td><td>" . $rowCurso["Nombre_curso"] . "</td></tr>";
+    } else {
+        echo "<tr><td>Curso:</td><td>No encontrado</td></tr>";
+    }
+
+    echo "<tr><td>Estado:</td><td>" . $rowEstudiante["Estado"] . "</td></tr>";
+
+    // Obtiene el rol del estudiante desde la tabla 'usuarios'
+    $sqlUsuarios = "SELECT Rol FROM usuarios WHERE Idusuarios = " . $rowEstudiante["idEstudiante"];
+    $resultUsuarios = $conn->query($sqlUsuarios);
+
+    // Verifica si se encontraron resultados en la tabla 'usuarios'
+    // Aquí puedes continuar con el procesamiento de los resultados de $resultUsuarios si es necesario
+} else {
+    // Manejo de caso cuando no se encuentran resultados en el primer query
+    echo "No se encontraron resultados para el estudiante.";
+}
+
 
                 echo "</table>";
 
@@ -153,7 +173,7 @@ if(isset($_SESSION['Idusuario'])) {
             }
 
             $conn->close();
-        }
+        
         ?>
     </div>
 

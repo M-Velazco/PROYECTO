@@ -4,7 +4,7 @@ if (isset($_GET['idActividades'])) {
 
     // Realiza la conexión a la base de datos (asegúrate de incluir tu archivo de conexión)
     require_once "../modelo/conexion.php";
-
+    $conexion = Conectarse();
     // Realiza una consulta para eliminar el registro con el ID proporcionado
     $sql = "DELETE FROM actividades WHERE idActividades = $idactividades";
 

@@ -156,7 +156,7 @@ if ($rol_usuario == 'Coordinador'):
 
 
                         <a href="../Visual_padres" class="dropdown-item">Estudiantes</a>
-                        <a href="../Boletines/FormB.php" class="dropdown-item">Boletines</a>
+                        
                         <a href="../cursos.php" class="dropdown-item">Cursos</a>
                         <a href="../boletines.php" class="dropdown-item">Boletines</a>
                     </div>';
