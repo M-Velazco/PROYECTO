@@ -5,26 +5,127 @@
     "version": "1.0.0",
     "title": "Cursos"
   },
-  "host": "virtserver.swaggerhub.com",
-  "basePath": "/VILLABILONS/Cursos/1.0.0",
+  "host": "localhost",
+  "basePath": "/PROYECTO/DIGIWORM..04",
   "schemes": [
-    "https"
-  ],
-  "consumes": [
-    "application/json"
-  ],
-  "produces": [
-    "application/json"
+    "http"
   ],
   "paths": {
-    "/cursos": {
+    "/apis/CursosApis.php": {
       "get": {
         "tags": [
-          "Curso"
+          "CursosApis.php"
         ],
         "summary": "Retrieve all registered courses with associated teachers",
         "operationId": "getCourses",
-        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Course"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "CursosApis.php"
+        ],
+        "summary": "Create a new course with associated teacher",
+        "operationId": "createCourse",
+        "parameters": [
+          {
+            "name": "CursoData",
+            "in": "body",
+            "description": "Data of the new course",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "idCurso": {
+                  "type": "integer",
+                  "description": "ID of the course"
+                },
+                "Nombre_curso": {
+                  "type": "integer",
+                  "description": "Name of the course"
+                },
+                "Estado": {
+                  "type": "string",
+                  "description": "State of the course"
+                },
+                "Jornada": {
+                  "type": "string",
+                  "description": "Schedule of the course"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Bad request. Check your input data."
+          },
+          "500": {
+            "description": "Internal server error. Something went wrong on the server side."
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "CursosApis.php"
+        ],
+        "summary": "Update an existing course with associated teacher",
+        "operationId": "updateCourse",
+        "parameters": [
+          {
+            "name": "CursoData",
+            "in": "body",
+            "description": "Data of the new course",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "idCurso": {
+                  "type": "integer",
+                  "description": "ID of the course"
+                },
+                "Nombre_curso": {
+                  "type": "integer",
+                  "description": "Name of the course"
+                },
+                "Estado": {
+                  "type": "string",
+                  "description": "State of the course"
+                },
+                "Jornada": {
+                  "type": "string",
+                  "description": "Schedule of the course"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      }
+    },
+    "/apis/all.php": {
+      "get": {
+        "tags": [
+          "CursosApis.php"
+        ],
+        "summary": "Retrieve all courses",
+        "operationId": "getAllCourses",
         "responses": {
           "200": {
             "description": "Successful operation",
