@@ -221,7 +221,7 @@ if ($rol_usuario == 'Coordinador'):
                     <a href="Visual_padres" class="dropdown-item">Datos Estudiantes</a>
                     <a href="Boletines/FormB.php" class="dropdown-item">Boletines</a>
                 </div>';
-
+                ..
 endif;
 ?>
 
