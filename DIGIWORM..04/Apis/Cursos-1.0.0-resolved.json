@@ -50,7 +50,7 @@
                   "description": "ID of the course"
                 },
                 "Nombre_curso": {
-                  "type": "integer",
+                  "type": "string",
                   "description": "Name of the course"
                 },
                 "Estado": {
@@ -97,7 +97,7 @@
                   "description": "ID of the course"
                 },
                 "Nombre_curso": {
-                  "type": "integer",
+                  "type": "string",
                   "description": "Name of the course"
                 },
                 "Estado": {
@@ -115,6 +115,30 @@
         "responses": {
           "200": {
             "description": "Successful operation"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "CursosApis.php"
+        ],
+        "summary": "Delete an existing course",
+        "operationId": "deleteCourse",
+        "parameters": [
+          {
+            "name": "idCurso",
+            "in": "query",
+            "description": "ID of the course to delete",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "500": {
+            "description": "Internal server error. Something went wrong on the server side."
           }
         }
       }

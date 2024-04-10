@@ -171,6 +171,7 @@ if ($rol_usuario == 'Coordinador'):
             <a href="Foros.php" class="nav-item nav-link">Foros</a>
             <a href="Docentes.php" class="nav-item nav-link">Docentes</a>
 
+
             <div class="nav-item dropdown">
                 <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
                 <div class="dropdown-menu rounded-0 m-0">
@@ -179,6 +180,9 @@ if ($rol_usuario == 'Coordinador'):
                     <a href="Visual_padres" class="dropdown-item">Estudiantes</a>
                     <a href="boletines.php" class="dropdown-item">Boletines</a>
                     <a href="cursos.php" class="dropdown-item">Cursos</a>
+                    <a href="Apis/Swagger/swaggerC.php" class="dropdown-item">CursosApi</a>
+                    <a href="Apis/Swagger/swaggerd.php" class="dropdown-item">DocentesApi </a>
+
 
 
                 </div>';
@@ -221,7 +225,7 @@ if ($rol_usuario == 'Coordinador'):
                     <a href="Visual_padres" class="dropdown-item">Datos Estudiantes</a>
                     <a href="Boletines/FormB.php" class="dropdown-item">Boletines</a>
                 </div>';
-                
+
 endif;
 ?>
 

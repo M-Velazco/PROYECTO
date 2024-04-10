@@ -152,6 +152,7 @@ if ($rol_usuario == 'Coordinador'):
             <a href="Actividades.php" class="nav-item nav-link">Actividades</a>
             <a href="chat/login.php" class="nav-item nav-link">Chat</a>
             <a href="Foros.php" class="nav-item nav-link">Foros</a>
+            <a href="Apis/Swagger/swaggerC.html" class="nav-item nav-link">Apis</a>
 
 
             <div class="nav-item dropdown">
@@ -268,7 +269,7 @@ endif;
 <br>
             <div class="row">
             <?php
-$conexion = new mysqli("localhost", "root", "sena", "digiworm_04");
+$conexion = Conectarse();
 if ($conexion->connect_error) {
     die("Error de conexión: " . $conexion->connect_error);
 }

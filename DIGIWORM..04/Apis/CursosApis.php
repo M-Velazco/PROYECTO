@@ -116,9 +116,8 @@ elseif ($_SERVER['REQUEST_METHOD'] === 'PUT') {
     }
 }
 elseif ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
-    // Recibir los datos del curso a eliminar a través del cuerpo de la solicitud DELETE
-    $postData = json_decode(file_get_contents("php://input"), true);
-    $id_curso = $postData['idCurso'];
+    // Recibir los datos del curso a eliminar a través de la URI
+    $id_curso = $_GET['idCurso'];
 
     // Consulta SQL para eliminar un curso existente
     $deleteQuery = "DELETE FROM curso WHERE idCurso='$id_curso'";
