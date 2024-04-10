@@ -180,7 +180,9 @@ require_once "../modelo/conexion.php";
 
 
 
-<input type="file" id="Certificacion" name="Archivo" style="display: none;" title="ingrese Sus certificados"><br>
+  <input type="file" id="Certificacion" name="Archivo" style="display: none;" title="Ingrese Sus certificados"><br>
+<span id="nombreArchivo"></span>
+
   <button type="submit">Actualizar</button>
 
 
@@ -277,7 +279,7 @@ require_once "../modelo/conexion.php";
 </form>
 
 <script>
-  
+
 function mostrarDatosDocente(idDocente) {
   // Realizar una solicitud AJAX para obtener los datos del docente
   var xhr = new XMLHttpRequest();
@@ -293,7 +295,8 @@ function mostrarDatosDocente(idDocente) {
         document.getElementById('materia').value = docente.Materia;
         document.getElementById('jornada').value = docente.Jornada;
         document.getElementById('Descripcion').value = docente.Desc_prof;
-        document.getElementById('Certificacion').value = docente.Certificacion;
+        document.getElementById('nombreArchivo').innerText = docente.Certificacion;
+
       } else {
         alert('Hubo un error al obtener los datos del docente');
       }
