@@ -144,10 +144,10 @@ if (isset($_SESSION['Idusuario'])) {
         </div>
     <?php endif; ?>
     <form action="responder.php" method="post">
-        Título del foro: <input type="text" name="titulo" value="<?php echo $titulo; ?>" required><br><br>
+        Título del foro: <input type="text" name="titulo" value="<?php echo $titulo; ?>" required readonly><br><br>
         Contenido del foro:<br>
         <?php
-        $conn = new mysqli('localhost', 'root', 'sena', 'digiworm_04');
+        $conn = Conectarse();
         if ($conn->connect_error) {
             die("Error de conexión: " . $conn->connect_error);
         }
