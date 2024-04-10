@@ -1,11 +1,12 @@
 <?php
+include_once "../modelo/conexion.php";
 // Verificar si se ha proporcionado un ID de actividad
 if(isset($_GET['idActividades'])) {
     // Obtener el ID de la actividad desde la URL
     $idActividad = $_GET['idActividades'];
 
     // Conectar a la base de datos
-    $conexion = new mysqli("localhost", "root", "sena", "digiworm_04");
+    $conexion = Conectarse()
     if ($conexion->connect_error) {
         die("Error de conexión: " . $conexion->connect_error);
     }

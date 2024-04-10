@@ -103,7 +103,9 @@ if(isset($_SESSION['Idusuario'])) {
     <!-- Aquí se mostrará la información del estudiante -->
     <div class="content">
         <?php
-        include 'conexion.php';
+        
+
+        $conn = Conectarse();
 
         if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["idEstudiante"])) {
             $idEstudiante = $_POST["idEstudiante"];
@@ -136,7 +138,7 @@ if(isset($_SESSION['Idusuario'])) {
                     $resultUsuarios = $conn->query($sqlUsuarios);
 
                     // Verifica si se encontraron resultados en la tabla 'usuarios'
-                    
+
                 }
 
                 echo "</table>";

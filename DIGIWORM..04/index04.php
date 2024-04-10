@@ -166,7 +166,7 @@ if ($rol_usuario == 'Coordinador'):
         }
         elseif($rol_usuario=='administrador') :
             echo '<a href="index04.php" class="nav-item nav-link active">Home</a>
-        <a href="Actividades.php" class="nav-item nav-link">Actividades</a>
+            <a href="Actividades.php" class="nav-item nav-link">Actividades</a>
             <a href="chat/login.php" class="nav-item nav-link">Chat</a>
             <a href="Foros.php" class="nav-item nav-link">Foros</a>
             <a href="Docentes.php" class="nav-item nav-link">Docentes</a>
@@ -174,10 +174,12 @@ if ($rol_usuario == 'Coordinador'):
             <div class="nav-item dropdown">
                 <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
                 <div class="dropdown-menu rounded-0 m-0">
+
                     <a href="publicaciones/publicaciones.php" class="dropdown-item">Publicaciones</a>
                     <a href="Visual_padres" class="dropdown-item">Estudiantes</a>
                     <a href="boletines.php" class="dropdown-item">Boletines</a>
                     <a href="cursos.php" class="dropdown-item">Cursos</a>
+
 
                 </div>';
                 elseif($rol_usuario=='Padre_familia') :
@@ -219,7 +221,7 @@ if ($rol_usuario == 'Coordinador'):
                     <a href="Visual_padres" class="dropdown-item">Datos Estudiantes</a>
                     <a href="Boletines/FormB.php" class="dropdown-item">Boletines</a>
                 </div>';
-                ..
+
 endif;
 ?>
 
@@ -251,8 +253,8 @@ endif;
         </nav>
     </div>
     <!-- Navbar End -->
-
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- Header Start -->
     <div class="container-fluid bg-primary px-0 px-md-5 mb-5">
         <div class="row align-items-center px-3">

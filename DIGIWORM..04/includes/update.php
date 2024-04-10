@@ -1,4 +1,5 @@
 <?php
+include_once "../modelo/conexion.php"
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['registrar'])) {
     // Verificar si se ha enviado el formulario y se ha hecho clic en el botón de guardar
 
@@ -25,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['registrar'])) {
             // El archivo se ha movido correctamente, ahora procedemos a la actualización en la base de datos
 
             // Conectar a la base de datos
-            $conexion = new mysqli("localhost", "root", "", "digiworm_04");
+            $conexion = Conectarse();
             if ($conexion->connect_error) {
                 die("Error de conexión: " . $conexion->connect_error);
             }

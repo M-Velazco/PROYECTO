@@ -7,7 +7,7 @@ require '../PHPMailer/src/Exception.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
-
+include_once "../modelo/conexion.php"
 // Verificar si se ha enviado el formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Recuperar los datos del formulario
@@ -18,11 +18,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Insertar en la base de datos
     // Suponiendo que tienes una conexión a la base de datos establecida previamente
-    $conexion = new mysqli("localhost", "root", "sena", "digiworm_04");
+    $conexion = Conectarse();
     if ($conexion->connect_error) {
         die("Conexión fallida: " . $conexion->connect_error);
     }
-    
+
     $sql = "INSERT INTO citas (nombre, email, fecha, hora) VALUES ('$nombre', '$email', '$fecha', '$hora')";
     if ($conexion->query($sql) === TRUE) {
         // Enviar correo de confirmación utilizando PHPMailer
@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Enviar el correo
             $mail->send();
-            
+
             header("location:../index.html?succes=citas");
         } catch (Exception $e) {
             echo "Error al enviar el correo de confirmación: {$mail->ErrorInfo}";

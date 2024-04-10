@@ -6,14 +6,14 @@ require '../PHPMailer/src/Exception.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
-
+include_once "../modelo/conexion.php"
 // Verificar si se ha enviado el formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email'])) {
     // Recuperar el correo electrónico del formulario
     $email = $_POST['email'];
 
     // Verificar si el usuario existe en la base de datos
-    $conexion = new mysqli("localhost", "root", "sena", "digiworm_04");
+    $conexion = Conectarse();
     if ($conexion->connect_error) {
         die("Conexión fallida: " . $conexion->connect_error);
     }

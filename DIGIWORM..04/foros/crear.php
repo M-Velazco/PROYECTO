@@ -21,6 +21,7 @@ if (isset($_SESSION['Idusuario'])) {
     $ruta_imagen = $objUsuarios->obtenerRutaImagenUsuario($_SESSION['Idusuario']);
     $rol_usuario = $objUsuarios->obtenerRutaImagenUsuario($_SESSION['Idusuario']);
 
+    $conn = Conectarse();
     // Verifica si se ha enviado el formulario
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Obtener los datos del formulario
@@ -43,7 +44,7 @@ if (isset($_SESSION['Idusuario'])) {
 
         // Insertar los datos en la base de datos
         $sql = "INSERT INTO `foros`(`Titulo`, `Contenido`, `Fecha_Hora`, `archivo`, `idusuario`) VALUES (?, ?, ?, ?, ?)";
-        $stmt = mysqli_prepare($con, $sql);
+        $stmt = mysqli_prepare($conn, $sql);
 
         // Enlaza los parámetros con sus respectivos tipos
         mysqli_stmt_bind_param($stmt, "ssssi", $titulo, $descripcion, $fecha_creacion, $ruta_destino, $id_usuario);
@@ -54,7 +55,7 @@ if (isset($_SESSION['Idusuario'])) {
             $mensaje = "Foro creado exitosamente";
         } else {
             // Mensaje de error si hubo un problema con la inserción
-            $mensaje = "Error al insertar los datos: " . mysqli_error($con);
+            $mensaje = "Error al insertar los datos: " . mysqli_error($conn);
         }
     }
 } else {
@@ -76,8 +77,8 @@ if (isset($_SESSION['Idusuario'])) {
             margin: 0;
             padding: 0;
             background-image: url('../img/datos.jpg');
-            background-size: cover; 
-            background-repeat: no-repeat; 
+            background-size: cover;
+            background-repeat: no-repeat;
         }
 
         form {

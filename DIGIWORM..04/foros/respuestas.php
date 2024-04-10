@@ -79,7 +79,7 @@ if (isset($_SESSION['Idusuario'])) {
         .boton:hover {
             background-color: #45a049; /* Cambio de color al pasar el ratón */
         }
-   
+
     </style>
 </head>
 <body>
@@ -89,27 +89,27 @@ if (isset($_SESSION['Idusuario'])) {
 <div class="foro">
     <?php
     // Conexión a la base de datos y consulta de los foros
-    $conexion = new mysqli("localhost", "root", "sena", "digiworm_04");
+    $conexion = Conectarse();
     if ($conexion->connect_error) {
         die("Error de conexión: " . $conexion->connect_error);
     }
     $consultaForos = $conexion->query("SELECT * FROM foros");
-    
+
 
     // Mostrar los foros y sus respuestas
     while ($filaForo = $consultaForos->fetch_assoc()) {
         ?>
         <h2>
             <?php echo $filaForo['Titulo']; ?>
-            
+
         </h2>
         <p><strong>Fecha de creación:</strong>
             <?php echo $filaForo['Fecha_Hora']; ?>
         </p>
         <p><strong>Contenido:</strong> <?php echo $filaForo['Contenido']; ?></p>
-            
-     
-       
+
+
+
 
         <?php
         // Consulta de las respuestas para el foro actual
@@ -127,8 +127,8 @@ if (isset($_SESSION['Idusuario'])) {
                 ?>
                 <h3>Respuestas<?php echo $nombreUsuarioRespuesta ?>:</h3>
                 <p class="respuesta"><?php echo $filaRespuesta['respuesta']; ?></p>
-                
-                    
+
+
                 </p>
                 <?php
             }
@@ -136,8 +136,8 @@ if (isset($_SESSION['Idusuario'])) {
             echo "No hay respuestas para este foro.";
         }
         ?>
-        
-       
+
+
         <?php
     }
 

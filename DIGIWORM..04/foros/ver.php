@@ -33,8 +33,8 @@ if (isset($_SESSION['Idusuario'])) {
             margin: 0;
             padding: 0;
             background-image: url('../img/datos.jpg');
-            background-size: cover; 
-            background-repeat: no-repeat; 
+            background-size: cover;
+            background-repeat: no-repeat;
         }
 
         h1 {
@@ -87,7 +87,7 @@ if (isset($_SESSION['Idusuario'])) {
 <div class="foro">
     <?php
     // Conexión a la base de datos y consulta de las materias
-    $conexion = new mysqli("localhost", "root", "sena", "digiworm_04");
+    $conexion = Conectarse();
     if ($conexion->connect_error) {
         die("Error de conexión: " . $conexion->connect_error);
     }

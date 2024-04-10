@@ -1,8 +1,8 @@
-<?php 
+<?php
 require_once "../modelo/conexion.php";
 
 // Obtener los valores del formulario POST
-$Conexion=new mysqli("localhost","root","sena","digiworm_04");
+$Conexion=Conectarse();
 $Nombres_apellidos = $_POST['Nombres_Apellidos'];
 $Email = $_POST['Email'];
 $Opinion = $_POST['Opinion'];

@@ -1,4 +1,5 @@
 <?php
+include_once "../modelo/conexion.php";
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['registrar'])) {
     // Obtener los datos del formulario
     $nombre_actividad = $_POST['nombreA'];
@@ -6,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['registrar'])) {
     $docente = $_POST['Docente'];
     $fecha_entrega = $_POST['FechaEntrega'];
     $descripcion = $_POST['Descripcion']; // Obtener la descripción del formulario
-    
+
     // Generar la fecha de publicación automáticamente
     $fecha_publicacion = date('Y-m-d');
 
@@ -24,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['registrar'])) {
             // El archivo se ha movido correctamente, ahora procedemos a la inserción en la base de datos
 
             // Conectar a la base de datos
-            $conexion = new mysqli("localhost", "root", "sena", "digiworm_04");
+            $conexion = Conectarse();
             if ($conexion->connect_error) {
                 die("Error de conexión: " . $conexion->connect_error);
             }

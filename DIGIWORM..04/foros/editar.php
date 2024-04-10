@@ -1,7 +1,7 @@
 <?php
 // Inicia la sesión
 session_start();
-
+include_once "../modelo/conexion.php";
 // Verifica si el usuario está conectado
 if (isset($_SESSION['Idusuario'])) {
     // Verifica si se ha enviado el formulario
@@ -14,7 +14,7 @@ if (isset($_SESSION['Idusuario'])) {
         $estado = isset($_POST['Estado']) ? htmlspecialchars($_POST['Estado']) : '';
 
         // Conectarse a la base de datos y actualizar los datos del foro, incluyendo el estado
-        $conn = new mysqli('localhost', 'root', 'sena', 'digiworm_04');
+        $conn = Conectarse()
         if ($conn->connect_error) {
             die("Error de conexión: " . $conn->connect_error);
         }
@@ -28,9 +28,9 @@ if (isset($_SESSION['Idusuario'])) {
     } else {
         // Obtener el ID del foro a editar
         $idForos = isset($_GET['idForos']) ? htmlspecialchars($_GET['idForos']) : '';
-        
+
         // Conectarse a la base de datos y obtener los datos del foro
-        $conn = new mysqli('localhost', 'root', 'sena', 'digiworm_04');
+        $conn = Conectarse();
         if ($conn->connect_error) {
             die("Error de conexión: " . $conn->connect_error);
         }
@@ -63,8 +63,8 @@ if (isset($_SESSION['Idusuario'])) {
                 margin: 0;
                 padding: 0;
                 background-image: url('../img/datos.jpg');
-                background-size: cover; 
-                background-repeat: no-repeat; 
+                background-size: cover;
+                background-repeat: no-repeat;
             }
 
             form {

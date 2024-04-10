@@ -6,7 +6,7 @@ require '../PHPMailer/src/Exception.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
-
+include_once "../modelo/conexion.php"
 // Verificar si se ha enviado el formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['password'], $_POST['confirm_password'], $_POST['token'])) {
     // Recuperar los datos del formulario
@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['password'], $_POST['co
     }
 
     // Conectar a la base de datos
-    $conexion = new mysqli("localhost", "root", "sena", "digiworm_04");
+    $conexion = Conectarse();
     if ($conexion->connect_error) {
         die("Conexión fallida: " . $conexion->connect_error);
     }

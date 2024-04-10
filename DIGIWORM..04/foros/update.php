@@ -13,7 +13,7 @@ if (isset($_SESSION['Idusuario'])) {
         $fecha_creacion = isset($_POST['fecha_creacion']) ? htmlspecialchars($_POST['fecha_creacion']) : '';
 
         // Conectarse a la base de datos y actualizar los datos del foro
-        $conn = new mysqli('localhost', 'root', 'sena', 'digiworm_04');
+        $conn = Conectarse();
         if ($conn->connect_error) {
             die("Error de conexión: " . $conn->connect_error);
         }

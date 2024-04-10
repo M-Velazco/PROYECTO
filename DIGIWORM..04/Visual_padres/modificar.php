@@ -88,8 +88,8 @@ if(isset($_SESSION['Idusuario'])) {
 
 <body>
     <?php
-    include 'conexion.php';
-
+    
+    $conn = Conectarse();
     $error = '';
     $cambios_realizados = false; // Variable para rastrear si se realizaron cambios
 
@@ -166,8 +166,34 @@ if(isset($_SESSION['Idusuario'])) {
     <?php endif; ?>
 
     <?php if ($rol_usuario == 'administrador' || $rol_usuario == 'Coordinador' || $rol_usuario == 'Docente'): ?>
-        <label for="curso">Curso:</label>
-        <input type="text" id="curso" name="curso" pattern="\d{3,4}" title="Debe tener 3 o 4 dígitos" value="<?php echo isset($rowEstudiante['Curso']) ? $rowEstudiante['Curso'] : ''; ?>" required>
+        <select name="curso" id="curso" required>
+
+  <?php
+      // Conexión a la base de datos
+      $conn = Conectarse();
+      // Crear conexión
+
+
+      // Verificar conexión
+      if ($conn->connect_error) {
+          die("Conexión fallida: " . $conn->connect_error);
+      }
+
+      // Consulta para obtener los ID de los docentes y sus nombres y apellidos asociados
+      $sql = "SELECT * FROM curso";
+      $result = $conn->query($sql);
+
+      if ($result->num_rows > 0) {
+          // Generar opciones del select con los ID de los docentes y sus nombres y apellidos
+          while ($row = $result->fetch_assoc()) {
+              echo "<option value='" . $row['idCurso'] . "'>" . $row['Nombre_curso'] . "-" . $row ['Jornada'] .  "</option>";
+          }
+      }
+
+      // Cerrar conexión
+      $conn->close();
+    ?>
+  </select>
         <label for="estado">Estado:</label>
         <select id="estado" name="estado" required>
             <option value="Activo" <?php echo (isset($rowEstudiante['Estado']) && $rowEstudiante['Estado'] == 'Activo') ? 'selected' : ''; ?>>Activo</option>

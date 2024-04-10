@@ -1,6 +1,6 @@
 <?php
 $titulo = isset($_GET['titulo']) ? htmlspecialchars($_GET['titulo']) : '';
-
+include_once "../modelo/conexion.php";
 // Inicia la sesión
 session_start();
 
@@ -15,7 +15,7 @@ if (isset($_SESSION['Idusuario'])) {
 
         // Guardar la respuesta en la base de datos
         // Reemplaza 'tu_conexion' con tu conexión a la base de datos
-        $conn = new mysqli('localhost', 'root', 'sena', 'digiworm_04');
+        $conn = Conectarse();
         if ($conn->connect_error) {
             die("Error de conexión: " . $conn->connect_error);
         }
@@ -68,8 +68,8 @@ if (isset($_SESSION['Idusuario'])) {
             margin: 0;
             padding: 0;
             background-image: url('../img/datos.jpg');
-            background-size: cover; 
-            background-repeat: no-repeat; 
+            background-size: cover;
+            background-repeat: no-repeat;
         }
         form {
             background-color: #fff; /* Fondo blanco */
@@ -176,4 +176,3 @@ if (isset($_SESSION['Idusuario'])) {
     </form>
 </body>
 </html>
-
