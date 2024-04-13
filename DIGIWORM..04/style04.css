@@ -7,18 +7,32 @@
   padding: 0;
   box-sizing: border-box;
 }
+::-webkit-scrollbar {
+  width: 12px; /* Ancho de la barra de desplazamiento */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* Fondo transparente */
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0); /* Color del cursor de desplazamiento */
+  border-radius: 6px; /* Radio de borde */
+}
+
 
 body,
 input {
   font-family: "Poppins", sans-serif;
 }
-  
+
 .container {
   position: relative;
   width: 100%;
   background-color: rgba(219, 206, 213, 0);
   min-height: 100vh;
   overflow: hidden;
+  height: 140vh;
 }
 
 .forms-container {
@@ -67,7 +81,7 @@ form.sign-in-form {
   font-size: 2.2rem;
   color: #444;
   margin-bottom: 10px;
-  
+
 }
 
 .sign-up-form .input-field {
@@ -88,7 +102,7 @@ form.sign-in-form {
     align-items: flex-start;
     margin-left: 2rem;
 }
-  
+
   .input-radio label {
     margin-bottom: 0.5rem;
   }
@@ -292,7 +306,7 @@ form.sign-in-form {
     font-size: 0.8rem;
     transition: 00.5s ease-in-out;
   }
-  
+
 .href{
   font-family: "Poppins", sans-serif;
   text-decoration: none;
@@ -353,7 +367,8 @@ form.sign-in-form {
 @media (max-width: 870px) {
   .container {
     min-height: 800px;
-    height: 100vh;
+    height: 130vh;
+    overflow-y: auto; /* Agrega una barra de desplazamiento vertical si es necesario */
   }
   .signin-signup {
     width: 100%;
@@ -378,6 +393,9 @@ form.sign-in-form {
     align-items: center;
     padding: 2.5rem 8%;
     grid-column: 1 / 2;
+    height: auto; /* Hace que la altura del panel sea automática para que se ajuste al contenido */
+    max-height: 20vh; /* Limita la altura máxima del panel */
+
   }
 
   .right-panel {
@@ -418,8 +436,8 @@ form.sign-in-form {
   }
 
   .container:before {
-    width: 1500px;
-    height: 1500px;
+    width: 1200px;
+    height: 1100px;
     transform: translateX(-50%);
     left: 30%;
     bottom: 68%;
@@ -452,7 +470,9 @@ form.sign-in-form {
   .container.sign-up-mode .signin-signup {
     top: 5%;
     transform: translate(-50%, 0);
+
   }
+
 }
 
 @media (max-width: 570px) {
@@ -476,8 +496,7 @@ form.sign-in-form {
   }
 
   .container.sign-up-mode:before {
-    bottom: 28%;
+    bottom: 29%;
     left: 50%;
   }
 }
-

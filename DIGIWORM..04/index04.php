@@ -516,77 +516,47 @@ endif;
             <div class="row">
 
             <?php
-            $urlD = 'http://localhost/PROYECTO/DIGIWORM..04/Apis/DocentesApis.php';
+$conexion = Conectarse();
+if ($conexion->connect_error) {
+    die("Error de conexión: " . $conexion->connect_error);
+}
 
-            $curl = curl_init( $urlD );
+$consulta = $conexion->query("SELECT d.*, u.Telefono,u.img, u.Idusuarios FROM Docente d JOIN usuarios u ON d.idDocente = u.Idusuarios");
 
-            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-            $response = curl_exec($curl);
-            if ($response === false) {
-                die("Error en la solicitud: " . curl_error($curl));
-            }
-
-            // Decodificar la respuesta JSON
-            $docentes = json_decode($response, true);
-
-            // Verificar si se recibieron opiniones
-            if (empty($docentes)) {
-
-            } else {
-                // Iterar sobre las opiniones y mostrarlas en el HTML
-                foreach ($docentes as $docente) {
-            ?>
-                <div class="col-md-6 col-lg-3 text-center team mb-5">
-                    <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
-                        <img class="img-fluid w-100" src="<?php echo $docente[ 'img']  ?>" alt="" >
-
-                    </div>
-                    <h4><?php echo $docente ['Nombres']; ?></h4>
-                    <i>Docente de <?php echo $docente['nombre_materia'] ?></i>
-                </div>
-            <?php
-                }
-                }
-                curl_close($curl);
-            ?>
-
-                <div class="col-md-6 col-lg-3 text-center team mb-5">
-                    <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
-                        <img class="img-fluid w-100" src="img/testimonial-3.jpg" alt="" >
-
-                    </div>
-                    <h4>Jhon Doe</h4>
-                    <i>Docente de Lenguaje Catellano</i>
-                </div>
-                <div class="col-md-6 col-lg-3 text-center team mb-5">
-                    <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
-                        <img class="img-fluid w-100" src="img/avatar.jpg" alt="" >
-
-                    </div>
-                    <h4>Johan stiven</h4>
-                    <i>Docente de filosofia</i>
-                </div>
-                <div class="col-md-6 col-lg-3 text-center team mb-5">
-                    <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
-                        <img class="img-fluid w-100" src="img/team-3.jpg" alt="" >
-
-                    </div>
-                    <h4>Mollie Ross</h4>
-                    <i>Docente de Danzas</i>
-                </div>
-                <div class="col-md-6 col-lg-3 text-center team mb-5">
-                    <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
-                        <img class="img-fluid w-100" src="img/team-4.jpg" alt="" >
-
-                    </div>
-                    <h4>Donald John</h4>
-                    <i>Docente de Musica</i>
-                </div>
-
+if ($consulta) {
+    while ($fila = $consulta->fetch_assoc()) {
+?>
+        <div class="col-md-6 col-lg-3 text-center team mb-5">
+            <div class="position-relative overflow-hidden mb-4" style="border-radius: 100%;">
+                <img class="img-fluid w-100" src="<?php echo $fila['img']; ?>" alt="" onclick="mostrarDatosPersonales(<?php echo $fila['Idusuarios']; ?>)">
             </div>
+            <h4><?php echo $fila['Nombres'] . ' ' . $fila['Apellidos']; ?></h4>
+
+            <div id="DatosPersonales_<?php echo $fila['Idusuarios']; ?>" style="display: none;">
+                <p>Correo electrónico: <?php echo $fila['Email']; ?></p>
+                <p>Teléfono: <?php echo $fila['Telefono']; ?></p>
+                <p>Estudios: <?php echo $fila['Desc_prof']; ?></p>
+                <p> <?php echo '<embed src="' . $fila['Certificacion'] . '" type="application/pdf" style="width: 100%; height: 500px; border-radius: 10px;">'; ?></p>
+            </div>
+
+            <script>
+                function mostrarDatosPersonales(Idusuarios) {
+                    var datosPersonales = document.getElementById("DatosPersonales_" + Idusuarios);
+                    if (datosPersonales.style.display === "none") {
+                        datosPersonales.style.display = "block";
+                    } else {
+                        datosPersonales.style.display = "none";
+                    }
+                }
+            </script>
         </div>
-    </div>
+<?php
+    }
+} else {
+    echo "Error en la consulta: " . $conexion->error;
+}
+?>
+
     <!-- Team End -->
 
 

@@ -6,7 +6,7 @@ require '../PHPMailer/src/Exception.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
-include_once "../modelo/conexion.php"
+include_once "../modelo/conexion.php";
 // Verificar si se ha enviado el formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['password'], $_POST['confirm_password'], $_POST['token'])) {
     // Recuperar los datos del formulario

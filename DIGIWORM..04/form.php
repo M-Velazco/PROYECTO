@@ -263,9 +263,9 @@ function registrarUltimoCampoModificado(input) {
                 <div>
                     <input type="checkbox"required/><a href="#" class="href"> <span class="rules-text">"Acepto los términos de servicio"</a></span>
                 </div>
-
+<br>
                 <input type="submit" class="btn" value="Registro completo"/>
-
+<br><br><br>
             </form>
             <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -297,7 +297,7 @@ function registrarUltimoCampoModificado(input) {
                 } else {
                     cursoField.style.display = 'none';
                     materiaField.style.display = 'none';
-                    estadoField.style.display = 'block'; // Mostrar el campo de estado
+                    estadoField.style.display = 'none'; // Mostrar el campo de estado
                     jornadaField.style.display = 'none'; // Ocultar el campo de jornada
                 }
             });
@@ -344,6 +344,21 @@ if (isset($_GET['error']) && $_GET['error'] == 'campo_incompleto') {
                     icon: 'error',
                     title: 'Error de inicio de sesión',
                     text: 'Usuario no encontrado. Por favor, verifica tus credenciales e intenta nuevamente.'
+                });
+            });
+          </script>";
+}
+?>
+<?php
+if (isset($_GET['error']) && $_GET['error'] == 'usuario_inactivo') {
+    echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@10'></script>"; // Incluye SweetAlert desde CDN
+
+    echo "<script>
+            document.addEventListener('DOMContentLoaded', function() {
+                Swal.fire({
+                    icon: 'error',
+                    title: '!oops',
+                    text: 'Lo sentimos, El usuario se encuentra inactivo porfavor comunicate con las directivas para solucionarlo'
                 });
             });
           </script>";

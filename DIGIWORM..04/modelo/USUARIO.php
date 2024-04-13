@@ -418,6 +418,32 @@ public function obtenerNombreUsuario($Idusuarios) {
 		}
 	}
 
+	public function obtenerEstadoUsuario($Idusuario) {
+        // Prepara la consulta SQL
+        $query = "SELECT Estado FROM usuarios WHERE Idusuarios = ?";
+
+        // Prepara la sentencia
+        $stmt = $this->conexion->prepare($query);
+
+        // Vincula los parámetros
+        $stmt->bind_param("i", $Idusuario);
+
+        // Ejecuta la consulta
+        $stmt->execute();
+
+        // Obtiene el resultado
+        $resultado = $stmt->get_result();
+
+        // Comprueba si se encontró el usuario y obtiene su estado
+        if ($resultado->num_rows == 1) {
+            $fila = $resultado->fetch_assoc();
+            return $fila['Estado'];
+        } else {
+            // Si no se encuentra el usuario, retorna null o un valor indicativo
+            return null;
+        }
+    }
+
 	public function modificarUsuario($Idusuarios)
 	{
 		$this->Conexion=Conectarse();
