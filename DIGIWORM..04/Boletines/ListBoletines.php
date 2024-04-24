@@ -46,7 +46,7 @@ if(isset($_SESSION["Idusuario"])) {
                     echo '<tr>';
                     echo '<th scope="row">' . $row_boletines['idBoletin'] . '</th>';
                     echo '<td>' . $row_boletines['idEstudiante'] . '</td>';
-                    echo '<td>' . $row_boletines['direccionArchivo'] . '</td>';
+                    echo '<td>Boletin_ ' . $row_boletines['idEstudiante'] . '</td>';
                     echo '<td>' . $row_boletines['fechaCreacion'] . '</td>';
                     echo '<td><a href="Boletines/Validacion/download.php?idBoletin=' . $row_boletines['idBoletin'] . '" class="btn btn-primary px-4 mx-auto my-2">Descargar</a></td>';
                     echo '</tr>';
@@ -61,7 +61,7 @@ if(isset($_SESSION["Idusuario"])) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
-       
+
 </body>
 
 </html>
