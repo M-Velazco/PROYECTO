@@ -265,7 +265,7 @@ function registrarUltimoCampoModificado(input) {
                 </div>
 <br>
                 <input type="submit" class="btn" value="Registro completo"/>
-<br><br><br>
+
             </form>
             <script>
     document.addEventListener("DOMContentLoaded", function() {
