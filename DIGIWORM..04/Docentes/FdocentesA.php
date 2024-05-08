@@ -71,6 +71,7 @@ require_once "../modelo/conexion.php";
 
   <label for="id_docente">Seleccionar docente:</label>
   <select name="id_docente" id="id_docente" onchange="mostrarDatosDocente(this.value)" required>
+
   <option value=""></option>
     <?php
       // Conexión a la base de datos
@@ -140,34 +141,10 @@ require_once "../modelo/conexion.php";
   </select><br><br>
 
   <label for="materia">Materia:</label>
-  <select name="materia" id="materia" required>
+  <ul id="materiasList">
 
-  <?php
-      // Conexión a la base de datos
-      $conn = Conectarse();
-      // Crear conexión
-
-
-      // Verificar conexión
-      if ($conn->connect_error) {
-          die("Conexión fallida: " . $conn->connect_error);
-      }
-
-      // Consulta para obtener los ID de los docentes y sus nombres y apellidos asociados
-      $sql = "SELECT * FROM materias";
-      $result = $conn->query($sql);
-
-      if ($result->num_rows > 0) {
-          // Generar opciones del select con los ID de los docentes y sus nombres y apellidos
-          while ($row = $result->fetch_assoc()) {
-              echo "<option value='" . $row['idMaterias'] . "'>" . $row['Nombre_Materia'] . "</option>";
-          }
-      }
-
-      // Cerrar conexión
-      $conn->close();
-    ?>
-  </select> <br><br>
+  </ul>
+   <br><br>
 
 
   <label for="jornada">Jornada:</label>
@@ -183,19 +160,52 @@ require_once "../modelo/conexion.php";
   <input type="file" id="Certificacion" name="Archivo" style="display: none;" title="Ingrese Sus certificados"><br>
 <span id="nombreArchivo"></span>
 
-  <button type="submit">Actualizar</button>
+  <button type="submit" name="actualizar">Actualizar</button>
+  <button type="submit" name="AgregarMateria" id="AgregarMateria"style="display: none;">Agregar materia</button>
 
-
-
+<!-- Agregar materia desde un select -->
 <div class="bottoncx">
-    <select name="info" class="bottonc-select">
+    <select name="info" class="bottonc-select" id="accion" onchange="mostrarAccion(this.value)">
       <option value="">Agregar</option>
       <option value="Descripcion">Descripción</option>
       <option value="Certificacion">Certificación</option>
       <option value="CertDesc">Certificacion y descripcion</option>
+      <option value="AgregarMateria">Agregar Materia</option> <!-- Nueva opción -->
     </select>
   </div>
-  <style>
+
+<!-- Contenedor para el select de agregar materia -->
+<div id="selectMateriaContainer" style="display: none;">
+    <select id="selectMateria"name="materia">
+        <option value="">Seleccionar Materia</option>
+        <?php
+            // Conexión a la base de datos
+            $conn = Conectarse();
+            // Crear conexión
+
+            // Verificar conexión
+            if ($conn->connect_error) {
+                die("Conexión fallida: " . $conn->connect_error);
+            }
+
+            // Consulta para obtener las materias
+            $sql = "SELECT idMaterias, Nombre_Materia FROM materias";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                // Generar opciones del select con las materias
+                while ($row = $result->fetch_assoc()) {
+                    echo "<option value='" . $row['idMaterias'] . "'>" . $row['Nombre_Materia'] . "</option>";
+                }
+            }
+
+            // Cerrar conexión
+            $conn->close();
+        ?>
+    </select>
+</div>
+
+<style>
   .bottonc {
     position: relative;
     display: inline-block;
@@ -291,12 +301,20 @@ function mostrarDatosDocente(idDocente) {
         document.getElementById('nombres').value = docente.Nombres;
         document.getElementById('apellidos').value = docente.Apellidos;
         document.getElementById('email').value = docente.Email;
-        document.getElementById('curso').value = docente.Curso;
-        document.getElementById('materia').value = docente.Materia;
         document.getElementById('jornada').value = docente.Jornada;
         document.getElementById('Descripcion').value = docente.Desc_prof;
         document.getElementById('nombreArchivo').innerText = docente.Certificacion;
 
+        // Manejar las materias asignadas al docente
+        var materiasList = document.getElementById('materiasList');
+        // Limpiar el elemento ul antes de agregar las nuevas materias
+        materiasList.innerHTML = '';
+        var materias = docente.Materias.split(', ');
+        materias.forEach(function(materia) {
+          var listItem = document.createElement('li');
+          listItem.textContent = materia;
+          materiasList.appendChild(listItem);
+        });
       } else {
         alert('Hubo un error al obtener los datos del docente');
       }
@@ -304,6 +322,16 @@ function mostrarDatosDocente(idDocente) {
   };
   xhr.open('GET', 'obtener_datos_docente.php?id=' + idDocente, true);
   xhr.send();
+}
+
+function mostrarAccion(accion) {
+    if (accion === 'AgregarMateria') {
+        document.getElementById('selectMateriaContainer').style.display = 'block';
+        document.getElementById('AgregarMateria').style.display = 'block';
+    } else {
+        document.getElementById('selectMateriaContainer').style.display = 'none';
+        document.getElementById('AgregarMateria').style.display = 'none';
+    }
 }
 </script>
 

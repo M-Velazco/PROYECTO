@@ -1,4 +1,6 @@
 <?php
+require_once "../modelo/conexion.php";
+$conn = Conectarse();
 // Verificar si se ha enviado el formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Obtener los datos del formulario y sanitizarlos
@@ -7,62 +9,55 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $apellidos = htmlspecialchars($_POST['apellidos']);
     $email = htmlspecialchars($_POST['email']);
     $curso = $_POST['curso'];
-    $materia = $_POST['materia'];
     $jornada = $_POST['jornada'];
     $Descripcion = htmlspecialchars($_POST['Descripcion']);
 
-    // Verificar si se ha seleccionado algún archivo
-    if (isset($_FILES['Archivo']) && $_FILES['Archivo']['error'] === UPLOAD_ERR_OK) {
-        // Manejar el archivo enviado
-        // Definir la carpeta de destino para guardar el archivo
-        $carpeta_destino = "./files/";
+    // Iniciar una transacción
+    $conn->begin_transaction();
 
-        // Obtener el nombre y la extensión del archivo
-        $nombre_archivo = basename($_FILES["Archivo"]["name"]);
-        $archivo_destino = $carpeta_destino . $nombre_archivo;
-        $archivo_Bd = "Docentes/files/".$nombre_archivo;
-        // Mover el archivo a la carpeta de destino
-        if (move_uploaded_file($_FILES["Archivo"]["tmp_name"], $archivo_destino)) {
-            // El archivo se ha movido correctamente, ahora procedemos a la inserción en la base de datos
-
-            require_once "../modelo/conexion.php";
-            $conn = Conectarse();
-
-            // Verificar conexión
-            if ($conn->connect_error) {
-                die("Conexión fallida: " . $conn->connect_error);
-            }
-
-            // Consulta SQL para actualizar los datos del docente
-            $sql = "UPDATE docente SET Nombres=?, Apellidos=?, Email=?, Curso=?, Materia=?, Jornada=?, Certificacion=?, Desc_prof=? WHERE idDocente=?";
+    try {
+        // Consulta SQL para actualizar los datos del docente
+        if (isset($_POST['actualizar'])) {
+            $sql = "UPDATE docente SET Nombres=?, Apellidos=?, Email=?, Curso=?, Jornada=?, Certificacion=?, Desc_prof=? WHERE idDocente=?";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("sssiisssi", $nombres, $apellidos, $email, $curso, $materia, $jornada, $archivo_Bd, $Descripcion, $id_docente);
+            $stmt->bind_param("sssisssi", $nombres, $apellidos, $email, $curso, $jornada, $archivo_Bd, $Descripcion, $id_docente);
 
-            if ($stmt->execute()) {
-                header('Location: ../Docentes.php');
-                exit;
-            } else {
-                echo "Error al actualizar los datos del docente: " . $stmt->error;
-            }
-
-            // Cerrar conexión
+            // Ejecutar la actualización
+            $update_success = $stmt->execute();
             $stmt->close();
-            $conn->close();
-        } else {
-            echo "Error al mover el archivo.";
+
+            // Verificar si la actualización fue exitosa
+            if (!$update_success) {
+                throw new Exception("Error al actualizar los datos del docente");
+            }
         }
-    } else {
-        // No se ha seleccionado ningún archivo o ocurrió un error al subir el archivo, continuar sin manejar el archivo
-        // Puedes agregar aquí el código para procesar los otros campos del formulario
-        // Si la subida del archivo es opcional, puedes simplemente continuar con la actualización de los datos del docente
-        // Sin necesidad de mostrar un mensaje de error
 
-        // Por ejemplo, podrías realizar la actualización de los datos del docente aquí sin intentar manejar un archivo inexistente
-        // La lógica para actualizar los datos del docente se colocaría aquí
+        // Verificar si se debe insertar una materia
+        if (isset($_POST['AgregarMateria'])) {
+            $materia = $_POST['materia'];
+            if (!empty($materia)) {
+                // Consulta SQL para insertar la materia
+                $sql_insert = "INSERT INTO docente_materia (idDocente, idMateria) VALUES (?, ?)";
+                $stmt_insert = $conn->prepare($sql_insert);
+                $stmt_insert->bind_param("ii", $id_docente, $materia);
+                $stmt_insert->execute();
+                $stmt_insert->close();
+            }
+        }
 
-        // Luego puedes redirigir al usuario a la página de destino
+        // Confirmar la transacción
+        $conn->commit();
+
+        // Redirigir al usuario a la página de docentes
         header('Location: ../Docentes.php');
         exit;
+    } catch (Exception $e) {
+        // Revertir la transacción en caso de error
+        $conn->rollback();
+        echo "Error: " . $e->getMessage();
     }
+
+    // Cerrar conexión
+    $conn->close();
 }
 ?>

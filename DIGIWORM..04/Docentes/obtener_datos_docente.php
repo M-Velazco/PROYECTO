@@ -1,28 +1,39 @@
 <?php
 require_once "../modelo/conexion.php";
 
-$conn = Conectarse();
-// Verificar conexión
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
+// Verificar si se recibió un ID de docente
+if(isset($_GET['id'])) {
+    $id_docente = $_GET['id'];
 
-// Obtener el ID de docente enviado por la solicitud AJAX
-$id_docente = $_GET['id'];
+    // Conexión a la base de datos
+    $conn = Conectarse();
 
-// Consulta para obtener la información del docente seleccionado
-$sql = "SELECT * FROM docente WHERE idDocente = $id_docente";
-$result = $conn->query($sql);
+    // Verificar conexión
+    if ($conn->connect_error) {
+        die("Conexión fallida: " . $conn->connect_error);
+    }
 
-if ($result->num_rows > 0) {
-    // Convertir los resultados de la consulta a un array asociativo
-    $row = $result->fetch_assoc();
-    // Convertir el array asociativo a formato JSON y enviarlo
-    echo json_encode($row);
+    // Consulta para obtener los datos del docente y las materias asignadas
+    $sql = "SELECT d.Nombres, d.Apellidos, d.Email, d.Jornada, d.Desc_prof, d.Certificacion,
+    GROUP_CONCAT(m.Nombre_Materia SEPARATOR ', ') AS Materias
+    FROM docente d
+    LEFT JOIN docente_materia dm ON d.idDocente = dm.idDocente
+    LEFT JOIN materias m ON dm.idMateria = m.idMaterias
+    WHERE d.idDocente = $id_docente
+    GROUP BY d.idDocente;";
+
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        echo json_encode($row);
+    } else {
+        echo "No se encontraron datos para el docente con ID: " . $id_docente;
+    }
+
+    // Cerrar conexión
+    $conn->close();
 } else {
-    echo "No se encontró ningún docente con ese ID";
+    echo "No se proporcionó un ID de docente";
 }
-
-// Cerrar conexión
-$conn->close();
 ?>
