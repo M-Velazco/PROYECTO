@@ -299,7 +299,7 @@ CREATE TABLE IF NOT EXISTS `docente_materia` (
   `idMateria` int NOT NULL,
   PRIMARY KEY (`idDocente`,`idMateria`),
   KEY `idMateria` (`idMateria`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `docente_materia`
