@@ -179,7 +179,7 @@ CREATE TABLE IF NOT EXISTS `docente` (
   `Email` varchar(45) DEFAULT NULL,
   `Pasword` varchar(45) DEFAULT NULL,
   `Curso` int DEFAULT NULL,
-  `Materia` int DEFAULT NULL,
+  
   `Jornada` enum('Mañana','Tarde') NOT NULL,
   `Certificacion` varchar(800) DEFAULT NULL,
   `Desc_prof` varchar(800) DEFAULT NULL,
@@ -197,10 +197,10 @@ CREATE TABLE IF NOT EXISTS `docente` (
 -- Volcado de datos para la tabla `docente`
 --
 
-INSERT INTO `docente` (`idDocente`, `Nombres`, `Apellidos`, `Email`, `Pasword`, `Curso`, `Materia`, `Jornada`, `Certificacion`, `Desc_prof`) VALUES
-(142223657, 'Didier', 'Orozco', 'Orozco09@gmail.com', '598d8591e55346928b3a3a0a01da9ee5', 1, 2, 'Tarde', 'Docentes/Paz y Salvo.pdf', 'doctorado en artes y etica ciudadana con ma de 10 años de experiencia en estudios academicos'),
-(1054115102, 'Vilma ', 'Barrios Gomez', 'EldiabloAndante@gmail.com', '93d7abad7bbf270154ff3270fe46f4d3', 1, 2, 'Tarde', 'Docentes/814402318257-9315909749-entrada.pdf', 'doctora en artes y etica ciudadana con ma de 10 años de experiencia en estudios academicos'),
-(1101343174, 'juan david', 'julio rodriguez', 'draxjulio13@gmail.com', 'dfdc20cbab482c8d159f42d3250d1f7c', 1, 2, 'Mañana', 'Docentes/files/814402318257-9315909749-entrada.pdf', '');
+INSERT INTO `docente` (`idDocente`, `Nombres`, `Apellidos`, `Email`, `Pasword`, `Curso`, `Jornada`, `Certificacion`, `Desc_prof`) VALUES
+(142223657, 'Didier', 'Orozco', 'Orozco09@gmail.com', '598d8591e55346928b3a3a0a01da9ee5', 2, 'Tarde', 'Docentes/Paz y Salvo.pdf', 'doctorado en artes y etica ciudadana con ma de 10 años de experiencia en estudios academicos'),
+(1054115102, 'Vilma ', 'Barrios Gomez', 'EldiabloAndante@gmail.com', '93d7abad7bbf270154ff3270fe46f4d3', 2, 'Tarde', 'Docentes/814402318257-9315909749-entrada.pdf', 'doctora en artes y etica ciudadana con ma de 10 años de experiencia en estudios academicos'),
+(1101343174, 'juan david', 'julio rodriguez', 'draxjulio13@gmail.com', 'dfdc20cbab482c8d159f42d3250d1f7c', 2, 'Mañana', 'Docentes/files/814402318257-9315909749-entrada.pdf', '');
 COMMIT;
 
 -- --------------------------------------------------------
@@ -289,6 +289,37 @@ INSERT INTO `materias` (`idMaterias`, `Nombre_Materia`) VALUES
 
 -- --------------------------------------------------------
 
+--
+-- Estructura de tabla para la tabla `docente_materia`
+--
+
+DROP TABLE IF EXISTS `docente_materia`;
+CREATE TABLE IF NOT EXISTS `docente_materia` (
+  `idDocente` int NOT NULL,
+  `idMateria` int NOT NULL,
+  PRIMARY KEY (`idDocente`,`idMateria`),
+  KEY `idMateria` (`idMateria`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Volcado de datos para la tabla `docente_materia`
+--
+
+INSERT INTO `docente_materia` (`idDocente`, `idMateria`) VALUES
+(0, 1),
+(0, 2),
+(0, 3);
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `docente_materia`
+--
+ALTER TABLE `docente_materia`
+  ADD CONSTRAINT `docente_materia_ibfk_1` FOREIGN KEY (`idDocente`) REFERENCES `docente` (`idDocente`),
+  ADD CONSTRAINT `docente_materia_ibfk_2` FOREIGN KEY (`idMateria`) REFERENCES `materias` (`idMaterias`);
 --
 -- Estructura de tabla para la tabla `boletines`
 --
