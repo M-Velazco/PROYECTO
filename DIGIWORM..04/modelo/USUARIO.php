@@ -268,10 +268,10 @@ class Usuario
 private function insertarDocente()
 {
     // Preparar e insertar en la tabla 'docente'
-    $sqlDocente = "INSERT INTO docente (idDocente, Nombres, Apellidos, Email, Pasword, Curso, Materia)
-                   VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $sqlDocente = "INSERT INTO docente (idDocente, Nombres, Apellidos, Email, Pasword, Curso)
+                   VALUES (?, ?, ?, ?, ?, ?)";
     $stmtDocente = $this->conexion->prepare($sqlDocente);
-    $stmtDocente->bind_param("isssssi", $this->Idusuarios, $this->Nombres, $this->Apellidos, $this->Email, $this->Pasword, $this->Curso, $this->Materia);
+    $stmtDocente->bind_param("issssi", $this->Idusuarios, $this->Nombres, $this->Apellidos, $this->Email, $this->Pasword, $this->Curso);
     $resultadoDocente = $stmtDocente->execute();
     $stmtDocente->close();
 
