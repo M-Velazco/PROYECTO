@@ -92,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `boletines` (
   PRIMARY KEY (`idBoletin`),
   KEY `idEstudiante` (`idEstudiante`),
   KEY `idDocente` (`idDocente`)
-) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `boletines`
@@ -133,7 +133,7 @@ CREATE TABLE IF NOT EXISTS `citas` (
   `hora` time NOT NULL,
   `creado_en` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 ;
 
 --
 -- Volcado de datos para la tabla `citas`
@@ -160,7 +160,7 @@ CREATE TABLE IF NOT EXISTS `citas_realizadas` (
   `hora` time NOT NULL,
   `creado_en` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 ;
 
 -- --------------------------------------------------------
 
@@ -268,7 +268,7 @@ CREATE TABLE IF NOT EXISTS `docente_materia` (
   `idMateria` int NOT NULL,
   PRIMARY KEY (`idDocente`,`idMateria`),
   KEY `idMateria` (`idMateria`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 --
 -- Volcado de datos para la tabla `docente_materia`
@@ -406,7 +406,7 @@ CREATE TABLE IF NOT EXISTS `opiniones` (
   `Opinion` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `iDpadres` (`Nombres_Apellidos`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `opiniones`
