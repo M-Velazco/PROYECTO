@@ -2,7 +2,7 @@
     session_start();
     include_once "config.php";
 
-    $outgoing_id = $_SESSION['Idusuarios'];
+    $outgoing_id = $_SESSION['Idusuario'];
     $searchTerm = mysqli_real_escape_string($conn, $_POST['searchTerm']);
 
     $sql = "SELECT * FROM usuarios WHERE NOT Idusuarios = {$outgoing_id} AND (Nombres LIKE '%{$searchTerm}%' OR Apellidos LIKE '%{$searchTerm}%') ";

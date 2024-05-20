@@ -1,7 +1,7 @@
 <?php
 while ($row = mysqli_fetch_assoc($query)) {
     $sql2 = "SELECT * FROM mensajes WHERE (Mensaje_entrante = {$row['Idusuarios']}
-                OR Mensaje_saliente = {$row['Idusuarios']}) AND (Mensaje_saliente = {$outgoing_id} 
+                OR Mensaje_saliente = {$row['Idusuarios']}) AND (Mensaje_saliente = {$outgoing_id}
                 OR Mensaje_entrante = {$outgoing_id}) ORDER BY Idmensaje DESC LIMIT 1";
     $query2 = mysqli_query($Conexion, $sql2);
     $row2 = mysqli_fetch_assoc($query2);

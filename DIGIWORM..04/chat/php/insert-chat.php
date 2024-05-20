@@ -1,8 +1,8 @@
-<?php 
+<?php
     session_start();
-    if(isset($_SESSION['Idusuarios'])){
+    if(isset($_SESSION['Idusuario'])){
         include_once "config.php";
-        $outgoing_id = $_SESSION['Idusuarios'];
+        $outgoing_id = $_SESSION['Idusuario'];
         $incoming_id = mysqli_real_escape_string($conn, $_POST['incoming_id']);
         $message = mysqli_real_escape_string($conn, $_POST['mensajes']);
         if(!empty($message)){
@@ -14,5 +14,5 @@
     }
 
 
-    
+
 ?>

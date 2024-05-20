@@ -15,10 +15,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Iniciar una transacción
     $conn->begin_transaction();
 
-    try {
+    try { if (isset($_FILES['Archivo']) && $_FILES['Archivo']['error'] === UPLOAD_ERR_OK) {
+        // Manejar el archivo enviado
+        // Definir la carpeta de destino para guardar el archivo
+        $carpeta_destino = "./files/";
+
+        // Obtener el nombre y la extensión del archivo
+        $nombre_archivo = basename($_FILES["Archivo"]["name"]);
+        $archivo_destino = $carpeta_destino . $nombre_archivo;
+        $archivo_Bd = "Docentes/files/".$nombre_archivo;
+        // Mover el archivo a la carpeta de destino
+        if (move_uploaded_file($_FILES["Archivo"]["tmp_name"], $archivo_destino)) {
         // Consulta SQL para actualizar los datos del docente
         if (isset($_POST['actualizar'])) {
-            $sql = "UPDATE docente SET Nombres=?, Apellidos=?, Email=?, Curso=?, Jornada=?, Certificacion=?, Desc_prof=? WHERE idDocente=?";
+            $sql = "UPDATE docente SET Nombres=?, Apellidos=?, Email=?, Curso=?,  Jornada=?, Certificacion=?, Desc_prof=? WHERE idDocente=?";
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("sssisssi", $nombres, $apellidos, $email, $curso, $jornada, $archivo_Bd, $Descripcion, $id_docente);
 
