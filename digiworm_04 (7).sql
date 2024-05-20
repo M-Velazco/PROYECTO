@@ -280,7 +280,29 @@ INSERT INTO `docente_materia` (`idDocente`, `idMateria`) VALUES
 (0, 3);
 
 -- --------------------------------------------------------
+-
 
+--
+-- Estructura de tabla para la tabla `docente_curso`
+--
+
+DROP TABLE IF EXISTS `docente_curso`;
+CREATE TABLE IF NOT EXISTS `docente_curso` (
+  `idDocente` int NOT NULL,
+  `idCurso` int NOT NULL,
+  PRIMARY KEY (`idDocente`,`idCurso`),
+  KEY `docente_curso_ibfk_2` (`idCurso`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+ALTER TABLE `docente_Curso`
+  ADD CONSTRAINT `docente_curso_ibfk_1` FOREIGN KEY (`idDocente`) REFERENCES `docente` (`idDocente`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `docente_curso_ibfk_2` FOREIGN KEY (`idCurso`) REFERENCES `curso` (`idCurso`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+  COMMIT;
+-- -------------------------------------------------------
 --
 -- Estructura de tabla para la tabla `estudiante`
 --
