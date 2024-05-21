@@ -280,7 +280,7 @@ INSERT INTO `docente_materia` (`idDocente`, `idMateria`) VALUES
 (0, 3);
 
 -- --------------------------------------------------------
--
+
 
 --
 -- Estructura de tabla para la tabla `docente_curso`
