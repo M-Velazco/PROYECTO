@@ -1,10 +1,7 @@
 <?php
 session_start();
 include_once "php/config.php";
-if (!isset($_SESSION['Idusuario'])) {
-  header("location: login.php");
-  exit; // Asegúrate de salir del script después de redirigir
-}
+
 
 include_once "header.php";
 ?>
