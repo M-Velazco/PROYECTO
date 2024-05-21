@@ -256,7 +256,7 @@ INSERT INTO `docente` (`idDocente`, `Nombres`, `Apellidos`, `Email`, `Pasword`, 
 (2000598691, 'testerjuan', 'tRodri', 'combxpedagogo+568532@gmail.com', 'eaeaae77dd04b1e2ba6d67f3e3834b23', 0, 'Mañana', NULL, NULL),
 (2000598692, 'testerjuan', 'tRodri', 'combxpedagog+568532@gmail.com', 'eaeaae77dd04b1e2ba6d67f3e3834b23', 0, 'Mañana', NULL, NULL);
 
--- --------------------------------------------------------
+-- -----------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `docente_materia`
@@ -279,7 +279,7 @@ INSERT INTO `docente_materia` (`idDocente`, `idMateria`) VALUES
 (0, 2),
 (0, 3);
 
--- --------------------------------------------------------
+-- ------------------------------------------------
 
 
 --
