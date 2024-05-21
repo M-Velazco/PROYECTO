@@ -167,7 +167,7 @@ if ($rol_usuario == 'Coordinador'):
         elseif($rol_usuario=='administrador') :
             echo '<a href="index04.php" class="nav-item nav-link active">Home</a>
             <a href="Actividades.php" class="nav-item nav-link">Actividades</a>
-            <a href="chat/users.php" class="nav-item nav-link">Chat</a>
+            <a href="chat/login.php" class="nav-item nav-link">Chat</a>
             <a href="Foros.php" class="nav-item nav-link">Foros</a>
             <a href="Docentes.php" class="nav-item nav-link">Docentes</a>
 
@@ -340,7 +340,7 @@ endif;
             </div>
         </div>
     </div>
-    <!-- Facilities Start -->
+    <!-- Facilities Start2 -->
 
 
     <!-- About Start -->
