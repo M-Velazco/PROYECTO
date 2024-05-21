@@ -15,12 +15,16 @@ if(isset($_GET['id'])) {
 
     // Consulta para obtener los datos del docente y las materias asignadas
     $sql = "SELECT d.Nombres, d.Apellidos, d.Email, d.Jornada, d.Desc_prof, d.Certificacion,
-    GROUP_CONCAT(m.Nombre_Materia SEPARATOR ', ') AS Materias
-    FROM docente d
-    LEFT JOIN docente_materia dm ON d.idDocente = dm.idDocente
-    LEFT JOIN materias m ON dm.idMateria = m.idMaterias
-    WHERE d.idDocente = $id_docente
-    GROUP BY d.idDocente;";
+    (SELECT GROUP_CONCAT(m.Nombre_Materia SEPARATOR ', ')
+     FROM docente_materia dm
+     LEFT JOIN materias m ON dm.idMateria = m.idMaterias
+     WHERE dm.idDocente = d.idDocente) AS Materias,
+    (SELECT GROUP_CONCAT(CONCAT(c.Nombre_curso, ' - ', c.Jornada) SEPARATOR ', ')
+     FROM docente_curso dc
+     LEFT JOIN curso c ON dc.idCurso = c.idCurso
+     WHERE dc.idDocente = d.idDocente) AS Cursos
+FROM docente d
+WHERE d.idDocente = $id_docente;";
 
     $result = $conn->query($sql);
 

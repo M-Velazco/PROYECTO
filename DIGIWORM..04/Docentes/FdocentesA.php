@@ -66,146 +66,7 @@ require_once "../modelo/conexion.php";
       background-color: #45E21E; /* Darker green */
     }
   </style>
-
-<form action="procesar_actualizacion.php" method="POST" enctype="multipart/form-data">
-
-  <label for="id_docente">Seleccionar docente:</label>
-  <select name="id_docente" id="id_docente" onchange="mostrarDatosDocente(this.value)" required>
-
-  <option value=""></option>
-    <?php
-      // Conexión a la base de datos
-      $conn = Conectarse();
-      // Crear conexión
-
-
-      // Verificar conexión
-      if ($conn->connect_error) {
-          die("Conexión fallida: " . $conn->connect_error);
-      }
-
-      // Consulta para obtener los ID de los docentes y sus nombres y apellidos asociados
-      $sql = "SELECT idDocente, Nombres, Apellidos FROM docente";
-      $result = $conn->query($sql);
-
-      if ($result->num_rows > 0) {
-          // Generar opciones del select con los ID de los docentes y sus nombres y apellidos
-          while ($row = $result->fetch_assoc()) {
-              echo "<option value='" . $row['idDocente'] . "'>" . $row['Nombres'] . " " . $row['Apellidos'] . "</option>";
-          }
-      }
-
-      // Cerrar conexión
-      $conn->close();
-    ?>
-  </select><br><br>
-
-  <label for="nombres">Nombres:</label>
-  <input type="text" id="nombres" name="nombres" readonly><br><br>
-
-  <label for="apellidos">Apellidos:</label>
-  <input type="text" id="apellidos" name="apellidos" readonly><br><br>
-
-  <label for="email">Email:</label>
-  <input type="email" id="email" name="email" readonly><br><br>
-
-  <label for="curso">Curso:</label>
-
-  <select name="curso" id="curso" required>
-
-  <?php
-      // Conexión a la base de datos
-      $conn = Conectarse();
-      // Crear conexión
-
-
-      // Verificar conexión
-      if ($conn->connect_error) {
-          die("Conexión fallida: " . $conn->connect_error);
-      }
-
-      // Consulta para obtener los ID de los docentes y sus nombres y apellidos asociados
-      $sql = "SELECT * FROM curso";
-      $result = $conn->query($sql);
-
-      if ($result->num_rows > 0) {
-          // Generar opciones del select con los ID de los docentes y sus nombres y apellidos
-          while ($row = $result->fetch_assoc()) {
-              echo "<option value='" . $row['idCurso'] . "'>" . $row['Nombre_curso'] . "-" . $row ['Jornada'] .  "</option>";
-          }
-      }
-
-      // Cerrar conexión
-      $conn->close();
-    ?>
-  </select><br><br>
-
-  <label for="materia">Materia:</label>
-  <ul id="materiasList">
-
-  </ul>
-   <br><br>
-
-
-  <label for="jornada">Jornada:</label>
-  <select name="jornada" id="jornada" required>
-  <option value=""></option>
-    <option value="Mañana">Mañana..</option>
-    <option value="Tarde">Tarde</option>
-  </select><br>
-  <input type="text" id="Descripcion" name="Descripcion" placeholder="Ingrese Descripcion de su perfil profesional" oninput="autoSize(this)">
-
-
-
-  <input type="file" id="Certificacion" name="Archivo" style="display: none;" title="Ingrese Sus certificados"><br>
-<span id="nombreArchivo"></span>
-
-  <button type="submit" name="actualizar">Actualizar</button>
-  <button type="submit" name="AgregarMateria" id="AgregarMateria"style="display: none;">Agregar materia</button>
-
-<!-- Agregar materia desde un select -->
-<div class="bottoncx">
-    <select name="info" class="bottonc-select" id="accion" onchange="mostrarAccion(this.value)">
-      <option value="">Agregar</option>
-      <option value="Descripcion">Descripción</option>
-      <option value="Certificacion">Certificación</option>
-      <option value="CertDesc">Certificacion y descripcion</option>
-      <option value="AgregarMateria">Agregar Materia</option> <!-- Nueva opción -->
-    </select>
-  </div>
-
-<!-- Contenedor para el select de agregar materia -->
-<div id="selectMateriaContainer" style="display: none;">
-    <select id="selectMateria"name="materia">
-        <option value="">Seleccionar Materia</option>
-        <?php
-            // Conexión a la base de datos
-            $conn = Conectarse();
-            // Crear conexión
-
-            // Verificar conexión
-            if ($conn->connect_error) {
-                die("Conexión fallida: " . $conn->connect_error);
-            }
-
-            // Consulta para obtener las materias
-            $sql = "SELECT idMaterias, Nombre_Materia FROM materias";
-            $result = $conn->query($sql);
-
-            if ($result->num_rows > 0) {
-                // Generar opciones del select con las materias
-                while ($row = $result->fetch_assoc()) {
-                    echo "<option value='" . $row['idMaterias'] . "'>" . $row['Nombre_Materia'] . "</option>";
-                }
-            }
-
-            // Cerrar conexión
-            $conn->close();
-        ?>
-    </select>
-</div>
-
-<style>
+  <style>
   .bottonc {
     position: relative;
     display: inline-block;
@@ -282,6 +143,183 @@ require_once "../modelo/conexion.php";
   </style>
 
 
+<form action="procesar_actualizacion.php" method="POST" enctype="multipart/form-data">
+
+  <label for="id_docente">Seleccionar docente:</label>
+  <select name="id_docente" id="id_docente" onchange="mostrarDatosDocente(this.value)" required>
+
+  <option value=""></option>
+    <?php
+      // Conexión a la base de datos
+      $conn = Conectarse();
+      // Crear conexión
+
+
+      // Verificar conexión
+      if ($conn->connect_error) {
+          die("Conexión fallida: " . $conn->connect_error);
+      }
+
+      // Consulta para obtener los ID de los docentes y sus nombres y apellidos asociados
+      $sql = "SELECT idDocente, Nombres, Apellidos FROM docente";
+      $result = $conn->query($sql);
+
+      if ($result->num_rows > 0) {
+          // Generar opciones del select con los ID de los docentes y sus nombres y apellidos
+          while ($row = $result->fetch_assoc()) {
+              echo "<option value='" . $row['idDocente'] . "'>" . $row['Nombres'] . " " . $row['Apellidos'] . "</option>";
+          }
+      }
+
+      // Cerrar conexión
+      $conn->close();
+    ?>
+  </select><br><br>
+
+  <label for="nombres">Nombres:</label>
+  <input type="text" id="nombres" name="nombres" readonly><br><br>
+
+  <label for="apellidos">Apellidos:</label>
+  <input type="text" id="apellidos" name="apellidos" readonly><br><br>
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" readonly><br><br>
+
+  <label for="curso">Curso:</label>
+
+  <select name="curso" id="curso" required>
+
+  <?php
+      // Conexión a la base de datos
+      $conn = Conectarse();
+      // Crear conexión
+
+
+      // Verificar conexión
+      if ($conn->connect_error) {
+          die("Conexión fallida: " . $conn->connect_error);
+      }
+
+      // Consulta para obtener los ID de los docentes y sus nombres y apellidos asociados
+      $sql = "SELECT * FROM curso";
+      $result = $conn->query($sql);
+
+      if ($result->num_rows > 0) {
+          // Generar opciones del select con los ID de los docentes y sus nombres y apellidos
+          while ($row = $result->fetch_assoc()) {
+              echo "<option value='" . $row['idCurso'] . "'>" . $row['Nombre_curso'] . "-" . $row ['Jornada'] .  "</option>";
+          }
+      }
+
+      // Cerrar conexión
+      $conn->close();
+    ?>
+  </select><br><br>
+
+  <label for="materia">Materias:</label>
+  <ul id="materiasList">
+
+  </ul>
+   <br><br>
+  <label for="Cursos">Cursos:</label>
+  <ul id="CursosList">
+
+  </ul>
+   <br><br>
+
+
+  <label for="jornada">Jornada:</label>
+  <select name="jornada" id="jornada" required>
+  <option value=""></option>
+    <option value="Mañana">Mañana..</option>
+    <option value="Tarde">Tarde</option>
+  </select><br>
+  <input type="text" id="Descripcion" name="Descripcion" placeholder="Ingrese Descripcion de su perfil profesional" oninput="autoSize(this)">
+
+
+
+  <input type="file" id="Certificacion" name="Archivo" style="display: none;" title="Ingrese Sus certificados"><br>
+<span id="nombreArchivo"></span>
+
+  <button type="submit" name="actualizar">Actualizar</button>
+  <button type="submit" name="AgregarMateria" id="AgregarMateria"style="display: none;">Agregar materia</button>
+  <button type="submit" name="AgregarCurso" id="AgregarCurso"style="display: none;">Agregar curso</button>
+
+<!-- Agregar materia desde un select -->
+<div class="bottoncx">
+    <select name="info" class="bottonc-select" id="accion" onchange="mostrarAccion(this.value)">
+      <option value="">Agregar</option>
+      <option value="Descripcion">Descripción</option>
+      <option value="Certificacion">Certificación</option>
+      <option value="CertDesc">Certificacion y descripcion</option>
+      <option value="AgregarMateria">Agregar Materia</option> <!-- Nueva opción -->
+      <option value="AgregarCurso">Agregar Curso</option> <!-- Nueva opción -->
+    </select>
+  </div>
+
+<!-- Contenedor para el select de agregar materia -->
+<div id="selectMateriaContainer" style="display: none;">
+    <select id="selectMateria"name="materia">
+        <option value="">Seleccionar Materia</option>
+        <?php
+            // Conexión a la base de datos
+            $conn = Conectarse();
+            // Crear conexión
+
+            // Verificar conexión
+            if ($conn->connect_error) {
+                die("Conexión fallida: " . $conn->connect_error);
+            }
+
+            // Consulta para obtener las materias
+            $sql = "SELECT idMaterias, Nombre_Materia FROM materias";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                // Generar opciones del select con las materias
+                while ($row = $result->fetch_assoc()) {
+                    echo "<option value='" . $row['idMaterias'] . "'>" . $row['Nombre_Materia'] . "</option>";
+                }
+            }
+
+            // Cerrar conexión
+            $conn->close();
+        ?>
+    </select>
+</div>
+<!-- Contenedor para el select de agregar Curso -->
+<div id="selectCursoContainer" style="display: none;">
+    <select id="selectCurso"name="Curso_ext">
+        <option value="">Seleccionar Curso</option>
+        <?php
+            // Conexión a la base de datos
+            $conn = Conectarse();
+            // Crear conexión
+
+            // Verificar conexión
+            if ($conn->connect_error) {
+                die("Conexión fallida: " . $conn->connect_error);
+            }
+
+            // Consulta para obtener las materias
+            $sql = "SELECT idCurso, Nombre_curso FROM curso";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                // Generar opciones del select con las materias
+                while ($row = $result->fetch_assoc()) {
+                    echo "<option value='" . $row['idCurso'] . "'>" . $row['Nombre_curso'] ." - ". $row['Jornada'] . "</option>";
+                }
+            }
+
+            // Cerrar conexión
+            $conn->close();
+        ?>
+    </select>
+</div>
+
+
+
 
   <a class="Button" href="../Docentes.php">Volver</a>
   <br>
@@ -315,6 +353,17 @@ function mostrarDatosDocente(idDocente) {
           listItem.textContent = materia;
           materiasList.appendChild(listItem);
         });
+
+        // Manejar los cursos asignados al docente
+        var cursosList = document.getElementById('CursosList');
+        // Limpiar el elemento ul antes de agregar los nuevos cursos
+        cursosList.innerHTML = '';
+        var cursos = docente.Cursos.split(', ');
+        cursos.forEach(function(curso) {
+          var listItem = document.createElement('li');
+          listItem.textContent = curso;
+          cursosList.appendChild(listItem);
+        });
       } else {
         alert('Hubo un error al obtener los datos del docente');
       }
@@ -328,9 +377,18 @@ function mostrarAccion(accion) {
     if (accion === 'AgregarMateria') {
         document.getElementById('selectMateriaContainer').style.display = 'block';
         document.getElementById('AgregarMateria').style.display = 'block';
+        document.getElementById('selectCursoContainer').style.display = 'none';
+        document.getElementById('AgregarCurso').style.display = 'none';
+    } else if (accion === 'AgregarCurso') {
+        document.getElementById('selectCursoContainer').style.display = 'block';
+        document.getElementById('AgregarCurso').style.display = 'block';
+        document.getElementById('selectMateriaContainer').style.display = 'none';
+        document.getElementById('AgregarMateria').style.display = 'none';
     } else {
         document.getElementById('selectMateriaContainer').style.display = 'none';
         document.getElementById('AgregarMateria').style.display = 'none';
+        document.getElementById('selectCursoContainer').style.display = 'none';
+        document.getElementById('AgregarCurso').style.display = 'none';
     }
 }
 </script>
