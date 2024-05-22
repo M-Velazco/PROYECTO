@@ -180,6 +180,7 @@ if ($rol_usuario == 'Coordinador'):
                     <a href="Visual_padres" class="dropdown-item">Estudiantes</a>
                     <a href="boletines.php" class="dropdown-item">Boletines</a>
                     <a href="cursos.php" class="dropdown-item">Cursos</a>
+                    <a href="UsuariosMod/Usuarios.php" class="dropdown-item">Usuarios</a>
                     <a href="Apis/Swagger/swaggerC.php" class="dropdown-item">CursosApi</a>
                     <a href="Apis/Swagger/swaggerd.php" class="dropdown-item">DocentesApi </a>
 

@@ -169,11 +169,19 @@ function registrarUltimoCampoModificado(input) {
         z-index: -1;
         border-radius: 8px;
     }
+    .hidden {
+    display: none;
+}
+
 </style>
 
-<div class="input-field custom">
+<div class="input-field custom hidden"style= "display:none;">
     <label for="Rol" id="roles" style="padding-bottom: 10px;"> SELECCIONE SU ROL</label>
     <div class="input-radio">
+        <div style="display: flex; flex-direction: column;">
+            <input type="radio" id="Usuario" name="Rol" value="usuario" checked>
+            <label for="Usuario">Usuario</label>
+        </div>
         <div style="display: flex; flex-direction: column;">
             <input type="radio" id="Docente" name="Rol" value="Docente">
             <label for="Docente">Docente</label>

@@ -225,6 +225,13 @@ class Usuario
 
     echo "Inserción en la tabla usuarios exitosa.";
 
+    // Si el rol es "usuario", no hacer inserciones adicionales
+    if ($this->Rol === "usuario") {
+        $stmtUsuarios->close();
+        $this->conexion->close();
+        return $resultadoUsuarios;
+    }
+
     // Insertar datos específicos según el rol del usuario
     switch ($this->Rol) {
         case "Docente":
