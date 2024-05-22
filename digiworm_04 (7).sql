@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 10-05-2024 a las 20:13:24
+-- Tiempo de generación: 22-05-2024 a las 20:05:52
 -- Versión del servidor: 8.2.0
 -- Versión de PHP: 8.2.13
 
@@ -54,10 +54,10 @@ DELIMITER ;
 
 DROP TABLE IF EXISTS `actividades`;
 CREATE TABLE IF NOT EXISTS `actividades` (
-  `idActividades` int NOT NULL AUTO_INCREMENT,
+  `idActividades` bigint NOT NULL AUTO_INCREMENT,
   `Nombre_act` varchar(60) DEFAULT NULL,
   `Asignatura` varchar(100) NOT NULL,
-  `Docente` int DEFAULT NULL,
+  `Docente` bigint DEFAULT NULL,
   `Archivo` varchar(450) DEFAULT NULL,
   `Estado` enum('Activo','Inactivo') DEFAULT NULL,
   `Descripcion` varchar(1000) NOT NULL,
@@ -84,15 +84,15 @@ INSERT INTO `actividades` (`idActividades`, `Nombre_act`, `Asignatura`, `Docente
 
 DROP TABLE IF EXISTS `boletines`;
 CREATE TABLE IF NOT EXISTS `boletines` (
-  `idBoletin` int NOT NULL AUTO_INCREMENT,
-  `idEstudiante` int NOT NULL,
+  `idBoletin` bigint NOT NULL AUTO_INCREMENT,
+  `idEstudiante` bigint NOT NULL,
   `idDocente` int NOT NULL,
   `direccionArchivo` varchar(255) NOT NULL,
   `fechaCreacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`idBoletin`),
   KEY `idEstudiante` (`idEstudiante`),
   KEY `idDocente` (`idDocente`)
-) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `boletines`
@@ -133,7 +133,7 @@ CREATE TABLE IF NOT EXISTS `citas` (
   `hora` time NOT NULL,
   `creado_en` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 ;
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `citas`
@@ -160,7 +160,7 @@ CREATE TABLE IF NOT EXISTS `citas_realizadas` (
   `hora` time NOT NULL,
   `creado_en` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 ;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -170,7 +170,7 @@ CREATE TABLE IF NOT EXISTS `citas_realizadas` (
 
 DROP TABLE IF EXISTS `coordinador`;
 CREATE TABLE IF NOT EXISTS `coordinador` (
-  `idCoordinador` int NOT NULL,
+  `idCoordinador` bigint NOT NULL,
   `Nombres` varchar(45) DEFAULT NULL,
   `Apellidos` varchar(45) DEFAULT NULL,
   `Email` varchar(45) DEFAULT NULL,
@@ -199,7 +199,7 @@ INSERT INTO `coordinador` (`idCoordinador`, `Nombres`, `Apellidos`, `Email`, `Pa
 
 DROP TABLE IF EXISTS `curso`;
 CREATE TABLE IF NOT EXISTS `curso` (
-  `idCurso` int NOT NULL AUTO_INCREMENT,
+  `idCurso` bigint NOT NULL AUTO_INCREMENT,
   `Nombre_curso` int DEFAULT NULL,
   `Estado` enum('Activo','Inactivo') DEFAULT NULL,
   `Jornada` enum('Mañana','Tarde') NOT NULL,
@@ -225,12 +225,12 @@ INSERT INTO `curso` (`idCurso`, `Nombre_curso`, `Estado`, `Jornada`) VALUES
 
 DROP TABLE IF EXISTS `docente`;
 CREATE TABLE IF NOT EXISTS `docente` (
-  `idDocente` int NOT NULL,
+  `idDocente` bigint NOT NULL,
   `Nombres` varchar(45) DEFAULT NULL,
   `Apellidos` varchar(45) DEFAULT NULL,
   `Email` varchar(45) DEFAULT NULL,
   `Pasword` varchar(45) DEFAULT NULL,
-  `Curso` int DEFAULT NULL,
+  `Curso` bigint DEFAULT NULL,
   `Jornada` enum('Mañana','Tarde') NOT NULL,
   `Certificacion` varchar(800) DEFAULT NULL,
   `Desc_prof` varchar(800) DEFAULT NULL,
@@ -256,7 +256,21 @@ INSERT INTO `docente` (`idDocente`, `Nombres`, `Apellidos`, `Email`, `Pasword`, 
 (2000598691, 'testerjuan', 'tRodri', 'combxpedagogo+568532@gmail.com', 'eaeaae77dd04b1e2ba6d67f3e3834b23', 0, 'Mañana', NULL, NULL),
 (2000598692, 'testerjuan', 'tRodri', 'combxpedagog+568532@gmail.com', 'eaeaae77dd04b1e2ba6d67f3e3834b23', 0, 'Mañana', NULL, NULL);
 
--- -----------------------------------------------
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `docente_curso`
+--
+
+DROP TABLE IF EXISTS `docente_curso`;
+CREATE TABLE IF NOT EXISTS `docente_curso` (
+  `idDocente` bigint NOT NULL,
+  `idCurso` bigint NOT NULL,
+  PRIMARY KEY (`idDocente`,`idCurso`),
+  KEY `docente_curso_ibfk_2` (`idCurso`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `docente_materia`
@@ -264,11 +278,11 @@ INSERT INTO `docente` (`idDocente`, `Nombres`, `Apellidos`, `Email`, `Pasword`, 
 
 DROP TABLE IF EXISTS `docente_materia`;
 CREATE TABLE IF NOT EXISTS `docente_materia` (
-  `idDocente` int NOT NULL,
-  `idMateria` int NOT NULL,
+  `idDocente` bigint NOT NULL,
+  `idMateria` bigint NOT NULL,
   PRIMARY KEY (`idDocente`,`idMateria`),
   KEY `idMateria` (`idMateria`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `docente_materia`
@@ -279,37 +293,15 @@ INSERT INTO `docente_materia` (`idDocente`, `idMateria`) VALUES
 (0, 2),
 (0, 3);
 
--- ------------------------------------------------
+-- --------------------------------------------------------
 
-
---
--- Estructura de tabla para la tabla `docente_curso`
---
-
-DROP TABLE IF EXISTS `docente_curso`;
-CREATE TABLE IF NOT EXISTS `docente_curso` (
-  `idDocente` int NOT NULL,
-  `idCurso` int NOT NULL,
-  PRIMARY KEY (`idDocente`,`idCurso`),
-  KEY `docente_curso_ibfk_2` (`idCurso`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-ALTER TABLE `docente_Curso`
-  ADD CONSTRAINT `docente_curso_ibfk_1` FOREIGN KEY (`idDocente`) REFERENCES `docente` (`idDocente`) ON DELETE RESTRICT ON UPDATE RESTRICT,
-  ADD CONSTRAINT `docente_curso_ibfk_2` FOREIGN KEY (`idCurso`) REFERENCES `curso` (`idCurso`) ON DELETE RESTRICT ON UPDATE RESTRICT;
-  COMMIT;
--- -------------------------------------------------------
 --
 -- Estructura de tabla para la tabla `estudiante`
 --
 
 DROP TABLE IF EXISTS `estudiante`;
 CREATE TABLE IF NOT EXISTS `estudiante` (
-  `idEstudiante` int NOT NULL,
+  `idEstudiante` bigint NOT NULL,
   `Nombres` varchar(45) DEFAULT NULL,
   `Apellidos` varchar(45) DEFAULT NULL,
   `Email` varchar(45) DEFAULT NULL,
@@ -333,7 +325,8 @@ INSERT INTO `estudiante` (`idEstudiante`, `Nombres`, `Apellidos`, `Email`, `Pasw
 (124, 'Johan Santiago', 'Villanueva Roa', 'villablilons@gmail.com', '117f6456278025caef09ab127b92c880', 0, 'Activo'),
 (100030256, 'Santiago', 'Orjuela', 'orjtailand@gmail.com', '12157a63af655888c72bcb10bfbf0cc7', 2, 'Inactivo'),
 (1000162100, 'johan stiven', 'oliveros silva', 'oliverosilvajohan@gmail.com', 'c5d7790b7bd682f9b2aef12aa94eb8bb', 2, 'Inactivo'),
-(2000005978, 'prueba de restriccion', 'padres', 'dfgfdg@gmail.com', '202cb962ac59075b964b07152d234b70', 2, 'Activo');
+(2000005978, 'prueba de restriccion', 'padres', 'dfgfdg@gmail.com', '202cb962ac59075b964b07152d234b70', 2, 'Activo'),
+(5568745612, 'prueba us', 'uss', 'correo@gmail.com', 'afab9e1401c7c4b559e2723add38e05a', 0, 'Activo');
 
 -- --------------------------------------------------------
 
@@ -343,12 +336,12 @@ INSERT INTO `estudiante` (`idEstudiante`, `Nombres`, `Apellidos`, `Email`, `Pasw
 
 DROP TABLE IF EXISTS `foros`;
 CREATE TABLE IF NOT EXISTS `foros` (
-  `idForos` int NOT NULL AUTO_INCREMENT,
+  `idForos` bigint NOT NULL AUTO_INCREMENT,
   `Titulo` varchar(60) DEFAULT NULL,
   `Contenido` varchar(700) DEFAULT NULL,
   `Fecha_Hora` datetime NOT NULL,
   `archivo` varchar(500) NOT NULL,
-  `idusuario` int DEFAULT NULL,
+  `idusuario` bigint DEFAULT NULL,
   `respuesta` varchar(500) DEFAULT NULL,
   `Estado` varchar(500) NOT NULL,
   PRIMARY KEY (`idForos`),
@@ -374,7 +367,7 @@ INSERT INTO `foros` (`idForos`, `Titulo`, `Contenido`, `Fecha_Hora`, `archivo`, 
 
 DROP TABLE IF EXISTS `materias`;
 CREATE TABLE IF NOT EXISTS `materias` (
-  `idMaterias` int NOT NULL AUTO_INCREMENT,
+  `idMaterias` bigint NOT NULL AUTO_INCREMENT,
   `Nombre_Materia` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idMaterias`),
   KEY `Nombre_Materia` (`Nombre_Materia`) USING BTREE
@@ -397,7 +390,7 @@ INSERT INTO `materias` (`idMaterias`, `Nombre_Materia`) VALUES
 
 DROP TABLE IF EXISTS `mensajes`;
 CREATE TABLE IF NOT EXISTS `mensajes` (
-  `Idmensaje` int NOT NULL AUTO_INCREMENT,
+  `Idmensaje` bigint NOT NULL AUTO_INCREMENT,
   `Mensaje_entrante` int DEFAULT NULL,
   `Mensaje_saliente` int DEFAULT NULL,
   `Mensaje` varchar(45) DEFAULT NULL,
@@ -422,13 +415,13 @@ INSERT INTO `mensajes` (`Idmensaje`, `Mensaje_entrante`, `Mensaje_saliente`, `Me
 
 DROP TABLE IF EXISTS `opiniones`;
 CREATE TABLE IF NOT EXISTS `opiniones` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` bigint NOT NULL AUTO_INCREMENT,
   `Nombres_Apellidos` varchar(200) DEFAULT NULL,
   `Email` varchar(100) NOT NULL,
   `Opinion` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `iDpadres` (`Nombres_Apellidos`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `opiniones`
@@ -447,7 +440,7 @@ INSERT INTO `opiniones` (`id`, `Nombres_Apellidos`, `Email`, `Opinion`) VALUES
 
 DROP TABLE IF EXISTS `padre_familia`;
 CREATE TABLE IF NOT EXISTS `padre_familia` (
-  `idPadre_Familia` int NOT NULL,
+  `idPadre_Familia` bigint NOT NULL,
   `Estado_representante` int DEFAULT NULL,
   `Estado` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idPadre_Familia`)
@@ -461,10 +454,10 @@ CREATE TABLE IF NOT EXISTS `padre_familia` (
 
 DROP TABLE IF EXISTS `publicaciones`;
 CREATE TABLE IF NOT EXISTS `publicaciones` (
-  `idPublicaciones` int NOT NULL AUTO_INCREMENT,
+  `idPublicaciones` bigint NOT NULL AUTO_INCREMENT,
   `Archivo` varchar(500) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
   `Descripcion` varchar(45) DEFAULT NULL,
-  `usuario` int DEFAULT NULL,
+  `usuario` bigint DEFAULT NULL,
   PRIMARY KEY (`idPublicaciones`),
   KEY `usuario_usuarioId` (`usuario`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3;
@@ -489,7 +482,7 @@ INSERT INTO `publicaciones` (`idPublicaciones`, `Archivo`, `Descripcion`, `usuar
 
 DROP TABLE IF EXISTS `reset_password_tokens`;
 CREATE TABLE IF NOT EXISTS `reset_password_tokens` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` bigint NOT NULL AUTO_INCREMENT,
   `user_id` int NOT NULL,
   `token` varchar(255) NOT NULL,
   `expiry_timestamp` int NOT NULL,
@@ -513,7 +506,7 @@ INSERT INTO `reset_password_tokens` (`id`, `user_id`, `token`, `expiry_timestamp
 
 DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE IF NOT EXISTS `usuarios` (
-  `Idusuarios` int NOT NULL,
+  `Idusuarios` bigint NOT NULL,
   `Nombres` varchar(60) DEFAULT NULL,
   `Apellidos` varchar(45) DEFAULT NULL,
   `Email` varchar(45) DEFAULT NULL,
@@ -545,8 +538,9 @@ INSERT INTO `usuarios` (`Idusuarios`, `Nombres`, `Apellidos`, `Email`, `Telefono
 (1101343174, 'juan david', 'julio rodriguez', 'draxjulio13@gmail.com', 3145896225, 'dfdc20cbab482c8d159f42d3250d1f7c', 'img/img_6614b7979115d_c89f135f391170c34a8599024277be5d.jpg', 'Docente', 'Activo', 'Offline now'),
 (2000005978, 'prueba de restriccion', 'padres', 'dfgfdg@gmail.com', 3234177037, '202cb962ac59075b964b07152d234b70', 'img/img_660b6d10cb26e_1652660564avatar.png', 'Estudiante', 'Activo', NULL),
 (2000598691, 'testerjuan', 'tRodri', 'combxpedagogo+568532@gmail.com', 3234167703, 'eaeaae77dd04b1e2ba6d67f3e3834b23', 'img/img_6634fbcf042e6_goku.jpg', 'Docente', 'Activo', NULL),
-(2000598692, 'testerjuan', 'tRodri', 'combxpedagog+568532@gmail.com', 3234167703, 'eaeaae77dd04b1e2ba6d67f3e3834b23', 'img/img_6634fcc05defd_img_660c7ddbc6927_goku.jpg', 'Docente', 'Activo', NULL),
-(2147483647, 'ADMIN', 'VELAZCO VELASCO', 'digiworm04@gmail.com', 3143996415, '4d3bd6b319887ff8c7314551d1b5dd64', 'img/img_661573bd214e5_avatar.jpg', 'administrador', 'Activo', '');
+(2000598692, 'testerjuan', 'tRodri', 'combxpedagog+568532@gmail.com', 3234167703, 'eaeaae77dd04b1e2ba6d67f3e3834b23', 'img/img_6634fcc05defd_img_660c7ddbc6927_goku.jpg', 'Docente', 'Inactivo', NULL),
+(2147483647, 'ADMIN', 'VELAZCO VELASCO', 'digiworm04@gmail.com', 3143996415, '4d3bd6b319887ff8c7314551d1b5dd64', 'img/img_661573bd214e5_avatar.jpg', 'administrador', 'Activo', ''),
+(5568745612, 'prueba us', 'uss', 'correo@gmail.com', 3144787155, 'afab9e1401c7c4b559e2723add38e05a', 'img/img_664d3292e502a_ingles whats hapenned.jpg', 'Estudiante', 'Activo', NULL);
 
 --
 -- Restricciones para tablas volcadas
