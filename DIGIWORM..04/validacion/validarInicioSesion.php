@@ -43,6 +43,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['Idusuario']) && !empt
                 case 'Coordinador':
                     header("Location: ../index04.php");
                     exit();
+                case 'Usuario':
+                    header("Location: ../index04.php");
+                    exit();
                 default:
                     header("Location: ../index04.php");
                     exit();

@@ -26,6 +26,11 @@ if(isset($_SESSION['Idusuario'])) {
     $usuario_conectado = false;
     header( 'Location: form.php?error=nologeado' );
 }
+if ($rol_usuario !== 'administrador') {
+    header("Location: ../index04.php");
+    exit(); // Detiene la ejecución del script después de la redirección
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -33,10 +38,11 @@ if(isset($_SESSION['Idusuario'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Lista de usuarios</title>
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="img/LOGO.png" rel="icon">
+    <link href="../img/LOGO.png" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -57,17 +63,18 @@ if(isset($_SESSION['Idusuario'])) {
 </head>
 <body>
 <div class="container-fluid bg-light position-relative shadow">
-    <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0 px-lg-5">
-        <a href="" class="navbar-brand font-weight-bold text-secondary" style="font-size: 50px;">
+        <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0 px-lg-5">
+            <a href="" class="navbar-brand font-weight-bold text-secondary" style="font-size: 50px;">
+
             <span class="text-primary">DIGIWORM</span>
-        </a>
-        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-            <div class="navbar-nav font-weight-bold mx-auto py-0">
-                <!-- Your menu items here -->
-                <?php
+
+            </a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+    <div class="navbar-nav font-weight-bold mx-auto py-0">
+    <?php
 if ($rol_usuario == 'Coordinador'):
     echo '<a href="index04.php" class="nav-item nav-link active">Home</a>
     <a href="Actividades.php" class="nav-item nav-link">Actividades</a>
@@ -111,24 +118,24 @@ if ($rol_usuario == 'Coordinador'):
                   </div>';
         }
         elseif($rol_usuario=='administrador') :
-            echo '<a href="index04.php" class="nav-item nav-link active">Home</a>
-            <a href="Actividades.php" class="nav-item nav-link">Actividades</a>
-            <a href="chat/login.php" class="nav-item nav-link">Chat</a>
-            <a href="Foros.php" class="nav-item nav-link">Foros</a>
-            <a href="Docentes.php" class="nav-item nav-link">Docentes</a>
+            echo '<a href="../index04.php" class="nav-item nav-link active">Home</a>
+            <a href="../Actividades.php" class="nav-item nav-link">Actividades</a>
+            <a href="../chat/login.php" class="nav-item nav-link">Chat</a>
+            <a href="../Foros.php" class="nav-item nav-link">Foros</a>
+            <a href="../Docentes.php" class="nav-item nav-link">Docentes</a>
 
 
             <div class="nav-item dropdown">
                 <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
                 <div class="dropdown-menu rounded-0 m-0">
 
-                    <a href="publicaciones/publicaciones.php" class="dropdown-item">Publicaciones</a>
-                    <a href="Visual_padres" class="dropdown-item">Estudiantes</a>
-                    <a href="boletines.php" class="dropdown-item">Boletines</a>
-                    <a href="cursos.php" class="dropdown-item">Cursos</a>
-                    <a href="UsuariosMod/Usuarios.php" class="dropdown-item">Usuarios</a>
-                    <a href="Apis/Swagger/swaggerC.php" class="dropdown-item">CursosApi</a>
-                    <a href="Apis/Swagger/swaggerd.php" class="dropdown-item">DocentesApi </a>
+                    <a href="../publicaciones/publicaciones.php" class="dropdown-item">Publicaciones</a>
+                    <a href="../Visual_padres" class="dropdown-item">Estudiantes</a>
+                    <a href="../boletines.php" class="dropdown-item">Boletines</a>
+                    <a href="../cursos.php" class="dropdown-item">Cursos</a>
+
+                    <a href="../Apis/Swagger/swaggerC.php" class="dropdown-item">CursosApi</a>
+                    <a href="../Apis/Swagger/swaggerd.php" class="dropdown-item">DocentesApi </a>
 
 
 
@@ -175,10 +182,37 @@ if ($rol_usuario == 'Coordinador'):
 
 endif;
 ?>
+
+
             </div>
+
+    </div>
+    <div class="navbar-nav font-weight-bold mx-auto py-0">
+        <div class="DatosU">
+            <p class="nav-item nav-link">
+            <?php if ($ruta_imagen): ?>
+                    <img src="../<?php echo $ruta_imagen; ?>" style="width: 40px; height: 40px; border-radius: 50%;">
+                <?php else: ?>
+                    <span>No hay </span>
+                <?php endif; ?>
+                <a href="Datos.php">
+                <?php echo $nombre_usuario."-". $rol_usuario." "; ?>.</a>
+
+
+                <br>
+
+                <a href="modelo/CerrarSession.php" style="">Cerrar sesion</a>
+            </p>
+
         </div>
-    </nav>
+    </div>
 </div>
+
+        </nav>
+    </div>
+    <!-- Navbar End -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <div class="container mt-5">
     <h2>Usuarios</h2>

@@ -197,6 +197,16 @@ if ($rol_usuario == 'Coordinador'):
                 <div class="dropdown-menu rounded-0 m-0">
                     <a href="Visual_padres" class="dropdown-item">Estudiantes</a>
                 </div>';
+                elseif($rol_usuario=='Usuario') :
+                    echo '
+                    <a href="index04.php" class="nav-item nav-link active">Home</a>
+
+
+                    <div class="nav-item dropdown">
+                <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
+                <div class="dropdown-menu rounded-0 m-0">
+                    <a href="publicaciones/publicaciones.php" class="dropdown-item">Publicaciones</a>
+                </div>';
                 elseif($rol_usuario=='Docente') :
                     echo '
                     <a href="index04.php" class="nav-item nav-link active">Home</a>
