@@ -78,14 +78,33 @@
                     <input type="number" name="Telefono" id="Telefono" placeholder="Telefono" required  required oninput="limitarNumero(this, 10)" onblur="validarLongitudExacta(this)" />
                 </div>
                 <div class="input-field">
-                    <i class="fas fa-lock"></i>
-                    <input type="password" id="Pasword" name="Pasword" placeholder="Contraseña" required />
-                </div>
+            <i class="fas fa-lock"></i>
+            <input type="password" id="Pasword" name="Pasword" placeholder="Contraseña" required />
+
+        </div>
+        <div id="passwordError" class="error">La contraseña debe tener al menos 8 caracteres y contener números, letras y signos especiales.</div>
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
                     <input type="file" id="img" name="img" placeholder="img" required />
                 </div>
+                <script>
+                    // Validación de la contraseña en tiempo real
+function validarContrasena(Pasword) {
+    const passwordError = document.getElementById('passwordError');
+    const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
+    if (!passwordPattern.test(Pasword)) {
+        passwordError.style.display = 'block';
+    } else {
+        passwordError.style.display = 'none';
+    }
+}
+
+// Evento de entrada para el campo de contraseña
+document.getElementById('Pasword').addEventListener('input', function () {
+    validarContrasena(this.value);
+});
+                </script>
                 <script>
 // Variable para almacenar el último campo modificado
 let ultimoCampoModificado = null;
@@ -120,60 +139,57 @@ function registrarUltimoCampoModificado(input) {
 
 
 
-                <style>
-                       /* Ocultar el input de tipo file */
-
-    .input-field.custom {
-        /* Estilos específicos para el input-field que deseas afectar */
-        border: 2px solid transparent;
-        border-radius: 25px;
-        padding: 20px;
-        text-align: center;
-        display: inline-block;
-        position: relative;
-        height: 200px;
-        font-style: oblique;
-    }
-
-    .input-radio {
-    display: grid;
-    grid-template-columns: 8fr 5fr;
-    gap: 28px;
-    align-items: center;
-    justify-items: center;
-    align-content: center;
-    justify-content: center;
-    position: absolute;
-    top: 46%;
-    left: 13%;
-    transform: translate(-17%, -30%);
-    font-style: oblique;
-}
-    .input-radio label {
-        margin-left: 5px;
-    }
-
-    .input-radio input[type="radio"] {
-        margin-right: 5px;
-    }
-
-    /* Para cubrir los radio buttons con el fondo */
-    .input-field.custom::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: #fff; /* Color del fondo */
-        z-index: -1;
-        border-radius: 8px;
-    }
-    .hidden {
-    display: none;
-}
-
-</style>
+<style>
+        .error {
+            color: red;
+            display: none;
+        }
+        /* Estilos personalizados */
+        .input-field.custom {
+            border: 2px solid transparent;
+            border-radius: 25px;
+            padding: 20px;
+            text-align: center;
+            display: inline-block;
+            position: relative;
+            height: 200px;
+            font-style: oblique;
+        }
+        .input-radio {
+            display: grid;
+            grid-template-columns: 8fr 5fr;
+            gap: 28px;
+            align-items: center;
+            justify-items: center;
+            align-content: center;
+            justify-content: center;
+            position: absolute;
+            top: 46%;
+            left: 13%;
+            transform: translate(-17%, -30%);
+            font-style: oblique;
+        }
+        .input-radio label {
+            margin-left: 5px;
+        }
+        .input-radio input[type="radio"] {
+            margin-right: 5px;
+        }
+        .input-field.custom::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff; /* Color del fondo */
+            z-index: -1;
+            border-radius: 8px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
 
 <div class="input-field custom hidden"style= "display:none;">
     <label for="Rol" id="roles" style="padding-bottom: 10px;"> SELECCIONE SU ROL</label>
