@@ -89,21 +89,25 @@
                 </div>
                 <script>
                     // Validación de la contraseña en tiempo real
-function validarContrasena(Pasword) {
-    const passwordError = document.getElementById('passwordError');
-    const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+                    document.addEventListener('DOMContentLoaded', (event) => {
+    // Validación de la contraseña en tiempo real
+    function validarContrasena(Password) {
+        const passwordError = document.getElementById('passwordError');
+        const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
-    if (!passwordPattern.test(Pasword)) {
-        passwordError.style.display = 'block';
-    } else {
-        passwordError.style.display = 'none';
+        if (!passwordPattern.test(Pasword)) {
+            passwordError.style.display = 'block';
+        } else {
+            passwordError.style.display = 'none';
+        }
     }
-}
 
-// Evento de entrada para el campo de contraseña
-document.getElementById('Pasword').addEventListener('input', function () {
-    validarContrasena(this.value);
+    // Evento de entrada para el campo de contraseña
+    document.getElementById('Pasword').addEventListener('input', function () {
+        validarContrasena(this.value);
+    });
 });
+
                 </script>
                 <script>
 // Variable para almacenar el último campo modificado
@@ -191,14 +195,14 @@ function registrarUltimoCampoModificado(input) {
         }
     </style>
 
-<div class="input-field custom hidden"style= "display:none;">
+<div class="input-field custom hidden"style= "display:block;">
     <label for="Rol" id="roles" style="padding-bottom: 10px;"> SELECCIONE SU ROL</label>
     <div class="input-radio">
         <div style="display: flex; flex-direction: column;">
             <input type="radio" id="Usuario" name="Rol" value="usuario" checked>
             <label for="Usuario">Usuario</label>
         </div>
-        <div style="display: flex; flex-direction: column;">
+        <div style="display: none; flex-direction: column;">
             <input type="radio" id="Docente" name="Rol" value="Docente">
             <label for="Docente">Docente</label>
         </div>
@@ -210,7 +214,7 @@ function registrarUltimoCampoModificado(input) {
             <input type="radio" id="Padre de Familia" name="Rol" value="Padre_Familia">
             <label for="Padre de Familia">Padre de Familia</label>
         </div>
-        <div style="display: flex; flex-direction: column;">
+        <div style="display: none; flex-direction: column;">
             <input type="radio" id="Coordinador" name="Rol" value="Coordinador">
             <label for="Coordinador">Coordinador</label>
         </div>
