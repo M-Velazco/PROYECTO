@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/IntefazLog/login_page.dart';
+
+import 'IntefazLog/login_page.dart';
 
 void main() {
   runApp(const LoginApp());
 }
 
 class LoginApp extends StatelessWidget {
-  const LoginApp({Key? key}) : super(key: key);
+  const LoginApp({super.key});
 
   @override
   Widget build(BuildContext context) {
