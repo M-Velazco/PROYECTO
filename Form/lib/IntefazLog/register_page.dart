@@ -9,7 +9,7 @@ class RegisterPage extends StatelessWidget {
   final _phoneController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  RegisterPage({super.key});
+  RegisterPage({super.key, required bool isLoginFormVisible});
 
   void _register() {
     if (_formKey.currentState!.validate()) {

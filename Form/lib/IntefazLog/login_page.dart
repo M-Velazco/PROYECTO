@@ -33,7 +33,8 @@ class _LoginPageState extends State<LoginPage> {
     Future.delayed(const Duration(milliseconds: 800), () {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => RegisterPage(isLoginFormVisible: false)),
+        MaterialPageRoute(
+            builder: (context) => RegisterPage(isLoginFormVisible: false)),
       ).then((_) {
         setState(() {
           _isLoginFormVisible = true;
@@ -82,7 +83,8 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
           Align(
-            alignment: isSmallScreen ? Alignment.topCenter : Alignment.centerRight,
+            alignment:
+                isSmallScreen ? Alignment.topCenter : Alignment.centerRight,
             child: Visibility(
               visible: _isLoginFormVisible,
               child: Padding(
@@ -93,7 +95,9 @@ class _LoginPageState extends State<LoginPage> {
                 child: SizedBox(
                   width: isSmallScreen ? size.width * 0.9 : size.width * 0.3,
                   child: Column(
-                    mainAxisAlignment: isSmallScreen ? MainAxisAlignment.start : MainAxisAlignment.center,
+                    mainAxisAlignment: isSmallScreen
+                        ? MainAxisAlignment.start
+                        : MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
                     children: [
