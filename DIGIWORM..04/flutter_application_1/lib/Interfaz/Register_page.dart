@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class RegisterPage extends StatelessWidget {
   final bool isLoginFormVisible;
 
-  RegisterPage({super.key, required this.isLoginFormVisible});
+  const RegisterPage({super.key, required this.isLoginFormVisible});
 
   final _formKey = GlobalKey<FormState>();
   final _idController = TextEditingController();

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Interfaz/Login_page.dart';
 
 void main() {
-  runApp(const LoginPage());
+  runApp(const MyApp());
 }
 
-class Login_page extends StatelessWidget {
-  const Login_page({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
