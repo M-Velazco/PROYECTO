@@ -1,11 +1,12 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Interfaz/Register_page.dart';
 import 'package:http/http.dart' as http;
+import 'dart:convert';
+
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key});
-  
+  const LoginPage({Key? key}) : super(key: key);
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -15,8 +16,6 @@ class _LoginPageState extends State<LoginPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-
-
   bool _isLoginFormVisible = true;
 
   void _login() async {
@@ -24,16 +23,25 @@ class _LoginPageState extends State<LoginPage> {
       String email = _emailController.text.trim();
       String password = _passwordController.text.trim();
       try {
-        UserCredential userCredential =
-            await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: email,
-          password: password,
+        final response = await http.post(
+          Uri.parse('http://localhost:3306/login'),
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+          },
+          body: jsonEncode(<String, String>{
+            'email': email,
+            'password': password,
+          }),
         );
-        // Usuario autenticado, puedes navegar a la pantalla principal o realizar otras acciones
+        if (response.statusCode == 200) {
+          // Usuario autenticado, navega a la pantalla principal
+          print('Inicio de sesión exitoso');
+        } else {
+          // Error de inicio de sesión, muestra un mensaje
+          print('Credenciales incorrectas');
+        }
       } catch (e) {
-        // Error de inicio de sesión, muestra un mensaje al usuario
         print('Error de inicio de sesión: $e');
-        // Aquí puedes mostrar un mensaje de error en tu UI
       }
     }
   }
@@ -43,7 +51,6 @@ class _LoginPageState extends State<LoginPage> {
       _isLoginFormVisible = false;
     });
 
-    // Esperar un breve momento antes de redirigir a la página de registro
     Future.delayed(const Duration(milliseconds: 800), () {
       Navigator.push(
         context,
@@ -192,6 +199,3 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 }
-
-
-

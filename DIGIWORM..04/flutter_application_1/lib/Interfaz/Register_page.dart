@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Interfaz/DatabaseService.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class RegisterPage extends StatefulWidget {
   final bool isLoginFormVisible;
@@ -20,34 +21,54 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  final DatabaseService _databaseService = DatabaseService();
-
   void _register() async {
     if (_formKey.currentState!.validate()) {
-      String id = _idController.text;
-      String firstName = _firstNameController.text;
-      String lastName = _lastNameController.text;
-      String email = _emailController.text;
-      String phone = _phoneController.text;
+      String id = _idController.text.trim();
+      String firstName = _firstNameController.text.trim();
+      String lastName = _lastNameController.text.trim();
+      String email = _emailController.text.trim();
+      String phone = _phoneController.text.trim();
+      String password = _passwordController.text.trim();
 
       try {
-        // Guardar usuario en Firestore
-        await _databaseService.addUser(id, firstName, lastName, email, phone);
-
-        // Mostrar mensaje de registro exitoso
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Registro exitoso'),
-            duration: Duration(seconds: 2),
-          ),
+        final response = await http.post(
+          Uri.parse('http://localhost:3000/register'),
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+          },
+          body: jsonEncode(<String, String>{
+            'id': id,
+            'firstName': firstName,
+            'lastName': lastName,
+            'email': email,
+            'phone': phone,
+            'password': password,
+          }),
         );
 
-        // Puedes agregar aquí la navegación a la pantalla de inicio de sesión u otra pantalla
+        if (response.statusCode == 201) {
+          // Registro exitoso
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Registro exitoso'),
+              duration: Duration(seconds: 2),
+            ),
+          );
+          // Puedes navegar a la pantalla de inicio de sesión u otra pantalla aquí
+        } else {
+          // Error en el registro
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Error al registrar'),
+              duration: Duration(seconds: 4),
+            ),
+          );
+        }
       } catch (e) {
-        // Manejar errores de Firestore
+        print('Error de conexión: $e');
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Error al registrar: $e'),
+            content: Text('Error de conexión'),
             duration: Duration(seconds: 4),
           ),
         );
@@ -119,8 +140,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             IconButton(
                               icon: Icon(Icons.arrow_back),
                               onPressed: () {
-                                Navigator.pop(
-                                    context); // Regresar a la pantalla anterior
+                                Navigator.pop(context); // Regresar a la pantalla anterior
                               },
                             ),
                             const Spacer(),
