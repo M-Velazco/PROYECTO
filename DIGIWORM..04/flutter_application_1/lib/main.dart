@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter_application_1/Interfaz/Login_page.dart';
+import 'package:flutter_application_1/Interfaz/Login_page.dart'; // Asegúrate de importar tu página de inicio de sesión
+import 'package:http/http.dart' as http; // Importa el paquete http para hacer llamadas HTTP
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+void main() {
   runApp(const MyApp());
 }
 
