@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/Interfaz/Register_page.dart';
+import 'package:flutter_application_1/Interfaz/Register_page.dart';
+
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -34,7 +35,7 @@ class _LoginPageState extends State<LoginPage> {
       Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) => Register_page(isLoginFormVisible: false)),
+            builder: (context) => RegisterPage(isLoginFormVisible: false)),
       ).then((_) {
         setState(() {
           _isLoginFormVisible = true;

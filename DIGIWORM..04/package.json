@@ -1,10 +1,11 @@
 {
   "name": "digiworm",
   "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "start": "nodemon src/index.js"
-  },
+ 
+"scripts": {
+  "start": "node index.js"
+},
+
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -18,7 +19,7 @@
     "mysql": "^2.18.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.22"
+
   },
   "directories": {
     "lib": "lib"
