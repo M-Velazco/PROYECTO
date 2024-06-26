@@ -24,7 +24,7 @@ db.connect((err) => {
 
 // Ruta para obtener datos
 app.get('/datos', (req, res) => {
-  let sql = 'SELECT * FROM tabla';
+  let sql = 'SELECT * FROM usuarios';
   db.query(sql, (err, result) => {
     if (err) throw err;
     res.send(result);
