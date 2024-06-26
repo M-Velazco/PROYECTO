@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
+import 'package:flutter_application_1/Interfaz/Login_page.dart';
+
 class Recuperar extends StatefulWidget {
   const Recuperar({super.key});
 
@@ -173,7 +175,11 @@ class _RecuperarState extends State<Recuperar>
                       const SizedBox(height: 20),
                       InkWell(
                         onTap: () {
-                          // Handle navigation to login screen
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const LoginPage()),
+                          );
                         },
                         child: const Text(
                           '¿Ya tienes una cuenta? Iniciar sesión',

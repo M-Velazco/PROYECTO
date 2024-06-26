@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Interfaz/Register_page.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:webview_flutter/webview_flutter.dart';
+
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -15,13 +16,15 @@ class _LoginPageState extends State<LoginPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
+  bool _isLoginFormVisible = true;
+
   void _login() async {
     if (_formKey.currentState!.validate()) {
       String email = _emailController.text.trim();
       String password = _passwordController.text.trim();
       try {
         final response = await http.post(
-          Uri.parse('http://tu-servidor.com/index.html'), // Reemplaza con tu URL correcta
+          Uri.parse('http://localhost:3306/login'),
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
           },
@@ -31,9 +34,8 @@ class _LoginPageState extends State<LoginPage> {
           }),
         );
         if (response.statusCode == 200) {
-          // Usuario autenticado, manejar la respuesta según necesites
+          // Usuario autenticado, navega a la pantalla principal
           print('Inicio de sesión exitoso');
-          // Aquí podrías manejar el token de sesión u otra lógica
         } else {
           // Error de inicio de sesión, muestra un mensaje
           print('Credenciales incorrectas');
@@ -44,11 +46,22 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
-  @override
-  void initState() {
-    super.initState();
-    // Inicializar WebView si es necesario (requiere que webview_flutter esté configurado correctamente)
-    // WebView.platform = SurfaceAndroidWebView();
+  void _register() {
+    setState(() {
+      _isLoginFormVisible = false;
+    });
+
+    Future.delayed(const Duration(milliseconds: 800), () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => RegisterPage(isLoginFormVisible: false)),
+      ).then((_) {
+        setState(() {
+          _isLoginFormVisible = true;
+        });
+      });
+    });
   }
 
   @override
@@ -57,67 +70,127 @@ class _LoginPageState extends State<LoginPage> {
     bool isSmallScreen = size.width < 600;
 
     return Scaffold(
-      appBar: AppBar(title: Text('Inicio de Sesión')),
-      body: Column(
+      appBar: AppBar(),
+      body: Stack(
         children: [
-          Expanded(
-            child: WebView(
-              initialUrl: 'http://tu-servidor.com/index.html', // Reemplaza con la ruta correcta de tu HTML
-              javascriptMode: JavascriptMode.unrestricted,
+          AnimatedPositioned(
+            duration: const Duration(milliseconds: 800),
+            curve: Curves.easeInOut,
+            left: _isLoginFormVisible ? -size.width : size.width,
+            top: _isLoginFormVisible ? -size.height * 0.2 : size.height * 0.2,
+            child: Container(
+              width: size.width * 2,
+              height: size.height * 2,
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.green,
+              ),
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  Positioned(
+                    bottom: size.height * 0.3,
+                    right: size.width * 0.5,
+                    child: TextButton(
+                      onPressed: _register,
+                      child: const Text(
+                        '¿No tienes una cuenta? Regístrate',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
-          Padding(
-            padding: EdgeInsets.all(20.0),
-            child: SizedBox(
-              width: isSmallScreen ? size.width * 0.9 : size.width * 0.5,
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    TextFormField(
-                      controller: _emailController,
-                      decoration: InputDecoration(
-                        labelText: 'Correo Electrónico',
-                        prefixIcon: Icon(Icons.email),
-                      ),
-                      keyboardType: TextInputType.emailAddress,
-                      validator: (value) {
-                        if (value == null || value.trim().isEmpty) {
-                          return 'Por favor ingrese su correo electrónico';
-                        }
-                        return null;
-                      },
-                    ),
-                    SizedBox(height: 20),
-                    TextFormField(
-                      controller: _passwordController,
-                      decoration: InputDecoration(
-                        labelText: 'Contraseña',
-                        prefixIcon: Icon(Icons.lock),
-                      ),
-                      obscureText: true,
-                      validator: (value) {
-                        if (value == null || value.trim().isEmpty) {
-                          return 'Por favor ingrese su contraseña';
-                        }
-                        return null;
-                      },
-                    ),
-                    SizedBox(height: 20),
-                    ElevatedButton(
-                      onPressed: _login,
-                      child: Text('Ingresar'),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        // Implementar lógica para restablecer contraseña
-                      },
-                      child: Text('Olvidé mi contraseña'),
-                    ),
-                  ],
+          Align(
+            alignment:
+                isSmallScreen ? Alignment.topCenter : Alignment.centerRight,
+            child: Visibility(
+              visible: _isLoginFormVisible,
+              child: Padding(
+                padding: EdgeInsets.only(
+                  right: isSmallScreen ? 0 : size.width * 0.1,
+                  top: isSmallScreen ? size.height * 0.1 : 0,
                 ),
+                child: SizedBox(
+                  width: isSmallScreen ? size.width * 0.9 : size.width * 0.3,
+                  child: Column(
+                    mainAxisAlignment: isSmallScreen
+                        ? MainAxisAlignment.start
+                        : MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Text(
+                        'Iniciar sesión',
+                        style: TextStyle(fontSize: 24),
+                      ),
+                      const SizedBox(height: 20),
+                      Form(
+                        key: _formKey,
+                        child: Column(
+                          children: [
+                            TextFormField(
+                              controller: _emailController,
+                              decoration: const InputDecoration(
+                                labelText: 'Correo Electrónico',
+                                prefixIcon: Icon(Icons.email),
+                              ),
+                              keyboardType: TextInputType.emailAddress,
+                              validator: (value) {
+                                if (value == null || value.trim().isEmpty) {
+                                  return 'Por favor ingrese su correo electrónico';
+                                }
+                                return null;
+                              },
+                            ),
+                            const SizedBox(height: 20),
+                            TextFormField(
+                              controller: _passwordController,
+                              decoration: const InputDecoration(
+                                labelText: 'Contraseña',
+                                prefixIcon: Icon(Icons.lock),
+                              ),
+                              obscureText: true,
+                              validator: (value) {
+                                if (value == null || value.trim().isEmpty) {
+                                  return 'Por favor ingrese su contraseña';
+                                }
+                                return null;
+                              },
+                            ),
+                            const SizedBox(height: 20),
+                            ElevatedButton(
+                              onPressed: _login,
+                              child: const Text('Ingresar'),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                // Implementar lógica para restablecer contraseña
+                              },
+                              child: const Text('Olvidé mi contraseña'),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            left: size.width * 0.15,
+            top: size.height * 0.45,
+            child: Visibility(
+              visible: _isLoginFormVisible,
+              child: FloatingActionButton.extended(
+                onPressed: _register,
+                label: const Text('Regístrate'),
+                icon: const Icon(Icons.person_add),
+                backgroundColor: Colors.white,
+                foregroundColor: Colors.green,
               ),
             ),
           ),
