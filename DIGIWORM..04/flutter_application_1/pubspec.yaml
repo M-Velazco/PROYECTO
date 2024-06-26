@@ -11,6 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   http: ^0.13.3
+  mysql1: ^0.20.0
 
   # Añadir dependencias de Firebase
   firebase_core: ^2.10.0
