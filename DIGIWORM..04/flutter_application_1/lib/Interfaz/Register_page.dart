@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Interfaz/Login_page.dart';
-import 'package:http/http.dart' as http;
+import 'package:flutter_application_1/Interfaz/Login_page.dart'; // Reemplaza con la ruta correcta de tu archivo Login_page.dart
 import 'dart:convert';
 
 class RegisterPage extends StatefulWidget {
@@ -34,57 +33,26 @@ class _RegisterPageState extends State<RegisterPage> {
       String phone = _phoneController.text.trim();
       String password = _passwordController.text.trim();
 
-      try {
-        final response = await http.post(
-          Uri.parse('http://localhost:3306/register'),
-          headers: <String, String>{
-            'Content-Type': 'application/json; charset=UTF-8',
-          },
-          body: jsonEncode(<String, String>{
-            'id': id,
-            'firstName': firstName,
-            'lastName': lastName,
-            'email': email,
-            'phone': phone,
-            'password': password,
-          }),
-        );
+      // Simulación de registro exitoso (sin conexión a base de datos)
+      // Este código debe ser reemplazado con la lógica adecuada para tu aplicación
+      // Eliminando la solicitud HTTP y el manejo de respuesta
 
-        if (response.statusCode == 201) {
-          // Registro exitoso
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Registro exitoso'),
-              duration: Duration(seconds: 2),
-            ),
-          );
+      // Registro exitoso
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Registro exitoso'),
+          duration: Duration(seconds: 2),
+        ),
+      );
 
-          // Animar el círculo y el botón antes de cambiar de página
-          await _animateCircleAndButton();
+      // Animar el círculo y el botón antes de cambiar de página
+      await _animateCircleAndButton();
 
-          // Navegar a la pantalla de inicio de sesión
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const LoginPage()),
-          );
-        } else {
-          // Error en el registro
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Error al registrar'),
-              duration: Duration(seconds: 4),
-            ),
-          );
-        }
-      } catch (e) {
-        print('Error de conexión: $e');
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Error de conexión'),
-            duration: Duration(seconds: 4),
-          ),
-        );
-      }
+      // Navegar a la pantalla de inicio de sesión
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const LoginPage()),
+      );
     }
   }
 
@@ -92,12 +60,10 @@ class _RegisterPageState extends State<RegisterPage> {
     setState(() {
       isAnimated = true;
       circleTopPosition = -90.0; // Ajusta la posición inicial para la animación
-      circleLeftPosition =
-          -100.90; // Ajusta la posición inicial para la animación
+      circleLeftPosition = -100.90; // Ajusta la posición inicial para la animación
     });
 
-    await Future.delayed(const Duration(
-        milliseconds: 900)); // Tiempo de espera para la animación
+    await Future.delayed(const Duration(milliseconds: 900)); // Tiempo de espera para la animación
 
     setState(() {
       isAnimated = false;
@@ -307,7 +273,8 @@ class _RegisterPageState extends State<RegisterPage> {
                               return 'Por favor ingrese su contraseña';
                             }
                             if (value.length < 8 ||
-                                !RegExp(r'^(?=.*[A-Za-z])(?=.*\d)(?=.*`\d)(?=.[@$!%?&])[A-Za-z\d@$!%*?&]{8,}$')
+                                !RegExp(
+                                        r'^(?=.*[A-Za-z])(?=.*\d)(?=.*`\d)(?=.[@$!%?&])[A-Za-z\d@$!%*?&]{8,}$')
                                     .hasMatch(value)) {
                               return 'La contraseña debe tener al menos 8 caracteres y contener números, letras y signos especiales';
                             }

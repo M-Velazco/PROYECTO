@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
@@ -45,78 +44,66 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   @override
-  void initState() {
-    super.initState();
-    // Inicializar WebView si es necesario (requiere que webview_flutter esté configurado correctamente)
-    // WebView.platform = SurfaceAndroidWebView();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     bool isSmallScreen = size.width < 600;
 
     return Scaffold(
       appBar: AppBar(title: Text('Inicio de Sesión')),
-      body: Column(
-        children: [
-          
-          Padding(
-            padding: EdgeInsets.all(20.0),
-            child: SizedBox(
-              width: isSmallScreen ? size.width * 0.9 : size.width * 0.5,
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    TextFormField(
-                      controller: _emailController,
-                      decoration: InputDecoration(
-                        labelText: 'Correo Electrónico',
-                        prefixIcon: Icon(Icons.email),
-                      ),
-                      keyboardType: TextInputType.emailAddress,
-                      validator: (value) {
-                        if (value == null || value.trim().isEmpty) {
-                          return 'Por favor ingrese su correo electrónico';
-                        }
-                        return null;
-                      },
-                    ),
-                    SizedBox(height: 20),
-                    TextFormField(
-                      controller: _passwordController,
-                      decoration: InputDecoration(
-                        labelText: 'Contraseña',
-                        prefixIcon: Icon(Icons.lock),
-                      ),
-                      obscureText: true,
-                      validator: (value) {
-                        if (value == null || value.trim().isEmpty) {
-                          return 'Por favor ingrese su contraseña';
-                        }
-                        return null;
-                      },
-                    ),
-                    SizedBox(height: 20),
-                    ElevatedButton(
-                      onPressed: _login,
-                      child: Text('Ingresar'),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        // Implementar lógica para restablecer contraseña
-                      },
-                      child: Text('Olvidé mi contraseña'),
-                    ),
-                  ],
+      body: Padding(
+        padding: EdgeInsets.all(20.0),
+        child: SizedBox(
+          width: isSmallScreen ? size.width * 0.9 : size.width * 0.5,
+          child: Form(
+            key: _formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                TextFormField(
+                  controller: _emailController,
+                  decoration: InputDecoration(
+                    labelText: 'Correo Electrónico',
+                    prefixIcon: Icon(Icons.email),
+                  ),
+                  keyboardType: TextInputType.emailAddress,
+                  validator: (value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return 'Por favor ingrese su correo electrónico';
+                    }
+                    return null;
+                  },
                 ),
-              ),
+                SizedBox(height: 20),
+                TextFormField(
+                  controller: _passwordController,
+                  decoration: InputDecoration(
+                    labelText: 'Contraseña',
+                    prefixIcon: Icon(Icons.lock),
+                  ),
+                  obscureText: true,
+                  validator: (value) {
+                    if (value == null || value.trim().isEmpty) {
+                      return 'Por favor ingrese su contraseña';
+                    }
+                    return null;
+                  },
+                ),
+                SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: _login,
+                  child: Text('Ingresar'),
+                ),
+                TextButton(
+                  onPressed: () {
+                    // Implementar lógica para restablecer contraseña
+                  },
+                  child: Text('Olvidé mi contraseña'),
+                ),
+              ],
             ),
           ),
-        ],
+        ),
       ),
     );
   }
