@@ -144,6 +144,9 @@ if ($rol_usuario == 'Coordinador'):
                 <div class="dropdown-menu rounded-0 m-0">
                     <a href="../Visual_padres" class="dropdown-item">Padres de Familia</a>
                 </div>';
+                elseif($rol_usuario=='Usuario') :
+                    echo '
+                    <a href="../index04.php" class="nav-item nav-link active">Home</a>';
                 elseif($rol_usuario=='Docente') :
                     echo '
                     <a href="../index04.php" class="nav-item nav-link active">Home</a>
@@ -156,7 +159,7 @@ if ($rol_usuario == 'Coordinador'):
 
 
                         <a href="../Visual_padres" class="dropdown-item">Estudiantes</a>
-                        
+
                         <a href="../cursos.php" class="dropdown-item">Cursos</a>
                         <a href="../boletines.php" class="dropdown-item">Boletines</a>
                     </div>';
@@ -232,6 +235,10 @@ endif;
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarP">Agregar</button>
                     <?php elseif($rol_usuario == "administrador"): ?>
                         <button type="button" class="btn btn-success" data-toggle="modal" >Agregar</button>
+                    <?php elseif($rol_usuario == "Usuario"): ?>
+                    <a href= '#'>
+                        <button type="button" class="btn btn-success" data-toggle="modal" >Espera tu Rol</button>
+                    </a>
                 <?php endif; ?>
 
 

@@ -180,6 +180,7 @@ if ($rol_usuario == 'Coordinador'):
                     <a href="Visual_padres" class="dropdown-item">Estudiantes</a>
                     <a href="boletines.php" class="dropdown-item">Boletines</a>
                     <a href="cursos.php" class="dropdown-item">Cursos</a>
+                    <a href="UsuariosMod/Usuarios.php" class="dropdown-item">Usuarios</a>
                     <a href="Apis/Swagger/swaggerC.php" class="dropdown-item">CursosApi</a>
                     <a href="Apis/Swagger/swaggerd.php" class="dropdown-item">DocentesApi </a>
 
@@ -195,6 +196,16 @@ if ($rol_usuario == 'Coordinador'):
                 <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
                 <div class="dropdown-menu rounded-0 m-0">
                     <a href="Visual_padres" class="dropdown-item">Estudiantes</a>
+                </div>';
+                elseif($rol_usuario=='Usuario') :
+                    echo '
+                    <a href="index04.php" class="nav-item nav-link active">Home</a>
+
+
+                    <div class="nav-item dropdown">
+                <a href="index.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Mas</a>
+                <div class="dropdown-menu rounded-0 m-0">
+                    <a href="publicaciones/publicaciones.php" class="dropdown-item">Publicaciones</a>
                 </div>';
                 elseif($rol_usuario=='Docente') :
                     echo '
@@ -247,7 +258,7 @@ endif;
 
                 <br>
 
-                <a href="modelo/CerrarSession.php" style="">Cerrar sesion</a>
+                <a href="modelo/CerrarSession.php" style="">Cerrar sesión</a>
             </p>
 
         </div>
@@ -263,8 +274,8 @@ endif;
     <div class="container-fluid bg-primary px-0 px-md-5 mb-5">
         <div class="row align-items-center px-3">
             <div class="col-lg-6 text-center text-lg-left">
-                <h4 class="text-white mb-4 mt-5 mt-lg-0">Gestion Academica</h4>
-               <br> <h1 class="display-3 font-weight-bold text-white">nuevo enfoque para la educación de los niños</h1><br>
+                <h4 class="text-white mb-4 mt-5 mt-lg-0">Gestión Academica</h4>
+               <br> <h1 class="display-3 font-weight-bold text-white">Nuevo enfoque para la educación de los niños.</h1><br>
                 <p class="text-white mb-4">La educación es el faro que ilumina el camino hacia el progreso y la realización personal. Es el arte de cultivar mentes y corazones, de sembrar semillas de conocimiento y fomentar el crecimiento intelectual y emocional en cada individuo. En el aula, se forja el futuro, se moldean los sueños y se construyen las bases para un mundo mejor.
 
                 </p>
@@ -324,7 +335,7 @@ endif;
                         <i class="flaticon-025-sandwich h1 font-weight-normal text-primary mb-3"></i>
                         <div class="pl-4">
                             <h4>Comida sana</h4>
-                            <p class="m-0">"Tu salud es tu mayor riqueza. Invierte en ella a través de una alimentación nutritiva y equilibrada.".</p>
+                            <p class="m-0">"Tu salud es tu mayor riqueza. Invierte en ella a través de una alimentación nutritiva y equilibrada."</p>
                         </div>
                     </div>
                 </div>
@@ -361,9 +372,9 @@ endif;
                         </div>
                         <div class="col-6 col-md-8">
                             <ul class="list-inline m-0">
-                                <li class="py-2 border-top border-bottom"><i class="fa fa-check text-primary mr-3"></i>voy a trabajar duro para ellos</li>
+                                <li class="py-2 border-top border-bottom"><i class="fa fa-check text-primary mr-3"></i>Voy a trabajar duro para ellos.</li>
                                 <li class="py-2 border-bottom"><i class="fa fa-check text-primary mr-3"></i>"El arte es la expresión más pura del alma humana."</li>
-                                <li class="py-2 border-bottom"><i class="fa fa-check text-primary mr-3"></i>"Sé el cambio que quieres ver en el mundo..</li>
+                                <li class="py-2 border-bottom"><i class="fa fa-check text-primary mr-3"></i>"Sé el cambio que quieres ver en el mundo."</li>
                             </ul>
                         </div>
                     </div>
@@ -380,15 +391,15 @@ endif;
         <div class="container">
             <div class="text-center pb-2">
                 <p class="section-title px-5"><span class="px-2">CONOCENOS</span></p>
-                <h1 class="mb-4">Cuenta con Nosotros</h1>
+                <h1 class="mb-4">Cuenta con nosotros.</h1>
             </div>
             <div class="row">
                 <div class="col-lg-4 mb-5">
                     <div class="card border-0 bg-light shadow-sm pb-2">
                         <img class="card-img-top mb-2" src="img/class-1.jpg" alt="">
                         <div class="card-body text-center">
-                            <h4 class="card-title">Certificacion Tecnica</h4>
-                            <p class="card-text">"Cree en ti mismo y en todo lo que eres. Sé consciente de que hay algo dentro de ti que es más grande que cualquier obstáculo."</p>
+                            <h4 class="card-title">Certificacion Tecnica.</h4>
+                            <p class="card-text">"Cree en ti mismo y en todo lo que eres. hay algo dentro de ti que es más grande que cualquier obstáculo."</p>
                         </div>
                         <div class="card-footer bg-transparent py-4 px-5">
                             <div class="row border-bottom">
@@ -412,9 +423,9 @@ endif;
                     <div class="card border-0 bg-light shadow-sm pb-2">
                         <img class="card-img-top mb-2" src="img/class-2.jpg" alt="">
                         <div class="card-body text-center">
-                            <h4 class="card-title">Tecnologia Renovada
+                            <h4 class="card-title">Tecnologia renovada.
                             </h4>
-                            <p class="card-text">"La tecnología es mejor cuando nos une, en lugar de dividirnos para  amplificador de nuestro potencial humano. </p>
+                            <p class="card-text">"La tecnología es mejor cuando nos une, en lugar de dividirnos para  amplificador de nuestro potencial humano para enfrentar desafíos académico." </p>
                         </div>
                         <div class="card-footer bg-transparent py-4 px-5">
                             <div class="row border-bottom">
@@ -439,8 +450,8 @@ endif;
                         <img class="card-img-top mb-2" src="img/class-3.jpg" alt="">
                         <div class="card-body text-center">
                             <h4 class="card-title">
-                                Apoyo Academico</h4>
-                            <p class="card-text">Brindamos un apoyo académico de calidad, cimentando el conocimiento y preparándote para enfrentar cualquier desafío académico</p>
+                                Apoyo academico.</h4>
+                            <p class="card-text">"Brindamos un apoyo académico de calidad, cimentando el conocimiento y preparándote para enfrentar cualquier desafío académico."</p>
                         </div>
                         <div class="card-footer bg-transparent py-4 px-5">
                             <div class="row border-bottom">
@@ -485,9 +496,9 @@ endif;
                         </div>
                         <div class="col-6 col-md-8">
                             <ul class="list-inline m-0">
-                                <li class="py-2 border-top border-bottom"><i class="fa fa-check text-primary mr-3"></i>Inpirate</li>
-                                <li class="py-2 border-bottom"><i class="fa fa-check text-primary mr-3"></i>Sueña</li>
-                                <li class="py-2 border-bottom"><i class="fa fa-check text-primary mr-3"></i>Crece</li>
+                                <li class="py-2 border-top border-bottom"><i class="fa fa-check text-primary mr-3"></i>Inspirate.</li>
+                                <li class="py-2 border-bottom"><i class="fa fa-check text-primary mr-3"></i>Sueña.</li>
+                                <li class="py-2 border-bottom"><i class="fa fa-check text-primary mr-3"></i>Crece.</li>
                             </ul>
                         </div>
                     </div>
