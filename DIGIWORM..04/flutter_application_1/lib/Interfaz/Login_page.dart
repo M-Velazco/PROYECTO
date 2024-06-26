@@ -34,7 +34,7 @@ class _LoginPageState extends State<LoginPage> {
       Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) => RegisterPage(isLoginFormVisible: false)),
+            builder: (context) => Register_page(isLoginFormVisible: false)),
       ).then((_) {
         setState(() {
           _isLoginFormVisible = true;
