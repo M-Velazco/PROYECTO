@@ -1,28 +1,57 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Interfaz/DatabaseService.dart';
 
-class RegisterPage extends StatelessWidget {
+class RegisterPage extends StatefulWidget {
   final bool isLoginFormVisible;
 
-  const RegisterPage({super.key, required this.isLoginFormVisible});
+  const RegisterPage({Key? key, required this.isLoginFormVisible})
+      : super(key: key);
 
-  final _formKey = GlobalKey<FormState>();
-  final _idController = TextEditingController();
-  final _firstNameController = TextEditingController();
-  final _lastNameController = TextEditingController();
-  final _emailController = TextEditingController();
-  final _phoneController = TextEditingController();
-  final _passwordController = TextEditingController();
+  @override
+  _RegisterPageState createState() => _RegisterPageState();
+}
 
-  void _register() {
+class _RegisterPageState extends State<RegisterPage> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _idController = TextEditingController();
+  final TextEditingController _firstNameController = TextEditingController();
+  final TextEditingController _lastNameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  final DatabaseService _databaseService = DatabaseService();
+
+  void _register() async {
     if (_formKey.currentState!.validate()) {
-      // Lógica para enviar los datos al backend
       String id = _idController.text;
       String firstName = _firstNameController.text;
       String lastName = _lastNameController.text;
       String email = _emailController.text;
       String phone = _phoneController.text;
-      String password = _passwordController.text;
-      // Implementar lógica de registro
+
+      try {
+        // Guardar usuario en Firestore
+        await _databaseService.addUser(id, firstName, lastName, email, phone);
+
+        // Mostrar mensaje de registro exitoso
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Registro exitoso'),
+            duration: Duration(seconds: 2),
+          ),
+        );
+
+        // Puedes agregar aquí la navegación a la pantalla de inicio de sesión u otra pantalla
+      } catch (e) {
+        // Manejar errores de Firestore
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Error al registrar: $e'),
+            duration: Duration(seconds: 4),
+          ),
+        );
+      }
     }
   }
 
@@ -36,12 +65,12 @@ class RegisterPage extends StatelessWidget {
           AnimatedPositioned(
             duration: const Duration(milliseconds: 500),
             curve: Curves.easeInOut,
-            right: isLoginFormVisible ? -size.width * 2.2 : -1000,
+            right: widget.isLoginFormVisible ? -size.width * 2.2 : -1000,
             top: size.height * 0.5,
             child: Container(
               width: size.width * 1.2,
               height: size.height * 2.36,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: Colors.green,
               ),
@@ -85,9 +114,25 @@ class RegisterPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
-                          'Registrarse',
-                          style: TextStyle(fontSize: 24),
+                        Row(
+                          children: [
+                            IconButton(
+                              icon: Icon(Icons.arrow_back),
+                              onPressed: () {
+                                Navigator.pop(
+                                    context); // Regresar a la pantalla anterior
+                              },
+                            ),
+                            const Spacer(),
+                            const Text(
+                              'Registrarse',
+                              style: TextStyle(fontSize: 24),
+                            ),
+                            const Spacer(),
+                            SizedBox(
+                              width: 48,
+                            ), // Ajuste de espacio para alinear correctamente
+                          ],
                         ),
                         const SizedBox(height: 20),
                         TextFormField(
@@ -202,6 +247,20 @@ class RegisterPage extends StatelessWidget {
                     ),
                   ),
                 ),
+              ),
+            ),
+          ),
+          Positioned(
+            left: size.width * 0.15,
+            top: size.height * 0.45,
+            child: Visibility(
+              visible: widget.isLoginFormVisible,
+              child: FloatingActionButton.extended(
+                onPressed: _register,
+                label: const Text('Regístrate'),
+                icon: const Icon(Icons.person_add),
+                backgroundColor: Colors.white,
+                foregroundColor: Colors.green,
               ),
             ),
           ),

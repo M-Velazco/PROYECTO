@@ -1,8 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Interfaz/Register_page.dart';
+import 'package:flutter_application_1/Interfaz/auth_service.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  const LoginPage({Key? key});
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -12,15 +14,26 @@ class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  final AuthService _authService = AuthService();
 
   bool _isLoginFormVisible = true;
 
-  void _login() {
+  void _login() async {
     if (_formKey.currentState!.validate()) {
-      // Lógica para enviar las credenciales al backend
-      String email = _emailController.text;
-      String password = _passwordController.text;
-      // Implementar lógica de autenticación
+      String email = _emailController.text.trim();
+      String password = _passwordController.text.trim();
+      try {
+        UserCredential userCredential =
+            await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: email,
+          password: password,
+        );
+        // Usuario autenticado, puedes navegar a la pantalla principal o realizar otras acciones
+      } catch (e) {
+        // Error de inicio de sesión, muestra un mensaje al usuario
+        print('Error de inicio de sesión: $e');
+        // Aquí puedes mostrar un mensaje de error en tu UI
+      }
     }
   }
 
@@ -118,7 +131,7 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                               keyboardType: TextInputType.emailAddress,
                               validator: (value) {
-                                if (value == null || value.isEmpty) {
+                                if (value == null || value.trim().isEmpty) {
                                   return 'Por favor ingrese su correo electrónico';
                                 }
                                 return null;
@@ -133,7 +146,7 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                               obscureText: true,
                               validator: (value) {
-                                if (value == null || value.isEmpty) {
+                                if (value == null || value.trim().isEmpty) {
                                   return 'Por favor ingrese su contraseña';
                                 }
                                 return null;
@@ -146,7 +159,7 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             TextButton(
                               onPressed: () {
-                                // Redirigir al usuario a la página de restablecimiento de contraseña
+                                // Implementar lógica para restablecer contraseña
                               },
                               child: const Text('Olvidé mi contraseña'),
                             ),

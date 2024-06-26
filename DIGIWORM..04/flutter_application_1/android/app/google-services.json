@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "343984807332",
+    "project_id": "digiworm-881b2",
+    "storage_bucket": "digiworm-881b2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:343984807332:android:93830e62bb9a2fe1e6f531",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMMPKV1_u6_lxy2QD6Po9mHtkEXPdgbQQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
