@@ -2,13 +2,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 class DatabaseService {
-  final FirebaseFirestore_db = FirebaseFirestore.instance;
+  final FirebaseFirestore _db = FirebaseFirestore.instance;
 
   // Método para agregar un usuario a Firestore
   Future<void> addUser(String userId, String email, String firstName,
       String lastName, String phone) async {
     try {
-      await _Digiworm_04.collection('users').doc(userId).set({
+      await _db.collection('users').doc(userId).set({
         'email': email,
         'firstName': firstName,
         'lastName': lastName,
@@ -23,8 +23,7 @@ class DatabaseService {
   // Método para obtener información de un usuario desde Firestore
   Future<Map<String, dynamic>?> getUser(String userId) async {
     try {
-      DocumentSnapshot doc =
-          await _Digiworm_04.collection('users').doc(userId).get();
+      DocumentSnapshot doc = await _db.collection('users').doc(userId).get();
       if (doc.exists) {
         return doc.data() as Map<String, dynamic>;
       } else {
