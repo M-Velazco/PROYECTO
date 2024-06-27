@@ -12,27 +12,28 @@ class RegisterPage extends StatelessWidget {
   final _phoneController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  RegisterPage({Key? key}) : super(key: key);
+  RegisterPage({super.key});
 
   Future<void> _register(BuildContext context) async {
     if (_formKey.currentState!.validate()) {
-      String id = _idController.text.trim();
+      int id = int.tryParse(_idController.text.trim()) ?? 0;
       String firstName = _firstNameController.text.trim();
       String lastName = _lastNameController.text.trim();
       String email = _emailController.text.trim();
-      String phone = _phoneController.text.trim();
+      int phone = int.tryParse(_phoneController.text.trim()) ?? 0;
       String password = _passwordController.text.trim();
 
       var body = jsonEncode({
-        'id': id,
-        'firstName': firstName,
-        'lastName': lastName,
-        'email': email,
-        'phone': phone,
-        'password': password,
+        'Idusuarios': id,
+        'Nombres': firstName,
+        'Apellidos': lastName,
+        'Email': email,
+        'Telefono': phone,
+        'Pasword': password,
       });
 
-      var url = Uri.parse('http://localhost/your_project/register.php');
+      var url = Uri.parse(
+          'http://localhost/PROYECTO/DIGIWORM..04/flutter_application_1/lib/Interfaz/register.php');
 
       try {
         var response = await http.post(
@@ -89,8 +90,8 @@ class RegisterPage extends StatelessWidget {
             child: Container(
               width: 1000,
               height: 1300,
-              decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 74, 230, 80),
+              decoration: const BoxDecoration(
+                color: Color.fromARGB(255, 74, 230, 80),
                 shape: BoxShape.circle,
               ),
               child: Center(
@@ -163,8 +164,8 @@ class RegisterPage extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Center(
-                        child: const Text(
+                      const Center(
+                        child: Text(
                           'Registrarse',
                           style: TextStyle(
                             fontSize: 33,
@@ -267,7 +268,8 @@ class RegisterPage extends StatelessWidget {
                       ElevatedButton(
                         onPressed: () => _register(context),
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color.fromARGB(255, 61, 232, 67),
+                          backgroundColor:
+                              const Color.fromARGB(255, 61, 232, 67),
                           padding: const EdgeInsets.symmetric(vertical: 15),
                         ),
                         child: const Center(child: Text('REGISTRARSE')),
