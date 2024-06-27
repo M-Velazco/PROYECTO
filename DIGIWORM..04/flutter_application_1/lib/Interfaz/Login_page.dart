@@ -33,7 +33,8 @@ class _LoginPageState extends State<LoginPage> {
         'Pasword': password,
       });
 
-      var url = Uri.parse('http://localhost/PROYECTO/DIGIWORM..04/flutter_application_1/lib/Interfaz/login.php');
+      var url = Uri.parse(
+          'http://localhost/PROYECTO/DIGIWORM..04/flutter_application_1/lib/Interfaz/login.php');
 
       try {
         var response = await http.post(
@@ -156,9 +157,11 @@ class _LoginPageState extends State<LoginPage> {
                                   onPressed: _registerRedirect,
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: Colors.white,
-                                    foregroundColor: Color.fromARGB(255, 0, 0, 0),
+                                    foregroundColor:
+                                        Color.fromARGB(255, 0, 0, 0),
                                     side: const BorderSide(
-                                        color: Color.fromARGB(255, 23, 212, 29)),
+                                        color:
+                                            Color.fromARGB(255, 23, 212, 29)),
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 50, vertical: 15),
                                   ),
@@ -221,7 +224,7 @@ class _LoginPageState extends State<LoginPage> {
                               return null;
                             },
                           ),
-                          const SizedBox(height: 10.0),
+                          const SizedBox(height: 15.0),
                           Align(
                             alignment: Alignment.centerRight,
                             child: TextButton(
@@ -233,12 +236,12 @@ class _LoginPageState extends State<LoginPage> {
                           ElevatedButton(
                             onPressed: _login,
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.green,
+                              backgroundColor: Color.fromARGB(255, 91, 242, 91),
                               padding: const EdgeInsets.symmetric(vertical: 15),
                             ),
                             child: const Text(
                               'Ingresar',
-                              style: TextStyle(fontSize: 16),
+                              style: TextStyle(fontSize: 19),
                             ),
                           ),
                         ],

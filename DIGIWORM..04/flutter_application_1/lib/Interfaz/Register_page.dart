@@ -84,8 +84,8 @@ class RegisterPage extends StatelessWidget {
       body: Stack(
         children: [
           Positioned(
-            top: -200,
-            right: -200,
+            top: -250,
+            right: -250,
             child: Container(
               width: 1000,
               height: 1300,
@@ -93,45 +93,53 @@ class RegisterPage extends StatelessWidget {
                 color: const Color.fromARGB(255, 74, 230, 80),
                 shape: BoxShape.circle,
               ),
-              child: Center(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Text(
-                      '¿Tiene usted una cuenta?',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 29,
-                        fontWeight: FontWeight.bold,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                    const Text(
-                      'Debe iniciar sesión para conocer más de nosotros..',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    ElevatedButton(
-                      onPressed: () {
-                        loginRedirect(context);
-                      },
-                      style: ElevatedButton.styleFrom(
-                        foregroundColor: Colors.black, backgroundColor: Colors.white,
-                      ),
-                      child: const Text(
-                        'INGRESAR',
+              child: Padding(
+                padding: EdgeInsets.only(
+                  right: 100,
+                  bottom: 100,
+                ),
+                child: Align(
+                  alignment: Alignment.bottomRight,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        '¿Tiene usted una cuenta?',
                         style: TextStyle(
                           color: Colors.black,
-                          fontSize: 17,
+                          fontSize: 22,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                    ),
-                  ],
+                      const SizedBox(height: 15),
+                      const Text(
+                        'Debe iniciar sesión para conocer más de nosotros..',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 16,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      ElevatedButton(
+                        onPressed: () {
+                          loginRedirect(context);
+                        },
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor: Colors.black,
+                          backgroundColor: Colors.white,
+                        ),
+                        child: const Text(
+                          'INGRESAR',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -139,7 +147,7 @@ class RegisterPage extends StatelessWidget {
           Center(
             child: Container(
               width: MediaQuery.of(context).size.width * 0.50,
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(30),
@@ -158,10 +166,21 @@ class RegisterPage extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
+                      Center(
+                        child: const Text(
+                          'Registrarse',
+                          style: TextStyle(
+                            fontSize: 33,
+                            fontStyle: FontStyle.italic,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 20.0),
                       TextFormField(
                         controller: _idController,
                         decoration: const InputDecoration(
-                          labelText: 'Número de Identificación',
+                          labelText: 'Número Identificación',
                           prefixIcon: Icon(Icons.perm_identity),
                         ),
                         keyboardType: TextInputType.number,
@@ -204,7 +223,7 @@ class RegisterPage extends StatelessWidget {
                       TextFormField(
                         controller: _emailController,
                         decoration: const InputDecoration(
-                          labelText: 'Correo Electrónico',
+                          labelText: 'Correo electrónico',
                           prefixIcon: Icon(Icons.email),
                         ),
                         keyboardType: TextInputType.emailAddress,
@@ -248,22 +267,13 @@ class RegisterPage extends StatelessWidget {
                         },
                       ),
                       const SizedBox(height: 20.0),
-                      Row(
-                        children: [
-                          Checkbox(
-                            value: true,
-                            onChanged: (value) {},
-                          ),
-                          const Text('Acepto los términos de servicio'),
-                        ],
-                      ),
-                      const SizedBox(height: 10.0),
                       ElevatedButton(
                         onPressed: () => _register(context),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color.fromARGB(255, 61, 232, 67),
+                          padding: const EdgeInsets.symmetric(vertical: 15),
                         ),
-                        child: Center(child: const Text('REGISTRARSE')),
+                        child: const Center(child: Text('REGISTRARSE')),
                       ),
                     ],
                   ),
