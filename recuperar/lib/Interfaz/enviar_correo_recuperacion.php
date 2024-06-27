@@ -42,11 +42,11 @@ try {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com'; // Servidor SMTP
         $mail->SMTPAuth = true;
-        $mail->Username = 'tu_correo@gmail.com'; // Correo electrónico desde el que se enviará el mensaje
-        $mail->Password = 'tu_contraseña'; // Contraseña del correo electrónico
+        $mail->Username = 'Villabilons@gmail.com'; // Correo electrónico desde el que se enviará el mensaje
+        $mail->Password = 'villabilons-18'; // Contraseña del correo electrónico
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
-        $mail->setFrom('tu_correo@gmail.com', 'Nombre Mostrar'); // Correo y nombre del remitente
+        $mail->setFrom('Villabilons@gmail.com', 'admin'); // Correo y nombre del remitente
         $mail->addAddress($email); // Correo del destinatario
         $mail->isHTML(true);
         $mail->Subject = 'Recuperación de contraseña';
