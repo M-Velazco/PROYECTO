@@ -212,7 +212,7 @@ endif;
 // Verifica si el usuario tiene el rol de docente para mostrar el botón de agregar
 if ($rol_usuario == 'administrador'):
 ?>
-    <button type="button" class="btn btn-success" > Agregar </button>
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregar"> Agregar </button>
 <?php
 endif;
 ?>
