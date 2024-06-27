@@ -1,0 +1,87 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #85eaf1;
+    background-image: url(../img/Fondo_padres.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+
+header {
+    text-align: center;
+    padding: 10px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+    padding: 10px;
+    color: white;
+    position: relative;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 95px; 
+    height: 95px; 
+    border-radius: 50%; 
+    margin-right: 10px;
+}
+
+.search-bar {
+    margin: 0 auto; /* Centra horizontalmente */
+    text-align: center;
+}
+
+.search-bar form {
+    display: flex;
+    align-items: center;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    background-color: #f8f9fa;
+    border-radius: 20px;
+    padding: 5px;
+    margin-right: 10px;
+}
+
+.search-container i {
+    margin-left: 5px; 
+    color: #333;
+    cursor: pointer;
+    background-color: white; 
+    padding: 5px; 
+    border-radius: 8px; 
+   
+}
+
+
+.search-bar input[type="text"] {
+    width: 400px;
+    padding: 10px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+.principal-link {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+
+
+
+

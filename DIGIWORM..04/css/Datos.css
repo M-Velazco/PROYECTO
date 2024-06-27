@@ -1,0 +1,106 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('../img/coolegio.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    font-style: oblique;
+}
+perfil-header{
+color: aliceblue;
+text-align: center;
+}
+
+form {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #18cb3d;
+    border-radius: 5px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    background-color: #408df3;
+    color: rgb(11, 11, 11);
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+input[type="button"] {
+    background-color: #408df3;
+    color: rgb(11, 11, 11);
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+input[type="submit"]:hover {
+    background-color: #4bf261;
+}
+input[type="button"]:hover {
+    background-color: #4bf261;
+}
+
+.img-container {
+    text-align: center;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.img-container img {
+    width: 150px; /* Cambiado a 150px */
+    height: 150px; /* Cambiado a 150px */
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.img-container img:hover {
+    opacity: 1;
+    
+}
+
+.img-container .camera-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 50px; /* Cambiado a 50px */
+    cursor: pointer;
+    display: none;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    
+}
+
+.img-container img:hover + .camera-icon {
+    display: block;
+    transform: translate(-50%, -50%) scale(1.2);
+    
+}
+
+.img-container input[type="file"] {
+    display: none;
+    
+}
+
+.readonly-input {
+    color: #666; /* Color de texto un poco oscurecido */
+    cursor: not-allowed; /* Cursor no permitido */
+    background-image: url("https://th.bing.com/th/id/R.363d446687cffcd65ceb2d73d26b79c9?rik=b116AWqg83SvZw&riu=http%3a%2f%2falbumfotos.com%2fuploads%2ffotos%2fthumbs%2ffondo-escolar-hofmann-para-album-classic-rotuladores_escolares-18-classic_1200px.jpg&ehk=%2f%2fIUCij%2ft2c7FDGv3jRPQl8lpVRqEg7BsNrrdDH8D70%3d&risl=&pid=ImgRaw&r=0");
+}
+

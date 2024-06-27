@@ -1,0 +1,22 @@
+Para remplazo se solicito cambiar redirecciones en el archivo de:
+
+publicaciones.php de esta carpeta en las lineas: 56, 59, 60, 63 a razon de estilo
+y para la funcionalidad de el formulario pasar el archivo de esta direccion:
+publicaciones/views/agregarPub.php al directorio DIGIWORM..04/views/ 
+y para funcionalidad en este mismo archivo modificar direcciones de las lineas:16,17.
+
+Al realizar el cambio de directorio posteriormente modificar redirecciones de agregarPub.php:
+las lieneas:44 de ser necesario de lo contrario no modificar recuerda si lo modificas significa que moviste 
+el archivo uploadPublic.php a otro directorio en caso de no ser asi omitir cambios en agregarPub.php
+
+En uploadPublic.php modificar la linea 11: para la correcta validacion de la publicacion siguiendo estos pasos deberia funcionar de no funcionar omitiste
+algun cambio en publicaciones.php o uploadPublic.php favor de hacer su respectivo debug
+para dar conocimiento a su funcionalidad solo admite subir archivos pdf e imagenes los doc no los deja previsualizar 
+
+Encargado: 
+
+Johan Santiago Villanueva roa 
+
+Jefe encargado:
+
+Magdy Velasco Velazco

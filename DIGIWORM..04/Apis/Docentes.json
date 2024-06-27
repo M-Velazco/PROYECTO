@@ -1,0 +1,242 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "description": "The API for digiworm",
+      "version": "1.0.0",
+      "title": "Cursos"
+    },
+    "host": "localhost",
+    "basePath": "/PROYECTO/DIGIWORM..04",
+    "schemes": [
+      "http"
+    ],
+    "paths": {
+      "/apis/DocentesApis.php": {
+        "get": {
+          "tags": [
+            "DocentesApis.php"
+          ],
+          "summary": "Retrieve all registered courses with associated teachers",
+          "operationId": "getCourses",
+          "responses": {
+            "200": {
+              "description": "Successful operation",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Course"
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "DocentesApis.php"
+          ],
+          "summary": "Create a new course with associated teacher",
+          "operationId": "createCourse",
+          "parameters": [
+            {
+              "name": "DocenteData",
+              "in": "body",
+              "description": "Data of the new course",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "idDocente": {
+                    "type": "integer",
+                    "description": "ID of the teacher"
+                  },
+                  "Nombres": {
+                    "type": "string",
+                    "description": "Teacher's first name"
+                  },
+                  "Apellidos": {
+                    "type": "string",
+                    "description": "Teacher's last name"
+                  },
+                  "Email": {
+                    "type": "string",
+                    "description": "Teacher's email"
+                  },
+                  "Pasword": {
+                    "type": "string",
+                    "description": "Teacher's password"
+                  },
+                  "Curso": {
+                    "type": "string",
+                    "description": "Course"
+                  },
+                  "Materia": {
+                    "type": "string",
+                    "description": "Subject"
+                  },
+                  "Jornada": {
+                    "type": "string",
+                    "description": "Schedule"
+                  },
+                  "Certificacion": {
+                    "type": "string",
+                    "description": "Certification"
+                  },
+                  "Desc_prof": {
+                    "type": "string",
+                    "description": "Professional description"
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful operation"
+            },
+            "400": {
+              "description": "Bad request. Check your input data."
+            },
+            "500": {
+              "description": "Internal server error. Something went wrong on the server side."
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "DocentesApis.php"
+          ],
+          "summary": "Update an existing course with associated teacher",
+          "operationId": "updateCourse",
+          "parameters": [
+            {
+              "name": "DocenteData",
+              "in": "body",
+              "description": "Data of the updated course",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "idDocente": {
+                    "type": "integer",
+                    "description": "ID of the teacher"
+                  },
+                  "Nombres": {
+                    "type": "string",
+                    "description": "Teacher's first name"
+                  },
+                  "Apellidos": {
+                    "type": "string",
+                    "description": "Teacher's last name"
+                  },
+                  "Email": {
+                    "type": "string",
+                    "description": "Teacher's email"
+                  },
+                  "Pasword": {
+                    "type": "string",
+                    "description": "Teacher's password"
+                  },
+                  "Curso": {
+                    "type": "string",
+                    "description": "Course"
+                  },
+                  "Materia": {
+                    "type": "string",
+                    "description": "Subject"
+                  },
+                  "Jornada": {
+                    "type": "string",
+                    "description": "Schedule"
+                  },
+                  "Certificacion": {
+                    "type": "string",
+                    "description": "Certification"
+                  },
+                  "Desc_prof": {
+                    "type": "string",
+                    "description": "Professional description"
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful operation"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "DocentesApis.php"
+          ],
+          "summary": "Delete a course and associated teacher",
+          "operationId": "deleteCourse",
+          "parameters": [
+            {
+              "name": "idDocente",
+              "in": "query",
+              "description": "ID of the teacher to delete",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful operation"
+            },
+            "404": {
+              "description": "Course not found"
+            },
+            "500": {
+              "description": "Internal server error. Something went wrong on the server side."
+            }
+          }
+        }
+      },
+
+      "/apis/allD.php": {
+        "get": {
+          "tags": [
+            "AllD.php"
+          ],
+          "summary": "Retrieve all courses",
+          "operationId": "getAllCourses",
+          "responses": {
+            "200": {
+              "description": "Successful operation",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Course"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Course": {
+        "type": "object",
+        "properties": {
+          "Curso": {
+            "type": "string",
+            "description": "ID of the course"
+          },
+          "Nombres": {
+            "type": "string",
+            "description": "Teacher's first name"
+          },
+          "Apellidos": {
+            "type": "string",
+            "description": "Teacher's last name"
+          },
+          "Nombre_curso": {
+            "type": "string",
+            "description": "Name of the course"
+          }
+        }
+      }
+    }
+  }

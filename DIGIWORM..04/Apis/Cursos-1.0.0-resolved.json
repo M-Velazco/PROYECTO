@@ -1,0 +1,190 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "The API for digiworm",
+    "version": "1.0.0",
+    "title": "Cursos"
+  },
+  "host": "localhost",
+  "basePath": "/PROYECTO/DIGIWORM..04",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/apis/CursosApis.php": {
+      "get": {
+        "tags": [
+          "CursosApis.php"
+        ],
+        "summary": "Retrieve all registered courses with associated teachers",
+        "operationId": "getCourses",
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Course"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "CursosApis.php"
+        ],
+        "summary": "Create a new course with associated teacher",
+        "operationId": "createCourse",
+        "parameters": [
+          {
+            "name": "CursoData",
+            "in": "body",
+            "description": "Data of the new course",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "idCurso": {
+                  "type": "integer",
+                  "description": "ID of the course"
+                },
+                "Nombre_curso": {
+                  "type": "string",
+                  "description": "Name of the course"
+                },
+                "Estado": {
+                  "type": "string",
+                  "description": "State of the course"
+                },
+                "Jornada": {
+                  "type": "string",
+                  "description": "Schedule of the course"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Bad request. Check your input data."
+          },
+          "500": {
+            "description": "Internal server error. Something went wrong on the server side."
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "CursosApis.php"
+        ],
+        "summary": "Update an existing course with associated teacher",
+        "operationId": "updateCourse",
+        "parameters": [
+          {
+            "name": "CursoData",
+            "in": "body",
+            "description": "Data of the new course",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "idCurso": {
+                  "type": "integer",
+                  "description": "ID of the course"
+                },
+                "Nombre_curso": {
+                  "type": "string",
+                  "description": "Name of the course"
+                },
+                "Estado": {
+                  "type": "string",
+                  "description": "State of the course"
+                },
+                "Jornada": {
+                  "type": "string",
+                  "description": "Schedule of the course"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "CursosApis.php"
+        ],
+        "summary": "Delete an existing course",
+        "operationId": "deleteCourse",
+        "parameters": [
+          {
+            "name": "idCurso",
+            "in": "query",
+            "description": "ID of the course to delete",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "500": {
+            "description": "Internal server error. Something went wrong on the server side."
+          }
+        }
+      }
+    },
+    "/apis/all.php": {
+      "get": {
+        "tags": [
+          "CursosApis.php"
+        ],
+        "summary": "Retrieve all courses",
+        "operationId": "getAllCourses",
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Course"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Course": {
+      "type": "object",
+      "properties": {
+        "Curso": {
+          "type": "string",
+          "description": "ID of the course"
+        },
+        "Nombres": {
+          "type": "string",
+          "description": "Teacher's first name"
+        },
+        "Apellidos": {
+          "type": "string",
+          "description": "Teacher's last name"
+        },
+        "Nombre_curso": {
+          "type": "string",
+          "description": "Name of the course"
+        }
+      }
+    }
+  }
+}
