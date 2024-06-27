@@ -1,10 +1,9 @@
 <?php
-require_once( `ConexionApi.php` );
+require_once('ConexionApi.php'); // Reemplaza 'ConexionApi.php' con el nombre correcto de tu archivo de conexión
+
 // Establecer encabezados para permitir el acceso desde cualquier origen
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
-
-// Conectar a la base de datos (código de conexión previo)
 
 // Verificar si la solicitud es de tipo POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
