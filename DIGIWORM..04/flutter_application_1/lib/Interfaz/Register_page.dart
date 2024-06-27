@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class RegisterPage extends StatelessWidget {
   final bool isLoginFormVisible;
 
-  RegisterPage({super.key, required this.isLoginFormVisible});
+  RegisterPage({Key? key, required this.isLoginFormVisible}) : super(key: key);
 
   final _formKey = GlobalKey<FormState>();
   final _idController = TextEditingController();
@@ -13,16 +15,74 @@ class RegisterPage extends StatelessWidget {
   final _phoneController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  void _register() {
+  Future<void> _register(BuildContext context) async {
     if (_formKey.currentState!.validate()) {
-      // Lógica para enviar los datos al backend
-      String id = _idController.text;
-      String firstName = _firstNameController.text;
-      String lastName = _lastNameController.text;
-      String email = _emailController.text;
-      String phone = _phoneController.text;
-      String password = _passwordController.text;
-      // Implementar lógica de registro
+      String id = _idController.text.trim();
+      String firstName = _firstNameController.text.trim();
+      String lastName = _lastNameController.text.trim();
+      String email = _emailController.text.trim();
+      String phone = _phoneController.text.trim();
+      String password = _passwordController.text.trim();
+
+      // Construir el cuerpo de la solicitud POST
+      var body = jsonEncode({
+        'Idusuarios': id,
+        'Nombres': '$firstName',
+        'Apellidos': '$lastName',
+        'Email': email,
+        'Telefono': phone,
+        'Pasword': password,
+      });
+
+      // URL de tu API PHP para registro
+      var url = Uri.parse('http://localhost/PROYECTO/DIGIWORM..04/Apis/RegisterApi.php');
+
+      try {
+        // Realizar la solicitud HTTP POST
+        var response = await http.post(
+          url,
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: body,
+        );
+
+        // Verificar el código de respuesta
+        if (response.statusCode == 201) {
+          // Registro exitoso
+          var jsonResponse = jsonDecode(response.body);
+          print(jsonResponse);
+
+          // Ejemplo: Mostrar mensaje de registro exitoso
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Registro exitoso'),
+              backgroundColor: Colors.green,
+            ),
+          );
+
+          // Ejemplo: Redirigir a otra pantalla después del registro exitoso
+          Navigator.pushReplacementNamed(context, '/login');
+        } else {
+          // Error en la solicitud HTTP
+          print('Error: ${response.reasonPhrase}');
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Error al registrar'),
+              backgroundColor: Colors.red,
+            ),
+          );
+        }
+      } catch (e) {
+        // Error de conexión
+        print('Error de conexión: $e');
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Error de conexión'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
     }
   }
 
@@ -195,7 +255,7 @@ class RegisterPage extends StatelessWidget {
                         ),
                         const SizedBox(height: 20),
                         ElevatedButton(
-                          onPressed: _register,
+                          onPressed: () => _register(context),
                           child: const Text('Registro completo'),
                         ),
                       ],
