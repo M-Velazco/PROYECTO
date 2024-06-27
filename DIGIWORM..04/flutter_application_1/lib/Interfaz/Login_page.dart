@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Interfaz/Recuperar.dart';
 import 'package:flutter_application_1/Interfaz/Register_page.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -74,6 +75,13 @@ class _LoginPageState extends State<LoginPage> {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => RegisterPage()),
+    );
+  }
+
+  void _recuperar() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const Recuperar()),
     );
   }
 
@@ -198,8 +206,7 @@ class _LoginPageState extends State<LoginPage> {
                             alignment: Alignment.centerRight,
                             child: TextButton(
                               onPressed: () {
-                                Navigator.pushNamed(
-                                    context, '/forgot-password');
+                                _recuperar();
                               },
                               child: const Text('Olvidé mi contraseña'),
                             ),

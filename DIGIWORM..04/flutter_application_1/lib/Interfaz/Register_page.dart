@@ -12,7 +12,7 @@ class RegisterPage extends StatelessWidget {
   final _phoneController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  RegisterPage({super.key});
+  RegisterPage({Key? key}) : super(key: key);
 
   Future<void> _register(BuildContext context) async {
     if (_formKey.currentState!.validate()) {
@@ -71,15 +71,15 @@ class RegisterPage extends StatelessWidget {
     }
   }
 
+  void loginRedirect(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const LoginPage()),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    void loginREdirect() {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const LoginPage()),
-      );
-    }
-
     return Scaffold(
       body: Stack(
         children: [
@@ -89,8 +89,8 @@ class RegisterPage extends StatelessWidget {
             child: Container(
               width: 1000,
               height: 1300,
-              decoration: const BoxDecoration(
-                color: Color.fromARGB(255, 74, 230, 80),
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 74, 230, 80),
                 shape: BoxShape.circle,
               ),
               child: Center(
@@ -99,25 +99,38 @@ class RegisterPage extends StatelessWidget {
                   children: [
                     const Text(
                       '¿Tiene usted una cuenta?',
-                      style: TextStyle(color: Color.fromARGB(255, 0, 0, 0), fontSize: 29,fontWeight: FontWeight.bold,),
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 29,
+                        fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.italic,
+                      ),
                     ),
-                     const Text(
-                      'Debe iniciar sesión para conocer mas de nosotros..',
-                      style: TextStyle(color: Color.fromARGB(255, 0, 0, 0), fontSize: 20),
+                    const Text(
+                      'Debe iniciar sesión para conocer más de nosotros..',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontStyle: FontStyle.italic,
+                      ),
                     ),
                     const SizedBox(height: 10),
                     ElevatedButton(
                       onPressed: () {
-                        loginREdirect();
+                        loginRedirect(context);
                       },
                       style: ElevatedButton.styleFrom(
-                        foregroundColor: Colors.black,
-                        backgroundColor: Colors.white,
+                        foregroundColor: Colors.black, backgroundColor: Colors.white,
                       ),
-                      child: const Text('INGRESAR',style: TextStyle(color: Color.fromARGB(255, 0, 0, 0), fontSize: 17,fontWeight: FontWeight.bold,),),
-                      
+                      child: const Text(
+                        'INGRESAR',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
-                    
                   ],
                 ),
               ),
@@ -126,7 +139,7 @@ class RegisterPage extends StatelessWidget {
           Center(
             child: Container(
               width: MediaQuery.of(context).size.width * 0.50,
-              padding: const EdgeInsets.symmetric(horizontal: 200),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(30),
@@ -143,7 +156,7 @@ class RegisterPage extends StatelessWidget {
                 child: Form(
                   key: _formKey,
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       TextFormField(
                         controller: _idController,
@@ -242,18 +255,15 @@ class RegisterPage extends StatelessWidget {
                             onChanged: (value) {},
                           ),
                           const Text('Acepto los términos de servicio'),
-                          
                         ],
                       ),
-                      const SizedBox(height: 20.0),
-                      
-                      
+                      const SizedBox(height: 10.0),
                       ElevatedButton(
                         onPressed: () => _register(context),
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color.fromARGB(255, 85, 235, 90),
+                          backgroundColor: const Color.fromARGB(255, 61, 232, 67),
                         ),
-                        child: const Text('REGISTRARSE'),
+                        child: Center(child: const Text('REGISTRARSE')),
                       ),
                     ],
                   ),

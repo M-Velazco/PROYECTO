@@ -41,7 +41,7 @@ class _RecuperarState extends State<Recuperar>
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Color(0xFF33D6FF), Color(0xFF3F8BEE)],
+            colors: [Color.fromARGB(255, 123, 218, 242), Color(0xFF3F8BEE)],
           ),
         ),
         child: Stack(
@@ -55,25 +55,25 @@ class _RecuperarState extends State<Recuperar>
                       top: 150 + getRandomOffset(20),
                       left: 20 + getRandomOffset(2),
                       child: _buildAnimatedSquare(
-                          100, Colors.white.withOpacity(0.1)),
+                          100, const Color.fromARGB(255, 2, 2, 2).withOpacity(0.1)),
                     ),
                     Positioned(
                       top: 250 + getRandomOffset(2),
                       right: 150 + getRandomOffset(2),
                       child: _buildAnimatedSquare(
-                          80, Colors.white.withOpacity(0.1)),
+                          80, const Color.fromARGB(255, 0, 0, 0).withOpacity(0.1)),
                     ),
                     Positioned(
                       bottom: 150 + getRandomOffset(2),
                       left: 200 + getRandomOffset(2),
                       child: _buildAnimatedSquare(
-                          60, Colors.white.withOpacity(0.1)),
+                          60, const Color.fromARGB(255, 0, 0, 0).withOpacity(0.1)),
                     ),
                     Positioned(
                       bottom: 250 + getRandomOffset(20),
                       right: 150 + getRandomOffset(20),
                       child: _buildAnimatedSquare(
-                          120, Colors.white.withOpacity(0.1)),
+                          120, const Color.fromARGB(255, 0, 0, 0).withOpacity(0.1)),
                     ),
                   ],
                 );
@@ -85,7 +85,7 @@ class _RecuperarState extends State<Recuperar>
                   width: 400,
                   padding: const EdgeInsets.all(32.0),
                   decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.1),
+                    color: const Color.fromARGB(255, 0, 0, 0).withOpacity(0.1),
                     borderRadius: BorderRadius.circular(16.0),
                     boxShadow: [
                       BoxShadow(
@@ -104,14 +104,14 @@ class _RecuperarState extends State<Recuperar>
                           fontFamily: 'Poppins',
                           fontSize: 24,
                           fontWeight: FontWeight.w600,
-                          color: Colors.white,
+                          color: Color.fromARGB(255, 0, 0, 0),
                         ),
                       ),
                       const SizedBox(height: 8),
                       Container(
                         width: 80,
                         height: 4,
-                        color: Colors.white,
+                        color: const Color.fromARGB(255, 0, 0, 0),
                       ),
                       const SizedBox(height: 40),
                       Padding(
@@ -119,11 +119,11 @@ class _RecuperarState extends State<Recuperar>
                         child: TextField(
                           decoration: InputDecoration(
                             filled: true,
-                            fillColor: Colors.white.withOpacity(0.3),
+                            fillColor: Color.fromARGB(255, 0, 0, 0).withOpacity(0.3),
                             hintText: "Correo electrónico",
                             labelText: "Correo electrónico",
                             labelStyle: const TextStyle(
-                              color: Colors.white,
+                              color: Color.fromARGB(255, 255, 250, 250),
                             ),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(35),
@@ -141,7 +141,7 @@ class _RecuperarState extends State<Recuperar>
                             ),
                           ),
                           style: const TextStyle(
-                            color: Colors.white,
+                            color: Color.fromARGB(255, 0, 0, 0),
                             fontSize: 16,
                             fontFamily: 'Poppins',
                             fontStyle: FontStyle.italic,
@@ -154,7 +154,7 @@ class _RecuperarState extends State<Recuperar>
                           // Handle password reset logic here
                         },
                         style: ElevatedButton.styleFrom(
-                          foregroundColor: Colors.white,
+                          foregroundColor: const Color.fromARGB(255, 0, 0, 0),
                           backgroundColor: const Color(0xFF70DB0C),
                           padding: const EdgeInsets.symmetric(
                             horizontal: 50,
@@ -184,7 +184,7 @@ class _RecuperarState extends State<Recuperar>
                         child: const Text(
                           '¿Ya tienes una cuenta? Iniciar sesión',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: Color.fromARGB(255, 0, 0, 0),
                             fontFamily: 'Poppins',
                             fontWeight: FontWeight.w600,
                             decoration: TextDecoration.underline,
