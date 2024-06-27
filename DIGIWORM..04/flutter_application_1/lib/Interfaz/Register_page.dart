@@ -93,22 +93,19 @@ class RegisterPage extends StatelessWidget {
                 color: const Color.fromARGB(255, 74, 230, 80),
                 shape: BoxShape.circle,
               ),
-              child: Padding(
-                padding: EdgeInsets.only(
-                  right: 100,
-                  bottom: 100,
-                ),
-                child: Align(
-                  alignment: Alignment.bottomRight,
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       const Text(
                         '¿Tiene usted una cuenta?',
                         style: TextStyle(
                           color: Colors.black,
-                          fontSize: 22,
+                          fontSize: 30,
+                          fontStyle: FontStyle.italic,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
