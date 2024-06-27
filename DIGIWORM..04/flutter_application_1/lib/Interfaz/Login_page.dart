@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  const LoginPage({super.key});
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -50,7 +50,7 @@ class _LoginPageState extends State<LoginPage> {
           // Error en la solicitud HTTP
           print('Error: ${response.reasonPhrase}');
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
+            const SnackBar(
               content: Text('Error de inicio de sesión'),
               backgroundColor: Colors.red,
             ),
@@ -60,7 +60,7 @@ class _LoginPageState extends State<LoginPage> {
         // Error de conexión
         print('Error de conexión: $e');
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
+          const SnackBar(
             content: Text('Error de conexión'),
             backgroundColor: Colors.red,
           ),
@@ -73,7 +73,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Iniciar Sesión'),
+        title: const Text('Iniciar Sesión'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -84,7 +84,7 @@ class _LoginPageState extends State<LoginPage> {
             children: <Widget>[
               TextFormField(
                 controller: _emailController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Correo Electrónico',
                 ),
                 validator: (value) {
@@ -94,10 +94,10 @@ class _LoginPageState extends State<LoginPage> {
                   return null;
                 },
               ),
-              SizedBox(height: 20.0),
+              const SizedBox(height: 20.0),
               TextFormField(
                 controller: _passwordController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Contraseña',
                 ),
                 obscureText: true,
@@ -108,10 +108,10 @@ class _LoginPageState extends State<LoginPage> {
                   return null;
                 },
               ),
-              SizedBox(height: 20.0),
+              const SizedBox(height: 20.0),
               ElevatedButton(
                 onPressed: _login,
-                child: Text('Ingresar'),
+                child: const Text('Ingresar'),
               ),
             ],
           ),

@@ -5,7 +5,7 @@ import 'dart:convert';
 class RegisterPage extends StatelessWidget {
   final bool isLoginFormVisible;
 
-  RegisterPage({Key? key, required this.isLoginFormVisible}) : super(key: key);
+  RegisterPage({super.key, required this.isLoginFormVisible});
 
   final _formKey = GlobalKey<FormState>();
   final _idController = TextEditingController();
@@ -27,8 +27,8 @@ class RegisterPage extends StatelessWidget {
       // Construir el cuerpo de la solicitud POST
       var body = jsonEncode({
         'Idusuarios': id,
-        'Nombres': '$firstName',
-        'Apellidos': '$lastName',
+        'Nombres': firstName,
+        'Apellidos': lastName,
         'Email': email,
         'Telefono': phone,
         'Pasword': password,
@@ -55,7 +55,7 @@ class RegisterPage extends StatelessWidget {
 
           // Ejemplo: Mostrar mensaje de registro exitoso
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
+            const SnackBar(
               content: Text('Registro exitoso'),
               backgroundColor: Colors.green,
             ),
@@ -67,7 +67,7 @@ class RegisterPage extends StatelessWidget {
           // Error en la solicitud HTTP
           print('Error: ${response.reasonPhrase}');
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
+            const SnackBar(
               content: Text('Error al registrar'),
               backgroundColor: Colors.red,
             ),
@@ -77,7 +77,7 @@ class RegisterPage extends StatelessWidget {
         // Error de conexión
         print('Error de conexión: $e');
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
+          const SnackBar(
             content: Text('Error de conexión'),
             backgroundColor: Colors.red,
           ),

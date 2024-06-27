@@ -35,7 +35,7 @@ class _RecuperarState extends State<Recuperar> with SingleTickerProviderStateMix
 
   Future<void> enviarCorreoRecuperacion(String email) async {
     // Endpoint de tu API PHP para enviar correo de recuperación
-    final String url = 'http://tu_servidor/api/enviar_correo_recuperacion.php';
+    const String url = 'http://tu_servidor/api/enviar_correo_recuperacion.php';
 
     // Realiza una solicitud HTTP POST al servidor PHP
     try {
@@ -48,11 +48,11 @@ class _RecuperarState extends State<Recuperar> with SingleTickerProviderStateMix
         showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            title: Text('Éxito'),
-            content: Text('Se ha enviado un correo electrónico con instrucciones para restablecer tu contraseña.'),
+            title: const Text('Éxito'),
+            content: const Text('Se ha enviado un correo electrónico con instrucciones para restablecer tu contraseña.'),
             actions: <Widget>[
               TextButton(
-                child: Text('OK'),
+                child: const Text('OK'),
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
@@ -67,11 +67,11 @@ class _RecuperarState extends State<Recuperar> with SingleTickerProviderStateMix
         showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            title: Text('Error'),
-            content: Text('No se pudo enviar el correo electrónico. Por favor, intenta de nuevo más tarde.'),
+            title: const Text('Error'),
+            content: const Text('No se pudo enviar el correo electrónico. Por favor, intenta de nuevo más tarde.'),
             actions: <Widget>[
               TextButton(
-                child: Text('OK'),
+                child: const Text('OK'),
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
@@ -87,11 +87,11 @@ class _RecuperarState extends State<Recuperar> with SingleTickerProviderStateMix
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          title: Text('Error'),
-          content: Text('Error de conexión. Por favor, verifica tu conexión a internet.'),
+          title: const Text('Error'),
+          content: const Text('Error de conexión. Por favor, verifica tu conexión a internet.'),
           actions: <Widget>[
             TextButton(
-              child: Text('OK'),
+              child: const Text('OK'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
