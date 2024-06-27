@@ -17,19 +17,18 @@ if ($conn->connect_error) {
 }
 
 // Obtiene los datos enviados desde la aplicación Flutter
+// Obtiene los datos enviados desde la aplicación Flutter
 $data = json_decode(file_get_contents("php://input"));
 
 if (isset($data->Idusuarios) && isset($data->Pasword)) {
     $idUsuario = $data->Idusuarios;
-    $password = $data->Pasword;
+    $password = md5($data->Pasword); // Encriptar la contraseña recibida
 
     // Consulta para verificar las credenciales
-   // Consulta para verificar las credenciales
-$sql = "SELECT * FROM usuarios WHERE Idusuarios = $idUsuario AND Pasword = '$password'";
-$result = $conn->query($sql);
+    $sql = "SELECT * FROM usuarios WHERE Idusuarios = $idUsuario AND Pasword = '$password'";
+    $result = $conn->query($sql);
 
-
-    if ($result->num_rows >= 0) {
+    if ($result->num_rows > 0) {
         // Usuario y contraseña correctos
         $response = array(
             "status" => "success",
@@ -53,6 +52,7 @@ $result = $conn->query($sql);
 // Devolver respuesta JSON a la aplicación Flutter
 header('Content-Type: application/json');
 echo json_encode($response);
+
 
 // Cerrar conexión a la base de datos
 $conn->close();

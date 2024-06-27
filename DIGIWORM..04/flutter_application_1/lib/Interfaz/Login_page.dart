@@ -105,7 +105,7 @@ class _LoginPageState extends State<LoginPage> {
       body: Center(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(18.0),
+            padding: const EdgeInsets.all(30.0),
             child: Row(
               children: [
                 Expanded(
@@ -114,7 +114,7 @@ class _LoginPageState extends State<LoginPage> {
                       Align(
                         alignment: Alignment.centerLeft,
                         child: Container(
-                          width: MediaQuery.of(context).size.width * 0.6,
+                          width: MediaQuery.of(context).size.width * 0.5,
                           height: MediaQuery.of(context).size.height,
                           decoration: const BoxDecoration(
                             color: Color.fromARGB(255, 58, 233, 64),
@@ -122,8 +122,8 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           child: Padding(
                             padding: EdgeInsets.only(
-                              left: MediaQuery.of(context).size.width * 0.15,
-                              top: MediaQuery.of(context).size.height * 0.35,
+                              left: MediaQuery.of(context).size.width * 0.13,
+                              top: MediaQuery.of(context).size.height * 0.39,
                             ),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -138,7 +138,14 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                                 const SizedBox(height: 10),
                                 const Text(
-                                  'Después de registrarse, puede aprovechar de los servicios de la institución educativa.',
+                                  'Después de registrarse',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontStyle: FontStyle.italic,
+                                  ),
+                                ),
+                                const Text(
+                                  ' puede aprovechar de los servicios de la institución educativa.',
                                   style: TextStyle(
                                     fontSize: 20,
                                     fontStyle: FontStyle.italic,
@@ -149,7 +156,7 @@ class _LoginPageState extends State<LoginPage> {
                                   onPressed: _registerRedirect,
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: Colors.white,
-                                    foregroundColor: const Color.fromARGB(255, 19, 218, 26),
+                                    foregroundColor: Color.fromARGB(255, 0, 0, 0),
                                     side: const BorderSide(
                                         color: Color.fromARGB(255, 23, 212, 29)),
                                     padding: const EdgeInsets.symmetric(
