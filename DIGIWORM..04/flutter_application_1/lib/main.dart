@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Interfaz/Login_page.dart';
+import 'Interfaz/Login_page.dart';
+import 'Interfaz/Register_page.dart'; // Importa la página de registro
 
 void main() {
   runApp(const LoginApp());

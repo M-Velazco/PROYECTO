@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Interfaz/Login_page.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class RegisterPage extends StatelessWidget {
-  final bool isLoginFormVisible;
-
-  RegisterPage({super.key, required this.isLoginFormVisible});
-
   final _formKey = GlobalKey<FormState>();
   final _idController = TextEditingController();
   final _firstNameController = TextEditingController();
@@ -14,6 +11,8 @@ class RegisterPage extends StatelessWidget {
   final _emailController = TextEditingController();
   final _phoneController = TextEditingController();
   final _passwordController = TextEditingController();
+
+  RegisterPage({super.key});
 
   Future<void> _register(BuildContext context) async {
     if (_formKey.currentState!.validate()) {
@@ -24,21 +23,18 @@ class RegisterPage extends StatelessWidget {
       String phone = _phoneController.text.trim();
       String password = _passwordController.text.trim();
 
-      // Construir el cuerpo de la solicitud POST
       var body = jsonEncode({
-        'Idusuarios': id,
-        'Nombres': firstName,
-        'Apellidos': lastName,
-        'Email': email,
-        'Telefono': phone,
-        'Pasword': password,
+        'id': id,
+        'firstName': firstName,
+        'lastName': lastName,
+        'email': email,
+        'phone': phone,
+        'password': password,
       });
 
-      // URL de tu API PHP para registro
-      var url = Uri.parse('http://localhost/PROYECTO/DIGIWORM..04/Apis/RegisterApi.php');
+      var url = Uri.parse('http://localhost/your_project/register.php');
 
       try {
-        // Realizar la solicitud HTTP POST
         var response = await http.post(
           url,
           headers: {
@@ -47,13 +43,7 @@ class RegisterPage extends StatelessWidget {
           body: body,
         );
 
-        // Verificar el código de respuesta
         if (response.statusCode == 201) {
-          // Registro exitoso
-          var jsonResponse = jsonDecode(response.body);
-          print(jsonResponse);
-
-          // Ejemplo: Mostrar mensaje de registro exitoso
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               content: Text('Registro exitoso'),
@@ -61,11 +51,8 @@ class RegisterPage extends StatelessWidget {
             ),
           );
 
-          // Ejemplo: Redirigir a otra pantalla después del registro exitoso
           Navigator.pushReplacementNamed(context, '/login');
         } else {
-          // Error en la solicitud HTTP
-          print('Error: ${response.reasonPhrase}');
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               content: Text('Error al registrar'),
@@ -74,8 +61,6 @@ class RegisterPage extends StatelessWidget {
           );
         }
       } catch (e) {
-        // Error de conexión
-        print('Error de conexión: $e');
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             content: Text('Error de conexión'),
@@ -88,178 +73,180 @@ class RegisterPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    void loginREdirect() {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const LoginPage()),
+      );
+    }
 
     return Scaffold(
       body: Stack(
         children: [
-          AnimatedPositioned(
-            duration: const Duration(milliseconds: 500),
-            curve: Curves.easeInOut,
-            right: isLoginFormVisible ? -size.width * 2.2 : -1000,
-            top: size.height * 0.5,
+          Positioned(
+            top: -200,
+            right: -200,
             child: Container(
-              width: size.width * 1.2,
-              height: size.height * 2.36,
+              width: 1000,
+              height: 1300,
               decoration: const BoxDecoration(
-                shape: BoxShape.circle,
                 color: Colors.green,
+                shape: BoxShape.circle,
               ),
-              child: Stack(
-                alignment: Alignment.centerRight,
-                children: [
-                  FloatingActionButton(
-                    onPressed: () {
-                      // Acción cuando se presiona el botón de Loguéate
-                    },
-                    child: const Text('Loguéate'),
-                  ),
-                ],
+              child: Center(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Text(
+                      '¿Ya tienes cuenta?',
+                      style: TextStyle(color: Colors.white, fontSize: 16),
+                    ),
+                    const SizedBox(height: 10),
+                    ElevatedButton(
+                      onPressed: () {
+                        loginREdirect();
+                      },
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.black,
+                        backgroundColor: Colors.white,
+                      ),
+                      child: const Text('INGRESAR'),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
-          Positioned(
-            right: 0,
-            left: 0,
-            child: Center(
+          Center(
+            child: Container(
+              width: MediaQuery.of(context).size.width * 0.50,
+              padding: const EdgeInsets.symmetric(horizontal: 200),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(30),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 2,
+                    blurRadius: 5,
+                    offset: const Offset(0, 3),
+                  ),
+                ],
+              ),
               child: SingleChildScrollView(
-                padding: const EdgeInsets.all(16.0),
-                child: Container(
-                  width: size.width < 600 ? size.width * 0.9 : size.width * 0.5,
-                  constraints: const BoxConstraints(maxWidth: 600),
-                  padding: const EdgeInsets.all(16.0),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(8.0),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
-                        blurRadius: 10,
-                        offset: const Offset(0, 5),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: <Widget>[
+                      TextFormField(
+                        controller: _idController,
+                        decoration: const InputDecoration(
+                          labelText: 'Número de Identificación',
+                          prefixIcon: Icon(Icons.perm_identity),
+                        ),
+                        keyboardType: TextInputType.number,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Por favor ingrese su número de identificación';
+                          }
+                          return null;
+                        },
+                      ),
+                      const SizedBox(height: 20.0),
+                      TextFormField(
+                        controller: _firstNameController,
+                        decoration: const InputDecoration(
+                          labelText: 'Nombres',
+                          prefixIcon: Icon(Icons.person),
+                        ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Por favor ingrese sus nombres';
+                          }
+                          return null;
+                        },
+                      ),
+                      const SizedBox(height: 20.0),
+                      TextFormField(
+                        controller: _lastNameController,
+                        decoration: const InputDecoration(
+                          labelText: 'Apellidos',
+                          prefixIcon: Icon(Icons.person),
+                        ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Por favor ingrese sus apellidos';
+                          }
+                          return null;
+                        },
+                      ),
+                      const SizedBox(height: 20.0),
+                      TextFormField(
+                        controller: _emailController,
+                        decoration: const InputDecoration(
+                          labelText: 'Correo Electrónico',
+                          prefixIcon: Icon(Icons.email),
+                        ),
+                        keyboardType: TextInputType.emailAddress,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Por favor ingrese su correo electrónico';
+                          }
+                          return null;
+                        },
+                      ),
+                      const SizedBox(height: 20.0),
+                      TextFormField(
+                        controller: _phoneController,
+                        decoration: const InputDecoration(
+                          labelText: 'Teléfono',
+                          prefixIcon: Icon(Icons.phone),
+                        ),
+                        keyboardType: TextInputType.phone,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Por favor ingrese su teléfono';
+                          }
+                          return null;
+                        },
+                      ),
+                      const SizedBox(height: 20.0),
+                      TextFormField(
+                        controller: _passwordController,
+                        decoration: const InputDecoration(
+                          labelText: 'Contraseña',
+                          prefixIcon: Icon(Icons.lock),
+                        ),
+                        obscureText: true,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Por favor ingrese su contraseña';
+                          } else if (value.length < 8) {
+                            return 'La contraseña debe tener al menos 8 caracteres';
+                          }
+                          return null;
+                        },
+                      ),
+                      const SizedBox(height: 20.0),
+                      Row(
+                        children: [
+                          Checkbox(
+                            value: true,
+                            onChanged: (value) {},
+                          ),
+                          const Text('Acepto los términos de servicio'),
+                        ],
+                      ),
+                      const SizedBox(height: 20.0),
+                      ElevatedButton(
+                        onPressed: () => _register(context),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.green,
+                        ),
+                        child: const Text('REGISTRARSE'),
                       ),
                     ],
-                  ),
-                  child: Form(
-                    key: _formKey,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'Registrarse',
-                          style: TextStyle(fontSize: 24),
-                        ),
-                        const SizedBox(height: 20),
-                        TextFormField(
-                          controller: _idController,
-                          decoration: const InputDecoration(
-                            labelText: 'Número Identificación',
-                            prefixIcon: Icon(Icons.perm_identity),
-                          ),
-                          keyboardType: TextInputType.number,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Por favor ingrese su número de identificación';
-                            }
-                            if (value.length != 10) {
-                              return 'Debe tener 10 dígitos';
-                            }
-                            return null;
-                          },
-                        ),
-                        const SizedBox(height: 20),
-                        TextFormField(
-                          controller: _firstNameController,
-                          decoration: const InputDecoration(
-                            labelText: 'Nombres',
-                            prefixIcon: Icon(Icons.person),
-                          ),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Por favor ingrese sus nombres';
-                            }
-                            return null;
-                          },
-                        ),
-                        const SizedBox(height: 20),
-                        TextFormField(
-                          controller: _lastNameController,
-                          decoration: const InputDecoration(
-                            labelText: 'Apellidos',
-                            prefixIcon: Icon(Icons.person),
-                          ),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Por favor ingrese sus apellidos';
-                            }
-                            return null;
-                          },
-                        ),
-                        const SizedBox(height: 20),
-                        TextFormField(
-                          controller: _emailController,
-                          decoration: const InputDecoration(
-                            labelText: 'Correo electrónico',
-                            prefixIcon: Icon(Icons.email),
-                          ),
-                          keyboardType: TextInputType.emailAddress,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Por favor ingrese su correo electrónico';
-                            }
-                            if (!RegExp(
-                                    r"^[a-zA-Z0-9._%+-]+@(gmail\.com|outlook\.com|hotmail\.com)$")
-                                .hasMatch(value)) {
-                              return 'Por favor ingrese un correo válido';
-                            }
-                            return null;
-                          },
-                        ),
-                        const SizedBox(height: 20),
-                        TextFormField(
-                          controller: _phoneController,
-                          decoration: const InputDecoration(
-                            labelText: 'Teléfono',
-                            prefixIcon: Icon(Icons.phone),
-                          ),
-                          keyboardType: TextInputType.phone,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Por favor ingrese su teléfono';
-                            }
-                            if (value.length != 10) {
-                              return 'Debe tener 10 dígitos';
-                            }
-                            return null;
-                          },
-                        ),
-                        const SizedBox(height: 20),
-                        TextFormField(
-                          controller: _passwordController,
-                          decoration: const InputDecoration(
-                            labelText: 'Contraseña',
-                            prefixIcon: Icon(Icons.lock),
-                          ),
-                          obscureText: true,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Por favor ingrese su contraseña';
-                            }
-                            if (value.length < 8 ||
-                                !RegExp(r'^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$')
-                                    .hasMatch(value)) {
-                              return 'La contraseña debe tener al menos 8 caracteres y contener números, letras y signos especiales';
-                            }
-                            return null;
-                          },
-                        ),
-                        const SizedBox(height: 20),
-                        ElevatedButton(
-                          onPressed: () => _register(context),
-                          child: const Text('Registro completo'),
-                        ),
-                      ],
-                    ),
                   ),
                 ),
               ),
