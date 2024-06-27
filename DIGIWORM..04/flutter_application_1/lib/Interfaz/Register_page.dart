@@ -90,7 +90,7 @@ class RegisterPage extends StatelessWidget {
               width: 1000,
               height: 1300,
               decoration: const BoxDecoration(
-                color: Colors.green,
+                color: Color.fromARGB(255, 74, 230, 80),
                 shape: BoxShape.circle,
               ),
               child: Center(
@@ -98,8 +98,12 @@ class RegisterPage extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     const Text(
-                      '¿Ya tienes cuenta?',
-                      style: TextStyle(color: Colors.white, fontSize: 16),
+                      '¿Tiene usted una cuenta?',
+                      style: TextStyle(color: Color.fromARGB(255, 0, 0, 0), fontSize: 29,fontWeight: FontWeight.bold,),
+                    ),
+                     const Text(
+                      'Debe iniciar sesión para conocer mas de nosotros..',
+                      style: TextStyle(color: Color.fromARGB(255, 0, 0, 0), fontSize: 20),
                     ),
                     const SizedBox(height: 10),
                     ElevatedButton(
@@ -110,8 +114,10 @@ class RegisterPage extends StatelessWidget {
                         foregroundColor: Colors.black,
                         backgroundColor: Colors.white,
                       ),
-                      child: const Text('INGRESAR'),
+                      child: const Text('INGRESAR',style: TextStyle(color: Color.fromARGB(255, 0, 0, 0), fontSize: 17,fontWeight: FontWeight.bold,),),
+                      
                     ),
+                    
                   ],
                 ),
               ),
@@ -236,13 +242,16 @@ class RegisterPage extends StatelessWidget {
                             onChanged: (value) {},
                           ),
                           const Text('Acepto los términos de servicio'),
+                          
                         ],
                       ),
                       const SizedBox(height: 20.0),
+                      
+                      
                       ElevatedButton(
                         onPressed: () => _register(context),
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.green,
+                          backgroundColor: const Color.fromARGB(255, 85, 235, 90),
                         ),
                         child: const Text('REGISTRARSE'),
                       ),
