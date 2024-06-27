@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Interfaz/Recuperar.dart';
-import 'package:flutter_application_1/Interfaz/Register_page.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'register_page.dart';
+import 'recuperar.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -13,28 +13,27 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
-  final _emailController = TextEditingController();
+  final _idController = TextEditingController();
   final _passwordController = TextEditingController();
 
   @override
   void dispose() {
-    _emailController.dispose();
+    _idController.dispose();
     _passwordController.dispose();
     super.dispose();
   }
 
   Future<void> _login() async {
     if (_formKey.currentState!.validate()) {
-      String email = _emailController.text.trim();
+      int idusuarios = int.tryParse(_idController.text.trim()) ?? 0;
       String password = _passwordController.text.trim();
 
       var body = jsonEncode({
-        'idUsuario': email,
-        'password': password,
+        'Idusuarios': idusuarios,
+        'Pasword': password,
       });
 
-      var url = Uri.parse(
-          'http://localhost/PROYECTO/DIGIWORM..04/Apis/LoginApis.php');
+      var url = Uri.parse('http://localhost/PROYECTO/DIGIWORM..04/flutter_application_1/lib/Interfaz/login.php');
 
       try {
         var response = await http.post(
@@ -49,7 +48,22 @@ class _LoginPageState extends State<LoginPage> {
           var jsonResponse = jsonDecode(response.body);
           print(jsonResponse);
 
-          Navigator.pushReplacementNamed(context, '/home');
+          if (jsonResponse['status'] == 'success') {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('Inicio de sesión exitoso'),
+                backgroundColor: Colors.green,
+              ),
+            );
+            Navigator.pushReplacementNamed(context, '/home');
+          } else {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('Credenciales incorrectas'),
+                backgroundColor: Colors.red,
+              ),
+            );
+          }
         } else {
           print('Error: ${response.reasonPhrase}');
           ScaffoldMessenger.of(context).showSnackBar(
@@ -99,58 +113,53 @@ class _LoginPageState extends State<LoginPage> {
                     children: [
                       Align(
                         alignment: Alignment.centerLeft,
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.pushNamed(context, '/register');
-                          },
-                          child: AnimatedContainer(
-                            duration: const Duration(milliseconds: 500),
-                            width: MediaQuery.of(context).size.width * 0.6,
-                            height: MediaQuery.of(context).size.width * 0.6,
-                            decoration: const BoxDecoration(
-                              color: Color.fromARGB(255, 58, 233, 64),
-                              shape: BoxShape.circle,
+                        child: Container(
+                          width: MediaQuery.of(context).size.width * 0.6,
+                          height: MediaQuery.of(context).size.height,
+                          decoration: const BoxDecoration(
+                            color: Color.fromARGB(255, 58, 233, 64),
+                            shape: BoxShape.circle,
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                              left: MediaQuery.of(context).size.width * 0.15,
+                              top: MediaQuery.of(context).size.height * 0.35,
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'No tienes una cuenta?',
+                                  style: TextStyle(
+                                    fontSize: 35,
+                                    fontStyle: FontStyle.italic,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                const SizedBox(height: 10),
+                                const Text(
+                                  'Después de registrarse, puede aprovechar de los servicios de la institución educativa.',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontStyle: FontStyle.italic,
+                                  ),
+                                ),
+                                const SizedBox(height: 20),
+                                ElevatedButton(
+                                  onPressed: _registerRedirect,
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.white,
+                                    foregroundColor: const Color.fromARGB(255, 19, 218, 26),
+                                    side: const BorderSide(
+                                        color: Color.fromARGB(255, 23, 212, 29)),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 50, vertical: 15),
+                                  ),
+                                  child: const Text('REGISTRO'),
+                                ),
+                              ],
                             ),
                           ),
-                        ),
-                      ),
-                      Positioned(
-                        left: 50,
-                        top: MediaQuery.of(context).size.height / 4,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              'No tienes una cuenta?',
-                              style: TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            const SizedBox(height: 10),
-                            const Text(
-                              'Después de registrarse, puede aprovechar de los servicios de la institución educativa.',
-                              style: TextStyle(
-                                fontSize: 16,
-                              ),
-                            ),
-                            const SizedBox(height: 20),
-                            ElevatedButton(
-                              onPressed: () {
-                                _registerRedirect();
-                              },
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.white,
-                                foregroundColor:
-                                    const Color.fromARGB(255, 19, 218, 26),
-                                side: const BorderSide(
-                                    color: Color.fromARGB(255, 23, 212, 29)),
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 50, vertical: 15),
-                              ),
-                              child: const Text('REGISTRO'),
-                            ),
-                          ],
                         ),
                       ),
                     ],
@@ -165,23 +174,27 @@ class _LoginPageState extends State<LoginPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          const Text(
-                            'Iniciar sesión',
-                            style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
+                          Center(
+                            child: const Text(
+                              'Iniciar sesión',
+                              style: TextStyle(
+                                fontSize: 39,
+                                fontStyle: FontStyle.italic,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                           const SizedBox(height: 40),
                           TextFormField(
-                            controller: _emailController,
+                            controller: _idController,
                             decoration: const InputDecoration(
-                              labelText: 'Correo Electrónico',
-                              prefixIcon: Icon(Icons.email),
+                              labelText: 'Identificación',
+                              prefixIcon: Icon(Icons.person),
                             ),
+                            keyboardType: TextInputType.number,
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return 'Por favor ingrese su correo electrónico';
+                                return 'Por favor ingrese su identificación';
                               }
                               return null;
                             },
@@ -205,9 +218,7 @@ class _LoginPageState extends State<LoginPage> {
                           Align(
                             alignment: Alignment.centerRight,
                             child: TextButton(
-                              onPressed: () {
-                                _recuperar();
-                              },
+                              onPressed: _recuperar,
                               child: const Text('Olvidé mi contraseña'),
                             ),
                           ),
